@@ -4,6 +4,12 @@ title: About me
 permalink: /about/
 ---
 
+### Links
+
+- [Home](/)
+- [About me](/about)
+- [Projects](/projects)
+
 ### About me
 
 My name is Adrian Bieliński, I come from Poland, and my journey with programming started in 2010 with C++.
@@ -20,5 +26,5 @@ Having grasped the basics, I was suprised how easy it was to create a GUI - and 
 
 - 2020-now: studying Computer Science (Master's degree) at Kazimierz Wielki University in Bydgoszcz
 - 2016-2020: studying Computer Science (Bachelor's degree) at Kazimierz Wielki University in Bydgoszcz
-- 2013-2016: learning at High School no. VI in Bydgoszcz
+- 2013-2016: learning at High School no. 6 in Bydgoszcz
 - 2010-2013: learning at Middle School no. 50 in Bydgoszcz

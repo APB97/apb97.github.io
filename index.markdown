@@ -9,4 +9,10 @@ layout: default
 
 ### Links
 
-- [About me](about)
+- [Home](/)
+- [About me](/about)
+- [Projects](/projects)
+
+### Blogposts
+
+- [Welcome to my blog](/blog/2021/09/07/welcome-to-my-blog)
