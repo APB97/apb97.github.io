@@ -62,3 +62,25 @@ My main responsibility was to write and debug C# backend of the website, in part
 - provide board game publisher management
 - provide recommended board games
 
+## Sherlock Holmes Investigations
+
+![First scene in Sherlock Holmes Investigations](/images/sherlock-holmes-first-scene.jpg)
+
+<p align="justify">
+This game was created during last three terms of studying for Bachelor's degree in Computer Science.
+It was made using C# and Unity 2018.3.7 at the time.
+That version of the game wasn't translated into English - there was only Polish available.
+After the successful presentation of the project, I started working on changes, especially creating translation into English.
+Most of the changes is already done. In that regard, there remains either translating dialogues' audio, or muting it in case of using English translation.
+</p>
+
+### In-game story
+
+<p align="justify">
+This game was based on one chapter of interactive story from a book called "Sherlock Holmes Four Investigations"
+which is basically a comic mixed with a game elements where You are the hero.
+Game starts in madame Yvette's fortunetelling room where you can find a dead body of the said woman near the table stained with blood.
+Blood stains cover also part of the floor, indicating that the murderer escaped through the door near stains.
+There is also an assistant who happened to be nearby when the murderer killed the fortuneteller as well as a notebook filled with recent entries of clients' handwriting.
+You need to find out who murderered this poor woman and answer why did that happen.
+</p>
