@@ -12,6 +12,7 @@
 </head>
 
 <body>
+
     <div id="app">Loading...</div>
 
     <div id="blazor-error-ui">
@@ -19,7 +20,33 @@
         <a href="" class="reload">Reload</a>
         <a class="dismiss">🗙</a>
     </div>
+
+    <script>
+        window.blazorCulture = {
+            get: () => window.localStorage['BlazorCulture'],
+            set: (value) => window.localStorage['BlazorCulture'] = value
+        };
+    </script>
     <script src="_framework/blazor.webassembly.js"></script>
+    <script>
+        var createmaillink = function () {
+            var emailmeElement = document.getElementById("emailme");
+            if (emailmeElement != null) {
+                var user = 'adrian.bielinski.pl';
+                var domain = 'gmail.com';
+                var extraParams = '';
+                var description = 'E-mail';
+
+                var html = '';
+
+                html += '<a hr' + 'ef = "mai' + 'lto:' + user + '\x40' + domain + extraParams + '">';
+                if (description) html += description + '<' + '/a>';
+                else html += user + '\x40' + domain + '<' + '/a>';
+
+                emailmeElement.innerHTML = html;
+            }
+        };
+    </script>
 </body>
 
 </html>

@@ -1,4 +1,7 @@
-﻿@inherits LayoutComponentBase
+﻿@using System.Globalization
+@inherits LayoutComponentBase
+
+@inject NavigationManager Nav
 
 <div class="page">
     <div class="sidebar">
@@ -7,11 +10,16 @@
 
     <main>
         <div class="top-row px-4">
-            <a href="https://github.com/APB97/apb97.github.io" target="_blank">Code</a>
         </div>
 
         <article class="content px-4">
             @Body
         </article>
+
+        <div class="bottom-row px-4 d-flex card-footer position-sticky fixed-bottom" style="background-color:white;">
+            <LanguageSelect/>
+            <a class="ms-auto" href="https://github.com/APB97/apb97.github.io" target="_blank">Code</a>
+        </div>
+
     </main>
 </div>

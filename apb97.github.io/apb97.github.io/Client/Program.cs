@@ -5,7 +5,9 @@ using Microsoft.AspNetCore.Components.Web;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 using Microsoft.AspNetCore.Localization;
 using Microsoft.Extensions.Localization;
+using Microsoft.Extensions.DependencyInjection;
 using System.Globalization;
+using Microsoft.JSInterop;
 
 var builder = WebAssemblyHostBuilder.CreateDefault(args);
 builder.RootComponents.Add<App>("#app");
@@ -28,4 +30,23 @@ builder.Services.Configure<RequestLocalizationOptions>(options =>
 builder.Services.AddLocalization(options => options.ResourcesPath = "Resources");
 builder.Services.AddScoped<IntegerToRomanService>();
 
-await builder.Build().RunAsync();
+var host = builder.Build();
+
+CultureInfo culture;
+var js = host.Services.GetRequiredService<IJSRuntime>();
+var result = await js.InvokeAsync<string>("blazorCulture.get");
+
+if (result != null)
+{
+    culture = new CultureInfo(result);
+}
+else
+{
+    culture = new CultureInfo("en");
+    await js.InvokeVoidAsync("blazorCulture.set", "en");
+}
+
+CultureInfo.DefaultThreadCurrentCulture = culture;
+CultureInfo.DefaultThreadCurrentUICulture = culture;
+
+await host.RunAsync();
