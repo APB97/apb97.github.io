@@ -13,7 +13,6 @@
             <input @bind-value="Number" type="number" min="1" max="3999" style="margin: 4px"/>
         </div>
     </div>
-    <br/>
 
     <hr />
     <h4>@Localizer["Output"]</h4>
@@ -30,15 +29,19 @@
 </div>
 
 @code {
-    private int number;
+    private int? number;
 
-    protected int Number
+    [Parameter]
+    public int? Number
     {
         get => number;
         set
         {
             number = value;
-            ConvertToRoman(value);
+            if (value.HasValue)
+            {
+                ConvertToRoman(value.Value);
+            }
         }
     }
 
@@ -49,9 +52,12 @@
         Roman = ConvertService.ToRoman(value);
     }
 
-    protected override void OnInitialized()
+    protected override async Task OnParametersSetAsync()
     {
-        base.OnInitialized();
-        Number = 1;
+        await base.OnParametersSetAsync();
+        if (Number.HasValue)
+        {
+            Roman = ConvertService.ToRoman(Number.Value);
+        }
     }
 }

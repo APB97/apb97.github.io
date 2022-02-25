@@ -1,4 +1,3 @@
-using apb97.github.io.Shared;
 using Microsoft.AspNetCore.Mvc;
 
 namespace apb97.github.io.Server.Controllers
@@ -9,13 +8,6 @@ namespace apb97.github.io.Server.Controllers
     {
         public IntegerToRomanController()
         {
-        }
-
-        [HttpGet]
-        [Route("[controller]/IntegerToRoman")]
-        public IActionResult IntegerToRoman()
-        {
-            return RedirectToPage("IntegerToRoman");
         }
     }
 }
