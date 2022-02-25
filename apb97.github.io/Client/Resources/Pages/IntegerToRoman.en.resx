@@ -123,6 +123,9 @@
   <data name="and" xml:space="preserve">
     <value>and</value>
   </data>
+  <data name="And any number between" xml:space="preserve">
+    <value>And any number between</value>
+  </data>
   <data name="can be placed before" xml:space="preserve">
     <value>can be placed before</value>
   </data>
@@ -156,6 +159,9 @@
   <data name="is written as" xml:space="preserve">
     <value>is written as</value>
   </data>
+  <data name="Note" xml:space="preserve">
+    <value>Note</value>
+  </data>
   <data name="Number" xml:space="preserve">
     <value>Number:</value>
   </data>
@@ -180,7 +186,16 @@
   <data name="They represent the following" xml:space="preserve">
     <value>They represent the following values: </value>
   </data>
+  <data name="to convert" xml:space="preserve">
+    <value>to convert</value>
+  </data>
   <data name="to make" xml:space="preserve">
     <value>to make</value>
+  </data>
+  <data name="to roman numeral" xml:space="preserve">
+    <value>to roman numeral</value>
+  </data>
+  <data name="You can use the url like" xml:space="preserve">
+    <value>You can use the URL like</value>
   </data>
 </root>

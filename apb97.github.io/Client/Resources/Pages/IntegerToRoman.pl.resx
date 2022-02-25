@@ -123,6 +123,9 @@
   <data name="and" xml:space="preserve">
     <value>oraz</value>
   </data>
+  <data name="And any number between" xml:space="preserve">
+    <value>I dowolnej liczby między</value>
+  </data>
   <data name="can be placed before" xml:space="preserve">
     <value>można umieścić przed</value>
   </data>
@@ -156,6 +159,9 @@
   <data name="is written as" xml:space="preserve">
     <value>zapisuje się jako</value>
   </data>
+  <data name="Note" xml:space="preserve">
+    <value>Informacja</value>
+  </data>
   <data name="Number" xml:space="preserve">
     <value>Liczba:</value>
   </data>
@@ -180,7 +186,16 @@
   <data name="They represent the following" xml:space="preserve">
     <value>Odpowiadają one następującym wartościom: </value>
   </data>
+  <data name="to convert" xml:space="preserve">
+    <value>aby dokonać konwersji</value>
+  </data>
   <data name="to make" xml:space="preserve">
     <value>aby utworzyć</value>
+  </data>
+  <data name="to roman numeral" xml:space="preserve">
+    <value>na system rzymski</value>
+  </data>
+  <data name="You can use the url like" xml:space="preserve">
+    <value>Możesz użyć adresu URL postaci</value>
   </data>
 </root>
