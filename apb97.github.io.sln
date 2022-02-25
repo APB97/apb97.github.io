@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.32126.317
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "apb97.github.io.Server", "apb97.github.io\Server\apb97.github.io.Server.csproj", "{B942052F-6121-4B95-BA03-39D6309B49C6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "apb97.github.io.Server", "apb97.github.io\Server\apb97.github.io.Server.csproj", "{B942052F-6121-4B95-BA03-39D6309B49C6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "apb97.github.io.Client", "apb97.github.io\Client\apb97.github.io.Client.csproj", "{EAFA6CB5-7487-486B-9C9F-7477A40CD5B1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "apb97.github.io.Client", "apb97.github.io\Client\apb97.github.io.Client.csproj", "{EAFA6CB5-7487-486B-9C9F-7477A40CD5B1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "apb97.github.io.Shared", "apb97.github.io\Shared\apb97.github.io.Shared.csproj", "{BB649FD9-5890-4432-AF1F-093F3C02D652}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "apb97.github.io.Shared", "apb97.github.io\Shared\apb97.github.io.Shared.csproj", "{BB649FD9-5890-4432-AF1F-093F3C02D652}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
