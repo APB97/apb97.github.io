@@ -1,6 +1,8 @@
 ﻿@using System.Globalization
+@using Microsoft.Extensions.Localization
 @inherits LayoutComponentBase
 
+@inject IStringLocalizer<MainLayout> Localizer
 @inject NavigationManager Nav
 
 <div class="page">
@@ -18,7 +20,7 @@
 
         <div class="bottom-row px-4 d-flex card-footer position-sticky fixed-bottom" style="background-color:white;">
             <LanguageSelect/>
-            <a class="ms-auto" href="https://github.com/APB97/apb97.github.io" target="_blank">Code</a>
+            <a class="ms-auto" href="https://github.com/APB97/apb97.github.io" target="_blank">@Localizer["Code"]</a>
         </div>
 
     </main>

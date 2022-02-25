@@ -29,6 +29,12 @@
     </script>
     <script src="_framework/blazor.webassembly.js"></script>
     <script>
+        if (window.location.hash.length > 1) {
+            const path = window.location.hash.replace('#', '')
+            history.pushState({ page: 1 }, "apb97.github.io", '/' + path)
+        }
+    </script>
+    <script>
         var createmaillink = function () {
             var emailmeElement = document.getElementById("emailme");
             if (emailmeElement != null) {
