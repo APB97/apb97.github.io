@@ -156,8 +156,14 @@
   <data name="Number" xml:space="preserve">
     <value>Liczba:</value>
   </data>
+  <data name="NumberOfSayings" xml:space="preserve">
+    <value>Ilość wymówień</value>
+  </data>
   <data name="Output" xml:space="preserve">
     <value>Wyjście</value>
+  </data>
+  <data name="Result" xml:space="preserve">
+    <value>Rezultat</value>
   </data>
   <data name="The count-and-say sequence is a sequence" xml:space="preserve">
     <value>Ciąg policz-i-wymów jest ciągiem łańcuchów znaków zawierających cyfry, a zdefiniowany jest przez rekursywny wzór</value>

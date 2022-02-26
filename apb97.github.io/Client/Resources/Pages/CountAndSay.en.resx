@@ -156,8 +156,14 @@
   <data name="Number" xml:space="preserve">
     <value>Number:</value>
   </data>
+  <data name="NumberOfSayings" xml:space="preserve">
+    <value>Number of sayings</value>
+  </data>
   <data name="Output" xml:space="preserve">
     <value>Output</value>
+  </data>
+  <data name="Result" xml:space="preserve">
+    <value>Result</value>
   </data>
   <data name="The count-and-say sequence is a sequence" xml:space="preserve">
     <value>The count-and-say sequence is a sequence of digit strings defined by the recursive formula</value>
