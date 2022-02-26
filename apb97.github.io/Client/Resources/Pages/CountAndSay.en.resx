@@ -163,7 +163,7 @@
     <value>The count-and-say sequence is a sequence of digit strings defined by the recursive formula</value>
   </data>
   <data name="Then for each group, say" xml:space="preserve">
-    <value>Potem dla każdej z grup wymów liczbę znaków, a następnie znak.</value>
+    <value>Then for each group, say the number of characters, then say the character.</value>
   </data>
   <data name="To convert the saying" xml:space="preserve">
     <value>To convert the saying into a digit string, replace the counts with a number and concatenate every saying.</value>
