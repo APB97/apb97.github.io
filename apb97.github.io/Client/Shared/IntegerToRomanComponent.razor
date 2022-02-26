@@ -57,7 +57,7 @@
         await base.OnParametersSetAsync();
         if (Number.HasValue)
         {
-            Roman = ConvertService.ToRoman(Number.Value);
+            ConvertToRoman(Number.Value);
         }
     }
 }

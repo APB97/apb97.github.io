@@ -1,9 +1,11 @@
-﻿@using  System.Globalization
+﻿@using System.Globalization
+@using Microsoft.Extensions.Localization
 @inject IJSRuntime JSRuntime
 @inject NavigationManager Nav
+@inject IStringLocalizer<LanguageSelect> Localizer
 
 <label>
-    Select your locale:
+    @Localizer["Select your locale"]:
 </label>
 <select @bind="Culture">
     @foreach (var culture in supportedCultures)
