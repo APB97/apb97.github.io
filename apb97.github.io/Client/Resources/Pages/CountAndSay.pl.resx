@@ -117,16 +117,85 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Challenges" xml:space="preserve">
-    <value>Wyzwania</value>
+  <data name="and" xml:space="preserve">
+    <value>oraz</value>
+  </data>
+  <data name="And any number between" xml:space="preserve">
+    <value>I dowolnej liczby między</value>
+  </data>
+  <data name="Challenge description" xml:space="preserve">
+    <value>Opis wyzwania</value>
+  </data>
+  <data name="Convert" xml:space="preserve">
+    <value>Konwertuj</value>
   </data>
   <data name="Count and say" xml:space="preserve">
     <value>Policz i wymów</value>
   </data>
+  <data name="For example," xml:space="preserve">
+    <value>Na przykład,</value>
+  </data>
+  <data name="functionName" xml:space="preserve">
+    <value>PoliczIWymow</value>
+  </data>
+  <data name="Given an integer convert it" xml:space="preserve">
+    <value>Przeprowadź konwersję na system rzymski dla podanej liczby.</value>
+  </data>
+  <data name="However the numeral for" xml:space="preserve">
+    <value>Jednakże poprawny zapis dla</value>
+  </data>
+  <data name="in Roman numeral," xml:space="preserve">
+    <value>w systemie rzymskim,</value>
+  </data>
+  <data name="Input" xml:space="preserve">
+    <value>Wejście</value>
+  </data>
   <data name="Integer to Roman" xml:space="preserve">
     <value>Konwersja na system rzymski</value>
   </data>
-  <data name="See this challenge" xml:space="preserve">
-    <value>Zobacz to wyzwanie</value>
+  <data name="is not" xml:space="preserve">
+    <value>to nie jest</value>
+  </data>
+  <data name="is written as" xml:space="preserve">
+    <value>zapisuje się jako</value>
+  </data>
+  <data name="Note" xml:space="preserve">
+    <value>Informacja</value>
+  </data>
+  <data name="Number" xml:space="preserve">
+    <value>Liczba:</value>
+  </data>
+  <data name="Output" xml:space="preserve">
+    <value>Wyjście</value>
+  </data>
+  <data name="Roman" xml:space="preserve">
+    <value>Rzymska:</value>
+  </data>
+  <data name="Roman numerals are represented by" xml:space="preserve">
+    <value>Liczby rzymskie są reprezentowane przez siedem różnych symboli: </value>
+  </data>
+  <data name="Roman numerals are usually" xml:space="preserve">
+    <value>Liczby rzymskie są zapisywane od największego do najmniejszego symbolu, od lewej do prawej.</value>
+  </data>
+  <data name="Similarly" xml:space="preserve">
+    <value>Podobnie</value>
+  </data>
+  <data name="Subtraction is used" xml:space="preserve">
+    <value>Odejmowania używa się w sześciu przypadkach:</value>
+  </data>
+  <data name="The count-and-say sequence is a sequence" xml:space="preserve">
+    <value>Ciąg policz-i-wymów jest ciągiem łańcuchów znaków zawierających cyfry, a zdefiniowany jest przez rekursywny wzór</value>
+  </data>
+  <data name="They represent the following" xml:space="preserve">
+    <value>Odpowiadają one następującym wartościom: </value>
+  </data>
+  <data name="to convert" xml:space="preserve">
+    <value>aby dokonać konwersji</value>
+  </data>
+  <data name="to make" xml:space="preserve">
+    <value>aby utworzyć</value>
+  </data>
+  <data name="You can use the url like" xml:space="preserve">
+    <value>Możesz użyć adresu URL postaci</value>
   </data>
 </root>

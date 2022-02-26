@@ -120,6 +120,9 @@
   <data name="Challenges" xml:space="preserve">
     <value>Challenges</value>
   </data>
+  <data name="Count and say" xml:space="preserve">
+    <value>Count and say</value>
+  </data>
   <data name="Integer to Roman" xml:space="preserve">
     <value>Integer to Roman</value>
   </data>
