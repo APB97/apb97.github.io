@@ -120,9 +120,6 @@
   <data name="and" xml:space="preserve">
     <value>and</value>
   </data>
-  <data name="And any number between" xml:space="preserve">
-    <value>And any number between</value>
-  </data>
   <data name="Challenge description" xml:space="preserve">
     <value>Challenge description</value>
   </data>
@@ -132,29 +129,23 @@
   <data name="Count and say" xml:space="preserve">
     <value>Count and say</value>
   </data>
+  <data name="for any number between" xml:space="preserve">
+    <value>for any number between</value>
+  </data>
   <data name="For example," xml:space="preserve">
     <value>For example,</value>
   </data>
   <data name="functionName" xml:space="preserve">
     <value>CountAndSay</value>
   </data>
-  <data name="Given an integer convert it" xml:space="preserve">
-    <value>Given an integer, convert it to a roman numeral.</value>
-  </data>
-  <data name="However the numeral for" xml:space="preserve">
-    <value>However, the numeral for</value>
-  </data>
-  <data name="in Roman numeral," xml:space="preserve">
-    <value>in Roman numeral,</value>
-  </data>
   <data name="Input" xml:space="preserve">
     <value>Input</value>
   </data>
-  <data name="Integer to Roman" xml:space="preserve">
-    <value>Integer to Roman</value>
-  </data>
   <data name="is not" xml:space="preserve">
     <value>is not</value>
+  </data>
+  <data name="is the way you would 'say' the digit string from" xml:space="preserve">
+    <value>is the way you would "say" the digit string from</value>
   </data>
   <data name="is written as" xml:space="preserve">
     <value>is written as</value>
@@ -168,32 +159,20 @@
   <data name="Output" xml:space="preserve">
     <value>Output</value>
   </data>
-  <data name="Roman" xml:space="preserve">
-    <value>Roman:</value>
-  </data>
-  <data name="Roman numerals are represented by" xml:space="preserve">
-    <value>Roman numerals are represented by seven different symbols: </value>
-  </data>
-  <data name="Roman numerals are usually" xml:space="preserve">
-    <value>Roman numerals are usually written largest to smallest from left to right.</value>
-  </data>
-  <data name="Similarly" xml:space="preserve">
-    <value>Similarly</value>
-  </data>
-  <data name="Subtraction is used" xml:space="preserve">
-    <value>Subtraction is used in six instances:</value>
-  </data>
   <data name="The count-and-say sequence is a sequence" xml:space="preserve">
     <value>The count-and-say sequence is a sequence of digit strings defined by the recursive formula</value>
   </data>
-  <data name="They represent the following" xml:space="preserve">
-    <value>They represent the following values: </value>
+  <data name="Then for each group, say" xml:space="preserve">
+    <value>Potem dla każdej z grup wymów liczbę znaków, a następnie znak.</value>
   </data>
-  <data name="to convert" xml:space="preserve">
-    <value>to convert</value>
+  <data name="To convert the saying" xml:space="preserve">
+    <value>To convert the saying into a digit string, replace the counts with a number and concatenate every saying.</value>
   </data>
-  <data name="to make" xml:space="preserve">
-    <value>to make</value>
+  <data name="To determine how you" xml:space="preserve">
+    <value>To determine how you "say" a digit string, split it into the minimal number of groups so that each group is a contiguous section all of the same character.</value>
+  </data>
+  <data name="which is then converted into a different digit string" xml:space="preserve">
+    <value>which is then converted into a different digit string</value>
   </data>
   <data name="You can use the url like" xml:space="preserve">
     <value>You can use the URL like</value>

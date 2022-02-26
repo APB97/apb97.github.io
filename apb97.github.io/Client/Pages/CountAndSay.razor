@@ -15,17 +15,19 @@
 <ul>
     <li>
         <code>@Localizer["functionName"] (1) = "1"</code>
-        <code>@Localizer["functionName"] (n)</code> is the way you would "say" the digit string from 
-        <code>@Localizer["functionName"] (n-1)</code>, which is then converted into a different digit string
+    </li>
+    <li>
+        <code>@Localizer["functionName"] (n)</code> @Localizer["is the way you would 'say' the digit string from"]
+        <code>@Localizer["functionName"] (n-1)</code>, @Localizer["which is then converted into a different digit string"].
     </li>
 </ul>
 
-To determine how you "say" a digit string, split it into the minimal number of groups so that each group is a contiguous section all of the same character.
-Then for each group, say the number of characters, then say the character.
-To convert the saying into a digit string, replace the counts with a number and concatenate every saying.
+@Localizer["To determine how you"]
+@Localizer["Then for each group, say"]
+@Localizer["To convert the saying"]
 
-@*<h4>@Localizer["Note"]</h4>
-<p>@Localizer["You can use the url like"] <a href="https://apb97.github.io/CountAndSay/46">https://apb97.github.io/CountAndSay/46</a> @Localizer["for any number between"] 1 @Localizer["and"] 30.</p>*@
+<h4>@Localizer["Note"]</h4>
+<p>@Localizer["You can use the url like"] <a href="https://apb97.github.io/CountAndSay/12">https://apb97.github.io/CountAndSay/12</a> @Localizer["for any number between"] 1 @Localizer["and"] 30.</p>
 
 <CountAndSayComponent @ref="counter" NumberOfSayings="Number"/>
 
