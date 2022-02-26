@@ -7,8 +7,8 @@
   "linkerEnabled": true,
   "resources": {
     "assembly": {
-      "apb97.github.io.Client.dll": "sha256-6EmQD47RVN8835d7NO9ltyFPZAuTg+hEm+Rrniu6334=",
-      "apb97.github.io.Shared.dll": "sha256-81lUSLI5ZKrOkWWMe8ywipz5uW+aVENIphsUitKlgHU=",
+      "apb97.github.io.Client.dll": "sha256-bZsR44YmLu1p3ysBqc8PSQ3mh\/FW5oHMWIEih5qi37I=",
+      "apb97.github.io.Shared.dll": "sha256-3lJQBYDQlGSL4lib+eWGkRWwA4VK8qDZg031AMWIzW0=",
       "Microsoft.AspNetCore.Components.dll": "sha256-z2wAd1c3KWqzQ4GKm7IDjThbD\/oV6BRc1DCpgPtcLG4=",
       "Microsoft.AspNetCore.Components.Web.dll": "sha256-swhllcB8+ISyD3Ea\/Bqq5pPKpxnXh369OZQx5xow18s=",
       "Microsoft.AspNetCore.Components.WebAssembly.dll": "sha256-yUU\/mWWa82QWVsGQj6w\/j4ja+GJcNtYn9qS4hbsDCPU=",
@@ -37,7 +37,6 @@
       "System.Collections.dll": "sha256-yd3UsfMMs+RfEyH4bmdGK+W9kQ7TXPe4+iqvfCztPaU=",
       "System.Collections.NonGeneric.dll": "sha256-QLreRTl5sYSKNfiiSlFmET66oaafALY0Zbu0oZyxJL4=",
       "System.Collections.Specialized.dll": "sha256-UHTBxqnQBgyMunb0Ai2981bF+EIsZ6qSY64hggjauwU=",
-      "System.ComponentModel.Annotations.dll": "sha256-OXIpubC7m6VZoFWDngSBbOFgbM4xzFLSGgFzyY4BKs0=",
       "System.ComponentModel.dll": "sha256-TOeHn27zzrK+mlIlyYwc4whFVZeMr12ZGFQFSUsxBzA=",
       "System.ComponentModel.Primitives.dll": "sha256-DRUs5s+NF2zgTeouiOcSJyMdQzH+\/5eGNdoh6HDR8dE=",
       "System.ComponentModel.TypeConverter.dll": "sha256-Xz1XQYVtSSKQQsTx9F3w3CO2zFozwcXWBjWoop4gi\/Q=",
@@ -49,7 +48,7 @@
       "System.Net.Primitives.dll": "sha256-xQChB1egBVUFeD04dsdLWtd7XbpSFKu\/zL7d0BRfUi8=",
       "System.Net.WebSockets.dll": "sha256-vI4qyt8UbHHavHWQc\/1\/Z\/aYfS3K1aDIOOV+1ECyJs4=",
       "System.ObjectModel.dll": "sha256-G9nTZy6lpPCB1TeMDFiTA2OfLlVrYpUwMxqvWEMJojU=",
-      "System.Private.CoreLib.dll": "sha256-9JjMoNaSOqRnrH1Iab+91WH8WaDLKxcjlyh2XeA8gDE=",
+      "System.Private.CoreLib.dll": "sha256-0Uyz83TBWWcoopV55eExIZ\/7nFQE1QXk3mSzG56XtsU=",
       "System.Private.Runtime.InteropServices.JavaScript.dll": "sha256-h0uJ4\/\/6vzyhvYHyPExFJmfu2UR+K7HQ\/LCeZz\/w\/dM=",
       "System.Private.Uri.dll": "sha256-tzN5A71OyXihE2kazu\/p96U51Zalk0P1ifIXcZBmtLc=",
       "System.Runtime.CompilerServices.Unsafe.dll": "sha256-UBWoFp+r9Xw64YXkyydfGw0Be+r\/RwIpB0K8PzpRBfk=",
@@ -74,11 +73,11 @@
     },
     "satelliteResources": {
       "en": {
-        "en\/apb97.github.io.Client.resources.dll": "sha256-yJ4ysEcf\/iGQF\/YiTrdXFOCu0b1RCnv8RS40888\/jTQ=",
+        "en\/apb97.github.io.Client.resources.dll": "sha256-lsO57bKEeK37w2RkxilWLdcqDycdpxStqXIlCxybpfA=",
         "en\/apb97.github.io.Shared.resources.dll": "sha256-5Becfy12bIehbFwR+xHdAzrpIVJydh+RVKKQC8632dY="
       },
       "pl": {
-        "pl\/apb97.github.io.Client.resources.dll": "sha256-QvPaFUaTbPSLX4Q3Zk9NFMXLINj6wmywD3l8DiRLGLI=",
+        "pl\/apb97.github.io.Client.resources.dll": "sha256-etjDtwD+WcClNkNO+i2o+uMgVkcM0Qvj7PeS5fXOC5E=",
         "pl\/apb97.github.io.Shared.resources.dll": "sha256-KboamgxjqEVQ6CyEtI\/S8JnIbRtGdgXuleFcw+GLVmQ="
       }
     }
