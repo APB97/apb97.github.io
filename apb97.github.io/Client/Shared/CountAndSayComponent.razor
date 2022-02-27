@@ -1,4 +1,5 @@
 ﻿@using Microsoft.Extensions.Localization
+@using System.Text
 @using apb97.github.io.Client.Pages
 @using apb97.github.io.Shared.Services
 @inject CountAndSayService Service
@@ -25,6 +26,24 @@
             </code>
         </div>
     </div>
+
+    <h4>@Localizer["Explanation"]</h4>
+    <div class = "row">
+        <p role="status">
+            @if (Explanation != null)
+            {
+                for (int i = 0; i < Explanation.Count(); i++)
+                {
+                    <b>@(i + 2): </b>
+                    <text>@Explanation.ElementAt(i)</text>
+                    if (i != Explanation.Count() - 1)
+                    {
+                        <br/>
+                    }
+                }
+            }
+        </p>
+    </div>
 </div>
 
 @code {
@@ -39,10 +58,15 @@
             number = value;
             if (value.HasValue)
             {
-                Result = Service.CountAndSay(value.Value);
+                StringBuilder builder = new StringBuilder();
+                Result = Service.CountAndSay(value.Value, builder);
+                string explanation = builder.ToString();
+                Explanation = explanation.Split("<br/>", StringSplitOptions.RemoveEmptyEntries);
             }
         }
     }
 
     public string? Result { get; set; }
+
+    protected IEnumerable<string>? Explanation { get; set; }
 }

@@ -29,6 +29,7 @@ builder.Services.Configure<RequestLocalizationOptions>(options =>
 });
 builder.Services.AddLocalization(options => options.ResourcesPath = "Resources");
 builder.Services.AddScoped<IntegerToRomanService>();
+builder.Services.AddScoped<SayService>();
 builder.Services.AddScoped<CountAndSayService>();
 
 var host = builder.Build();

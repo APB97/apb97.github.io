@@ -117,73 +117,91 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="and" xml:space="preserve">
-    <value>oraz</value>
+  <data name="0 plural" xml:space="preserve">
+    <value>zer</value>
   </data>
-  <data name="Challenge description" xml:space="preserve">
-    <value>Opis wyzwania</value>
+  <data name="0 singular" xml:space="preserve">
+    <value>zero</value>
   </data>
-  <data name="Convert" xml:space="preserve">
-    <value>Konwertuj</value>
+  <data name="1 plural" xml:space="preserve">
+    <value>jedynki</value>
   </data>
-  <data name="Count and say" xml:space="preserve">
-    <value>Policz i wymów</value>
+  <data name="1 singular" xml:space="preserve">
+    <value>jedynka</value>
   </data>
-  <data name="Explanation" xml:space="preserve">
-    <value>Objaśnienie</value>
+  <data name="1 word" xml:space="preserve">
+    <value>jedna</value>
   </data>
-  <data name="for any number between" xml:space="preserve">
-    <value>dla dowolnej liczby między</value>
+  <data name="2 plural" xml:space="preserve">
+    <value>dwójki</value>
   </data>
-  <data name="For example," xml:space="preserve">
-    <value>Na przykład,</value>
+  <data name="2 singular" xml:space="preserve">
+    <value>dwójka</value>
   </data>
-  <data name="functionName" xml:space="preserve">
-    <value>PoliczIWymow</value>
+  <data name="2 word" xml:space="preserve">
+    <value>dwie</value>
   </data>
-  <data name="Input" xml:space="preserve">
-    <value>Wejście</value>
+  <data name="3 plural" xml:space="preserve">
+    <value>trójki</value>
   </data>
-  <data name="is not" xml:space="preserve">
-    <value>to nie jest</value>
+  <data name="3 singular" xml:space="preserve">
+    <value>trójka</value>
   </data>
-  <data name="is the way you would 'say' the digit string from" xml:space="preserve">
-    <value>jest sposobem, jakim "wymówiłbyś" ciąg znaków z</value>
+  <data name="3 word" xml:space="preserve">
+    <value>trzy</value>
   </data>
-  <data name="is written as" xml:space="preserve">
-    <value>zapisuje się jako</value>
+  <data name="4 plural" xml:space="preserve">
+    <value>czwórki</value>
   </data>
-  <data name="Note" xml:space="preserve">
-    <value>Informacja</value>
+  <data name="4 singular" xml:space="preserve">
+    <value>czwórka</value>
   </data>
-  <data name="Number" xml:space="preserve">
-    <value>Liczba:</value>
+  <data name="4 word" xml:space="preserve">
+    <value>cztery</value>
   </data>
-  <data name="NumberOfSayings" xml:space="preserve">
-    <value>Ilość wymówień</value>
+  <data name="5 plural" xml:space="preserve">
+    <value>piątek</value>
   </data>
-  <data name="Output" xml:space="preserve">
-    <value>Wyjście</value>
+  <data name="5 singular" xml:space="preserve">
+    <value>piątka</value>
   </data>
-  <data name="Result" xml:space="preserve">
-    <value>Rezultat</value>
+  <data name="5 word" xml:space="preserve">
+    <value>pięć</value>
   </data>
-  <data name="The count-and-say sequence is a sequence" xml:space="preserve">
-    <value>Ciąg policz-i-wymów jest ciągiem łańcuchów znaków zawierających cyfry, a zdefiniowany jest przez rekursywny wzór</value>
+  <data name="6 plural" xml:space="preserve">
+    <value>szóstek</value>
   </data>
-  <data name="Then for each group, say" xml:space="preserve">
-    <value>Potem dla każdej z grup wymów liczbę znaków, a następnie znak.</value>
+  <data name="6 singular" xml:space="preserve">
+    <value>szóstka</value>
   </data>
-  <data name="To convert the saying" xml:space="preserve">
-    <value>Aby przekonwertować zdanie na ciąg cyfr, należy zastąpić ilości liczbą i połączyć w całość.</value>
+  <data name="6 word" xml:space="preserve">
+    <value>sześć</value>
   </data>
-  <data name="To determine how you" xml:space="preserve">
-    <value>Aby określić jak "wymawiać" ciąg znaków złożony z cyfr, podziel go na minimalną liczbę grup takich, że każda jest ciągłą sekcją tych samych znaków.</value>
+  <data name="7 plural" xml:space="preserve">
+    <value>siódemek</value>
   </data>
-  <data name="which is then converted into a different digit string" xml:space="preserve">
-    <value>który jest potem konwertowany na kolejny ciąg znaków złozony z cyfr</value>
+  <data name="7 singular" xml:space="preserve">
+    <value>siódemka</value>
   </data>
-  <data name="You can use the url like" xml:space="preserve">
-    <value>Możesz użyć adresu URL postaci</value>
+  <data name="7 word" xml:space="preserve">
+    <value>siedem</value>
+  </data>
+  <data name="8 plural" xml:space="preserve">
+    <value>ósemek</value>
+  </data>
+  <data name="8 singular" xml:space="preserve">
+    <value>ósemka</value>
+  </data>
+  <data name="8 word" xml:space="preserve">
+    <value>osiem</value>
+  </data>
+  <data name="9 plural" xml:space="preserve">
+    <value>dziewiątek</value>
+  </data>
+  <data name="9 singular" xml:space="preserve">
+    <value>dziewiątka</value>
+  </data>
+  <data name="9 word" xml:space="preserve">
+    <value>dziewięć</value>
   </data>
 </root>

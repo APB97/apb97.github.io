@@ -4,22 +4,24 @@ namespace apb97.github.io.Shared.Services
 {
     public class CountAndSayService
     {
-        public CountAndSayService()
-        {
+        private readonly SayService? _sayService;
 
+        public CountAndSayService(SayService? sayService)
+        {
+            _sayService = sayService;
         }
 
-        public string CountAndSay(int numberOfSayings)
+        public string CountAndSay(int numberOfSayings, StringBuilder details)
         {
             if (numberOfSayings < 0) return "OutOfRange";
             if (numberOfSayings == 1)
             {
                 return "1";
             }
-            return Count(CountAndSay(numberOfSayings - 1));
+            return Count(CountAndSay(numberOfSayings - 1, details), details);
         }
 
-        private string Count(string sentence)
+        private string Count(string sentence, StringBuilder details)
         {
             char digit = '0';
             int currentCounter = 0;
@@ -47,7 +49,9 @@ namespace apb97.github.io.Shared.Services
             builder.Append(currentCounter)
                 .Append(digit);
 
-            return builder.ToString();
+            string result = builder.ToString();
+            details.Append(_sayService?.Say(result));
+            return result;
         }
     }
 }
