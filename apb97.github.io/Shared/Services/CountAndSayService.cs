@@ -13,7 +13,7 @@ namespace apb97.github.io.Shared.Services
 
         public string CountAndSay(int numberOfSayings, StringBuilder details)
         {
-            if (numberOfSayings < 0 || numberOfSayings > 30) return "OutOfRange";
+            if (numberOfSayings <= 0 || numberOfSayings > 30) return "OutOfRange";
             if (numberOfSayings == 1)
             {
                 return "1";
