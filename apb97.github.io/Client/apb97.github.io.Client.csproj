@@ -17,4 +17,13 @@
     <ProjectReference Include="..\Shared\apb97.github.io.Shared.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Update="404.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="redirect-from-error-throuh-hash.js">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>
