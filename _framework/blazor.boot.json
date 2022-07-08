@@ -73,11 +73,11 @@
     },
     "satelliteResources": {
       "en": {
-        "en\/apb97.github.io.Client.resources.dll": "sha256-TjZJKs+LepzKXhprM9BMmbXDsB3fyt\/jp8InxT8gD9E=",
+        "en\/apb97.github.io.Client.resources.dll": "sha256-eD\/72FIpPToSsY3OWou3IBkev6iUxXj7ua3w3zDrQiY=",
         "en\/apb97.github.io.Shared.resources.dll": "sha256-VoTHcajDymtf09Th9od9RFRgD8yxDQF1Cm9rrENgE+Y="
       },
       "pl": {
-        "pl\/apb97.github.io.Client.resources.dll": "sha256-+t+dKBB0aWyIyaspXgovR9u0B1TdE0AR0tFUPI9+vNU=",
+        "pl\/apb97.github.io.Client.resources.dll": "sha256-wFj3BgyHb6P7B5xQXLMtF97i8E4jSCcPg9A8dZaxb7Y=",
         "pl\/apb97.github.io.Shared.resources.dll": "sha256-59TUI8EcvXJ0JUxQIOerDKf+5mZtRPT1pFWwiaZjElQ="
       }
     }
