@@ -117,16 +117,49 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Plot and calculate definite integral of a function. Built with Windows Forms." xml:space="preserve">
-    <value>Narysuj wykres i oblicz całkę oznaczoną funkcji. Zbudowane z użyciem Windows Forms.</value>
+  <data name="Calculating definite intergral for a given range" xml:space="preserve">
+    <value>Obliczanie całki oznaczonej dla danego zakresu</value>
   </data>
-  <data name="Projects" xml:space="preserve">
-    <value>Projekty</value>
+  <data name="Download the source and compile the solution with your IDE (for this project I used Visual Studio 2019)." xml:space="preserve">
+    <value>Można pobrać kod źródłowy i skompilować rozwiązanie korzystając ze swojego środowiska programistycznego (dla tego projektu użyłem Visual Studio 2019).</value>
   </data>
-  <data name="See it yourself here" xml:space="preserve">
-    <value>Sprawdź tutaj</value>
+  <data name="Drawing plots of a logarithmic function" xml:space="preserve">
+    <value>Rysowanie wykresów funkcji logarytmicznej</value>
   </data>
-  <data name="Sudoku built with Blazor WebAssembly." xml:space="preserve">
-    <value>Sudoku zbudowane z użyciem Blazor WebAssembly.</value>
+  <data name="Drawing plots of a polynomial function" xml:space="preserve">
+    <value>Rysowanie wykresów funkcji wielomianowej</value>
+  </data>
+  <data name="Functionalities" xml:space="preserve">
+    <value>Funkcjonalności</value>
+  </data>
+  <data name="GitHub repository" xml:space="preserve">
+    <value>Repozytorium na GitHubie</value>
+  </data>
+  <data name="Installation" xml:space="preserve">
+    <value>Instalacja</value>
+  </data>
+  <data name="Option 1" xml:space="preserve">
+    <value>Opcja pierwsza</value>
+  </data>
+  <data name="Option 2" xml:space="preserve">
+    <value>Opcja druga</value>
+  </data>
+  <data name="Panning the plot by dragging mouse while mouse button is pressed" xml:space="preserve">
+    <value>Przesuwanie wykresu poprzez przesuwanie myszy z wciśniętym klawiszem myszy</value>
+  </data>
+  <data name="Saving the image of the plot with use of 'Save as image...' button" xml:space="preserve">
+    <value>Zapisywanie obrazu wykresu z użyciem przycisku 'Zapisz jako obraz'</value>
+  </data>
+  <data name="Setting axes' labels font size, size of the plot and color of the plot" xml:space="preserve">
+    <value>Ustawianie rozmiaru czcionki etykiet osi, rozmiaru i koloru wykresu</value>
+  </data>
+  <data name="Windows Forms application that can be used for drawing simple plots and calculating integrals." xml:space="preserve">
+    <value>Aplikacja Windows Forms, której można użyć w celu rysowania prostych wykresów i obliczania całki oznaczonej.</value>
+  </data>
+  <data name="You can download it from 'Releases' section, and either run it or install it with 'setup.exe'." xml:space="preserve">
+    <value>Można pobrać aplikację z sekcji 'Releases', po czym uruchomić aplikację lub ją zainsstalować z użyciem pliku 'setup.exe'.</value>
+  </data>
+  <data name="Zooming the plot by scrolling the mouse wheel" xml:space="preserve">
+    <value>Zbliżanie i oddalanie wykresu poprzez użycie rolki myszy</value>
   </data>
 </root>
