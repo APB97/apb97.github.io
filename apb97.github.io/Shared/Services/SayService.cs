@@ -1,46 +1,45 @@
 ﻿using Microsoft.Extensions.Localization;
 using System.Text;
 
-namespace apb97.github.io.Shared.Services
+namespace apb97.github.io.Shared.Services;
+
+public class SayService
 {
-    public class SayService
+    private readonly IStringLocalizer<SayService> _localizer;
+
+    public SayService(IStringLocalizer<SayService> localizer)
     {
-        private readonly IStringLocalizer<SayService> _localizer;
+        _localizer = localizer;
+    }
 
-        public SayService(IStringLocalizer<SayService> localizer)
+    public string Say(string digitString)
+    {
+        var builder = new StringBuilder();
+
+        for (int i = 0; i < digitString.Length; i++)
         {
-            _localizer = localizer;
-        }
-
-        public string Say(string digitString)
-        {
-            StringBuilder builder = new StringBuilder();
-
-            for (int i = 0; i < digitString.Length; i++)
+            if (i % 2 == 0)
             {
-                if (i % 2 == 0)
+                builder.Append(_localizer[$"{digitString[i]} word"]);
+            }
+            else
+            {
+                if (digitString[i - 1] == '1')
                 {
-                    builder.Append(_localizer[$"{digitString[i]} word"]);
+                    builder.Append($" {_localizer[$"{digitString[i]} singular"]}");
                 }
                 else
                 {
-                    if (digitString[i - 1] == '1')
-                    {
-                        builder.Append($" {_localizer[$"{digitString[i]} singular"]}");
-                    }
-                    else
-                    {
-                        builder.Append($" {_localizer[$"{digitString[i]} plural"]}");
-                    }
+                    builder.Append($" {_localizer[$"{digitString[i]} plural"]}");
+                }
 
-                    if (i != digitString.Length - 1)
-                    {
-                        builder.Append(", ");
-                    }
+                if (i != digitString.Length - 1)
+                {
+                    builder.Append(", ");
                 }
             }
-
-            return builder.Append("<br/>").ToString();
         }
+
+        return builder.Append("<br/>").ToString();
     }
 }
