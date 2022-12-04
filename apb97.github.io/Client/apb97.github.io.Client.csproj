@@ -29,4 +29,12 @@
     </None>
   </ItemGroup>
 
+  <ItemGroup>
+    <UpToDateCheckInput Remove="Pages\LearningProgress.razor" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <_ContentIncludedByDefault Remove="Pages\LearningProgress.razor" />
+  </ItemGroup>
+
 </Project>
