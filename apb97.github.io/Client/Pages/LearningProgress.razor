@@ -7,27 +7,42 @@
 
 <h2>@Localizer["LearningProgress"]</h2>
 
-<h3>@Localizer["Year2022-last-weeks"]</h3>
-
-<h4>C#</h4>
 <ul>
     <li>
-        <b>@Localizer["File-scoped namespace declaration"]</b>
-        <br/>
-        <p>@Localizer["File-scoped namespace declaration description"]</p>
-        <b>@Localizer["Example"]</b>
-        <br/>
-        <code>
-            namespace apb97.github.io.Shared;<br/>
-            <br/>
-            public class MyClass<br />
-            {<br />
-            &nbsp;&nbsp;&nbsp;&nbsp;// code omitted<br />
-            }
-        </code>
+        <h3>@Localizer["Year2022-last-weeks"]</h3>
+        <ul>
+            <li>
+                <h4>C#</h4>
+                <ul>
+                    <li>
+                        <b>@Localizer["Global using directive"]</b>
+                        <br/>
+                        <p>@Localizer["Global using directive description"]</p>
+                        <b>@Localizer["Example"]</b>
+                        <br/>
+                        <code>
+                            global using apb97.github.io.Shared;
+                        </code>
+                        <p/>
+                    </li>
+                    <li>
+                        <b>@Localizer["File-scoped namespace declaration"]</b>
+                        <br/>
+                        <p>@Localizer["File-scoped namespace declaration description"]</p>
+                        <b>@Localizer["Example"]</b>
+                        <br/>
+                        <code>
+                            namespace apb97.github.io.Shared;<br/>
+                            <br/>
+                            public class MyClass<br/>
+                            {<br/>
+                            &nbsp;&nbsp;&nbsp;&nbsp;// code omitted<br/>
+                            }
+                        </code>
+                        <p/>
+                    </li>
+                </ul>
+            </li>
+        </ul>
     </li>
 </ul>
-
-@code {
-
-}

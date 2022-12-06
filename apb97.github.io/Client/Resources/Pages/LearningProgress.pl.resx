@@ -126,6 +126,12 @@
   <data name="File-scoped namespace declaration description" xml:space="preserve">
     <value>Deklaracja przestrzeni nazw w zakresie pliku pozwala na określenie przestrzeni nazw dla całego pliku w taki sposób, który oszczędza przestrzeń poziomą, jak również nieco przestrzeni pionowej. Dotyczny języka C# w wersji 10 i wyższych.</value>
   </data>
+  <data name="Global using directive" xml:space="preserve">
+    <value>Deklaracja przestrzeni nazw w zakresie globalnym</value>
+  </data>
+  <data name="Global using directive description" xml:space="preserve">
+    <value>Deklaracja przestrzeni nazw w zakresie globalnym pozwala deweloperom na deklaracje przestrzeni nazw używanych w projekcie w osobnym pliku, co jest nadzwyczaj przydatne gdy ma się do czynienia z pewnymi przestrzeniami nazw częściej niż z innymi.  Dotyczny języka C# w wersji 10 i wyższych.</value>
+  </data>
   <data name="LearningProgress" xml:space="preserve">
     <value>Postępy nauki</value>
   </data>
