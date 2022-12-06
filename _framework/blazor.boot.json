@@ -7,7 +7,7 @@
   "linkerEnabled": true,
   "resources": {
     "assembly": {
-      "apb97.github.io.Client.dll": "sha256-oghuJATYo7wvhtwLK0UfzkSqY53yf0EcU6tarofqJ1Y=",
+      "apb97.github.io.Client.dll": "sha256-49vi1Kq2mvToeP\/xBHYQUsyx8d8C3Ey1G+zbmIGfwiA=",
       "apb97.github.io.Shared.dll": "sha256-wo04szYKrbmsBMQRIj7rc92lZO3OPGTqTSgUt5IEv1Y=",
       "Microsoft.AspNetCore.Components.dll": "sha256-ROj58o7gJ2xfEUx+6ghc5pyYaLiuPkdGhP1qwNR5R4g=",
       "Microsoft.AspNetCore.Components.Web.dll": "sha256-swhllcB8+ISyD3Ea\/Bqq5pPKpxnXh369OZQx5xow18s=",
@@ -73,11 +73,11 @@
     },
     "satelliteResources": {
       "en": {
-        "en\/apb97.github.io.Client.resources.dll": "sha256-iZTI68DB8DEo4OsHN51ZggUquwrQJmVFO8VWEh\/gU7o=",
+        "en\/apb97.github.io.Client.resources.dll": "sha256-8Sv9om0Eabn9myGfifHtDzE0hQqJBYju\/aH6\/qd7Fq8=",
         "en\/apb97.github.io.Shared.resources.dll": "sha256-VoTHcajDymtf09Th9od9RFRgD8yxDQF1Cm9rrENgE+Y="
       },
       "pl": {
-        "pl\/apb97.github.io.Client.resources.dll": "sha256-xqxGl6fR3Q7WurcdUDgIoBwjGY7\/B8AdlVHl7LJ8J2Q=",
+        "pl\/apb97.github.io.Client.resources.dll": "sha256-+zXiHZztJaEi5E6PL1yo7pVSV5ZgLk1evCExOH6Cr00=",
         "pl\/apb97.github.io.Shared.resources.dll": "sha256-59TUI8EcvXJ0JUxQIOerDKf+5mZtRPT1pFWwiaZjElQ="
       }
     }
