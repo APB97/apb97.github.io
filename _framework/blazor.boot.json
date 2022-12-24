@@ -7,7 +7,7 @@
   "linkerEnabled": true,
   "resources": {
     "assembly": {
-      "apb97.github.io.Client.dll": "sha256-VnLMLAvZIa1e3sesDLHAcK5Su1xiWwgLYAapghsvanc=",
+      "apb97.github.io.Client.dll": "sha256-xJ8UgG1A7vp9p4EA7ukAw5XE\/kwTsv5d4ers9l41KBI=",
       "apb97.github.io.Shared.dll": "sha256-rYn3AoNuIx6PRayQnz63wvXCDSnIUSDarun\/QSg5FsA=",
       "Microsoft.AspNetCore.Components.dll": "sha256-ROj58o7gJ2xfEUx+6ghc5pyYaLiuPkdGhP1qwNR5R4g=",
       "Microsoft.AspNetCore.Components.Web.dll": "sha256-swhllcB8+ISyD3Ea\/Bqq5pPKpxnXh369OZQx5xow18s=",
