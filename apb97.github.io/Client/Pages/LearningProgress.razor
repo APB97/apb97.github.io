@@ -15,6 +15,22 @@
                 <h4>C#</h4>
                 <ul>
                     <li>
+                        <b>@Localizer["Extended property pattern"]</b>
+                        <br/>
+                        <p>@Localizer["Extended property pattern description"]</p>
+                        <b>@Localizer["Example"]</b>
+                        <br/>
+                        <code>
+                            // based on example from https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/operators/patterns#property-pattern <br/>
+                            public record Point2D(int X, int Y); <br />
+                            public record Line2D(Point Start, Point End); <br />
+                            <br />
+                            static bool IsAnyEndOnAnyAxis(Line2D line) => <br />
+                            &nbsp;&nbsp;&nbsp;&nbsp; line is { Start.X: 0 } or { Start.Y: 0 } or { End.X: 0 } or { End.Y: 0 };<br/>
+                            &emsp;&emsp;&emsp;&emsp; // older syntax: line is { Start { X : 0 } } or ...
+                        </code>
+                    </li>
+                    <li>
                         <b>@Localizer["Global using directive"]</b>
                         <br/>
                         <p>@Localizer["Global using directive description"]</p>

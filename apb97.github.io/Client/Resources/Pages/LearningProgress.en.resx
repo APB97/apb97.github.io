@@ -120,6 +120,12 @@
   <data name="Example" xml:space="preserve">
     <value>Example</value>
   </data>
+  <data name="Extended property pattern" xml:space="preserve">
+    <value>Extended property pattern</value>
+  </data>
+  <data name="Extended property pattern description" xml:space="preserve">
+    <value>Extended property pattern allows to reference properties or fields of a property pattern. Applies to C# 10 and above.</value>
+  </data>
   <data name="File-scoped namespace declaration" xml:space="preserve">
     <value>File-scoped namespace declaration</value>
   </data>

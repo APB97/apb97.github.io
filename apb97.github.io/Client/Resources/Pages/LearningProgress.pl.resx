@@ -120,6 +120,12 @@
   <data name="Example" xml:space="preserve">
     <value>Przykład</value>
   </data>
+  <data name="Extended property pattern" xml:space="preserve">
+    <value>Rozszerzone dopasowanie wzorca dla właściwości</value>
+  </data>
+  <data name="Extended property pattern description" xml:space="preserve">
+    <value>Rozszerzone dopasowanie wzorca dla właściwości pozwala na odwołanie się do właściwości lub pól wzorca właściowości. Dotyczy języka C# w wersji 10 i wyższych.</value>
+  </data>
   <data name="File-scoped namespace declaration" xml:space="preserve">
     <value>Deklaracja przestrzeni nazw w zakresie pliku</value>
   </data>
