@@ -123,17 +123,37 @@
   <data name="Extended property pattern" xml:space="preserve">
     <value>Extended property pattern</value>
   </data>
+  <data name="Extended property pattern code" xml:space="preserve">
+    <value>// based on example from https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/operators/patterns#property-pattern
+public record Point2D(int X, int Y);
+public record Line2D(Point Start, Point End);
+
+static bool IsAnyEndOnAnyAxis(Line2D line) =&gt;
+    line is { Start.X: 0 } or { Start.Y: 0 } or { End.X: 0 } or { End.Y: 0 };
+    // older syntax: line is { Start { X : 0 } } or ...</value>
+  </data>
   <data name="Extended property pattern description" xml:space="preserve">
     <value>Extended property pattern allows to reference properties or fields of a property pattern. Applies to C# 10 and above.</value>
   </data>
   <data name="File-scoped namespace declaration" xml:space="preserve">
     <value>File-scoped namespace declaration</value>
   </data>
+  <data name="File-scoped namespace declaration code" xml:space="preserve">
+    <value>namespace apb97.github.io.Shared;
+
+public class MyClass
+{
+    // code omitted
+}</value>
+  </data>
   <data name="File-scoped namespace declaration description" xml:space="preserve">
     <value>File-scoped namespace declaration allows to specify a namespace for a file in a way that saves horizontal space, as well as some vertical space. Applies to C# 10 and above.</value>
   </data>
   <data name="Global using directive" xml:space="preserve">
     <value>Global using directive</value>
+  </data>
+  <data name="Global using directive code" xml:space="preserve">
+    <value>global using apb97.github.io.Shared;</value>
   </data>
   <data name="Global using directive description" xml:space="preserve">
     <value>Global using directive is a feature that allows developers to declare namespaces used in a project in a separate file, especially useful if you are dealing with some namespaces more often then with others. Applies to C# 10 and above.</value>

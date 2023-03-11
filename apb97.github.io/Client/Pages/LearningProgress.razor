@@ -20,15 +20,7 @@
                         <p>@Localizer["Extended property pattern description"]</p>
                         <b>@Localizer["Example"]</b>
                         <br/>
-                        <code>
-                            // based on example from https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/operators/patterns#property-pattern <br/>
-                            public record Point2D(int X, int Y); <br />
-                            public record Line2D(Point Start, Point End); <br />
-                            <br />
-                            static bool IsAnyEndOnAnyAxis(Line2D line) => <br />
-                            &nbsp;&nbsp;&nbsp;&nbsp; line is { Start.X: 0 } or { Start.Y: 0 } or { End.X: 0 } or { End.Y: 0 };<br/>
-                            &nbsp;&nbsp;&nbsp;&nbsp; // older syntax: line is { Start { X : 0 } } or ...
-                        </code>
+                        <CodeView Code="@Localizer["Extended property pattern code"]"></CodeView>
                     </li>
                     <li>
                         <b>@Localizer["Global using directive"]</b>
@@ -36,9 +28,7 @@
                         <p>@Localizer["Global using directive description"]</p>
                         <b>@Localizer["Example"]</b>
                         <br/>
-                        <code>
-                            global using apb97.github.io.Shared;
-                        </code>
+                        <CodeView Code="@Localizer["Global using directive code"]"/>
                         <p/>
                     </li>
                     <li>
@@ -47,15 +37,8 @@
                         <p>@Localizer["File-scoped namespace declaration description"]</p>
                         <b>@Localizer["Example"]</b>
                         <br/>
-                        <code>
-                            namespace apb97.github.io.Shared;<br/>
-                            <br/>
-                            public class MyClass<br/>
-                            {<br/>
-                            &nbsp;&nbsp;&nbsp;&nbsp;// code omitted<br/>
-                            }
-                        </code>
-                        <p/>
+                        <CodeView Code="@Localizer["File-scoped namespace declaration code"]"/>
+                        <p />
                     </li>
                 </ul>
             </li>

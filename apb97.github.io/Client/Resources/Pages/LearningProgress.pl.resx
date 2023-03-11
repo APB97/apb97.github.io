@@ -123,17 +123,37 @@
   <data name="Extended property pattern" xml:space="preserve">
     <value>Rozszerzone dopasowanie wzorca dla właściwości</value>
   </data>
+  <data name="Extended property pattern code" xml:space="preserve">
+    <value>// kod oparty na przykładzie z https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/operators/patterns#property-pattern
+public record Point2D(int X, int Y);
+public record Line2D(Point Start, Point End);
+
+static bool IsAnyEndOnAnyAxis(Line2D line) =&gt;
+    line is { Start.X: 0 } or { Start.Y: 0 } or { End.X: 0 } or { End.Y: 0 };
+    // wcześniejsza składnia: line is { Start { X : 0 } } or ...</value>
+  </data>
   <data name="Extended property pattern description" xml:space="preserve">
     <value>Rozszerzone dopasowanie wzorca dla właściwości pozwala na odwołanie się do właściwości lub pól wzorca właściowości. Dotyczy języka C# w wersji 10 i wyższych.</value>
   </data>
   <data name="File-scoped namespace declaration" xml:space="preserve">
     <value>Deklaracja przestrzeni nazw w zakresie pliku</value>
   </data>
+  <data name="File-scoped namespace declaration code" xml:space="preserve">
+    <value>namespace apb97.github.io.Shared;
+
+public class MyClass
+{
+    // kod pominięty
+}</value>
+  </data>
   <data name="File-scoped namespace declaration description" xml:space="preserve">
     <value>Deklaracja przestrzeni nazw w zakresie pliku pozwala na określenie przestrzeni nazw dla całego pliku w taki sposób, który oszczędza przestrzeń poziomą, jak również nieco przestrzeni pionowej. Dotyczny języka C# w wersji 10 i wyższych.</value>
   </data>
   <data name="Global using directive" xml:space="preserve">
     <value>Deklaracja przestrzeni nazw w zakresie globalnym</value>
+  </data>
+  <data name="Global using directive code" xml:space="preserve">
+    <value>global using apb97.github.io.Shared;</value>
   </data>
   <data name="Global using directive description" xml:space="preserve">
     <value>Deklaracja przestrzeni nazw w zakresie globalnym pozwala deweloperom na deklaracje przestrzeni nazw używanych w projekcie w osobnym pliku, co jest nadzwyczaj przydatne gdy ma się do czynienia z pewnymi przestrzeniami nazw częściej niż z innymi.  Dotyczny języka C# w wersji 10 i wyższych.</value>
