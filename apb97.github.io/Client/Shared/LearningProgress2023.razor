@@ -1,0 +1,35 @@
+﻿@using Microsoft.Extensions.Localization
+@inject IStringLocalizer<LearningProgress2023> Localizer
+
+<h3>@Localizer["Year2023"]</h3>
+<ul>
+    <li>
+        <h4>JavaScript</h4>
+        <ul>
+            <li>
+                <b>@Localizer["JS types"]</b>
+                <br/>
+                <p>@Localizer["JS types description"]</p>
+                <b>@Localizer["Example"]</b>
+                <br/>
+                <CodeView Code="@Localizer["JS types code"]"/>
+            </li>
+            <li>
+                <b>@Localizer["JS functions and arrays"]</b>
+                <br/>
+                <p>@Localizer["JS functions and arrays description"]</p>
+                <b>@Localizer["Example"]</b>
+                <br/>
+                <CodeView Code="@Localizer["JS functions and arrays code"]"/>
+            </li>
+            <li>
+                <b>@Localizer["JS objects"]</b>
+                <br/>
+                <p>@Localizer["JS objects description"]</p>
+                <b>@Localizer["Example"]</b>
+                <br/>
+                <CodeView Code="@Localizer["JS objects code"]"/>
+            </li>
+        </ul>
+    </li>
+</ul>
