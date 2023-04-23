@@ -1,48 +1,47 @@
 ﻿@page "/LearningProgress"
+@page "/LearningProgress/{Year:int?}"
 
 @using Microsoft.Extensions.Localization
+@using System.Reflection;
 @inject IStringLocalizer<LearningProgress> Localizer
 
 <PageTitle>@Localizer["LearningProgress"]</PageTitle>
 
 <h2>@Localizer["LearningProgress"]</h2>
 
-<ul>
-    <li>
-        <h3>@Localizer["Year2022-last-weeks"]</h3>
-        <ul>
-            <li>
-                <h4>C#</h4>
-                <ul>
-                    <li>
-                        <b>@Localizer["Extended property pattern"]</b>
-                        <br/>
-                        <p>@Localizer["Extended property pattern description"]</p>
-                        <b>@Localizer["Example"]</b>
-                        <br/>
-                        <CodeView Code="@Localizer["Extended property pattern code"]"></CodeView>
-                    </li>
-                    <li>
-                        <b>@Localizer["Global using directive"]</b>
-                        <br/>
-                        <p>@Localizer["Global using directive description"]</p>
-                        <b>@Localizer["Example"]</b>
-                        <br/>
-                        <CodeView Code="@Localizer["Global using directive code"]"/>
-                    </li>
-                    <li>
-                        <b>@Localizer["File-scoped namespace declaration"]</b>
-                        <br/>
-                        <p>@Localizer["File-scoped namespace declaration description"]</p>
-                        <b>@Localizer["Example"]</b>
-                        <br/>
-                        <CodeView Code="@Localizer["File-scoped namespace declaration code"]"/>
-                    </li>
-                </ul>
-            </li>
-        </ul>
-    </li>
-    <li>
-        <LearningProgress2023/>
-    </li>
-</ul>
+<label>@Localizer["Year"]</label>
+<input @bind-value="Year" type="number" min="2022" max="2023"/>
+
+<DynamicComponent Type="DynamicComponentType"/>
+
+@code {
+    private int? year;
+
+    [Parameter]
+    public int? Year
+    { 
+        get => year;
+        set
+        {
+            year = value;
+            UpdateDynamicComponent();
+        }
+    }
+
+    protected Type? DynamicComponentType { get; set; } = typeof(LearningProgress2023);
+
+    protected override void OnParametersSet()
+    {
+        UpdateDynamicComponent();
+    }
+
+    protected void UpdateDynamicComponent()
+    {
+        var assembly = Assembly.GetAssembly(typeof(LearningProgress2023));
+        var currentYearType = assembly?.GetType($"apb97.github.io.Client.Shared.LearningProgress{(Year.HasValue ? Year.Value : 2023)}");
+        if (currentYearType != null)
+        {
+            DynamicComponentType = currentYearType;
+        }
+    }
+}
