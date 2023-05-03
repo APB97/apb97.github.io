@@ -120,6 +120,9 @@
   <data name="Example" xml:space="preserve">
     <value>Example</value>
   </data>
+  <data name="General knowledge" xml:space="preserve">
+    <value>General knowledge</value>
+  </data>
   <data name="JS functions and arrays" xml:space="preserve">
     <value>JavaScript functions and arrays</value>
   </data>
@@ -181,6 +184,12 @@ console.log("console.log is of type: ", typeof(console.log));</value>
   </data>
   <data name="JS types description" xml:space="preserve">
     <value>Types in JavaScript can be categorized into primitive types and object types. Primitive types' values are immutable, and these include: Null, Undefined, Boolean, Number, BigInt, String and Symbol. Object types' values are mutable, and these include types like functions and arrays. Objects consist of properties, which can contain data or functions or other objects.</value>
+  </data>
+  <data name="TPH, TPC, TPT" xml:space="preserve">
+    <value>TPH, TPC, TPT approaches - mapping from type hierarchy to tables</value>
+  </data>
+  <data name="TPH, TPC, TPT description" xml:space="preserve">
+    <value>When it comes to mapping type hierarchies to tables, there are 3 distinctive approaches: Table-per-Hierarchy (TPH), Table-per-Concrete-type (TPC) and Table-per-Type (TPT). TPH works by creating a single table with all possible properties from type hierarchy and works best when querying for entities of all type. TPC creates a different table for each concrete type and  works best when querying for leafs of the hierarchy. TPT defines a different table for each type and is the worst approach from the performace perspective, despite intiutively being the 'cleanest' solution.</value>
   </data>
   <data name="Year2023" xml:space="preserve">
     <value>2023</value>
