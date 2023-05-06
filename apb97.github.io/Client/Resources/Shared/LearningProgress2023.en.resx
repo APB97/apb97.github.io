@@ -123,6 +123,9 @@
   <data name="General knowledge" xml:space="preserve">
     <value>General knowledge</value>
   </data>
+  <data name="Javascript libs" xml:space="preserve">
+    <value>Javascript libraries</value>
+  </data>
   <data name="JS functions and arrays" xml:space="preserve">
     <value>JavaScript functions and arrays</value>
   </data>
@@ -184,6 +187,18 @@ console.log("console.log is of type: ", typeof(console.log));</value>
   </data>
   <data name="JS types description" xml:space="preserve">
     <value>Types in JavaScript can be categorized into primitive types and object types. Primitive types' values are immutable, and these include: Null, Undefined, Boolean, Number, BigInt, String and Symbol. Object types' values are mutable, and these include types like functions and arrays. Objects consist of properties, which can contain data or functions or other objects.</value>
+  </data>
+  <data name="Paged.js description" xml:space="preserve">
+    <value>Paged.js is an open-source library that allows us to create well-looking PDF documents from our HTML pages, with optional preview right on the webpage.</value>
+  </data>
+  <data name="Source" xml:space="preserve">
+    <value>Source</value>
+  </data>
+  <data name="System.Text.Json" xml:space="preserve">
+    <value>Changes in System.Text.Json namespace</value>
+  </data>
+  <data name="System.Text.Json description" xml:space="preserve">
+    <value>Starting with .NET 7, JSON contracts can be customized in two ways. First one is to create new instance of DefaultJsonTypeInfoResolver and add actions to its Modifiers property which will be called sequentially. Second method is to write a custom resolver implementing IJsonTypeInfoResolver, where GetTypeInfo should return null for unhandled types. Resolvers can be combined together, however only first non-null returning one will be used for any type.</value>
   </data>
   <data name="TPH, TPC, TPT" xml:space="preserve">
     <value>TPH, TPC, TPT approaches - mapping from type hierarchy to tables</value>

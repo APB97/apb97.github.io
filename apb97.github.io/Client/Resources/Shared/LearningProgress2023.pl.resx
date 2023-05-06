@@ -123,6 +123,9 @@
   <data name="General knowledge" xml:space="preserve">
     <value>Wiedza ogólna</value>
   </data>
+  <data name="Javascript libs" xml:space="preserve">
+    <value>Biblioteki języka Javascript</value>
+  </data>
   <data name="JS functions and arrays" xml:space="preserve">
     <value>Funkcje i tablice w języku JavaScript</value>
   </data>
@@ -184,6 +187,18 @@ console.log("console.log jest typu: ", typeof(console.log));</value>
   </data>
   <data name="JS types description" xml:space="preserve">
     <value>Typy w języku JavaScript dzielą się na typy proste i typy obiektowe. Wartości typów prostych są niezmienne, a wśród nich: Null, Undefined, Boolean, Number, BigInt, String oraz Symbol. Wartości typów obiektowych są zmienne, a wśród nich typy takie jak funkcje czy tablice. Obiekty składają się z właściwości, które mogą zawierać dane, funkcje albo inne obiekty.</value>
+  </data>
+  <data name="Paged.js description" xml:space="preserve">
+    <value>Paged.js jest biblioteką open-source, która umożliwia tworzenie porządnie wyglądających dokumentów PDF na podstawie stron HTML wraz z opcjonalnym podglądem na samej witrynie.</value>
+  </data>
+  <data name="Source" xml:space="preserve">
+    <value>Źródło</value>
+  </data>
+  <data name="System.Text.Json" xml:space="preserve">
+    <value>Zmiany w przestrzeni nazw System.Text.Json</value>
+  </data>
+  <data name="System.Text.Json description" xml:space="preserve">
+    <value>Począwszy od platformy .NET 7, kontrakty JSON mogą być dostosowywane na dwa sposoby. Pierwszy z nich polega na utworzeniu nowej instancji typu DefaultJsonTypeInfoResolver i dodaniu akcji do właściwości Modifiers, które to akcje będą wywoływane sekwencyjnie. Drugie podejście wymaga napisanie własnego resolvera implementującego IJsonTypeInfoResolver, gdzie GetTypeInfo powinno zwracać wartość null dla nieobsługiwanych typów. Resolvery mogą być łączone ze sobą, jednakże tylko pierwszy o wartości innej niż null zostanie użyty dla danego typu.</value>
   </data>
   <data name="TPH, TPC, TPT" xml:space="preserve">
     <value>Podejścia TPH, TPC, TPT - mapowanie hierarchii typów na tabele</value>
