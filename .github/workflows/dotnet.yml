@@ -25,7 +25,7 @@ jobs:
     - name: Test
       run: dotnet test --no-build --verbosity normal
     - name: Publish
-      run: dotnet publsh -c Release -o publish --nologo
+      run: dotnet publish -c Release -o publish --nologo
     - name: Move files
       run: |
         mkdir ./public
