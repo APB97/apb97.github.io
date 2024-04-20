@@ -1,6 +1,6 @@
 ﻿using System.Text;
 
-namespace apb97.github.io.Shared.Services;
+namespace apb97.github.io.Services;
 
 public class CountAndSayService
 {

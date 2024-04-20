@@ -1,5 +1,5 @@
 using apb97.github.io;
-using apb97.github.io.Shared.Services;
+using apb97.github.io.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Components.Web;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
@@ -11,13 +11,13 @@ var builder = WebAssemblyHostBuilder.CreateDefault(args);
 builder.RootComponents.Add<App>("#app");
 builder.RootComponents.Add<HeadOutlet>("head::after");
 
-builder.Services.AddScoped<IntegerToRomanService>();
-builder.Services.AddScoped<SayService>();
-builder.Services.AddScoped<CountAndSayService>();
 builder.Services.AddLocalization(options =>
 {
     options.ResourcesPath = "Resources";
 });
+builder.Services.AddScoped<IntegerToRomanService>();
+builder.Services.AddScoped<SayService>();
+builder.Services.AddScoped<CountAndSayService>();
 
 builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) });
 
