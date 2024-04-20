@@ -1,0 +1,23 @@
+﻿@using Microsoft.Extensions.Localization
+@inject IStringLocalizer<Challenges> Localizer
+@inject IJSRuntime JS
+
+<h2>@Localizer["Challenges"]</h2>
+
+<div class="row">
+    <div class="skill-card">
+        <h4 class="text-center">@Localizer["Integer to Roman"]</h4>
+        <div class="text-center">
+            <a href="/IntegerToRoman">@Localizer["See this challenge"]</a>
+        </div>
+    </div>
+    <div class="skill-card">
+        <h4 class="text-center">@Localizer["Count and say"]</h4>
+        <div class="text-center">
+            <a href="/CountAndSay">@Localizer["See this challenge"]</a>
+        </div>
+    </div>
+</div>
+
+@code{
+}

@@ -1,0 +1,44 @@
+﻿@using Microsoft.Extensions.Localization
+@inject IStringLocalizer<Skills> Localizer
+
+<h2>@Localizer["Skills"]</h2>
+
+<p>
+    @Localizer["I usually build"]
+    <br/>
+    @Localizer["Apart from these"] @Localizer["Here are my"]
+</p>
+
+<div class="row">
+    <div class="skill-card">
+        <img class="center-25" src="/images/512px-C_Sharp_wordmark.png" alt="C# Development Image"/>
+        <h4 class="text-center">@Localizer["C# Development"]</h4>
+        <p>
+             @Localizer["I use C#"]
+        </p>
+    </div>
+    <div class="skill-card">
+        <img class="center-50" src="/images/favpng_asp-net-mvc-logo.png" alt="Patterns Image"/>
+        <h4 class="text-center">@Localizer["Patterns"]</h4>
+        <p>
+            @Localizer["I use patterns"]
+        </p>
+    </div>
+</div>
+
+<div class="row">
+    <div class="skill-card">
+        <img class="center-50" src="/images/efcf.png" alt="EF Code First Image"/>
+        <h4 class="text-center">@Localizer["Object-Relational Mapping"]</h4>
+        <p>
+            @Localizer["I use an ORM"]
+        </p>
+    </div>
+    <div class="skill-card">
+        <img class="center-33" src="/images/asp-net.png" alt="ASP.Net Image"/>
+        <h4 class="text-center">@Localizer["Web Development"]</h4>
+        <p>
+            @Localizer["I use ASP.Net"]
+        </p>
+    </div>
+</div>

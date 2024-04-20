@@ -1,0 +1,72 @@
+﻿@using Microsoft.Extensions.Localization
+@using System.Text
+@using apb97.github.io.Pages
+@using apb97.github.io.Shared.Services
+@inject CountAndSayService Service
+@inject IStringLocalizer<CountAndSay> Localizer
+
+<div>
+    <h4>@Localizer["Input"]</h4>
+
+    <div class="row">
+        <div class="card-group">
+            <label for="Number" style="margin: 4px">@Localizer["NumberOfSayings"]</label>
+            <input @bind-value="NumberOfSayings" type="number" min="1" max="30" style="margin: 4px"/>
+        </div>
+    </div>
+
+    <hr />
+    <h4>@Localizer["Output"]</h4>
+    <div class="row">
+        <div class="card-group">
+            <label style="margin: 4px">@Localizer["Result"]</label>
+
+            <code role="status" style="margin: 3px; font-size:large; overflow-wrap: anywhere">
+                @Result
+            </code>
+        </div>
+    </div>
+
+    <h4>@Localizer["Explanation"]</h4>
+    <div class = "row">
+        <p role="status">
+            @if (Explanation != null)
+            {
+                for (int i = 0; i < Explanation.Count(); i++)
+                {
+                    <b>@(i + 2): </b>
+                    <text>@Explanation.ElementAt(i)</text>
+                    if (i != Explanation.Count() - 1)
+                    {
+                        <br/>
+                    }
+                }
+            }
+        </p>
+    </div>
+</div>
+
+@code {
+    private int? number;
+
+    [Parameter]
+    public int? NumberOfSayings
+    {
+        get => number;
+        set
+        {
+            number = value;
+            if (value.HasValue)
+            {
+                StringBuilder builder = new StringBuilder();
+                Result = Service.CountAndSay(value.Value, builder);
+                string explanation = builder.ToString();
+                Explanation = explanation.Split("<br/>", StringSplitOptions.RemoveEmptyEntries);
+            }
+        }
+    }
+
+    public string? Result { get; set; }
+
+    protected IEnumerable<string>? Explanation { get; set; }
+}

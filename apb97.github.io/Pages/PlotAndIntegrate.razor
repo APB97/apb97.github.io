@@ -1,0 +1,46 @@
+﻿@page "/PlotAndIntegrate"
+@using Microsoft.Extensions.Localization
+
+@inject IStringLocalizer<PlotAndIntegrate> Localizer
+
+<PageTitle>Plot and Integrate</PageTitle>
+
+<h1>Plot and Integrate</h1>
+
+<p>@Localizer["Windows Forms application that can be used for drawing simple plots and calculating integrals."]</p>
+
+<img class="screenshot-wide" alt="App UI" src="https://raw.githubusercontent.com/APB97/PlotAndIntegrate/main/images/plot-made-larger.png"/>
+
+<p/>
+<h4>@Localizer["Functionalities"]</h4>
+
+<ul>
+    <li>@Localizer["Drawing plots of a polynomial function"]</li>
+    <li>@Localizer["Drawing plots of a logarithmic function"]</li>
+    <li>@Localizer["Zooming the plot by scrolling the mouse wheel"]</li>
+    <li>@Localizer["Panning the plot by dragging mouse while mouse button is pressed"]</li>
+    <li>@Localizer["Saving the image of the plot with use of 'Save as image...' button"]</li>
+    <li>@Localizer["Calculating definite intergral for a given range"]</li>
+    <li>@Localizer["Setting axes' labels font size, size of the plot and color of the plot"]</li>
+</ul>
+
+<h4>@Localizer["Installation"]</h4>
+
+<ul>
+    <li>
+        <b>@Localizer["Option 1"]</b>
+        <br/>
+        @Localizer["You can download it from 'Releases' section, and either run it or install it with 'setup.exe'."]
+    </li>    
+    <li>
+        <b>@Localizer["Option 2"]</b>
+        <br/>
+        @Localizer["Download the source and compile the solution with your IDE (for this project I used Visual Studio 2019)."]
+    </li>    
+</ul>
+
+<a href="https://github.com/APB97/PlotAndIntegrate">@Localizer["GitHub repository"]</a>
+
+@code {
+
+}

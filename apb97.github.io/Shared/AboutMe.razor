@@ -1,0 +1,24 @@
+﻿@using Microsoft.Extensions.Localization
+@inject IStringLocalizer<AboutMe> Localizer
+@inject IJSRuntime JS
+
+<h2>@Localizer["About me"]</h2>
+
+<div class="row">
+    <div class="col-custom-4">
+        <img src="/images/AboutMe.jpg" alt="A picture of myself" style="width:100%"/>
+    </div>
+    <div class="col-custom-8">
+        <h5>@Localizer["whoami"]</h5>
+
+        <h3>@Localizer["iam_short"]</h3>
+
+        <p>
+            @Localizer["iam_long"]
+        </p>
+
+        <hr/>
+
+        <p><b>@Localizer["degree_label"]</b>@Localizer["degree"]</p>
+    </div>
+</div>

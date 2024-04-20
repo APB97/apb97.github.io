@@ -1,0 +1,26 @@
+﻿@using System.Globalization
+@using Microsoft.Extensions.Localization
+@inherits LayoutComponentBase
+@inject IStringLocalizer<MainLayout> Localizer
+@inject NavigationManager Nav
+
+<div class="page">
+    <div class="sidebar" style="position: sticky; top: 0;">
+        <NavMenu />
+    </div>
+
+    <main>
+        <div class="top-row px-4">
+        </div>
+
+        <article class="content px-4" style="height: calc(100% - var(--top-panel-height) - var(--footer-height));">
+            @Body
+        </article>
+
+        <div class="bottom-row px-4 d-flex card-footer fixed-bottom" style="background-color:white; position: sticky; left: var(--footer-left-position); height: var(--footer-height);">
+            <LanguageSelect/>
+            <a class="ms-auto" href="https://github.com/APB97/apb97.github.io" target="_blank">@Localizer["Code"]</a>
+        </div>
+
+    </main>
+</div>

@@ -1,0 +1,44 @@
+﻿@using Microsoft.Extensions.Localization
+@using apb97.github.io.Pages
+@using apb97.github.io.Shared.Services
+@inject IStringLocalizer<IntegerToRoman> Localizer
+@inject IntegerToRomanService ConvertService
+
+<div>
+    <h4>@Localizer["Input"]</h4>
+
+    <div class="row">
+        <div class="card-group">
+            <label for="Number" style="margin: 4px">@Localizer["Number"]</label>
+            <input @bind-value="Number" type="number" min="1" max="3999" style="margin: 4px"/>
+        </div>
+    </div>
+
+    <hr />
+    <h4>@Localizer["Output"]</h4>
+    <div class="row">
+        <div class="card-group">
+            <label style="margin: 4px">@Localizer["Roman"]</label>
+
+            <code role="status" style="margin: 3px; font-size:large">
+                @if (Number.HasValue)
+                {
+                    <text>@ConvertToRoman(Number.Value)</text>
+                }
+            </code>
+        </div>
+    </div>
+
+</div>
+
+@code {
+    [Parameter]
+    public int? Number { get; set; }
+
+    protected string? Roman { get; set; }
+
+    protected string ConvertToRoman(int value)
+    {
+        return ConvertService.ToRoman(value);
+    }
+}

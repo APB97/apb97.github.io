@@ -1,0 +1,37 @@
+﻿@using System.Globalization
+@using Microsoft.Extensions.Localization
+@inject IJSRuntime JSRuntime
+@inject NavigationManager Nav
+@inject IStringLocalizer<LanguageSelect> Localizer
+
+<label>
+    @Localizer["Select your locale"]:
+</label>
+<InputSelect TValue="CultureInfo" DisplayName="Locale" Value="@Culture" ValueChanged="SetCultureAndReload" ValueExpression="() => Culture">
+    @foreach (var culture in supportedCultures)
+    {
+        <option value="@culture.Value">@culture.Key</option>
+    }
+</InputSelect>
+
+@code
+{
+    private CultureInfo Culture { get; set; } = CultureInfo.CurrentCulture;
+
+    private Dictionary<string, CultureInfo> supportedCultures = new Dictionary<string, CultureInfo>();
+
+    protected override void OnInitialized()
+    {
+        supportedCultures.Add("English", new CultureInfo("en"));
+        supportedCultures.Add("Polski", new CultureInfo("pl"));
+    }
+
+    private async Task SetCultureAndReload(CultureInfo value)
+    {
+        Culture = value;
+
+        await JSRuntime.InvokeVoidAsync("blazorCulture.set", value.Name);
+
+        Nav.NavigateTo(Nav.Uri, forceLoad: true);
+    }
+}

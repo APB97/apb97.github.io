@@ -1,0 +1,59 @@
+﻿@page "/IntegerToRoman"
+@page "/IntegerToRoman/{Number:int?}"
+@using Microsoft.Extensions.Localization
+@using apb97.github.io.Shared
+
+@inject IStringLocalizer<IntegerToRoman> Localizer
+
+<PageTitle>@Localizer["Integer to Roman"]</PageTitle>
+
+<h1>@Localizer["Integer to Roman"]</h1>
+<hr/>
+<h4>@Localizer["Challenge description"]</h4>
+
+<p>@Localizer["Roman numerals are represented by"]<code>I</code>, <code>V</code>, <code>X</code>, <code>L</code>, <code>C</code>, <code>D</code> @Localizer["and"] <code>M</code>.</p>
+<p>@Localizer["They represent the following"]<code>1</code>, <code>5</code>, <code>10</code>, <code>50</code>, <code>100</code>, <code>500</code>, <code>1000</code>.</p>
+<p>
+    @Localizer["For example,"] <code>3</code> @Localizer["is written as"] <code>III</code> @Localizer["in Roman numeral,"]
+    <code>12</code> @Localizer["is written as"] <code>XII</code> @Localizer["and"] <code>28</code> @Localizer["is written as"] <code>XXVIII</code>.
+</p>
+<p>
+    @Localizer["Roman numerals are usually"]
+    @Localizer["However the numeral for"] <code>4</code> @Localizer["is not"] <code>IIII</code> @Localizer[", but it is"] <code>IV</code> (5 - 1). @Localizer["Similarly"] <code>9</code> @Localizer["is written as"] <code>IX</code> (10 - 1).
+    @Localizer["Subtraction is used"]
+    <ul>
+        <li>
+            <code>I</code> @Localizer["can be placed before"] <code>V</code> @Localizer["and"] <code>X</code> @Localizer["to make"] <code>4</code> @Localizer["and"] <code>9</code>.
+        </li>
+        <li>
+            <code>X</code> @Localizer["can be placed before"] <code>L</code> @Localizer["and"] <code>C</code> @Localizer["to make"] <code>40</code> @Localizer["and"] <code>90</code>.
+        </li>
+        <li>
+            <code>C</code> @Localizer["can be placed before"] <code>D</code> @Localizer["and"] <code>M</code> @Localizer["to make"] <code>400</code> @Localizer["and"] <code>900</code>.
+        </li>
+    </ul>
+</p>
+<br/>
+<p>@Localizer["Given an integer convert it"]</p>
+
+<h4>@Localizer["Note"]</h4>
+<p>@Localizer["You can use the url like"] <a href="https://apb97.github.io/IntegerToRoman/46">https://apb97.github.io/IntegerToRoman/46</a> @Localizer["to convert"] 46 @Localizer["to roman numeral"]. @Localizer["And any number between"] 1 @Localizer["and"] 3999.</p>
+
+<IntegerToRomanComponent @ref="converter" Number="Number"/>
+
+@code {
+    [Parameter]
+    public int? Number { get; set; }
+
+    IntegerToRomanComponent? converter;
+
+    protected override async Task OnParametersSetAsync()
+    {
+        await base.OnParametersSetAsync();
+
+        if (converter != null)
+        {
+            await converter.SetParametersAsync(ParameterView.FromDictionary(new Dictionary<string, object?>() { { "Number", Number } }));
+        }
+    }
+}

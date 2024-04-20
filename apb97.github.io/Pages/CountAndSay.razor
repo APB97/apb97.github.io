@@ -1,0 +1,50 @@
+﻿@page "/CountAndSay"
+@page "/CountAndSay/{Number:int?}"
+@using Microsoft.Extensions.Localization
+@using apb97.github.io.Shared
+
+@inject IStringLocalizer<CountAndSay> Localizer
+
+<PageTitle>@Localizer["Count and say"]</PageTitle>
+
+<h1>@Localizer["Count and say"]</h1>
+<hr/>
+<h4>@Localizer["Challenge description"]</h4>
+<p>
+    @Localizer["The count-and-say sequence is a sequence"]:
+</p>
+<ul>
+    <li>
+        <code>@Localizer["functionName"] (1) = "1"</code>
+    </li>
+    <li>
+        <code>@Localizer["functionName"] (n)</code> @Localizer["is the way you would 'say' the digit string from"]
+        <code>@Localizer["functionName"] (n-1)</code>, @Localizer["which is then converted into a different digit string"].
+    </li>
+</ul>
+
+@Localizer["To determine how you"]
+@Localizer["Then for each group, say"]
+@Localizer["To convert the saying"]
+
+<h4>@Localizer["Note"]</h4>
+<p>@Localizer["You can use the url like"] <a href="https://apb97.github.io/CountAndSay/12">https://apb97.github.io/CountAndSay/12</a> @Localizer["for any number between"] 1 @Localizer["and"] 30.</p>
+
+<CountAndSayComponent @ref="counter" NumberOfSayings="Number"/>
+
+@code {
+    [Parameter]
+    public int? Number { get; set; }
+
+    CountAndSayComponent? counter;
+
+    protected override async Task OnParametersSetAsync()
+    {
+        await base.OnParametersSetAsync();
+
+        if (counter != null)
+        {
+            await counter.SetParametersAsync(ParameterView.FromDictionary(new Dictionary<string, object?>() { { "NumberOfSayings", Number } }));
+        }
+    }
+}

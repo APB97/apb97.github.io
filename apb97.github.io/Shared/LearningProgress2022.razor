@@ -1,0 +1,35 @@
+﻿@using Microsoft.Extensions.Localization;
+@inject IStringLocalizer<LearningProgress2022> Localizer
+
+<h3>@Localizer["Year2022-last-weeks"]</h3>
+<ul>
+    <li>
+        <h4>C#</h4>
+        <ul>
+            <li>
+                <b>@Localizer["Extended property pattern"]</b>
+                <br />
+                <p>@Localizer["Extended property pattern description"]</p>
+                <b>@Localizer["Example"]</b>
+                <br />
+                <CodeView Code="@Localizer["Extended property pattern code"]"></CodeView>
+            </li>
+            <li>
+                <b>@Localizer["Global using directive"]</b>
+                <br />
+                <p>@Localizer["Global using directive description"]</p>
+                <b>@Localizer["Example"]</b>
+                <br />
+                <CodeView Code="@Localizer["Global using directive code"]" />
+            </li>
+            <li>
+                <b>@Localizer["File-scoped namespace declaration"]</b>
+                <br />
+                <p>@Localizer["File-scoped namespace declaration description"]</p>
+                <b>@Localizer["Example"]</b>
+                <br />
+                <CodeView Code="@Localizer["File-scoped namespace declaration code"]" />
+            </li>
+        </ul>
+    </li>
+</ul>

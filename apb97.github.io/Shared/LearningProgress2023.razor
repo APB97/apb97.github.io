@@ -1,0 +1,60 @@
+﻿@using Microsoft.Extensions.Localization
+@inject IStringLocalizer<LearningProgress2023> Localizer
+
+<h3>@Localizer["Year2023"]</h3>
+<ul>
+    <li>
+        <h4>JavaScript</h4>
+        <ul>
+            <li>
+                <b>@Localizer["JS types"]</b>
+                <br/>
+                <p>@Localizer["JS types description"]</p>
+                <b>@Localizer["Example"]</b>
+                <br/>
+                <CodeView Code="@Localizer["JS types code"]"/>
+            </li>
+            <li>
+                <b>@Localizer["JS functions and arrays"]</b>
+                <br/>
+                <p>@Localizer["JS functions and arrays description"]</p>
+                <b>@Localizer["Example"]</b>
+                <br/>
+                <CodeView Code="@Localizer["JS functions and arrays code"]"/>
+            </li>
+            <li>
+                <b>@Localizer["JS objects"]</b>
+                <br/>
+                <p>@Localizer["JS objects description"]</p>
+                <b>@Localizer["Example"]</b>
+                <br/>
+                <CodeView Code="@Localizer["JS objects code"]"/>
+            </li>
+        </ul>
+        <h4>@Localizer["JavaScript libs"]</h4>
+        <ul>
+            <li>
+                <b>Paged.js</b>
+                <br/>
+                <p>@Localizer["Paged.js description"]</p>
+            </li>
+        </ul>
+        <h4>@Localizer["General knowledge"]</h4>
+        <ul>
+            <li>
+                <b>@Localizer["TPH, TPC, TPT"]</b>
+                <br/>
+                <p>@Localizer["TPH, TPC, TPT description"]</p>
+            </li>
+        </ul>
+        <h4>.NET</h4>
+        <ul>
+            <li>
+                <b>@Localizer["System.Text.Json"]</b>
+                <br/>
+                <p>@Localizer["System.Text.Json description"]</p>
+                <a href="https://learn.microsoft.com/en-us/dotnet/standard/serialization/system-text-json/custom-contracts" rel="noopener">@Localizer["Source"]</a>
+            </li>
+        </ul>
+    </li>
+</ul>

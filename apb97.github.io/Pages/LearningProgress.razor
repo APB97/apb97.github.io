@@ -1,0 +1,37 @@
+﻿@page "/LearningProgress/"
+@page "/LearningProgress/{Year:int?}"
+
+@using Microsoft.Extensions.Localization
+@using System.Reflection;
+@using apb97.github.io.Shared
+@inject IStringLocalizer<LearningProgress> Localizer
+@inject NavigationManager Navigation
+
+<PageTitle>@Localizer["LearningProgress"]</PageTitle>
+
+<h2>@Localizer["LearningProgress"]</h2>
+
+<label>@Localizer["Year"]</label>
+<InputNumber TValue="int?" Value="Year" ValueChanged="OnYearChanged" ValueExpression="() => Year" min="2022" max="2023" />
+
+<DynamicComponent Type="GetDynamicComponentType(Year)" />
+
+@code {
+    [Parameter]
+    public int? Year { get; set; }
+
+    protected Type? DynamicComponentType { get; set; } = typeof(LearningProgress2023);
+
+    private Type GetDynamicComponentType(int? year)
+    {
+        var assembly = Assembly.GetAssembly(typeof(LearningProgress2023));
+        var currentYearType = assembly?.GetType($"apb97.github.io.Shared.LearningProgress{year}");
+        return currentYearType ?? typeof(LearningProgress2023);
+    }
+
+    private void OnYearChanged(int? year)
+    {
+        if (year != null)
+            Navigation.NavigateTo($"/LearningProgress/{year}");
+    }
+}

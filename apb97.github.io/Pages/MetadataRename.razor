@@ -1,0 +1,35 @@
+﻿@page "/MetadataRename"
+@using Microsoft.Extensions.Localization
+
+@inject IStringLocalizer<MetadataRename> Localizer
+
+<PageTitle>Metadata Rename</PageTitle>
+
+<h1>Metadata Rename</h1>
+
+<p>@Localizer["Rename music files using their metadata with this tool."]</p>
+
+<img class="screenshot-wide" alt="WPF UI" src="https://user-images.githubusercontent.com/16359542/156198027-c851deed-c757-4741-8eff-8d3adfed205d.png"/>
+
+<p/>
+
+<h4>@Localizer["Description"]</h4>
+<p>
+    @Localizer["It allows users to specify properties to use for renaming and directories with files they want to rename."]
+    @Localizer["Apart from that, all invalid path characters are removed to ensure renaming operation will be successful."]
+    @Localizer["There is default file named skip.txt for words users want to remove from final filenames."]
+</p>
+
+<p>
+    @Localizer["This WPF application allows selecting directories, properties used, determining order of properties in the final filename and choosing a SkipFile."]
+    @Localizer["It allows saving and loading of settings to and from"]
+    <code>.json</code>
+    @Localizer["file"].
+    @Localizer["Application displays messages about changes made to the settings and allows to Silence the output, so it is not updated until the setting is changed."]
+</p>
+
+<a href="https://github.com/APB97/MusicRenameWithMetadata">@Localizer["GitHub repository"]</a>
+
+@code {
+
+}
