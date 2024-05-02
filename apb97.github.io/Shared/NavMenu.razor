@@ -1,5 +1,6 @@
 ﻿@using Microsoft.Extensions.Localization
 @inject IStringLocalizer<NavMenu> Localizer
+@inject NavigationManager Navigation
 
 <div class="top-row ps-3 navbar navbar-dark">
     <div class="container-fluid">
@@ -10,45 +11,47 @@
     </div>
 </div>
 
-<div class="@NavMenuCssClass" @onclick="ToggleNavMenu">
+<div class="@NavMenuCssClass" @onclick="ToggleNavMenu" style="overflow-y: scroll; max-height: calc(100vh - var(--footer-height) - 3.5rem); min-height: min-content;">
     <nav class="flex-column">
         <div class="nav-item px-3">
             <NavLink class="nav-link" href="" Match="NavLinkMatch.All">
-                <span class="oi oi-home" aria-hidden="true"></span> @Localizer["Home"]
+                @Localizer["Home"]
             </NavLink>
         </div>
         <div class="nav-item px-3">
             <NavLink class="nav-link" href="LearningProgress" Match="NavLinkMatch.All">
-                <span class="oi oi-copywriting" aria-hidden="true"></span> @Localizer["LearningProgress"]
+                @Localizer["LearningProgress"]
             </NavLink>
         </div>
 
         <p class="text-white">@Localizer["Projects"]</p>
         <div class="nav-item px-3">
-            <NavLink class="nav-link" href="WebSudoku">
-                <span class="oi oi-calculator" aria-hidden="true"></span> @Localizer["Web Sudoku"]
-            </NavLink>
+            <a>
+                <button class="nav-link" style="width:100%; text-align:left; border:none; background-color: transparent; color: #d7d7d7;" @onclick="@(() => Navigation.NavigateTo("WebSudoku", true))">
+                    @Localizer["Web Sudoku"]
+                </button>
+            </a>
         </div>
         <div class="nav-item px-3">
             <NavLink class="nav-link" href="MetadataRename">
-                <span class="oi oi-audio-spectrum" aria-hidden="true"></span> @Localizer["Metadata Rename"]
+                @Localizer["Metadata Rename"]
             </NavLink>
         </div>
         <div class="nav-item px-3">
             <NavLink class="nav-link" href="PlotAndIntegrate">
-                <span class="oi oi-graph" aria-hidden="true"></span> @Localizer["Plot and Integrate"]
+                @Localizer["Plot and Integrate"]
             </NavLink>
         </div>
 
         <p class="text-white">@Localizer["Challenges"]</p>
         <div class="nav-item px-3">
             <NavLink class="nav-link" href="IntegerToRoman">
-                <span class="oi oi-plus" aria-hidden="true"></span> @Localizer["Integer to Roman"]
+                @Localizer["Integer to Roman"]
             </NavLink>
         </div>
          <div class="nav-item px-3">
             <NavLink class="nav-link" href="CountAndSay">
-                <span class="oi oi-people" aria-hidden="true"></span> @Localizer["Count and Say"]
+               @Localizer["Count and Say"]
             </NavLink>
         </div>
     </nav>
