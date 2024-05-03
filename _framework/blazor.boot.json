@@ -1,7 +1,7 @@
 {
   "mainAssemblyName": "apb97.github.io",
   "resources": {
-    "hash": "sha256-JZfXXlzUHFt8i1En6sAw82Ztir2fPl9dEn7L+qEYwSw=",
+    "hash": "sha256-j4lnqi+hS9C2LyF9temX0426zs77T7NErGttksPGWPA=",
     "jsModuleNative": {
       "dotnet.native.8.0.4.6vlmefabfv.js": "sha256-ju0+XWE0ihz554eKEj0HQ8Opa61xpbUIaX5/MNo8we4="
     },
@@ -15,7 +15,7 @@
       "icudt.dat": "sha256-tO5O5YzMTVSaKBboxAqezOQL9ewmupzV2JrB5Rkc8a4="
     },
     "assembly": {
-      "apb97.github.io.wasm": "sha256-56QZW/yIyB+izrNsgE7q3MHpp3gaWooAi+675jmGwm4=",
+      "apb97.github.io.wasm": "sha256-9+SqZxP30TXxjTONmH9ill1T7QvqMP/cuVKY73DOl+o=",
       "Microsoft.AspNetCore.Components.Forms.wasm": "sha256-1V+QeYmdKL3VdCI5QU41fK9zI3mEUMmdZ0A9TA80/H8=",
       "Microsoft.AspNetCore.Components.wasm": "sha256-9KqDh1oOSc2VHYdpaFGkRzvaTwMneMOxY0kisa7egQo=",
       "Microsoft.AspNetCore.Components.Web.wasm": "sha256-8X1F6EsH8XJMMm6gNNcMcu1XnGxIr8hkUBVmzT2T/yE=",
@@ -70,10 +70,10 @@
     },
     "satelliteResources": {
       "en": {
-        "apb97.github.io.resources.wasm": "sha256-4/MnNoRVtYpVsvzKq2fdx/37/vkF4EkfdCOGyE62d4s="
+        "apb97.github.io.resources.wasm": "sha256-dmeATuCEvIpnV6LpBdsrP5xhsyHB0ei1Ukye1LdD/Sk="
       },
       "pl": {
-        "apb97.github.io.resources.wasm": "sha256-FENxNxze4v/AiILNJNIepzbZvdygWI2xFZ4dr+jUykU="
+        "apb97.github.io.resources.wasm": "sha256-4n7v6p4UKthjgWSd/J+iX46+q9qP5+KgscGcX/NQtXY="
       }
     }
   },
