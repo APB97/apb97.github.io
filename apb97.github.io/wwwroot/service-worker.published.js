@@ -51,8 +51,11 @@ async function onFetch(event) {
         const cache = await caches.open(cacheName);
         cachedResponse = await cache.match(request);
 
-        if (/\/WebSudoku\.*/.test(event.request.url)) {
+        if (/\/WebSudoku\/(sudoku|rules)/.test(event.request.url)) {
             return fetch('/WebSudoku/')
+        }
+        else if (/\/WebSudoku\/(js|_framework)\/.*/.test(event.request.url)) {
+            return fetch(event.request.url.replace('https://apb97.github.io', ''));
         }
     }
 
