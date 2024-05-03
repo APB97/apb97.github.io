@@ -50,6 +50,10 @@ async function onFetch(event) {
         const request = shouldServeIndexHtml ? 'index.html' : event.request;
         const cache = await caches.open(cacheName);
         cachedResponse = await cache.match(request);
+
+        if (/\/WebSudoku\.*/.test(event.request.url)) {
+            return fetch('/WebSudoku/')
+        }
     }
 
     return cachedResponse || fetch(event.request);
