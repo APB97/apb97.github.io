@@ -123,6 +123,12 @@
   <data name="General knowledge" xml:space="preserve">
     <value>General knowledge</value>
   </data>
+  <data name="HotChocolate" xml:space="preserve">
+    <value>HotChocolate library</value>
+  </data>
+  <data name="HotChocolate description" xml:space="preserve">
+    <value>HotChocolate library allows creation of GraphQL APIs in .NET. GraphQL may be considered as an alternative to REST, which allows (and requires) API consumers to query only for fields they need, unlike REST, which returns all available fields in its response. This library works well with Dependecy Injection and supports 3 different ways of defining API: Annotation-based, Code-first and Schema-first.</value>
+  </data>
   <data name="JavaScript libs" xml:space="preserve">
     <value>JavaScript libraries</value>
   </data>
@@ -188,6 +194,9 @@ console.log("console.log is of type: ", typeof(console.log));</value>
   <data name="JS types description" xml:space="preserve">
     <value>Types in JavaScript can be categorized into primitive types and object types. Primitive types' values are immutable, and these include: Null, Undefined, Boolean, Number, BigInt, String and Symbol. Object types' values are mutable, and these include types like functions and arrays. Objects consist of properties, which can contain data or functions or other objects.</value>
   </data>
+  <data name="NuGet packages" xml:space="preserve">
+    <value>NuGet packages</value>
+  </data>
   <data name="Paged.js description" xml:space="preserve">
     <value>Paged.js is an open-source library that allows us to create well-looking PDF documents from our HTML pages, with optional preview right on the webpage.</value>
   </data>
@@ -204,7 +213,7 @@ console.log("console.log is of type: ", typeof(console.log));</value>
     <value>TPH, TPC, TPT approaches - mapping from type hierarchy to tables</value>
   </data>
   <data name="TPH, TPC, TPT description" xml:space="preserve">
-    <value>When it comes to mapping type hierarchies to tables, there are 3 distinctive approaches: Table-per-Hierarchy (TPH), Table-per-Concrete-type (TPC) and Table-per-Type (TPT). TPH works by creating a single table with all possible properties from type hierarchy and works best when querying for entities of all type. TPC creates a different table for each concrete type and  works best when querying for leafs of the hierarchy. TPT defines a different table for each type and is the worst approach from the performace perspective, despite intiutively being the 'cleanest' solution.</value>
+    <value>When it comes to mapping type hierarchies to tables, there are 3 distinctive approaches: Table-per-Hierarchy (TPH), Table-per-Concrete-type (TPC) and Table-per-Type (TPT). TPH works by creating a single table with all possible properties from type hierarchy and works best when querying for entities of all types. TPC creates a different table for each concrete type and  works best when querying for leafs of the hierarchy. TPT defines a different table for each type and is the worst approach from the performace perspective, despite intiutively being the 'cleanest' solution.</value>
   </data>
   <data name="Year2023" xml:space="preserve">
     <value>2023</value>

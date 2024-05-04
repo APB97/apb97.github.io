@@ -123,6 +123,12 @@
   <data name="General knowledge" xml:space="preserve">
     <value>Wiedza ogólna</value>
   </data>
+  <data name="HotChocolate" xml:space="preserve">
+    <value>Biblioteka HotChocolate</value>
+  </data>
+  <data name="HotChocolate description" xml:space="preserve">
+    <value>Biblioteka HotChocolate pozwala na tworzenie GraphQL API w środowisku .NET. GraphQL może być widziany jako alternatywa dla REST, która pozwala użytkownikom API (i wymaga od nich) pytania o zestaw pól przez nich potrzebny, w przeciwieństwie do REST, który zwraca w swojej odpowiedzi wszystkie dostępne pola. BIblioteka ta dobrze współgra ze wstrzykiwaniem zależności i wspiera 3 różne sposoby na definiowanie API: oparte na anotacjach, skupione na kodzie (Code-first) oraz skupione na schemacie (Schema-first).</value>
+  </data>
   <data name="JavaScript libs" xml:space="preserve">
     <value>Biblioteki języka JavaScript</value>
   </data>
@@ -187,6 +193,9 @@ console.log("console.log jest typu: ", typeof(console.log));</value>
   </data>
   <data name="JS types description" xml:space="preserve">
     <value>Typy w języku JavaScript dzielą się na typy proste i typy obiektowe. Wartości typów prostych są niezmienne, a wśród nich: Null, Undefined, Boolean, Number, BigInt, String oraz Symbol. Wartości typów obiektowych są zmienne, a wśród nich typy takie jak funkcje czy tablice. Obiekty składają się z właściwości, które mogą zawierać dane, funkcje albo inne obiekty.</value>
+  </data>
+  <data name="NuGet packages" xml:space="preserve">
+    <value>Pakiety NuGet</value>
   </data>
   <data name="Paged.js description" xml:space="preserve">
     <value>Paged.js jest biblioteką open-source, która umożliwia tworzenie porządnie wyglądających dokumentów PDF na podstawie stron HTML wraz z opcjonalnym podglądem na samej witrynie.</value>
