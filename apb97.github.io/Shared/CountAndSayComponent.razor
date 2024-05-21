@@ -11,10 +11,13 @@
     <div class="row">
         <div class="card-group">
             <label for="Number" style="margin: 4px">@Localizer["NumberOfSayings"]</label>
-            <input @bind-value="NumberOfSayings" type="number" min="1" max="30" style="margin: 4px"/>
+            <InputNumber TValue="int?" Value="NumberOfSayings" ValueExpression="() => NumberOfSayings" ValueChanged="OnNumberChanged" type="number" min="1" max="30" style="margin: 4px"/>
         </div>
     </div>
 
+    @{
+        var results = GetResults();
+    }
     <hr />
     <h4>@Localizer["Output"]</h4>
     <div class="row">
@@ -22,7 +25,7 @@
             <label style="margin: 4px">@Localizer["Result"]</label>
 
             <code role="status" style="margin: 3px; font-size:large; overflow-wrap: anywhere">
-                @Result
+                @results.result
             </code>
         </div>
     </div>
@@ -30,16 +33,14 @@
     <h4>@Localizer["Explanation"]</h4>
     <div class = "row">
         <p role="status">
-            @if (Explanation != null)
-            {
-                for (int i = 0; i < Explanation.Count(); i++)
+            @{
+                int i = 1;
+                foreach (var explanation in results.explanation)
                 {
-                    <b>@(i + 2): </b>
-                    <text>@Explanation.ElementAt(i)</text>
-                    if (i != Explanation.Count() - 1)
-                    {
-                        <br/>
-                    }
+                    <p>
+                        <b>@(++i): </b>
+                        @explanation
+                    </p>
                 }
             }
         </p>
@@ -47,26 +48,21 @@
 </div>
 
 @code {
-    private int? number;
+    [Parameter]
+    public int? NumberOfSayings { get; set; }
 
     [Parameter]
-    public int? NumberOfSayings
+    public Action<int?> OnNumberChanged { get; set; } = delegate { };
+
+    protected (string result, IEnumerable<string> explanation) GetResults()
     {
-        get => number;
-        set
+        if (!NumberOfSayings.HasValue)
         {
-            number = value;
-            if (value.HasValue)
-            {
-                StringBuilder builder = new StringBuilder();
-                Result = Service.CountAndSay(value.Value, builder);
-                string explanation = builder.ToString();
-                Explanation = explanation.Split("<br/>", StringSplitOptions.RemoveEmptyEntries);
-            }
+            return (string.Empty, Array.Empty<string>());
         }
+
+        var stringBuilder = new StringBuilder();
+        var result = Service.CountAndSay(NumberOfSayings.Value, stringBuilder);
+        return (result, stringBuilder.ToString().Split("<br/>", StringSplitOptions.RemoveEmptyEntries));
     }
-
-    public string? Result { get; set; }
-
-    protected IEnumerable<string>? Explanation { get; set; }
 }

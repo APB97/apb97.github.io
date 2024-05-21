@@ -7,7 +7,7 @@
 @inject IStringLocalizer<LearningProgress> Localizer
 @inject NavigationManager Navigation
 
-<PageTitle>@Localizer["LearningProgress"]</PageTitle>
+<PageTitle>@Localizer["LearningProgress"]@(Year != null ? $" {Year}" : string.Empty)</PageTitle>
 
 <h2>@Localizer["LearningProgress"]</h2>
 

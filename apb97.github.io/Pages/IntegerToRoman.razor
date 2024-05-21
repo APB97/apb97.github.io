@@ -4,6 +4,7 @@
 @using apb97.github.io.Shared
 
 @inject IStringLocalizer<IntegerToRoman> Localizer
+@inject NavigationManager Navigation
 
 <PageTitle>@Localizer["Integer to Roman"]</PageTitle>
 
@@ -39,21 +40,17 @@
 <h4>@Localizer["Note"]</h4>
 <p>@Localizer["You can use the url like"] <a href="https://apb97.github.io/IntegerToRoman/46">https://apb97.github.io/IntegerToRoman/46</a> @Localizer["to convert"] 46 @Localizer["to roman numeral"]. @Localizer["And any number between"] 1 @Localizer["and"] 3999.</p>
 
-<IntegerToRomanComponent @ref="converter" Number="Number"/>
+<IntegerToRomanComponent Number="Number" OnNumberChanged="OnNumberChanged"/>
 
 @code {
     [Parameter]
     public int? Number { get; set; }
 
-    IntegerToRomanComponent? converter;
-
-    protected override async Task OnParametersSetAsync()
+    private void OnNumberChanged(int? number)
     {
-        await base.OnParametersSetAsync();
-
-        if (converter != null)
+        if (number.HasValue)
         {
-            await converter.SetParametersAsync(ParameterView.FromDictionary(new Dictionary<string, object?>() { { "Number", Number } }));
+            Navigation.NavigateTo($"/IntegerToRoman/{number.Value}");
         }
     }
 }

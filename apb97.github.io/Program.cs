@@ -1,9 +1,7 @@
 using apb97.github.io;
 using apb97.github.io.Services;
-using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Components.Web;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
-using Microsoft.AspNetCore.Localization;
 using Microsoft.JSInterop;
 using System.Globalization;
 
@@ -20,10 +18,6 @@ builder.Services.AddScoped<SayService>();
 builder.Services.AddScoped<CountAndSayService>();
 
 builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) });
-
-var localizationOptions = new RequestLocalizationOptions()
-    .SetDefaultCulture("en");
-localizationOptions.RequestCultureProviders = new List<IRequestCultureProvider>() { new QueryStringRequestCultureProvider(), new CookieRequestCultureProvider() };
 
 var app = builder.Build();
 

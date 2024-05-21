@@ -4,6 +4,7 @@
 @using apb97.github.io.Shared
 
 @inject IStringLocalizer<CountAndSay> Localizer
+@inject NavigationManager Navigation
 
 <PageTitle>@Localizer["Count and say"]</PageTitle>
 
@@ -30,21 +31,17 @@
 <h4>@Localizer["Note"]</h4>
 <p>@Localizer["You can use the url like"] <a href="https://apb97.github.io/CountAndSay/12">https://apb97.github.io/CountAndSay/12</a> @Localizer["for any number between"] 1 @Localizer["and"] 30.</p>
 
-<CountAndSayComponent @ref="counter" NumberOfSayings="Number"/>
+<CountAndSayComponent NumberOfSayings="Number" OnNumberChanged="OnNumberChanged" />
 
 @code {
     [Parameter]
     public int? Number { get; set; }
 
-    CountAndSayComponent? counter;
-
-    protected override async Task OnParametersSetAsync()
+    private void OnNumberChanged(int? number)
     {
-        await base.OnParametersSetAsync();
-
-        if (counter != null)
+        if (number.HasValue)
         {
-            await counter.SetParametersAsync(ParameterView.FromDictionary(new Dictionary<string, object?>() { { "NumberOfSayings", Number } }));
+            Navigation.NavigateTo($"/CountAndSay/{number.Value}");
         }
     }
 }
