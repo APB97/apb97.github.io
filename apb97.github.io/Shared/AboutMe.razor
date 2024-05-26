@@ -5,9 +5,6 @@
 <h2>@Localizer["About me"]</h2>
 
 <div class="row">
-    <div class="col-custom-4">
-        <img src="/images/AboutMe.jpg" alt="A picture of myself" style="width:100%"/>
-    </div>
     <div class="col-custom-8">
         <h5>@Localizer["whoami"]</h5>
 
@@ -17,8 +14,20 @@
             @Localizer["iam_long"]
         </p>
 
-        <hr/>
-
-        <p><b>@Localizer["degree_label"]</b>@Localizer["degree"]</p>
+        <p>@Localizer["Technologies I use daily:"]</p>
+        <ul>
+            <li>.NET 8</li>
+            <li>C# 12</li>
+            <li>ASP.NET Core</li>
+            <li>Blazor</li>
+            <li>HTML, CSS, JavaScript</li>
+            <li>GraphQL</li>
+            <li>PostgreSQL</li>
+        </ul>
     </div>
+    <div class="col-custom-4">
+        <img src="/images/AboutMe.jpg" alt="A picture of myself" style="width:100%"/>
+    </div>
+
+    <p><b>@Localizer["degree_label"]</b>@Localizer["degree"]</p>
 </div>

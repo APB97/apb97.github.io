@@ -121,7 +121,7 @@
     <value>Built-in concise syntax for nondesctructive mutation</value>
   </data>
   <data name="Built-in formatting" xml:space="preserve">
-    <value>Built in formatting for display purposes</value>
+    <value>Built-in formatting for display purposes</value>
   </data>
   <data name="Built-in value equality" xml:space="preserve">
     <value>Built-in value equality</value>
@@ -151,7 +151,7 @@
     <value>Source</value>
   </data>
   <data name="StrawberryShake description" xml:space="preserve">
-    <value>StrawberryShake library aids in creating GraphQL API clients, for example for Blazor applications, allowing usage of queries and mutations definitions' to generate Client classes and interfaces, and exposing queries as components.</value>
+    <value>StrawberryShake library aids in creating GraphQL API clients, for example for Blazor applications, allowing usage of query and mutation definitions' to generate Client classes and interfaces, and exposing queries as components.</value>
   </data>
   <data name="Year2024" xml:space="preserve">
     <value>2024</value>

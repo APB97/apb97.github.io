@@ -140,6 +140,9 @@ Zerknij na moje portfolio, aby stwierdzić, czy możemy razem pracować.</value>
   <data name="name_label" xml:space="preserve">
     <value>Imię i nazwisko: </value>
   </data>
+  <data name="Technologies I use daily:" xml:space="preserve">
+    <value>Technologie, których używam na co dzień:</value>
+  </data>
   <data name="whoami" xml:space="preserve">
     <value>Kim jestem?</value>
   </data>

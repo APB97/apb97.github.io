@@ -138,6 +138,9 @@ Take a look at my portfolio projects to see if we can work together.</value>
   <data name="name_label" xml:space="preserve">
     <value>Name: </value>
   </data>
+  <data name="Technologies I use daily:" xml:space="preserve">
+    <value>Technologies I use daily:</value>
+  </data>
   <data name="whoami" xml:space="preserve">
     <value>Who am I?</value>
   </data>
