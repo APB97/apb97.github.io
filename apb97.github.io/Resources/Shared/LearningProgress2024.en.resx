@@ -117,40 +117,43 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Apart from these" xml:space="preserve">
-    <value>Apart from these, I made some of my university projects with Python and PHP.</value>
+  <data name="Built-in concise syntax for nondesctructive mutation" xml:space="preserve">
+    <value>Built-in concise syntax for nondesctructive mutation</value>
   </data>
-  <data name="C# Development" xml:space="preserve">
-    <value>C# Development</value>
+  <data name="Built-in formatting" xml:space="preserve">
+    <value>Built in formatting for display purposes</value>
   </data>
-  <data name="Here are my" xml:space="preserve">
-    <value>Here are my key technical skills:</value>
+  <data name="Built-in value equality" xml:space="preserve">
+    <value>Built-in value equality</value>
   </data>
-  <data name="I use an ORM" xml:space="preserve">
-    <value>I use an ORM called Entity Framework Core with Code First approach to create database structure based on Model classes.</value>
+  <data name="C# features" xml:space="preserve">
+    <value>C# features</value>
   </data>
-  <data name="I use ASP.Net" xml:space="preserve">
-    <value>I use ASP.NET Core (previously I used ASP.NET) to develop web applications, with a mix of C#, HTML, CSS and client-side JavaScript.</value>
+  <data name="Concise syntax for reference types" xml:space="preserve">
+    <value>Concise syntax for reference types with immutable properties</value>
   </data>
-  <data name="I use C#" xml:space="preserve">
-    <value>I use C# programming language on a daily basis to build desktop apps and websites. C# is one of the managed languages that allow use of .NET platform's capabilities. Examples of my work with that language can be viewed in my projects section.</value>
+  <data name="Example" xml:space="preserve">
+    <value>Example</value>
   </data>
-  <data name="I use patterns" xml:space="preserve">
-    <value>I use patterns and frameworks to build apps. For ASP.NET Core projects I usually use Blazor (previously I used MVC) and for desktop apps (WPF, UWP) I use MVVM.</value>
+  <data name="General knowledge" xml:space="preserve">
+    <value>General knowledge</value>
   </data>
-  <data name="I usually build" xml:space="preserve">
-    <value>I usually build desktop and web applications, with use of C#, XAML, SQL, ASP.NET Core, HTML, CSS, JavaScript.</value>
+  <data name="NuGet packages" xml:space="preserve">
+    <value>NuGet packages</value>
   </data>
-  <data name="Object-Relational Mapping" xml:space="preserve">
-    <value>Object-Relational Mapping</value>
+  <data name="Records" xml:space="preserve">
+    <value>Records</value>
   </data>
-  <data name="Patterns" xml:space="preserve">
-    <value>Patterns</value>
+  <data name="Records description" xml:space="preserve">
+    <value>Both value and reference types can be declared as records, and record structs can be declared as readonly. Records can be mutable, however they are intended for supporting immutable models. Records offer the following features:</value>
   </data>
-  <data name="Skills" xml:space="preserve">
-    <value>Skills</value>
+  <data name="Source" xml:space="preserve">
+    <value>Source</value>
   </data>
-  <data name="Web Development" xml:space="preserve">
-    <value>Web Development</value>
+  <data name="StrawberryShake description" xml:space="preserve">
+    <value>StrawberryShake library aids in creating GraphQL API clients, for example for Blazor applications, allowing usage of queries and mutations definitions' to generate Client classes and interfaces, and exposing queries as components.</value>
+  </data>
+  <data name="Year2024" xml:space="preserve">
+    <value>2024</value>
   </data>
 </root>
