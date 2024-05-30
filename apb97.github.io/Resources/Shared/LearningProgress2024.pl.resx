@@ -132,6 +132,12 @@
   <data name="Concise syntax for reference types" xml:space="preserve">
     <value>Wbudowaną zwięzłą składnię na potrzeby deklarowania typów referencyjnych z niemutowalnymi właściwościami</value>
   </data>
+  <data name="Constant interpolated strings" xml:space="preserve">
+    <value>Stałe interpolowane łańcuchy znaków</value>
+  </data>
+  <data name="Constant interpolated strings description" xml:space="preserve">
+    <value>Począwszy od C# 10, stałe można zainicjalizować za pomocą interpolacji łańcuchów znaków, o ile wszystkie symbole zastępcze są stałymi łańcuchami. Natomiast symbole zastępcze nie mogą być stałymi numerycznymi, ponieważ są one konwertowane do łańcuchów znaków w trakcie działania aplikacji, gdyż ustawienia regionalne mogą wpływać na ich reprezetancję.</value>
+  </data>
   <data name="Example" xml:space="preserve">
     <value>Przykład</value>
   </data>

@@ -1,5 +1,4 @@
-﻿@page "/LearningProgress/"
-@page "/LearningProgress/{Year:int?}"
+﻿@page "/LearningProgress/{Year:int=2024}"
 
 @using Microsoft.Extensions.Localization
 @using System.Reflection;
@@ -7,46 +6,36 @@
 @inject IStringLocalizer<LearningProgress> Localizer
 @inject NavigationManager Navigation
 
-<PageTitle>@Localizer["LearningProgress"]@(Year != null ? $" {Year}" : string.Empty)</PageTitle>
+<PageTitle>@Localizer["LearningProgress"] @Year</PageTitle>
 
 <h2>@Localizer["LearningProgress"]</h2>
 
 <label>@Localizer["Year"]</label>
-<InputNumber TValue="int?" Value="Year" ValueChanged="OnYearChanged" ValueExpression="() => Year" min="2022" max="2024" />
+<InputNumber TValue="int" Value="Year" ValueChanged="OnYearChanged" ValueExpression="() => Year" min="@MinYear" max="@RecentYear" />
 
 <DynamicComponent Type="GetDynamicComponentType(Year)" />
 
 @code {
     [Parameter]
-    public int? Year { get; set; }
+    public int Year { get; set; } = RecentYear;
 
     private const int MinYear = 2022;
     private const int RecentYear = 2024;
 
-    private Type GetDynamicComponentType(int? year)
+    private Type GetDynamicComponentType(int year)
     {
-        if (!year.HasValue)
-        {
-            return GetDynamicComponentType(RecentYear);
-        }
-
         var assembly = Assembly.GetAssembly(typeof(LearningProgress2024));
         var currentYearType = assembly?.GetType($"apb97.github.io.Shared.LearningProgress{year}");
         return currentYearType ?? typeof(LearningProgress2024);
     }
 
-    private void OnYearChanged(int? year)
+    private void OnYearChanged(int year)
     {
-        if (!year.HasValue)
-        {
-            return;
-        }
-
-        if (year.Value > RecentYear)
+        if (year > RecentYear)
         {
             Navigation.NavigateTo($"/LearningProgress/{RecentYear}");
         }
-        else if (year.Value < MinYear)
+        else if (year < MinYear)
         {
             Navigation.NavigateTo($"/LearningProgress/{MinYear}");
         }

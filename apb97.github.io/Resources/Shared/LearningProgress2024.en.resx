@@ -132,6 +132,12 @@
   <data name="Concise syntax for reference types" xml:space="preserve">
     <value>Concise syntax for reference types with immutable properties</value>
   </data>
+  <data name="Constant interpolated strings" xml:space="preserve">
+    <value>Constant interpolated strings</value>
+  </data>
+  <data name="Constant interpolated strings description" xml:space="preserve">
+    <value>Starting from C# 10, constants may be initialized using string interpolation, given all placeholders are constant strings. However the placeholder expression can't be numeric constants because they are converted to strings at runtime, since current culture may affect their representation. </value>
+  </data>
   <data name="Example" xml:space="preserve">
     <value>Example</value>
   </data>
