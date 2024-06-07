@@ -165,6 +165,9 @@
   <data name="Number" xml:space="preserve">
     <value>Number:</value>
   </data>
+  <data name="Out of range" xml:space="preserve">
+    <value>Entered value was out of range</value>
+  </data>
   <data name="Output" xml:space="preserve">
     <value>Output</value>
   </data>

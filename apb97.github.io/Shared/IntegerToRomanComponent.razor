@@ -2,7 +2,6 @@
 @using apb97.github.io.Pages
 @using apb97.github.io.Services
 @inject IStringLocalizer<IntegerToRoman> Localizer
-@inject IntegerToRomanService ConvertService
 
 <div>
     <h4>@Localizer["Input"]</h4>
@@ -42,6 +41,13 @@
 
     protected string ConvertToRoman(int value)
     {
-        return ConvertService.ToRoman(value);
+        try
+        {
+            return IntegerToRomanService.ToRoman(value);
+        }
+        catch (ArgumentOutOfRangeException)
+        {
+            return Localizer["Out of range"];
+        }
     }
 }
