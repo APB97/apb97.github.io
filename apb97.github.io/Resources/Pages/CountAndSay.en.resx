@@ -162,6 +162,9 @@
   <data name="NumberOfSayings" xml:space="preserve">
     <value>Number of sayings</value>
   </data>
+  <data name="Out of range" xml:space="preserve">
+    <value>Entered value was out of range of expected values</value>
+  </data>
   <data name="Output" xml:space="preserve">
     <value>Output</value>
   </data>

@@ -162,6 +162,9 @@
   <data name="NumberOfSayings" xml:space="preserve">
     <value>Ilość wymówień</value>
   </data>
+  <data name="Out of range" xml:space="preserve">
+    <value>Wprowadzona wartość była z poza zakresu dozwolonych wartości</value>
+  </data>
   <data name="Output" xml:space="preserve">
     <value>Wyjście</value>
   </data>

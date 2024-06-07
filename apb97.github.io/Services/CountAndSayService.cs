@@ -13,7 +13,7 @@ public class CountAndSayService
 
     public string CountAndSay(int numberOfSayings, StringBuilder details)
     {
-        if (numberOfSayings <= 0 || numberOfSayings > 30) return "OutOfRange";
+        if (numberOfSayings <= 0 || numberOfSayings > 30) throw new ArgumentOutOfRangeException(nameof(numberOfSayings));
         if (numberOfSayings == 1)
         {
             return "1";
