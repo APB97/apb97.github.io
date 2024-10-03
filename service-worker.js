@@ -52,7 +52,10 @@ async function onFetch(event) {
         cachedResponse = await cache.match(request);
 
         if (/\/WebSudoku\/(sudoku|rules)/.test(event.request.url)) {
-            return fetch('/WebSudoku/', { mode: 'navigate' })
+            return fetch('/WebSudoku/', { mode: 'navigate' });
+        }
+        else if (/\/service-worker.js$/.test(event.request.url)) {
+            return fetch('/service-worker.js');
         }
         else if (/\/WebSudoku\/(js|_framework)\/.*/.test(event.request.url)) {
             return fetch(event.request.url.replace('https://apb97.github.io', ''));
@@ -61,4 +64,4 @@ async function onFetch(event) {
 
     return cachedResponse || fetch(event.request);
 }
-/* Manifest version: zxwiIp/F */
+/* Manifest version: JMcHyAwn */
