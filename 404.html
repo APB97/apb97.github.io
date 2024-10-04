@@ -8,7 +8,8 @@
     <script>
         let lastslash = document.location.href.lastIndexOf('/');
         let end = document.location.href.substr(lastslash);
-        document.location.assign(document.location.href.substring(0, lastslash)+ '#' + end);
+        sessionStorage.setItem('destination', end);
+        document.location.assign(document.location.href.substring(0, lastslash));
     </script>
 </body>
 </html>
