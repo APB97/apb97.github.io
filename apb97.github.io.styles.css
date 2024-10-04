@@ -124,6 +124,12 @@ main[b-0clx55j7wy] {
     color: white;
 }
 
+.nav-item button[b-tj5vwyctyx] {
+    border: none;
+    background-color: transparent;
+    width: 100%;
+}
+
 .nav-item[b-tj5vwyctyx]  a:hover, .nav-item[b-tj5vwyctyx]  button:hover {
     background-color: rgba(255,255,255,0.1);
     color: white;
