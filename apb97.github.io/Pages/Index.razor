@@ -1,6 +1,9 @@
 ﻿@page "/"
 @using apb97.github.io.Shared
 
+@inject IJSRuntime JS
+@inject NavigationManager Navigation
+
 <PageTitle>Index</PageTitle>
 
 <AboutMe/>
@@ -16,3 +19,13 @@
 <br/>
 
 <Challenges/>
+
+@code {
+    protected override async Task OnInitializedAsync()
+    {
+        var destination = await JS.InvokeAsync<string>("sessionStorage.getItem", "destination");
+        await JS.InvokeVoidAsync("sessionStorage.removeItem", "destination");
+        if (destination == null) return;
+        Navigation.NavigateTo(destination.Substring(1));
+    }
+}
