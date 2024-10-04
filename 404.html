@@ -6,7 +6,9 @@
 </head>
 <body>
     <script>
-        document.location.assign(document.location.href.substring(0, document.location.href.lastIndexOf('/')));
+        let lastslash = document.location.href.lastIndexOf('/');
+        let end = document.location.href.substr(lastslash);
+        document.location.assign(document.location.href.substring(0, lastslash)+ '#' + end);
     </script>
 </body>
 </html>
