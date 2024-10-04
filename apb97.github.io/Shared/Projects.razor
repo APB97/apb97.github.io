@@ -3,26 +3,28 @@
 @inject IJSRuntime JS
 
 <h2>@Localizer["Projects"]</h2>
-<div class="row">
+<div class="d-flex">
     <div class="skill-card">
         <div class="text-center">
             <h5>Web Sudoku</h5>
         </div>
         <div class="text-center">
             <p class="text-center">@Localizer["Sudoku built with Blazor WebAssembly."] </p>
-            <a class="text-center" href="https://apb97.github.io/WebSudoku">@Localizer["See it yourself here"]</a>
+            <button class="text-center link-primary button-as-link" onclick="history.replaceState(null, '', document.location.href);document.location.assign('/WebSudoku/');">
+                @Localizer["See it yourself here"]
+            </button>
         </div>
     </div>
 </div>
 
-<div class="row">
+<div class="d-flex">
     <div class="skill-card">
         <div class="text-center">
             <h5>Metadata Rename</h5>
         </div>
         <div class="text-center">
             <p class="text-center">@Localizer["Rename based on metadata built with WPF."] </p>
-            <a class="text-center" href="https://apb97.github.io/MetadataRename">@Localizer["See it yourself here"]</a>
+            <a class="text-center link-primary" href="https://apb97.github.io/MetadataRename">@Localizer["See it yourself here"]</a>
         </div>
     </div>
 
@@ -32,7 +34,7 @@
         </div>
         <div class="text-center">
             <p class="text-center">@Localizer["Plot and calculate definite integral of a function. Built with Windows Forms."] </p>
-            <a class="text-center" href="https://apb97.github.io/PlotAndIntegrate">@Localizer["See it yourself here"]</a>
+            <a class="text-center link-primary" href="https://apb97.github.io/PlotAndIntegrate">@Localizer["See it yourself here"]</a>
         </div>
     </div>
 </div>

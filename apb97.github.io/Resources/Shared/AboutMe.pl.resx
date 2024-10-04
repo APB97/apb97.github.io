@@ -117,9 +117,6 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="About me" xml:space="preserve">
-    <value>O mnie</value>
-  </data>
   <data name="degree" xml:space="preserve">
     <value>Magister inżynier informatyki</value>
   </data>
@@ -127,23 +124,28 @@
     <value>Tytuł: </value>
   </data>
   <data name="iam_long" xml:space="preserve">
-    <value>Jestem programistą mieszkającym w Polsce. Zaczynałem od języka C++, lecz wkrótce potem obrałem kolejny język: C#.
-Ten moment nastąpił wiele lat temu (około 2011 roku), a obecnie mogę tworzyć zarówno aplikacje na pulpit, jak i aplikacje internetowe, korzystając z języka C# i platormy .NET. Pasjonuje mnie programowanie, rozwiązywanie problemów i nauka.
+    <value>Jestem programistą mieszkającym w Polsce, a programowanie w języku C# zacząłem około 2011 roku.
 Zerknij na moje portfolio, aby stwierdzić, czy możemy razem pracować.</value>
   </data>
   <data name="iam_short" xml:space="preserve">
     <value>Jestem Adrian Bieliński, programista</value>
   </data>
-  <data name="mailto_description" xml:space="preserve">
-    <value>Wyślij mi wiadomość</value>
-  </data>
-  <data name="name_label" xml:space="preserve">
-    <value>Imię i nazwisko: </value>
-  </data>
   <data name="Technologies I use daily:" xml:space="preserve">
-    <value>Technologie, których używam na co dzień:</value>
+    <value>Technologie i koncepcje, których używam na co dzień:</value>
   </data>
   <data name="whoami" xml:space="preserve">
     <value>Kim jestem?</value>
+  </data>
+  <data name="About me" xml:space="preserve">
+    <value>O mnie</value>
+  </data>
+  <data name="OOP" xml:space="preserve">
+    <value>Programowanie obiektowe</value>
+  </data>
+  <data name="ORM" xml:space="preserve">
+    <value>Mapowanie obiektowo-relacyjne</value>
+  </data>
+  <data name="DI" xml:space="preserve">
+    <value>Wstrzykiwanie zależności</value>
   </data>
 </root>
