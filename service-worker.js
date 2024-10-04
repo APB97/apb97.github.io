@@ -52,7 +52,7 @@ async function onFetch(event) {
         cachedResponse = await cache.match(request);
 
         if (/\/WebSudoku\/(sudoku|rules)/.test(event.request.url)) {
-            return fetch(event.request.url.replace('WebSudoku/', 'WebSudoku/#'));
+            return fetch('/WebSudoku/');
         }
         else if (/\/service-worker.js$/.test(event.request.url)) {
             return fetch('/service-worker.js');
@@ -71,4 +71,4 @@ async function onFetch(event) {
 
     return cachedResponse || fetch(event.request);
 }
-/* Manifest version: XuZh4eNj */
+/* Manifest version: HmmO8STk */
