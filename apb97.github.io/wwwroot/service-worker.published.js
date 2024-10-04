@@ -58,7 +58,7 @@ async function onFetch(event) {
             return fetch('/service-worker.js');
         }
         else if (/\/WebSudoku\/[#]\/(sudoku|rules)/.test(event.request.url)) {
-            return fetch(event.request.url.replace('/#', ''));
+            return fetch('/WebSudoku/');
         }
         else if (/\/404.html$/.test(event.request.url))
         {
