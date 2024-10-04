@@ -126,4 +126,10 @@
   <data name="Sudoku built with Blazor WebAssembly." xml:space="preserve">
     <value>Sudoku built with Blazor WebAssembly.</value>
   </data>
+  <data name="Plot and calculate definite integral of a function. Built with Windows Forms." xml:space="preserve">
+    <value>Plot and calculate definite integral of a function. Built with Windows Forms.</value>
+  </data>
+  <data name="Rename based on metadata built with WPF." xml:space="preserve">
+    <value>Rename based on metadata built with WPF.</value>
+  </data>
 </root>

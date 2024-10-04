@@ -118,33 +118,33 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="Apart from that, all invalid path characters are removed to ensure renaming operation will be successful." xml:space="preserve">
-    <value>Ponadto wszystkie niepoprawne znaki są usuwane ze ścieżki aby zapewnić powodzenie operacji.</value>
+    <value>Apart from that, all invalid path characters are removed to ensure renaming operation will be successful.</value>
   </data>
   <data name="Application displays messages about changes made to the settings and allows to Silence the output, so it is not updated until the setting is changed." xml:space="preserve">
-    <value>Aplikacja wyświetla informacje o zmianach dokonanych w ustawieniach i pozwala na Wyciszenie ich, przez co nie pojawiają się kolejne do czasu zmiany ustawienia.</value>
+    <value>Application displays messages about changes made to the settings and allows to Silence the output, so it is not updated until the setting is changed.</value>
   </data>
   <data name="Description" xml:space="preserve">
-    <value>Opis</value>
+    <value>Description</value>
   </data>
   <data name="file." xml:space="preserve">
-    <value>.</value>
+    <value> file.</value>
   </data>
   <data name="GitHub repository" xml:space="preserve">
-    <value>Repozytorium na GitHubie</value>
+    <value>GitHub repository</value>
   </data>
   <data name="It allows saving and loading of settings to and from" xml:space="preserve">
-    <value>Pozwalna na zapis i odczyt ustawień do i z plików</value>
+    <value>It allows saving and loading of settings to and from</value>
   </data>
   <data name="It allows users to specify properties to use for renaming and directories with files they want to rename." xml:space="preserve">
-    <value>Pozwala użytkownikom na określenie właściwości użytch przy zmianie nazw oraz katalogów z plikami, których nazwy mają być zmienione.</value>
+    <value>It allows users to specify properties to use for renaming and directories with files they want to rename.</value>
   </data>
   <data name="Rename music files using their metadata with this tool." xml:space="preserve">
-    <value>Zmień nazwy plików muzycznych bazując na ich metadanych przy użyciu tego narzędzia.</value>
+    <value>Rename music files using their metadata with this tool.</value>
   </data>
   <data name="There is default file named skip.txt for words users want to remove from final filenames." xml:space="preserve">
-    <value>Apliacja zawiera domyślny plik o nazwie skip.txt ze słowami które mają być pominięte przy zmianie nazwy.</value>
+    <value>There is default file named skip.txt for words users want to remove from final filenames.</value>
   </data>
   <data name="This WPF application allows selecting directories, properties used, determining order of properties in the final filename and choosing a SkipFile." xml:space="preserve">
-    <value>Aplikacja WPF pozwala na wybór katalogów, użytych właściwości i określenie kolejności właściwości w końcowej nazwie oraz na wybór pliku pomijancyh wyrazów.</value>
+    <value>This WPF application allows selecting directories, properties used, determining order of properties in the final filename and choosing a SkipFile.</value>
   </data>
 </root>

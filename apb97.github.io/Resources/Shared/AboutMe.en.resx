@@ -144,4 +144,7 @@ Take a look at my portfolio projects to see if we can work together.</value>
   <data name="whoami" xml:space="preserve">
     <value>Who am I?</value>
   </data>
+  <data name="About me" xml:space="preserve">
+    <value>About me</value>
+  </data>
 </root>
