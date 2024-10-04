@@ -51,11 +51,14 @@ async function onFetch(event) {
         const cache = await caches.open(cacheName);
         cachedResponse = await cache.match(request);
 
-        if (/\/WebSudoku\/([#]\/)?(sudoku|rules)/.test(event.request.url)) {
+        if (/\/WebSudoku\/(sudoku|rules)/.test(event.request.url)) {
             return fetch(event.request.url);
         }
         else if (/\/service-worker.js$/.test(event.request.url)) {
             return fetch('/service-worker.js');
+        }
+        else if (/\/WebSudoku\/[#]\/(sudoku|rules)/.test(event.request.url)) {
+            return fetch(event.request.url.replace('/#', ''));
         }
         else if (/\/404.html$/.test(event.request.url))
         {
