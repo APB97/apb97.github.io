@@ -148,4 +148,10 @@ Take a look at my portfolio projects to see if we can work together.</value>
   <data name="DI" xml:space="preserve">
     <value>Dependency Injection</value>
   </data>
+  <data name="Other supporting technologies:" xml:space="preserve">
+    <value>Other supporting technologies:</value>
+  </data>
+  <data name="Containers" xml:space="preserve">
+    <value>Containers</value>
+  </data>
 </root>

@@ -17,19 +17,37 @@
                 <p>
                     @Localizer["iam_long"]
                 </p>
-                <p>@Localizer["Technologies I use daily:"]</p>
-                <ul>
-                    <li>.NET 8</li>
-                    <li>C# 12</li>
-                    <li>ASP.NET Core</li>
-                    <li>Blazor</li>
-                    <li>HTML, CSS, JavaScript</li>
-                    <li>GraphQL</li>
-                    <li>PostgreSQL</li>
-                    <li>@Localizer["OOP"]</li>
-                    <li>@Localizer["ORM"]</li>
-                    <li>@Localizer["DI"]</li>
-                </ul>
+
+                <div class="d-flex">
+                    <div class="col-6">
+                        <p>@Localizer["Technologies I use daily:"]</p>
+                        <ul>
+                            <li>.NET 8</li>
+                            <li>C# 12</li>
+                            <li>ASP.NET Core</li>
+                            <li>Blazor</li>
+                            <li>HTML, CSS, JavaScript</li>
+                            <li>GraphQL</li>
+                            <li>PostgreSQL</li>
+                            <li>@Localizer["OOP"]</li>
+                            <li>@Localizer["ORM"]</li>
+                            <li>@Localizer["DI"]</li>
+                        </ul>
+                    </div>
+                    <div class="col-6">
+                        <p>@Localizer["Other supporting technologies:"]</p>
+                        <ul>
+                            <li>Git</li>
+                            <li>JSON</li>
+                            <li>YAML</li>
+                            <li>Linux</li>
+                            <li>@Localizer["Containers"]</li>
+                            <li>Podman</li>
+                            <li>Usernetes</li>
+                        </ul>
+                    </div>
+                </div>
+                
                 <p><b>@Localizer["degree_label"]</b>@Localizer["degree"]</p>
 
                 <div class="d-none d-xxl-block">

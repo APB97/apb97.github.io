@@ -148,4 +148,10 @@ Zerknij na moje portfolio, aby stwierdzić, czy możemy razem pracować.</value>
   <data name="DI" xml:space="preserve">
     <value>Wstrzykiwanie zależności</value>
   </data>
+  <data name="Other supporting technologies:" xml:space="preserve">
+    <value>Inne wspierające technolgie:</value>
+  </data>
+  <data name="Containers" xml:space="preserve">
+    <value>Kontenery</value>
+  </data>
 </root>
