@@ -57,6 +57,10 @@ async function onFetch(event) {
         else if (/\/service-worker.js$/.test(event.request.url)) {
             return fetch('/service-worker.js');
         }
+        else if (/\/404.html$/.test(event.request.url))
+        {
+            return fetch(event.request.url);
+        }
         else if (/\/WebSudoku\/(js|_framework)\/.*/.test(event.request.url)) {
             return fetch(event.request.url.replace('https://apb97.github.io', ''));
         }
