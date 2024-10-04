@@ -55,7 +55,7 @@ a, .btn-link {
     width: 41.66666667%
 }
 
-@media (orientation : portrait) and (max-width: 768px) {
+@media (orientation : portrait) and (max-width: 640px) {
     .skill-card {
         flex: 1 1 auto;
         width: 100%;
@@ -72,7 +72,17 @@ a, .btn-link {
     width: 66.66666667%;
 }
 
-@media (max-width: 1440px) {
+@media (max-width: 640px) {
+    .col-custom-4 {
+        width: 100%;
+    }
+
+    .col-custom-8 {
+        width: 100%;
+    }
+}
+
+@media (min-width: 640.01px) and (max-width: 1440px) {
     .col-custom-4 {
         width: 30%;
     }
@@ -80,6 +90,12 @@ a, .btn-link {
     .col-custom-8 {
         width: 70%;
     }
+}
+
+.button-as-link {
+    background-color: transparent;
+    border: none;
+    text-decoration: underline;
 }
 
 img.center-25 {
