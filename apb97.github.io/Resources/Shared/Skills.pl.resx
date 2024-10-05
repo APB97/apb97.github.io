@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="Apart from these" xml:space="preserve">
-    <value>Poza nimi, część ze swoich projektów studenckich wykonałem używając języka Python oraz języka PHP.</value>
+    <value>Poza nimi, część ze swoich projektów wykonałem używając języka Python lub języka PHP.</value>
   </data>
   <data name="C# Development" xml:space="preserve">
     <value>Programowanie w języku C#</value>
@@ -139,7 +139,7 @@
     <value>Korzystam ze wzorców i bibliotek podczas tworzenia aplikacji. Dla aplikacji ASP.NET Core zwykle korzystam z Blazora (wcześniej korzystałem ze wzorca MVC), a dla aplikacji na pulpit (takich jak aplikacje WPF lub UWP) korzystam z MVVM.</value>
   </data>
   <data name="I usually build" xml:space="preserve">
-    <value>Zwykle tworzę aplikacje na pulpit i aplikacje internetowe, z użyciem języków C#, XAML, HTML, SQL, JavaScript, CSS oraz technologii ASP.NET Core.</value>
+    <value>Zwykle tworzę aplikacje internetowe z użyciem języków C#, HTML, JavaScript, CSS oraz technologii ASP.NET Core, oraz aplikacje na pulpit korzystając z WPF lub Windows Forms.</value>
   </data>
   <data name="Object-Relational Mapping" xml:space="preserve">
     <value>Mapowanie obiektowo-relacyjne</value>

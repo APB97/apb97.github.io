@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="Apart from these" xml:space="preserve">
-    <value>Apart from these, I made some of my university projects with Python and PHP.</value>
+    <value>Apart from these, I ocassionally made some of my projects with Python or PHP.</value>
   </data>
   <data name="C# Development" xml:space="preserve">
     <value>C# Development</value>
@@ -139,7 +139,7 @@
     <value>I use patterns and frameworks to build apps. For ASP.NET Core projects I usually use Blazor (previously I used MVC) and for desktop apps (WPF, UWP) I use MVVM.</value>
   </data>
   <data name="I usually build" xml:space="preserve">
-    <value>I usually build desktop and web applications, with use of C#, XAML, SQL, ASP.NET Core, HTML, CSS, JavaScript.</value>
+    <value>I usually build web applications with use of C#, ASP.NET Core, HTML, CSS, JavaScript, and desktop applications with WPF or Windows Forms.</value>
   </data>
   <data name="Object-Relational Mapping" xml:space="preserve">
     <value>Object-Relational Mapping</value>
