@@ -1,4 +1,5 @@
 ﻿@page "/"
+@using apb97.github.io.Extensions
 @using apb97.github.io.Shared
 
 @inject IJSRuntime JS
@@ -10,24 +11,19 @@
 
 <br/>
 
-<div class="d-block d-xxl-none">
-    <Projects/>
-</div>
+<Projects />
+
+<br/>
+
+<Challenges />
 
 <br/>
 
 <Skills/>
 
-<br/>
-
-<Challenges/>
-
 @code {
     protected override async Task OnInitializedAsync()
     {
-        var destination = await JS.InvokeAsync<string>("sessionStorage.getItem", "destination");
-        await JS.InvokeVoidAsync("sessionStorage.removeItem", "destination");
-        if (destination == null) return;
-        Navigation.NavigateTo(destination.Substring(1));
+        await Navigation.NavigateToStoredDestinationIfAnyAsync(JS);
     }
 }
