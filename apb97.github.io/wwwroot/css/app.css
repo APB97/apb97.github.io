@@ -99,21 +99,18 @@ a, .btn-link {
 }
 
 img.center-25 {
-    width: 25%;
     margin-left: auto;
     margin-right: auto;
     display: block;
 }
 
 img.center-33 {
-    width: 33%;
     margin-left: auto;
     margin-right: auto;
     display: block;
 }
 
 img.center-50 {
-    width: 50%;
     margin-left: auto;
     margin-right: auto;
     display: block;
