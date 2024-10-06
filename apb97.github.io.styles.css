@@ -59,12 +59,6 @@ main[b-0clx55j7wy] {
         top: 0;
     }
 
-    .top-row[b-0clx55j7wy] {
-        position: sticky;
-        top: 0;
-        z-index: 1;
-    }
-
     .top-row.auth[b-0clx55j7wy]  a:first-child {
         flex: 1;
         text-align: right;
