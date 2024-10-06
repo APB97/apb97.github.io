@@ -117,7 +117,49 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Code" xml:space="preserve">
-    <value>Code</value>
+  <data name="Calculating definite intergral for a given range" xml:space="preserve">
+    <value>Calculating definite intergral for a given range</value>
+  </data>
+  <data name="Download the source and compile the solution with your IDE (for this project I used Visual Studio 2019)." xml:space="preserve">
+    <value>Download the source and compile the solution with your IDE (for this project I used Visual Studio 2019).</value>
+  </data>
+  <data name="Drawing plots of a logarithmic function" xml:space="preserve">
+    <value>Drawing plots of a logarithmic function</value>
+  </data>
+  <data name="Drawing plots of a polynomial function" xml:space="preserve">
+    <value>Drawing plots of a polynomial function</value>
+  </data>
+  <data name="Functionalities" xml:space="preserve">
+    <value>Functionalities</value>
+  </data>
+  <data name="GitHub repository" xml:space="preserve">
+    <value>GitHub repository</value>
+  </data>
+  <data name="Installation" xml:space="preserve">
+    <value>Installation</value>
+  </data>
+  <data name="Option 1" xml:space="preserve">
+    <value>Option 1</value>
+  </data>
+  <data name="Option 2" xml:space="preserve">
+    <value>Option 2</value>
+  </data>
+  <data name="Panning the plot by dragging mouse while mouse button is pressed" xml:space="preserve">
+    <value>Panning the plot by dragging mouse while mouse button is pressed</value>
+  </data>
+  <data name="Saving the image of the plot with use of 'Save as image...' button" xml:space="preserve">
+    <value>Saving the image of the plot with use of 'Save as image...' button</value>
+  </data>
+  <data name="Setting axes' labels font size, size of the plot and color of the plot" xml:space="preserve">
+    <value>Setting axes' labels font size, size of the plot and color of the plot</value>
+  </data>
+  <data name="Windows Forms application that can be used for drawing simple plots and calculating integrals." xml:space="preserve">
+    <value>Windows Forms application that can be used for drawing simple plots and calculating integrals.</value>
+  </data>
+  <data name="You can download it from 'Releases' section, and either run it or install it with 'setup.exe'." xml:space="preserve">
+    <value>You can download it from 'Releases' section, and either run it or install it with 'setup.exe'.</value>
+  </data>
+  <data name="Zooming the plot by scrolling the mouse wheel" xml:space="preserve">
+    <value>Zooming the plot by scrolling the mouse wheel</value>
   </data>
 </root>

@@ -117,41 +117,64 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="degree" xml:space="preserve">
-    <value>Master of Computer Science</value>
+  <data name="Built-in concise syntax for nondesctructive mutation" xml:space="preserve">
+    <value>Built-in concise syntax for nondesctructive mutation</value>
   </data>
-  <data name="degree_label" xml:space="preserve">
-    <value>Degree: </value>
+  <data name="Built-in formatting" xml:space="preserve">
+    <value>Built-in formatting for display purposes</value>
   </data>
-  <data name="iam_long" xml:space="preserve">
-    <value>I live in Poland, and I started programming with C# around year 2011.
-Take a look at my portfolio projects to see if we can work together.</value>
+  <data name="Built-in value equality" xml:space="preserve">
+    <value>Built-in value equality</value>
   </data>
-  <data name="iam_short" xml:space="preserve">
-    <value>I'm Adrian Bieliński, a software developer</value>
+  <data name="C# features" xml:space="preserve">
+    <value>C# features</value>
   </data>
-  <data name="Technologies I use daily:" xml:space="preserve">
-    <value>Technologies and concepts I use daily:</value>
+  <data name="Concise syntax for reference types" xml:space="preserve">
+    <value>Concise syntax for reference types with immutable properties</value>
   </data>
-  <data name="whoami" xml:space="preserve">
-    <value>Who am I?</value>
+  <data name="Constant interpolated strings" xml:space="preserve">
+    <value>Constant interpolated strings</value>
   </data>
-  <data name="About me" xml:space="preserve">
-    <value>About me</value>
+  <data name="Constant interpolated strings description" xml:space="preserve">
+    <value>Starting from C# 10, constants may be initialized using string interpolation, given all placeholders are constant strings. However the placeholder expression can't be numeric constants because they are converted to strings at runtime, since current culture may affect their representation. </value>
   </data>
-  <data name="OOP" xml:space="preserve">
-    <value>Object-Oriented Programming</value>
+  <data name="Example" xml:space="preserve">
+    <value>Example</value>
   </data>
-  <data name="ORM" xml:space="preserve">
-    <value>Object-Relational Mapping</value>
+  <data name="General knowledge" xml:space="preserve">
+    <value>General knowledge</value>
   </data>
-  <data name="DI" xml:space="preserve">
-    <value>Dependency Injection</value>
+  <data name="NuGet packages" xml:space="preserve">
+    <value>NuGet packages</value>
   </data>
-  <data name="Other supporting technologies:" xml:space="preserve">
-    <value>Other supporting technologies:</value>
+  <data name="Records" xml:space="preserve">
+    <value>Records</value>
   </data>
-  <data name="Containers" xml:space="preserve">
-    <value>Containers</value>
+  <data name="Records description" xml:space="preserve">
+    <value>Both value and reference types can be declared as records, and record structs can be declared as readonly. Records can be mutable, however they are intended for supporting immutable models. Records offer the following features:</value>
+  </data>
+  <data name="Source" xml:space="preserve">
+    <value>Source</value>
+  </data>
+  <data name="StrawberryShake description" xml:space="preserve">
+    <value>StrawberryShake library aids in creating GraphQL API clients, for example for Blazor applications, allowing usage of query and mutation definitions' to generate Client classes and interfaces, and exposing queries as components.</value>
+  </data>
+  <data name="Year2024" xml:space="preserve">
+    <value>2024</value>
+  </data>
+  <data name="Basic" xml:space="preserve">
+    <value>Basic</value>
+  </data>
+  <data name="Linux basic commands" xml:space="preserve">
+    <value>cd (change directory), ls (list files in a directory), pwd (print working directory), mkdir (create a directory), rmdir (remove an empty directory), rm (remove file(s)).</value>
+  </data>
+  <data name="Linux commands" xml:space="preserve">
+    <value>Linux commands</value>
+  </data>
+  <data name="Advanced" xml:space="preserve">
+    <value>Advanced</value>
+  </data>
+  <data name="Linux advanced commands" xml:space="preserve">
+    <value>vim (Vi Improved - command-line text editor), sudo (execute commands as a root or a different user), grep (search for lines with expressions in text).</value>
   </data>
 </root>

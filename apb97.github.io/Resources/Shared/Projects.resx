@@ -118,18 +118,18 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="Projects" xml:space="preserve">
-    <value />
+    <value>Projects</value>
   </data>
   <data name="See it yourself here" xml:space="preserve">
-    <value />
+    <value>See it yourself here</value>
   </data>
   <data name="Sudoku built with Blazor WebAssembly." xml:space="preserve">
-    <value />
+    <value>Sudoku built with Blazor WebAssembly.</value>
   </data>
   <data name="Plot and calculate definite integral of a function. Built with Windows Forms." xml:space="preserve">
-    <value />
+    <value>Plot and calculate definite integral of a function. Built with Windows Forms.</value>
   </data>
   <data name="Rename based on metadata built with WPF." xml:space="preserve">
-    <value />
+    <value>Rename based on metadata built with WPF.</value>
   </data>
 </root>

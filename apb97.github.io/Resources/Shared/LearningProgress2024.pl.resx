@@ -162,4 +162,19 @@
   <data name="Year2024" xml:space="preserve">
     <value>2024</value>
   </data>
+  <data name="Basic" xml:space="preserve">
+    <value>Podstawowe</value>
+  </data>
+  <data name="Linux basic commands" xml:space="preserve">
+    <value>cd (zmień bieżący katalog), ls (wylistuj pliki w katalogu), pwd (wyświetl ścieżkę bieżącego katalogu roboczego), mkdir (utwórz nowy katalog), rmdir (usuń pusty katalog), rm (usuń plik(i)).</value>
+  </data>
+  <data name="Linux commands" xml:space="preserve">
+    <value>Komendy linuksowe</value>
+  </data>
+  <data name="Advanced" xml:space="preserve">
+    <value>Zaawansowane</value>
+  </data>
+  <data name="Linux advanced commands" xml:space="preserve">
+    <value>vim (Vi Improved - konsolowy edytor tekstu), sudo (wykonaj komendy jako użytkownik root albo inny użytkownik), grep (szukaj linii z wyrażeniami w tekście).</value>
+  </data>
 </root>
