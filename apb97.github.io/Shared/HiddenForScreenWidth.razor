@@ -1,0 +1,45 @@
+﻿@using apb97.github.io.Services
+@implements IAsyncDisposable
+@inject IJSRuntime JS
+
+<Hidden Hide="HideForWidthCondition(Width)">
+    @ChildContent
+</Hidden>
+
+@code {
+    [Parameter]
+    public required Func<int, bool> HideForWidthCondition { get; set; }
+
+    [Parameter]
+    public required RenderFragment ChildContent { get; set; }
+
+    [Parameter]
+    public int Width { get; set; }
+
+    private IJSObjectReference? module;
+
+    protected override async Task OnInitializedAsync()
+    {
+        module = await JS.InvokeAsync<IJSObjectReference>("import", "./Shared/HiddenForScreenWidth.razor.js");
+        if (module is null) throw new Exception($"Cannot import module in {GetType().FullName}");
+        var dimensions =  await module.InvokeAsync<WindowDimensions>("getDimensions");
+        await module.InvokeVoidAsync("addListener", DotNetObjectReference.Create(this), nameof(UpdateWidth));
+        UpdateWidth(dimensions.Width);
+    }
+
+    [JSInvokableAttribute(nameof(UpdateWidth))]
+    public void UpdateWidth(int width)
+    {
+        if (Width == width) return;
+        Width = width;
+        StateHasChanged();
+    }
+
+    public async ValueTask DisposeAsync()
+    {
+        if (module is not null)
+        {
+            await module.DisposeAsync();
+        }
+    }
+}

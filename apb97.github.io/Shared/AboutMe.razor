@@ -7,8 +7,7 @@
         <div class="d-flex flex-row">
             <div class="col-8 flex-column">
                 <div class="d-flex flex-column">
-                    <h1 id="aboutme"><a href="#aboutme" class="text-black">@Localizer["About me"] - @Localizer["whoami"]</a></h1>
-
+                    <AdjustedAnchorHeading Id="aboutme">@Localizer["About me"] - @Localizer["whoami"]</AdjustedAnchorHeading>
                     <h5>@Localizer["iam_short"]</h5>
                 </div>
 
@@ -18,17 +17,17 @@
                 
                 <p><b>@Localizer["degree_label"]</b>@Localizer["degree"]</p>
 
-                <div class="d-none d-lg-block">
+                <HiddenForScreenWidth HideForWidthCondition="width => width < 992">
                     <Projects />
-                </div>
+                </HiddenForScreenWidth>
             </div>
             <div class="col-4">
                 <img src="/images/AboutMe.jpg" alt="A picture of myself" style="width: 100%; max-width: 368px; max-height: 552px;" />
             </div>
         </div>
-        <div class="d-block d-lg-none">
+        <HiddenForScreenWidth HideForWidthCondition="width => width >= 992">
             <Projects />
-        </div>
+        </HiddenForScreenWidth>
         <Challenges />
         <Skills />
         @BulletPointsFragment

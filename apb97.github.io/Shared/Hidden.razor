@@ -1,0 +1,12 @@
+﻿@if (!Hide)
+{
+    @ChildContent
+}
+
+@code {
+    [Parameter]
+    public bool Hide { get; set; } = true;
+
+    [Parameter]
+    public required RenderFragment ChildContent { get; set; }
+}
