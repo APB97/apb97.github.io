@@ -10,6 +10,10 @@ main[b-0clx55j7wy] {
 }
 
 .sidebar[b-0clx55j7wy] {
+    position: absolute;
+    right: 0;
+    left: 0;
+    top: 0;
     background-image: linear-gradient(180deg, rgb(5, 39, 103) 0%, #3a0647 70%);
 }
 
@@ -71,6 +75,12 @@ main[b-0clx55j7wy] {
     }
 }
 /* /Shared/AboutMe.razor.rz.scp.css */
+/* /Shared/AdjustedAnchorHeading.razor.rz.scp.css */
+@media (max-width: 640px) {
+    *[b-46y0xc37f0] {
+        --nav-top-height: 56px;
+    }
+}
 /* /Shared/NavMenu.razor.rz.scp.css */
 .navbar-toggler[b-tj5vwyctyx] {
     background-color: rgba(255, 255, 255, 0.1);

@@ -25,11 +25,11 @@
       "url": "_framework\/icudt.dat"
     },
     {
-      "hash": "sha256-s6lB++mLBNHJrS0WMALoIhgqBAwpfXnkRG4Uk+c415U=",
+      "hash": "sha256-6SqeAZ1F7kj0An16jNxtUX1LdqyEEjJkgoE0PfH8NSE=",
       "url": "_framework\/blazor.boot.json"
     },
     {
-      "hash": "sha256-AGpZm\/E5XnJwXq41VfPo3c9GfdS99GOWSdNWMqCsbAo=",
+      "hash": "sha256-lNIqbmRDtZMZN1TaIFkEMSMgRv1VDsrJl40IO8u++mo=",
       "url": "_framework\/apb97.github.io.wasm"
     },
     {
@@ -93,7 +93,7 @@
       "url": "_framework\/Microsoft.Extensions.Primitives.wasm"
     },
     {
-      "hash": "sha256-+Rt8iKATTcS4lJwzOVupnY95QLDIoKdW228hSCzBifg=",
+      "hash": "sha256-pVRRYCn1SbN88TrMMc\/8fnuq\/TZKGOUjnRKRUjL6nnI=",
       "url": "_framework\/Microsoft.JSInterop.wasm"
     },
     {
@@ -157,7 +157,7 @@
       "url": "_framework\/System.ObjectModel.wasm"
     },
     {
-      "hash": "sha256-EC7x+6JsKUkYb3RMcgiHBiDwbd\/2OL42TliTk13M9G4=",
+      "hash": "sha256-iNDB\/QN5y4cxZoKC\/thYvztVEwCkwENyHhdpVJTO7Uo=",
       "url": "_framework\/System.Private.CoreLib.wasm"
     },
     {
@@ -173,7 +173,7 @@
       "url": "_framework\/System.Runtime.Serialization.Primitives.wasm"
     },
     {
-      "hash": "sha256-YTc2FYXbpwKNQL0qQ2lM8bSSqj4ft15TpalP1e+VKzA=",
+      "hash": "sha256-YtHX2YkzUFiBDfB3UqbArpxCqNPlsNww4fIalGckIyk=",
       "url": "_framework\/System.Runtime.wasm"
     },
     {
@@ -193,12 +193,16 @@
       "url": "_framework\/System.wasm"
     },
     {
-      "hash": "sha256-hPwfGpUGnsrR2KkokxVvITMwGyFxmSSiPDbarD19z9Y=",
+      "hash": "sha256-E4tYYqaaTu4DkrkUfjth5Mji4vD3NzGIMfIYzT\/90r8=",
       "url": "_framework\/pl\/apb97.github.io.resources.wasm"
     },
     {
-      "hash": "sha256-KK0h2BIcECN0VGSalh4g+WrRiA3+agCBnaZY1w1xCTs=",
+      "hash": "sha256-uidDnyjnoHxX6gBYKytdff6ox7w1wdeZTIfIpZ2tCgY=",
       "url": "apb97.github.io.styles.css"
+    },
+    {
+      "hash": "sha256-MvOnMXo0DH9JRNv8wl2yqexqCAJcsTTVZknXDrrfTKc=",
+      "url": "Shared\/HiddenForScreenWidth.razor.js"
     },
     {
       "hash": "sha256-RiHtlne0dkCgYD6WDi3Jvjt7vdZ4bOMDkaysjVBr5Kc=",
@@ -257,5 +261,5 @@
       "url": "manifest.webmanifest"
     }
   ],
-  "version": "J1UeJInE"
+  "version": "gJTUfZLF"
 };
