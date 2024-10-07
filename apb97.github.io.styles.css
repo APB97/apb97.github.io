@@ -76,6 +76,7 @@ main[b-0clx55j7wy] {
 }
 /* /Shared/AboutMe.razor.rz.scp.css */
 /* /Shared/AdjustedAnchorHeading.razor.rz.scp.css */
+/* for mobile view */
 @media (max-width: 640px) {
     *[b-46y0xc37f0] {
         --nav-top-height: 56px;
