@@ -1,4 +1,6 @@
-﻿@using Microsoft.Extensions.Localization
+﻿@using apb97.github.io.Services
+@using Microsoft.Extensions.Localization
+
 @inject IStringLocalizer<AboutMe> Localizer
 @inject IJSRuntime JS
 
@@ -17,7 +19,7 @@
                 
                 <p><b>@Localizer["degree_label"]</b>@Localizer["degree"]</p>
 
-                <HiddenForScreenWidth HideForWidthCondition="width => width < 992">
+                <HiddenForScreenWidth HideForWidthCondition="width => width < ScreenBreakpoints.Large">
                     <Projects />
                 </HiddenForScreenWidth>
             </div>
@@ -25,7 +27,7 @@
                 <img src="/images/AboutMe.jpg" alt="A picture of myself" style="width: 100%; max-width: 368px; max-height: 552px;" />
             </div>
         </div>
-        <HiddenForScreenWidth HideForWidthCondition="width => width >= 992">
+        <HiddenForScreenWidth HideForWidthCondition="width => width >= ScreenBreakpoints.Large">
             <Projects />
         </HiddenForScreenWidth>
         <Challenges />

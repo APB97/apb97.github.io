@@ -166,7 +166,7 @@
     <value>Podstawowe</value>
   </data>
   <data name="Linux basic commands" xml:space="preserve">
-    <value>cd (zmień bieżący katalog), ls (wylistuj pliki w katalogu), pwd (wyświetl ścieżkę bieżącego katalogu roboczego), mkdir (utwórz nowy katalog), rmdir (usuń pusty katalog), rm (usuń plik(i)).</value>
+    <value>cd (zmień bieżący katalog), ls (wylistuj pliki w katalogu), pwd (wyświetl ścieżkę bieżącego katalogu roboczego), mkdir (utwórz nowy katalog), rmdir (usuń pusty katalog), rm (usuń plik(i)), touch (aktualizuje daty dostępu i modyfikacji pilku), whoami (odpowiada na pytanie wskazując obecnego użytkownika), cat (wyświetla zawartość pliku), more (wyświetla zawartość plików na ograniczonym wyświetlaczu z nawigacją tylko do przodu), less (wyświetla zawartość pliku na ograniczonym wyświetlaczu z nawigacją w obie strony), ping (pinguje wskazany adres za pomocą protokołu ICMP), apt (konsolowy menedżer pakietów dla Ubuntu i podobnych dystrybucji Linuxa), dnf (konsolowy menedżer pakietów dla dystrybucji Fedora).</value>
   </data>
   <data name="Linux commands" xml:space="preserve">
     <value>Komendy linuksowe</value>

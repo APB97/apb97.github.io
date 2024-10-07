@@ -1,4 +1,5 @@
-﻿@media (max-width: 640px) {
+﻿/* for mobile view */
+@media (max-width: 640px) {
     * {
         --nav-top-height: 56px;
     }

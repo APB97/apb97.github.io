@@ -166,7 +166,7 @@
     <value>Basic</value>
   </data>
   <data name="Linux basic commands" xml:space="preserve">
-    <value>cd (change directory), ls (list files in a directory), pwd (print working directory), mkdir (create a directory), rmdir (remove an empty directory), rm (remove file(s)).</value>
+    <value>cd (change directory), ls (list files in a directory), pwd (print working directory), mkdir (create a directory), rmdir (remove an empty directory), rm (remove file(s)), touch (update accessed and modified dates of a file), whoami (answers the question by indicating current user), cat (display contents of a file), more (display contents of files but in limited size display with forward-only navigation), less (display contents of file in limited display with both forward and backward navigation), ping (pings the destination with ICMP protocol), apt (command-line package manager for Ubuntu and similar distributions of Linux), dnf (command-line package manager for Fedora).</value>
   </data>
   <data name="Linux commands" xml:space="preserve">
     <value>Linux commands</value>
