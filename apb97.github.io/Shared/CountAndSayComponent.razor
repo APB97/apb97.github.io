@@ -19,7 +19,7 @@
         var results = GetResults();
     }
     <hr />
-    <h4>@Localizer["Output"]</h4>
+    <AdjustedAnchorHeading Id="@OutputId" FontSize="smaller">@Localizer["Output"]</AdjustedAnchorHeading>
     <div class="row">
         <div class="card-group">
             <label style="margin: 4px">@Localizer["Result"]</label>
@@ -48,6 +48,8 @@
 </div>
 
 @code {
+    public const string OutputId = "output";
+
     [Parameter]
     public int? NumberOfSayings { get; set; }
 

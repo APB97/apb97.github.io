@@ -1,10 +1,25 @@
-﻿<!-- uses --nav-top-height variable to fix issue with anchor tags target position after navigation while in mobile view -->
-<h2 id="@Id" style="position: relative; top: calc(-1 * var(--nav-top-height));"><a href="@($"#{Id}")" class="text-black" style="position: relative; top: var(--nav-top-height);">@ChildContent</a></h2>
+﻿@using System.Text.RegularExpressions
+@inject NavigationManager Navigation
+
+<!-- uses --nav-top-height variable to fix issue with anchor tags target position after navigation while in mobile view -->
+<!-- disables pointer-events on h2 tag and reenables on a tag to allow clickt to pass through -->
+<h2 id="@Id" style="pointer-events:none; position: relative; top: calc(-1 * var(--nav-top-height));">
+    <a href="@Url" class="text-black" style="pointer-events: auto; position: relative; top: var(--nav-top-height); font-size: @(FontSize ?? DefaultFontSize)">@ChildContent</a>
+</h2>
 
 @code {
+    public const string DefaultFontSize = "unset";
+
+    public readonly Regex HashPattern = new Regex("#.*");
+
     [Parameter]
     public required string Id { get; set; }
 
     [Parameter]
     public required RenderFragment ChildContent { get; set; }
+
+    [Parameter]
+    public string? FontSize { get; set; }
+
+    public string Url => $"{HashPattern.Replace(Navigation.Uri, string.Empty)}#{Id}";
 }

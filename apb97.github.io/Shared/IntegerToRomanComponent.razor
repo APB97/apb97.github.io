@@ -14,7 +14,7 @@
     </div>
 
     <hr />
-    <h4>@Localizer["Output"]</h4>
+    <AdjustedAnchorHeading Id="@OutputId" FontSize="smaller">@Localizer["Output"]</AdjustedAnchorHeading>
     <div class="row">
         <div class="card-group">
             <label style="margin: 4px">@Localizer["Roman"]</label>
@@ -37,7 +37,7 @@
     [Parameter]
     public Action<int?> OnNumberChanged { get; set; } = delegate { };
 
-    protected string? Roman { get; set; }
+    public const string OutputId = "output";
 
     protected string ConvertToRoman(int value)
     {
