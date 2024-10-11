@@ -25,27 +25,27 @@
       "url": "_framework\/icudt.dat"
     },
     {
-      "hash": "sha256-ysNGCLFSHWhEmnBFPboclxH288bmo1Eqy92au4lTgQE=",
+      "hash": "sha256-EXWGQXD9JVjT7dhp27J1R3GMYvIpOgkhqNasnZBM22I=",
       "url": "_framework\/blazor.boot.json"
     },
     {
-      "hash": "sha256-f9k7JJkSqEt5ltlnUCeCOMT\/ilCLtvUFoqg19QOzGBA=",
+      "hash": "sha256-iWHPz7ln3aY5zqjkuMTRCUkZjY\/nknQyWaAdnQ7qZQE=",
       "url": "_framework\/apb97.github.io.wasm"
     },
     {
-      "hash": "sha256-1V+QeYmdKL3VdCI5QU41fK9zI3mEUMmdZ0A9TA80\/H8=",
+      "hash": "sha256-AB7P72nA6ejuXLycHnmXmIfIqHR2kghw0gVj0mWflDc=",
       "url": "_framework\/Microsoft.AspNetCore.Components.Forms.wasm"
     },
     {
-      "hash": "sha256-wMrVOarvzgyPX0eLe9E0kXmEFbPA6cvstKnqmT+0WWY=",
+      "hash": "sha256-juiV2pM+TlkiB03XpHAuzRBharu9gejNJbqWQD5yk44=",
       "url": "_framework\/Microsoft.AspNetCore.Components.wasm"
     },
     {
-      "hash": "sha256-8X1F6EsH8XJMMm6gNNcMcu1XnGxIr8hkUBVmzT2T\/yE=",
+      "hash": "sha256-XKXUTbnTFP2HPHOq7mnvw3owApHhVwKCa0NSR0cI2U8=",
       "url": "_framework\/Microsoft.AspNetCore.Components.Web.wasm"
     },
     {
-      "hash": "sha256-1\/q8HCnkfx2cBfBoL7rb6O3Y7KIh1kZ4j9xG3A72XlU=",
+      "hash": "sha256-VTyMH1h7LAq\/mIc+4P5wrXJein\/K9m2gMtRLk+mIbfE=",
       "url": "_framework\/Microsoft.AspNetCore.Components.WebAssembly.wasm"
     },
     {
@@ -53,7 +53,7 @@
       "url": "_framework\/Microsoft.Extensions.Configuration.Abstractions.wasm"
     },
     {
-      "hash": "sha256-Sxmy2ZS134URxbHEvdbS6NcQ3zXS7UWx\/5ZPpwiW7FA=",
+      "hash": "sha256-\/VUEfhgVp9FCU1rXnSNAI1mtW6EO5DpkV\/5UNWDR\/es=",
       "url": "_framework\/Microsoft.Extensions.Configuration.Json.wasm"
     },
     {
@@ -61,27 +61,27 @@
       "url": "_framework\/Microsoft.Extensions.Configuration.wasm"
     },
     {
-      "hash": "sha256-nVLAUwIaez14SO5LVyiMEjiq+z4v2PixhWW9HmqaOMU=",
+      "hash": "sha256-y5cn1eCUI47zt4zAYvjD7l5YEzxKqr\/DHz31pqw6wo0=",
       "url": "_framework\/Microsoft.Extensions.DependencyInjection.Abstractions.wasm"
     },
     {
-      "hash": "sha256-gg8xZqJsBBrrNEyUGzYqhL3sqkuZ4AHAvdTdL9nZ0S0=",
+      "hash": "sha256-T\/+qPF0RWC8dfbLNFgoTfla+JM2H3eY5L17aqODwzFc=",
       "url": "_framework\/Microsoft.Extensions.DependencyInjection.wasm"
     },
     {
-      "hash": "sha256-sqTeY8POFawmsl7jUy4NtX23K+iVFixOHpjXI1jy\/88=",
+      "hash": "sha256-2\/cncpZbiFk6FmVmjx6jXalwiwVPatWeDKJKN+kIRfA=",
       "url": "_framework\/Microsoft.Extensions.Localization.Abstractions.wasm"
     },
     {
-      "hash": "sha256-+UKA0YrWr0AkCBKTdMZveT\/tiA196+nCRc+WAdBMwEs=",
+      "hash": "sha256-o0ehyAVwxXRi2FTP6kVwIvvfrhO+xsC1ASVAVdo+egg=",
       "url": "_framework\/Microsoft.Extensions.Localization.wasm"
     },
     {
-      "hash": "sha256-gvNu2mIT4I65cVraGtjRvly86BXv+RNvTeg6SrKeCuM=",
+      "hash": "sha256-tK0X7g8GSvOT9rBWiaC2wD8CgWfZWXQhpxAY\/LdOgxQ=",
       "url": "_framework\/Microsoft.Extensions.Logging.Abstractions.wasm"
     },
     {
-      "hash": "sha256-8BH+kQfjYuZWxprOICXJ4+tU0OdJOYDKN7G0S3zYYHI=",
+      "hash": "sha256-gRNqDIITN9\/LJz459bgijHJ1O+l5fzsybyrFhw0Iqa4=",
       "url": "_framework\/Microsoft.Extensions.Logging.wasm"
     },
     {
@@ -93,11 +93,11 @@
       "url": "_framework\/Microsoft.Extensions.Primitives.wasm"
     },
     {
-      "hash": "sha256-pVRRYCn1SbN88TrMMc\/8fnuq\/TZKGOUjnRKRUjL6nnI=",
+      "hash": "sha256-2n5NAsTlZGsaSEWpT2nnNmISLnQqsb5jhApnYOHTpHg=",
       "url": "_framework\/Microsoft.JSInterop.wasm"
     },
     {
-      "hash": "sha256-i8yLC1pzEZMAPAHK2MyunJW81S6Tpyvwka9LDZSylx8=",
+      "hash": "sha256-r\/+bWAAxKn2+Wu3MRYDXvKEbHjLNuptflgNuNhQdK6w=",
       "url": "_framework\/Microsoft.JSInterop.WebAssembly.wasm"
     },
     {
@@ -193,7 +193,7 @@
       "url": "_framework\/System.wasm"
     },
     {
-      "hash": "sha256-wE59LQwbKf+Ror+dR35D0LRaxaxUOX2aIvvd7+1QT+g=",
+      "hash": "sha256-1ah5mpiZiFH39Fd930AYrqeGC2fzi\/OOj0L2gO9LyV8=",
       "url": "_framework\/pl\/apb97.github.io.resources.wasm"
     },
     {
@@ -265,5 +265,5 @@
       "url": "manifest.webmanifest"
     }
   ],
-  "version": "PbK+6rff"
+  "version": "tR1iH4F4"
 };
