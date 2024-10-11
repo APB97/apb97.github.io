@@ -6,10 +6,10 @@
 
 <div class="page">
     <div class="sidebar" style="position: sticky; top: 0; z-index: 100">
-        <NavMenu />
+        <NavMenu @ref="navMenu"/>
     </div>
 
-    <main>
+    <main @onclick="navMenu.CollapseNavMenu">
         <div class="top-row px-4">
         </div>
 
@@ -23,3 +23,7 @@
         </div>
     </main>
 </div>
+
+@code {
+    private NavMenu navMenu;
+}
