@@ -1,5 +1,4 @@
 ﻿@using apb97.github.io.Services
-@using Microsoft.Extensions.Localization
 
 @inject IStringLocalizer<AboutMe> Localizer
 @inject IJSRuntime JS
@@ -17,7 +16,8 @@
                     @Localizer["iam_long"]
                 </p>
                 
-                <p><b>@Localizer["degree_label"]</b>@Localizer["degree"]</p>
+                <p class="m-0"><b>@Localizer["degree_label"]</b>@Localizer["degree"]</p>
+                <p class="m-0"><b>@Localizer["status_label"]</b>@Localizer["status"]</p>
 
                 <HiddenForScreenWidth HideForWidthCondition="width => width < ScreenBreakpoints.Large">
                     <Projects />

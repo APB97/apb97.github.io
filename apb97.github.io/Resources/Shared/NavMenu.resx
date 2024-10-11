@@ -135,4 +135,7 @@
   <data name="LearningProgress" xml:space="preserve">
     <value>Learning Progress</value>
   </data>
+  <data name="Code" xml:space="preserve">
+    <value>Code</value>
+  </data>
 </root>

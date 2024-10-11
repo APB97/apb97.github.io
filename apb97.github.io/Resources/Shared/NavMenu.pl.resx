@@ -129,10 +129,13 @@
   <data name="Integer to Roman" xml:space="preserve">
     <value>Konwersja na rzymski</value>
   </data>
+  <data name="Projects" xml:space="preserve">
+    <value>Projekty</value>
+  </data>
   <data name="LearningProgress" xml:space="preserve">
     <value>Postępy nauki</value>
   </data>
-  <data name="Projects" xml:space="preserve">
-    <value>Projekty</value>
+  <data name="Code" xml:space="preserve">
+    <value>Kod</value>
   </data>
 </root>

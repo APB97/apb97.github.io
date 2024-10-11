@@ -1,11 +1,10 @@
-﻿@using Microsoft.Extensions.Localization
-@using apb97.github.io.Shared
+﻿@using apb97.github.io.Shared
 @inherits LayoutComponentBase
 
 @inject IStringLocalizer<MainLayout> Localizer
 
 <div class="page">
-    <div class="sidebar" style="position: sticky; top: 0; z-index: 100">
+    <div class="sidebar d-flex flex-column" style="position: sticky; top: 0; z-index: 100">
         <NavMenu @ref="navMenu"/>
     </div>
 
@@ -13,14 +12,9 @@
         <div class="top-row px-4">
         </div>
 
-        <article @onclick="() => navMenu?.CollapseNavMenu()" class="content px-4" style="height: calc(100% - var(--top-panel-height) - var(--footer-height));">
+        <article @onclick="() => navMenu?.CollapseNavMenu()" class="content px-4">
             @Body
         </article>
-
-        <div class="bottom-row px-4 d-flex card-footer fixed-bottom" style="background-color:white; position: sticky; left: var(--footer-left-position); height: var(--footer-height);">
-            <LanguageSelect />
-            <a class="ms-auto" href="https://github.com/APB97/apb97.github.io" target="_blank">@Localizer["Code"]</a>
-        </div>
     </main>
 </div>
 

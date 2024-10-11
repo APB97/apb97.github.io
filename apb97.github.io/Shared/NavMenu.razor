@@ -11,46 +11,57 @@
     </div>
 </div>
 
-<div class="@NavMenuCssClass" @onclick="ToggleNavMenu" style="overflow-y: auto; max-height: calc(100vh - var(--footer-height) - 3.5rem);">
-    <nav class="flex-column">
+<div class="@NavMenuCssClass" style="overflow-y: auto; display: flex; flex-grow: 1; height: 50vh;">
+    <nav class="d-flex flex-column flex-grow-1">
         <div class="nav-item px-3">
-            <NavLink class="nav-link" href="" Match="NavLinkMatch.All">
+            <NavLink class="nav-link" href="" Match="NavLinkMatch.All" @onclick="ToggleNavMenu">
                 @Localizer["Home"]
             </NavLink>
         </div>
         <div class="nav-item px-3">
-            <NavLink class="nav-link" href="LearningProgress" Match="NavLinkMatch.All">
+            <NavLink class="nav-link" href="LearningProgress" Match="NavLinkMatch.All" @onclick="ToggleNavMenu">
                 @Localizer["LearningProgress"]
             </NavLink>
         </div>
 
-        <p class="text-white">@Localizer["Projects"]</p>
+        <p class="text-white-50">@Localizer["Projects"]</p>
         <div class="nav-item px-3">
             <button class="nav-link" onclick="history.replaceState(null, '', document.location.href);document.location.assign('/WebSudoku/');">
                 @Localizer["Web Sudoku"]
             </button>
         </div>
         <div class="nav-item px-3">
-            <NavLink class="nav-link" href="MetadataRename">
+            <NavLink class="nav-link" href="MetadataRename" @onclick="ToggleNavMenu">
                 @Localizer["Metadata Rename"]
             </NavLink>
         </div>
         <div class="nav-item px-3">
-            <NavLink class="nav-link" href="PlotAndIntegrate">
+            <NavLink class="nav-link" href="PlotAndIntegrate" @onclick="ToggleNavMenu">
                 @Localizer["Plot and Integrate"]
             </NavLink>
         </div>
 
-        <p class="text-white">@Localizer["Challenges"]</p>
+        <p class="text-white-50">@Localizer["Challenges"]</p>
         <div class="nav-item px-3">
-            <NavLink class="nav-link" href="IntegerToRoman">
+            <NavLink class="nav-link" href="IntegerToRoman" @onclick="ToggleNavMenu">
                 @Localizer["Integer to Roman"]
             </NavLink>
         </div>
          <div class="nav-item px-3">
-            <NavLink class="nav-link" href="CountAndSay">
+            <NavLink class="nav-link" href="CountAndSay" @onclick="ToggleNavMenu">
                @Localizer["Count and Say"]
             </NavLink>
+        </div>
+        <div class="flex-grow-1">
+
+        </div>
+        <div class="nav-item px-3">
+            <a class="ms-auto nav-link link-info" href="https://github.com/APB97/apb97.github.io" target="_blank">@Localizer["Code"]</a>
+        </div>
+        <div class="nav-item px-0">
+            <div class="nav-link">
+                <LanguageSelect />
+            </div>
         </div>
     </nav>
 </div>

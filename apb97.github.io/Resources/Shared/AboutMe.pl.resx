@@ -154,4 +154,10 @@ Zerknij na moje portfolio, aby stwierdzić, czy możemy razem pracować.</value>
   <data name="Containers" xml:space="preserve">
     <value>Kontenery</value>
   </data>
+  <data name="status_label" xml:space="preserve">
+    <value>Stan zatrudnienia: </value>
+  </data>
+  <data name="status" xml:space="preserve">
+    <value>zatrudniony</value>
+  </data>
 </root>

@@ -154,4 +154,10 @@ Take a look at my portfolio projects to see if we can work together.</value>
   <data name="Containers" xml:space="preserve">
     <value>Containers</value>
   </data>
+  <data name="status_label" xml:space="preserve">
+    <value>Employment status: </value>
+  </data>
+  <data name="status" xml:space="preserve">
+    <value>employed</value>
+  </data>
 </root>
