@@ -4,17 +4,15 @@
 
 <AdjustedAnchorHeading Id="projects">@Localizer["Projects"]</AdjustedAnchorHeading>
 <div class="d-flex" style="border: medium solid dodgerblue; margin: 2pt;">
-    <div class="col-8">
-        <div class="text-center" style="height: 100%">
+    <div class="col-8 d-flex flex-column">
+        <div class="text-center flex-grow-1">
             <h5>Web Sudoku</h5>
             <p>@Localizer["Web Sudoku description"]</p>
             <button class="link-primary button-as-link" onclick="history.replaceState(null, '', document.location.href);document.location.assign('/WebSudoku/');">
                 @Localizer["See it yourself here"]
             </button>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
+        </div>
+        <div class="text-center">
             <div class="tags">
                 <span>@Localizer[".NET"]</span>
                 <span>@Localizer["C#"]</span>

@@ -4,7 +4,7 @@
 
 .tags {
     pointer-events: none;
-    position: absolute;
+    position: relative;
     bottom: 1pt;
     left: 0;
     right: 0;

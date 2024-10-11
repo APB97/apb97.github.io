@@ -13,7 +13,7 @@
         <div class="top-row px-4">
         </div>
 
-        <article @onclick="() => navMenu.CollapseNavMenu()" class="content px-4" style="height: calc(100% - var(--top-panel-height) - var(--footer-height));">
+        <article @onclick="() => navMenu?.CollapseNavMenu()" class="content px-4" style="height: calc(100% - var(--top-panel-height) - var(--footer-height));">
             @Body
         </article>
 
@@ -25,5 +25,5 @@
 </div>
 
 @code {
-    private NavMenu navMenu;
+    private NavMenu? navMenu;
 }
