@@ -25,11 +25,11 @@
       "url": "_framework\/icudt.dat"
     },
     {
-      "hash": "sha256-EXWGQXD9JVjT7dhp27J1R3GMYvIpOgkhqNasnZBM22I=",
+      "hash": "sha256-U8XvnUvYx6mxFqjxdGsunB1Wv0pyBq\/3mX7LrsNJhB0=",
       "url": "_framework\/blazor.boot.json"
     },
     {
-      "hash": "sha256-iWHPz7ln3aY5zqjkuMTRCUkZjY\/nknQyWaAdnQ7qZQE=",
+      "hash": "sha256-uY+vJmbChlderXA\/YdyvohfofkgRFHaoRgEd8Qe63Xc=",
       "url": "_framework\/apb97.github.io.wasm"
     },
     {
@@ -113,7 +113,7 @@
       "url": "_framework\/System.Collections.Specialized.wasm"
     },
     {
-      "hash": "sha256-jETAyKirFh41l\/gQK03iPgz7\/8y4I+Ywcpo9lrIigHw=",
+      "hash": "sha256-2FTXtxlfBQRQetW16bYDFjCatIAVrnYN0nWO0jrp4ik=",
       "url": "_framework\/System.Collections.wasm"
     },
     {
@@ -173,7 +173,7 @@
       "url": "_framework\/System.Runtime.Serialization.Primitives.wasm"
     },
     {
-      "hash": "sha256-munVGYvdGf1vNr9+uCDMBA4u3cpbde+qgaDMIvOR8HE=",
+      "hash": "sha256-39DP8TB2\/Dng7hm1hfzylJX6Dsp191dVSE+7GQfVpcc=",
       "url": "_framework\/System.Runtime.wasm"
     },
     {
@@ -193,11 +193,11 @@
       "url": "_framework\/System.wasm"
     },
     {
-      "hash": "sha256-1ah5mpiZiFH39Fd930AYrqeGC2fzi\/OOj0L2gO9LyV8=",
+      "hash": "sha256-vP2bUkj1ZpR\/zthSyIohL8HuRaHJ7mKYkO4h8Z9Iw+s=",
       "url": "_framework\/pl\/apb97.github.io.resources.wasm"
     },
     {
-      "hash": "sha256-Q1v73GKBUFtlhaXMEtqNfTuoeXouOJTRbOxN567L2F4=",
+      "hash": "sha256-mjKIqtxCaTqxTMRsOx\/\/7h0y8Wbobq4NxtdbuOzB4i4=",
       "url": "apb97.github.io.styles.css"
     },
     {
@@ -257,7 +257,7 @@
       "url": "images\/Screenshot - Web Sudoku.png"
     },
     {
-      "hash": "sha256-pcvMHle9BchCPffUfi+1i0ieqUQtLTdGAqKJrZPfYOI=",
+      "hash": "sha256-E+XJjBzn0iNvjdi99c49I0LSn8dHET\/AQYhX0grg4pk=",
       "url": "index.html"
     },
     {
@@ -265,5 +265,5 @@
       "url": "manifest.webmanifest"
     }
   ],
-  "version": "tR1iH4F4"
+  "version": "tDV7ZItP"
 };

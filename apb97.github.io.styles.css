@@ -82,6 +82,11 @@ main[b-0clx55j7wy] {
         --nav-top-height: 56px;
     }
 }
+/* /Shared/LanguageSelect.razor.rz.scp.css */
+option[b-obldctxof6] {
+    background-color: #340a4b;
+    color: white;
+}
 /* /Shared/NavMenu.razor.rz.scp.css */
 .navbar-toggler[b-tj5vwyctyx] {
     background-color: rgba(255, 255, 255, 0.1);
@@ -112,10 +117,6 @@ main[b-0clx55j7wy] {
         padding-top: 1rem;
     }
 
-    .nav-item:last-of-type[b-tj5vwyctyx] {
-        padding-bottom: 1rem;
-    }
-
     .nav-item[b-tj5vwyctyx]  a, .nav-item[b-tj5vwyctyx]  button {
         color: #d7d7d7;
         border-radius: 4px;
@@ -141,6 +142,10 @@ main[b-0clx55j7wy] {
     color: white;
 }
 
+.collapse[b-tj5vwyctyx] {
+    display: none !important;
+}
+
 @media (min-width: 641px) {
     .navbar-toggler[b-tj5vwyctyx] {
         display: none;
@@ -148,7 +153,8 @@ main[b-0clx55j7wy] {
 
     .collapse[b-tj5vwyctyx] {
         /* Never collapse the sidebar for wide screens */
-        display: block;
+        display: flex !important;
+        height: unset !important;
     }
 }
 /* /Shared/Projects.razor.rz.scp.css */
