@@ -151,6 +151,24 @@ main[b-0clx55j7wy] {
         display: block;
     }
 }
+/* /Shared/Projects.razor.rz.scp.css */
+.text-center[b-2m7ak20tsl] {
+    margin-block-end: 0;
+}
+
+.tags[b-2m7ak20tsl] {
+    pointer-events: none;
+    position: absolute;
+    bottom: 1pt;
+    left: 0;
+    right: 0;
+}
+
+.tags > span[b-2m7ak20tsl] {
+    pointer-events: auto;
+    display: inline-block;
+    background: linear-gradient(transparent 75%, purple);
+}
 /* /Shared/Skills.razor.rz.scp.css */
 img[b-bulq7u251s] {
     max-height: 64px;

@@ -25,11 +25,11 @@
       "url": "_framework\/icudt.dat"
     },
     {
-      "hash": "sha256-KPa3Nm7LRPxaTBl6UwDxl7k2NQLBFRagVtGyf25trjk=",
+      "hash": "sha256-f3eJSBo4OOWXSg\/dpKgUYcaZmvs7xEGYKlPaBsXW5jk=",
       "url": "_framework\/blazor.boot.json"
     },
     {
-      "hash": "sha256-T44xXF2DTLKlAlks7zK\/NlsM661RRH9Z5RUaepcQojo=",
+      "hash": "sha256-tolnGCj8ILnKeozams80cnLBTmnFxNynK3LPcLXxaXM=",
       "url": "_framework\/apb97.github.io.wasm"
     },
     {
@@ -193,11 +193,11 @@
       "url": "_framework\/System.wasm"
     },
     {
-      "hash": "sha256-4mbXnlUm2WKSOh27WUXRqTrIGI4ranm7Zxl3N2iExig=",
+      "hash": "sha256-bXF\/iKB6753LhRah5ad4Ikz0SKOAJSpLpfPRVFePIRk=",
       "url": "_framework\/pl\/apb97.github.io.resources.wasm"
     },
     {
-      "hash": "sha256-3PnOlBUJqx6WwEqMNxTh8SAuBpeBpPEN2hQx9qLDedE=",
+      "hash": "sha256-4nGm\/1WNLgbnGIrxGMchYkaC49EOEljfPk5SiDEjuXk=",
       "url": "apb97.github.io.styles.css"
     },
     {
@@ -253,6 +253,10 @@
       "url": "images\/favpng_asp-net-mvc-logo.png"
     },
     {
+      "hash": "sha256-ATDyLak9XicNCkkFYfJsUjw5S6yveEU7jPUPO0DaP9M=",
+      "url": "images\/Screenshot - Web Sudoku.png"
+    },
+    {
       "hash": "sha256-pcvMHle9BchCPffUfi+1i0ieqUQtLTdGAqKJrZPfYOI=",
       "url": "index.html"
     },
@@ -261,5 +265,5 @@
       "url": "manifest.webmanifest"
     }
   ],
-  "version": "fQisxND4"
+  "version": "wxFpSjz1"
 };
