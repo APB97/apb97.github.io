@@ -3,16 +3,31 @@
 @inject IJSRuntime JS
 
 <AdjustedAnchorHeading Id="projects">@Localizer["Projects"]</AdjustedAnchorHeading>
-<div class="d-flex">
-    <div class="skill-card">
-        <div class="text-center">
+<div class="d-flex" style="border: medium solid dodgerblue; margin: 2pt;">
+    <div class="col-8">
+        <div class="text-center" style="height: 100%">
             <h5>Web Sudoku</h5>
-        </div>
-        <div class="text-center">
-            <p class="text-center">@Localizer["Sudoku built with Blazor WebAssembly."] </p>
-            <button class="text-center link-primary button-as-link" onclick="history.replaceState(null, '', document.location.href);document.location.assign('/WebSudoku/');">
+            <p>@Localizer["Web Sudoku description"]</p>
+            <button class="link-primary button-as-link" onclick="history.replaceState(null, '', document.location.href);document.location.assign('/WebSudoku/');">
                 @Localizer["See it yourself here"]
             </button>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <div class="tags">
+                <span>@Localizer[".NET"]</span>
+                <span>@Localizer["C#"]</span>
+                <span>@Localizer["Blazor"]</span>
+                <span>@Localizer["WebAssembly"]</span>
+                <span>@Localizer["HTML"]</span>
+                <span>@Localizer["CSS"]</span>
+            </div>
+        </div>
+    </div>
+    <div class="col-4">
+        <div style="align-content: center">
+            <img src="images/Screenshot - Web Sudoku.png" style="width: 100%;" />
         </div>
     </div>
 </div>
@@ -23,8 +38,8 @@
             <h5>Metadata Rename</h5>
         </div>
         <div class="text-center">
-            <p class="text-center">@Localizer["Rename based on metadata built with WPF."] </p>
-            <a class="text-center link-primary" href="MetadataRename">@Localizer["See it yourself here"]</a>
+            <p>@Localizer["Rename based on metadata built with WPF."] </p>
+            <a class="link-primary" href="MetadataRename">@Localizer["See it yourself here"]</a>
         </div>
     </div>
 
@@ -33,8 +48,8 @@
             <h5>Plot and Integrate</h5>
         </div>
         <div class="text-center">
-            <p class="text-center">@Localizer["Plot and calculate definite integral of a function. Built with Windows Forms."] </p>
-            <a class="text-center link-primary" href="PlotAndIntegrate">@Localizer["See it yourself here"]</a>
+            <p>@Localizer["Plot and calculate definite integral of a function. Built with Windows Forms."] </p>
+            <a class="link-primary" href="PlotAndIntegrate">@Localizer["See it yourself here"]</a>
         </div>
     </div>
 </div>

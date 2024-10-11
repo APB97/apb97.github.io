@@ -123,8 +123,8 @@
   <data name="See it yourself here" xml:space="preserve">
     <value>See it yourself here</value>
   </data>
-  <data name="Sudoku built with Blazor WebAssembly." xml:space="preserve">
-    <value>Sudoku built with Blazor WebAssembly.</value>
+  <data name="Web Sudoku description" xml:space="preserve">
+    <value>Sudoku with features like: save and load, printing, validation, and naviagation from cell to cell with arrow keys.</value>
   </data>
   <data name="Plot and calculate definite integral of a function. Built with Windows Forms." xml:space="preserve">
     <value>Plot and calculate definite integral of a function. Built with Windows Forms.</value>

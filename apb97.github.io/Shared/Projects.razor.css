@@ -1,0 +1,17 @@
+.text-center {
+    margin-block-end: 0;
+}
+
+.tags {
+    pointer-events: none;
+    position: absolute;
+    bottom: 1pt;
+    left: 0;
+    right: 0;
+}
+
+.tags > span {
+    pointer-events: auto;
+    display: inline-block;
+    background: linear-gradient(transparent 75%, purple);
+}
