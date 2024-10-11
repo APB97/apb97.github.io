@@ -6,14 +6,14 @@
 
 <div class="page">
     <div class="sidebar" style="position: sticky; top: 0; z-index: 100">
-        <NavMenu />
+        <NavMenu @ref="navMenu"/>
     </div>
 
     <main>
         <div class="top-row px-4">
         </div>
 
-        <article class="content px-4" style="height: calc(100% - var(--top-panel-height) - var(--footer-height));">
+        <article @onclick="() => navMenu.CollapseNavMenu()" class="content px-4" style="height: calc(100% - var(--top-panel-height) - var(--footer-height));">
             @Body
         </article>
 
@@ -23,3 +23,7 @@
         </div>
     </main>
 </div>
+
+@code {
+    private NavMenu navMenu;
+}
