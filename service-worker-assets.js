@@ -25,11 +25,11 @@
       "url": "_framework\/icudt.dat"
     },
     {
-      "hash": "sha256-Jdwg5\/Z5pUY21I8rg5P2HbEsJH4OHj7E1fPgieVLsfk=",
+      "hash": "sha256-aGADrPx0c91UDcOpzQH0cIbH82UZl2pv4jLi9D3Cbcw=",
       "url": "_framework\/blazor.boot.json"
     },
     {
-      "hash": "sha256-2ooGT0wN2bnen3UGwSrNlMfN6bzUQMJQ9fhO+X+zpw8=",
+      "hash": "sha256-Tg5EUXk9RdjW0MebpPjwshDyY3NYJlkoleSOR2YIcyM=",
       "url": "_framework\/apb97.github.io.wasm"
     },
     {
@@ -193,11 +193,11 @@
       "url": "_framework\/System.wasm"
     },
     {
-      "hash": "sha256-\/rRZT03xlunbtoR4S2Pk0CH6qkCNORdFrEgujFdrbRU=",
+      "hash": "sha256-hAIdWRTcPmy+L\/vmfS0rTWk\/d9gC4y5gi1G8zi4UHtk=",
       "url": "_framework\/pl\/apb97.github.io.resources.wasm"
     },
     {
-      "hash": "sha256-mjKIqtxCaTqxTMRsOx\/\/7h0y8Wbobq4NxtdbuOzB4i4=",
+      "hash": "sha256-ohKhYymfv9PwbvZ\/3vIwAcyhwMSkdFvMnvZ\/9Inc\/Ks=",
       "url": "apb97.github.io.styles.css"
     },
     {
@@ -265,5 +265,5 @@
       "url": "manifest.webmanifest"
     }
   ],
-  "version": "gh\/+XD4i"
+  "version": "3QGnBPTc"
 };
