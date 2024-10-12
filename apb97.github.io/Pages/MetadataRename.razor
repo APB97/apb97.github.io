@@ -1,5 +1,6 @@
 ﻿@page "/MetadataRename"
 @using Microsoft.Extensions.Localization
+@using apb97.github.io.Shared
 
 @inject IStringLocalizer<MetadataRename> Localizer
 
@@ -7,28 +8,29 @@
 
 <h1>Metadata Rename</h1>
 
-<p>@Localizer["Rename music files using their metadata with this tool."]</p>
+<p>@LanguageSelect.GetStringSafely(Localizer,"Rename music files using their metadata with this tool.", Layout.Language)</p>
 
 <img class="screenshot-wide" alt="WPF UI" src="https://user-images.githubusercontent.com/16359542/156198027-c851deed-c757-4741-8eff-8d3adfed205d.png"/>
 
 <p/>
 
-<h4>@Localizer["Description"]</h4>
+<h4>@LanguageSelect.GetStringSafely(Localizer,"Description", Layout.Language)</h4>
 <p>
-    @Localizer["It allows users to specify properties to use for renaming and directories with files they want to rename."]
-    @Localizer["Apart from that, all invalid path characters are removed to ensure renaming operation will be successful."]
-    @Localizer["There is default file named skip.txt for words users want to remove from final filenames."]
+    @LanguageSelect.GetStringSafely(Localizer,"It allows users to specify properties to use for renaming and directories with files they want to rename.", Layout.Language)
+    @LanguageSelect.GetStringSafely(Localizer,"Apart from that, all invalid path characters are removed to ensure renaming operation will be successful.", Layout.Language)
+    @LanguageSelect.GetStringSafely(Localizer,"There is default file named skip.txt for words users want to remove from final filenames.", Layout.Language)
 </p>
 
 <p>
-    @Localizer["This WPF application allows selecting directories, properties used, determining order of properties in the final filename and choosing a SkipFile."]
-    @Localizer["It allows saving and loading of settings to and from"]
-    <code>.json</code>@Localizer["file."]
-    @Localizer["Application displays messages about changes made to the settings and allows to Silence the output, so it is not updated until the setting is changed."]
+    @LanguageSelect.GetStringSafely(Localizer,"This WPF application allows selecting directories, properties used, determining order of properties in the final filename and choosing a SkipFile.", Layout.Language)
+    @LanguageSelect.GetStringSafely(Localizer,"It allows saving and loading of settings to and from", Layout.Language)
+    <code>.json</code>@LanguageSelect.GetStringSafely(Localizer,"file.", Layout.Language)
+    @LanguageSelect.GetStringSafely(Localizer,"Application displays messages about changes made to the settings and allows to Silence the output, so it is not updated until the setting is changed.", Layout.Language)
 </p>
 
-<a href="https://github.com/APB97/MusicRenameWithMetadata">@Localizer["GitHub repository"]</a>
+<a href="https://github.com/APB97/MusicRenameWithMetadata">@LanguageSelect.GetStringSafely(Localizer,"GitHub repository", Layout.Language)</a>
 
 @code {
-
+    [CascadingParameter]
+    public required MainLayout Layout { get; set; }
 }

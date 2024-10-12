@@ -1,5 +1,6 @@
 ﻿@page "/PlotAndIntegrate"
 @using Microsoft.Extensions.Localization
+@using apb97.github.io.Shared
 
 @inject IStringLocalizer<PlotAndIntegrate> Localizer
 
@@ -7,40 +8,41 @@
 
 <h1>Plot and Integrate</h1>
 
-<p>@Localizer["Windows Forms application that can be used for drawing simple plots and calculating integrals."]</p>
+<p>@LanguageSelect.GetStringSafely(Localizer,"Windows Forms application that can be used for drawing simple plots and calculating integrals.", Layout.Language)</p>
 
 <img class="screenshot-wide" alt="App UI" src="https://raw.githubusercontent.com/APB97/PlotAndIntegrate/main/images/plot-made-larger.png"/>
 
 <p/>
-<h4>@Localizer["Functionalities"]</h4>
+<h4>@LanguageSelect.GetStringSafely(Localizer,"Functionalities", Layout.Language)</h4>
 
 <ul>
-    <li>@Localizer["Drawing plots of a polynomial function"]</li>
-    <li>@Localizer["Drawing plots of a logarithmic function"]</li>
-    <li>@Localizer["Zooming the plot by scrolling the mouse wheel"]</li>
-    <li>@Localizer["Panning the plot by dragging mouse while mouse button is pressed"]</li>
-    <li>@Localizer["Saving the image of the plot with use of 'Save as image...' button"]</li>
-    <li>@Localizer["Calculating definite intergral for a given range"]</li>
-    <li>@Localizer["Setting axes' labels font size, size of the plot and color of the plot"]</li>
+    <li>@LanguageSelect.GetStringSafely(Localizer,"Drawing plots of a polynomial function", Layout.Language)</li>
+    <li>@LanguageSelect.GetStringSafely(Localizer,"Drawing plots of a logarithmic function", Layout.Language)</li>
+    <li>@LanguageSelect.GetStringSafely(Localizer,"Zooming the plot by scrolling the mouse wheel", Layout.Language)</li>
+    <li>@LanguageSelect.GetStringSafely(Localizer,"Panning the plot by dragging mouse while mouse button is pressed", Layout.Language)</li>
+    <li>@LanguageSelect.GetStringSafely(Localizer,"Saving the image of the plot with use of 'Save as image...' button", Layout.Language)</li>
+    <li>@LanguageSelect.GetStringSafely(Localizer,"Calculating definite intergral for a given range", Layout.Language)</li>
+    <li>@LanguageSelect.GetStringSafely(Localizer,"Setting axes' labels font size, size of the plot and color of the plot", Layout.Language)</li>
 </ul>
 
-<h4>@Localizer["Installation"]</h4>
+<h4>@LanguageSelect.GetStringSafely(Localizer,"Installation", Layout.Language)</h4>
 
 <ul>
     <li>
-        <b>@Localizer["Option 1"]</b>
+        <b>@LanguageSelect.GetStringSafely(Localizer,"Option 1", Layout.Language)</b>
         <br/>
-        @Localizer["You can download it from 'Releases' section, and either run it or install it with 'setup.exe'."]
+        @LanguageSelect.GetStringSafely(Localizer,"You can download it from 'Releases' section, and either run it or install it with 'setup.exe'.", Layout.Language)
     </li>    
     <li>
-        <b>@Localizer["Option 2"]</b>
+        <b>@LanguageSelect.GetStringSafely(Localizer,"Option 2", Layout.Language)</b>
         <br/>
-        @Localizer["Download the source and compile the solution with your IDE (for this project I used Visual Studio 2019)."]
+        @LanguageSelect.GetStringSafely(Localizer,"Download the source and compile the solution with your IDE (for this project I used Visual Studio 2019).", Layout.Language)
     </li>    
 </ul>
 
-<a href="https://github.com/APB97/PlotAndIntegrate">@Localizer["GitHub repository"]</a>
+<a href="https://github.com/APB97/PlotAndIntegrate">@LanguageSelect.GetStringSafely(Localizer,"GitHub repository", Layout.Language)</a>
 
 @code {
-
+    [CascadingParameter]
+    public required MainLayout Layout { get; set; }
 }

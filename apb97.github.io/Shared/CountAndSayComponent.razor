@@ -5,11 +5,11 @@
 @inject IStringLocalizer<CountAndSay> Localizer
 
 <div>
-    <h4>@Localizer["Input"]</h4>
+    <h4>@LanguageSelect.GetStringSafely(Localizer, "Input", Layout.Language)</h4>
 
     <div class="row">
         <div class="card-group">
-            <label for="Number" style="margin: 4px">@Localizer["NumberOfSayings"]</label>
+            <label for="Number" style="margin: 4px">@LanguageSelect.GetStringSafely(Localizer, "NumberOfSayings", Layout.Language)</label>
             <InputNumber TValue="int?" Value="NumberOfSayings" ValueExpression="() => NumberOfSayings" ValueChanged="OnNumberChanged" type="number" min="1" max="30" style="margin: 4px"/>
         </div>
     </div>
@@ -18,10 +18,10 @@
         var results = GetResults();
     }
     <hr />
-    <AdjustedAnchorHeading Id="@OutputId" FontSize="smaller">@Localizer["Output"]</AdjustedAnchorHeading>
+    <AdjustedAnchorHeading Id="@OutputId" FontSize="smaller">@LanguageSelect.GetStringSafely(Localizer, "Output", Layout.Language)</AdjustedAnchorHeading>
     <div class="row">
         <div class="card-group">
-            <label style="margin: 4px">@Localizer["Result"]</label>
+            <label style="margin: 4px">@LanguageSelect.GetStringSafely(Localizer, "Result", Layout.Language)</label>
 
             <code role="status" style="margin: 3px; font-size:large; overflow-wrap: anywhere">
                 @results.result
@@ -29,7 +29,7 @@
         </div>
     </div>
 
-    <h4>@Localizer["Explanation"]</h4>
+    <h4>@LanguageSelect.GetStringSafely(Localizer, "Explanation", Layout.Language)</h4>
     <div class="row">
         <p role="status">
             @{
@@ -48,6 +48,9 @@
 
 @code {
     public const string OutputId = "output";
+
+    [CascadingParameter]
+    public required MainLayout Layout { get; set; }
 
     [Parameter]
     public int? NumberOfSayings { get; set; }
@@ -70,7 +73,7 @@
         }
         catch (ArgumentOutOfRangeException)
         {
-            return (Localizer["Out of range"], Array.Empty<string>());
+            return (LanguageSelect.GetStringSafely(Localizer, "Out of range", Layout.Language) ?? string.Empty, Array.Empty<string>());
         }
     }
 }

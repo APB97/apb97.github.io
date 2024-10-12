@@ -2,6 +2,8 @@ using apb97.github.io;
 using apb97.github.io.Services;
 using Microsoft.AspNetCore.Components.Web;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
+using Microsoft.Extensions.Localization;
+using Microsoft.Extensions.Options;
 using Microsoft.JSInterop;
 using System.Globalization;
 
@@ -13,6 +15,7 @@ builder.Services.AddLocalization(options =>
 {
     options.ResourcesPath = "Resources";
 });
+builder.Services.AddScoped<ResourceManagerStringLocalizerFactory>();
 builder.Services.AddScoped<SayService>();
 builder.Services.AddScoped<CountAndSayService>();
 

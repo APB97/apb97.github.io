@@ -1,30 +1,30 @@
 ﻿@inject IStringLocalizer<Projects> Localizer
 @inject IJSRuntime JS
 
-<AdjustedAnchorHeading Id="projects">@Localizer["Projects"]</AdjustedAnchorHeading>
+<AdjustedAnchorHeading Id="projects">@LanguageSelect.GetStringSafely(Localizer, "Projects", Layout.Language)</AdjustedAnchorHeading>
 <div class="d-flex" style="border: medium solid dodgerblue; margin: 2pt;">
     <div class="col-8 d-flex flex-column">
         <div class="text-center flex-grow-1">
             <h5>Web Sudoku</h5>
-            <p>@Localizer["Web Sudoku description"]</p>
+            <p>@LanguageSelect.GetStringSafely(Localizer, "Web Sudoku description", Layout.Language)</p>
             <button class="link-primary button-as-link" onclick="history.replaceState(null, '', document.location.href);document.location.assign('/WebSudoku/');">
-                @Localizer["See it yourself here"]
+                @LanguageSelect.GetStringSafely(Localizer, "See it yourself here", Layout.Language)
             </button>
         </div>
         <div class="text-center">
             <div class="tags">
-                <span>@Localizer[".NET"]</span>
-                <span>@Localizer["C#"]</span>
-                <span>@Localizer["Blazor"]</span>
-                <span>@Localizer["WebAssembly"]</span>
-                <span>@Localizer["HTML"]</span>
-                <span>@Localizer["CSS"]</span>
+                <span>@LanguageSelect.GetStringSafely(Localizer, ".NET", Layout.Language)</span>
+                <span>@LanguageSelect.GetStringSafely(Localizer, "C#", Layout.Language)</span>
+                <span>@LanguageSelect.GetStringSafely(Localizer, "Blazor", Layout.Language)</span>
+                <span>@LanguageSelect.GetStringSafely(Localizer, "WebAssembly", Layout.Language)</span>
+                <span>@LanguageSelect.GetStringSafely(Localizer, "HTML", Layout.Language)</span>
+                <span>@LanguageSelect.GetStringSafely(Localizer, "CSS", Layout.Language)</span>
             </div>
         </div>
     </div>
     <div class="col-4">
         <div style="align-content: center">
-            <img src="images/Screenshot - Web Sudoku.png" style="width: 100%;" />
+            <img alt="Web Sudoku Screenshot" src="images/Screenshot - Web Sudoku.png" style="width: 100%;" />
         </div>
     </div>
 </div>
@@ -35,8 +35,8 @@
             <h5>Metadata Rename</h5>
         </div>
         <div class="text-center">
-            <p>@Localizer["Rename based on metadata built with WPF."] </p>
-            <a class="link-primary" href="MetadataRename">@Localizer["See it yourself here"]</a>
+            <p>@LanguageSelect.GetStringSafely(Localizer, "Rename based on metadata built with WPF.", Layout.Language) </p>
+            <a class="link-primary" href="MetadataRename">@LanguageSelect.GetStringSafely(Localizer, "See it yourself here", Layout.Language)</a>
         </div>
     </div>
 
@@ -45,11 +45,13 @@
             <h5>Plot and Integrate</h5>
         </div>
         <div class="text-center">
-            <p>@Localizer["Plot and calculate definite integral of a function. Built with Windows Forms."] </p>
-            <a class="link-primary" href="PlotAndIntegrate">@Localizer["See it yourself here"]</a>
+            <p>@LanguageSelect.GetStringSafely(Localizer, "Plot and calculate definite integral of a function. Built with Windows Forms.", Layout.Language) </p>
+            <a class="link-primary" href="PlotAndIntegrate">@LanguageSelect.GetStringSafely(Localizer, "See it yourself here", Layout.Language)</a>
         </div>
     </div>
 </div>
 
 @code{
+    [CascadingParameter]
+    public required MainLayout Layout { get; set; }
 }

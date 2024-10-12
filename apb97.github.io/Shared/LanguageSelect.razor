@@ -1,35 +1,50 @@
 ﻿@using System.Globalization
 @using Microsoft.Extensions.Localization
+@using Microsoft.Extensions.Logging.Abstractions
+@using Microsoft.Extensions.Options
+@using System.Reflection
 @inject IJSRuntime JSRuntime
 @inject NavigationManager Navigation
 @inject IStringLocalizer<LanguageSelect> Localizer
 
 <label class="text-white">
-    @Localizer["Select your locale"]:
+    @(GetStringSafely(Localizer, "Select your locale", Culture)):
 </label>
 <InputSelect style="background-color: transparent; border: none; color: white;" TValue="CultureInfo" DisplayName="Locale" Value="@Culture" ValueChanged="SetCultureAndReload" ValueExpression="() => Culture">
     @foreach (var culture in supportedCultures)
     {
-        <option value="@culture.Value">@culture.Key</option>
+        <option value="@culture.Value" class="@(culture.Value.Name == Culture.Name ? "current" : null)">@culture.Key</option>
     }
 </InputSelect>
 
 @code
 {
-    private CultureInfo Culture { get; set; } = CultureInfo.CurrentCulture;
+    [CascadingParameter]
+    public required MainLayout Layout { get; set; }
+
+    public CultureInfo Culture { get; private set; } = CultureInfo.CurrentUICulture;
+
+    private static MethodInfo? storedMethod = typeof(ResourceManagerStringLocalizer).GetMethod(nameof(GetStringSafely), System.Reflection.BindingFlags.NonPublic | BindingFlags.Instance);
 
     private readonly IReadOnlyDictionary<string, CultureInfo> supportedCultures = new Dictionary<string, CultureInfo>
-    { 
-        { "English", new CultureInfo("en") },
-        { "Polski", new CultureInfo("pl") }
+    {
+        { "English", CultureInfo.CreateSpecificCulture("en") },
+        { "Polski", CultureInfo.CreateSpecificCulture("pl") }
     };
 
     private async Task SetCultureAndReload(CultureInfo value)
     {
-        Culture = value;
+        CultureInfo.CurrentCulture = CultureInfo.CurrentUICulture = Culture = value;
+
+        Layout.NotifyStateChanged();
 
         await JSRuntime.InvokeVoidAsync("blazorCulture.set", value.Name);
+    }
 
-        Navigation.NavigateTo(Navigation.Uri, forceLoad: true);
+    public static string? GetStringSafely<T>(IStringLocalizer<T> localizer, string name, CultureInfo? culture = null)
+    {
+        var field = typeof(StringLocalizer<T>).GetField("_localizer", BindingFlags.NonPublic | BindingFlags.Instance);
+        var value = field?.GetValue(localizer);
+        return storedMethod?.Invoke(value, new object?[] { name, culture ?? CultureInfo.CurrentUICulture }) as string ?? name;
     }
 }
