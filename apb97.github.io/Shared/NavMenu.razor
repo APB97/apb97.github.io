@@ -1,4 +1,5 @@
 ﻿@using Microsoft.Extensions.Localization
+@using System.Globalization
 @inject IStringLocalizer<NavMenu> Localizer
 @inject NavigationManager Navigation
 
@@ -15,41 +16,41 @@
     <nav class="d-flex flex-column flex-grow-1">
         <div class="nav-item px-3">
             <NavLink class="nav-link" href="" Match="NavLinkMatch.All" @onclick="ToggleNavMenu">
-                @Localizer["Home"]
+                @LanguageSelect.GetStringSafely(Localizer, "Home", language?.Culture)
             </NavLink>
         </div>
         <div class="nav-item px-3">
             <NavLink class="nav-link" href="LearningProgress" Match="NavLinkMatch.All" @onclick="ToggleNavMenu">
-                @Localizer["LearningProgress"]
+                @LanguageSelect.GetStringSafely(Localizer, "LearningProgress", language?.Culture)
             </NavLink>
         </div>
 
-        <p class="text-white-50">@Localizer["Projects"]</p>
+        <p class="text-white-50">@LanguageSelect.GetStringSafely(Localizer, "Projects", language?.Culture)</p>
         <div class="nav-item px-3">
             <button class="nav-link" onclick="history.replaceState(null, '', document.location.href);document.location.assign('/WebSudoku/');">
-                @Localizer["Web Sudoku"]
+                @LanguageSelect.GetStringSafely(Localizer, "Web Sudoku", language?.Culture)
             </button>
         </div>
         <div class="nav-item px-3">
             <NavLink class="nav-link" href="MetadataRename" @onclick="ToggleNavMenu">
-                @Localizer["Metadata Rename"]
+                @LanguageSelect.GetStringSafely(Localizer, "Metadata Rename", language?.Culture)
             </NavLink>
         </div>
         <div class="nav-item px-3">
             <NavLink class="nav-link" href="PlotAndIntegrate" @onclick="ToggleNavMenu">
-                @Localizer["Plot and Integrate"]
+                @LanguageSelect.GetStringSafely(Localizer, "Plot and Integrate", language?.Culture)
             </NavLink>
         </div>
 
-        <p class="text-white-50">@Localizer["Challenges"]</p>
+        <p class="text-white-50">@LanguageSelect.GetStringSafely(Localizer, "Challenges", language?.Culture)</p>
         <div class="nav-item px-3">
             <NavLink class="nav-link" href="IntegerToRoman" @onclick="ToggleNavMenu">
-                @Localizer["Integer to Roman"]
+                @LanguageSelect.GetStringSafely(Localizer, "Integer to Roman", language?.Culture)
             </NavLink>
         </div>
          <div class="nav-item px-3">
             <NavLink class="nav-link" href="CountAndSay" @onclick="ToggleNavMenu">
-               @Localizer["Count and Say"]
+                @LanguageSelect.GetStringSafely(Localizer, "Count and Say", language?.Culture)
             </NavLink>
         </div>
         <div class="flex-grow-1">
@@ -60,7 +61,7 @@
         </div>
         <div class="nav-item px-0">
             <div class="nav-link">
-                <LanguageSelect />
+                <LanguageSelect @ref="language" />
             </div>
         </div>
     </nav>
@@ -68,6 +69,10 @@
 
 @code {
     private bool collapseNavMenu = true;
+
+    private LanguageSelect? language;
+
+    public CultureInfo? Language => language?.Culture;
 
     private string? NavMenuCssClass => collapseNavMenu ? "collapse" : null;
 

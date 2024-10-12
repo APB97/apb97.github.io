@@ -1,22 +1,24 @@
 ﻿@inject IStringLocalizer<Challenges> Localizer
 @inject IJSRuntime JS
 
-<AdjustedAnchorHeading Id="challenges">@Localizer["Challenges"]</AdjustedAnchorHeading>
+<AdjustedAnchorHeading Id="challenges">@LanguageSelect.GetStringSafely(Localizer, "Challenges", Layout.Language)</AdjustedAnchorHeading>
 
 <div class="d-flex">
     <div class="skill-card">
-        <h4 class="text-center">@Localizer["Integer to Roman"]</h4>
+        <h4 class="text-center">@LanguageSelect.GetStringSafely(Localizer, "Integer to Roman", Layout.Language)</h4>
         <div class="text-center">
-            <a class="link-primary" href="/IntegerToRoman">@Localizer["See this challenge"]</a>
+            <a class="link-primary" href="/IntegerToRoman">@LanguageSelect.GetStringSafely(Localizer, "See this challenge", Layout.Language)</a>
         </div>
     </div>
     <div class="skill-card">
-        <h4 class="text-center">@Localizer["Count and say"]</h4>
+        <h4 class="text-center">@LanguageSelect.GetStringSafely(Localizer, "Count and say", Layout.Language)</h4>
         <div class="text-center">
-            <a class="link-primary" href="/CountAndSay">@Localizer["See this challenge"]</a>
+            <a class="link-primary" href="/CountAndSay">@LanguageSelect.GetStringSafely(Localizer, "See this challenge", Layout.Language)</a>
         </div>
     </div>
 </div>
 
-@code{
+@code {
+    [CascadingParameter]
+    public required MainLayout Layout { get; set; }
 }

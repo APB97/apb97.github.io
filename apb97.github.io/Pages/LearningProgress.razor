@@ -6,16 +6,19 @@
 @inject IStringLocalizer<LearningProgress> Localizer
 @inject NavigationManager Navigation
 
-<PageTitle>Adrian Bieliński - @Localizer["LearningProgress"] @Year</PageTitle>
+<PageTitle>Adrian Bieliński - @LanguageSelect.GetStringSafely(Localizer,"LearningProgress", Layout.Language) @Year</PageTitle>
 
-<h2>@Localizer["LearningProgress"]</h2>
+<h2>@LanguageSelect.GetStringSafely(Localizer,"LearningProgress", Layout.Language)</h2>
 
-<label>@Localizer["Year"]</label>
+<label>@LanguageSelect.GetStringSafely(Localizer,"Year", Layout.Language)</label>
 <InputNumber TValue="int" Value="Year" ValueChanged="OnYearChanged" ValueExpression="() => Year" min="@MinYear" max="@RecentYear" />
 
 <DynamicComponent Type="GetDynamicComponentType(Year)" />
 
 @code {
+    [CascadingParameter]
+    public required MainLayout Layout { get; set; }
+
     [Parameter]
     public int Year { get; set; } = RecentYear;
 

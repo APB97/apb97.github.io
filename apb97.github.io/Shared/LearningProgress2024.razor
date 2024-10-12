@@ -1,52 +1,57 @@
 ﻿@inject IStringLocalizer<LearningProgress2024> Localizer
 
-<h3>@Localizer["Year2024"]</h3>
+<h3>@LanguageSelect.GetStringSafely(Localizer, "Year2024", Layout.Language)</h3>
 
 <ul>
     <li>
-        <h4>@Localizer["C# features"]</h4>
+        <h4>@LanguageSelect.GetStringSafely(Localizer, "C# features", Layout.Language)</h4>
         <ul>
             <li>
-                <b>@Localizer["Records"]</b>
+                <b>@LanguageSelect.GetStringSafely(Localizer, "Records", Layout.Language)</b>
                 <br />
-                <span>@Localizer["Records description"]</span>
+                <span>@LanguageSelect.GetStringSafely(Localizer, "Records description", Layout.Language)</span>
                 <ul>
-                    <li>@Localizer["Concise syntax for reference types"]</li>
-                    <li>@Localizer["Built-in value equality"]</li>
-                    <li>@Localizer["Built-in concise syntax for nondesctructive mutation"]</li>
-                    <li>@Localizer["Built-in formatting"]</li>
+                    <li>@LanguageSelect.GetStringSafely(Localizer, "Concise syntax for reference types", Layout.Language)</li>
+                    <li>@LanguageSelect.GetStringSafely(Localizer, "Built-in value equality", Layout.Language)</li>
+                    <li>@LanguageSelect.GetStringSafely(Localizer, "Built-in concise syntax for nondesctructive mutation", Layout.Language)</li>
+                    <li>@LanguageSelect.GetStringSafely(Localizer, "Built-in formatting", Layout.Language)</li>
                 </ul>
             </li>
             <li>
-                <b>@Localizer["Constant interpolated strings"]</b>
+                <b>@LanguageSelect.GetStringSafely(Localizer, "Constant interpolated strings", Layout.Language)</b>
                 <br />
-                <p>@Localizer["Constant interpolated strings description"]</p>
+                <p>@LanguageSelect.GetStringSafely(Localizer, "Constant interpolated strings description", Layout.Language)</p>
             </li>
         </ul>
     </li>
     <li>
-        <h4>@Localizer["NuGet packages"]</h4>
+        <h4>@LanguageSelect.GetStringSafely(Localizer, "NuGet packages", Layout.Language)</h4>
         <ul>
             <li>
                 <b>StrawberryShake</b>
                 <br />
-                <p>@Localizer["StrawberryShake description"]</p>
+                <p>@LanguageSelect.GetStringSafely(Localizer, "StrawberryShake description", Layout.Language)</p>
             </li>
         </ul>
     </li>
     <li>
-        <h4>@Localizer["Linux commands"]</h4>
+        <h4>@LanguageSelect.GetStringSafely(Localizer, "Linux commands", Layout.Language)</h4>
         <ul>
             <li>
-                <b>@Localizer["Basic"]</b>
+                <b>@LanguageSelect.GetStringSafely(Localizer, "Basic", Layout.Language)</b>
                 <br />
-                @Localizer["Linux basic commands"]
+                @LanguageSelect.GetStringSafely(Localizer, "Linux basic commands", Layout.Language)
             </li>
             <li>
-                <b>@Localizer["Advanced"]</b>
+                <b>@LanguageSelect.GetStringSafely(Localizer, "Advanced", Layout.Language)</b>
                 <br />
-                @Localizer["Linux advanced commands"]
+                @LanguageSelect.GetStringSafely(Localizer, "Linux advanced commands", Layout.Language)
             </li>
         </ul>
     </li>
 </ul>
+
+@code {
+    [CascadingParameter]
+    public required MainLayout Layout { get; set; }
+}

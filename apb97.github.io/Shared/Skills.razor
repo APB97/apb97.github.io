@@ -1,26 +1,26 @@
 ﻿@inject IStringLocalizer<Skills> Localizer
 
-<AdjustedAnchorHeading Id="skills">@Localizer["Skills"]</AdjustedAnchorHeading>
+<AdjustedAnchorHeading Id="skills">@LanguageSelect.GetStringSafely(Localizer, "Skills", Layout.Language)</AdjustedAnchorHeading>
 
 <p>
-    @Localizer["I usually build"]
+    @LanguageSelect.GetStringSafely(Localizer, "I usually build", Layout.Language)
     <br/>
-    @Localizer["Apart from these"] @Localizer["Here are my"]
+    @LanguageSelect.GetStringSafely(Localizer, "Apart from these", Layout.Language) @LanguageSelect.GetStringSafely(Localizer, "Here are my", Layout.Language)
 </p>
 
 <div class="row">
     <div class="skill-card">
         <img class="center-25" src="/images/512px-C_Sharp_wordmark.png" alt="C# Development Image"/>
-        <h4 class="text-center">@Localizer["C# Development"]</h4>
+        <h4 class="text-center">@LanguageSelect.GetStringSafely(Localizer, "C# Development", Layout.Language)</h4>
         <p>
-             @Localizer["I use C#"]
+            @LanguageSelect.GetStringSafely(Localizer, "I use C#", Layout.Language)
         </p>
     </div>
     <div class="skill-card">
         <img class="center-50" src="/images/favpng_asp-net-mvc-logo.png" alt="Patterns Image"/>
-        <h4 class="text-center">@Localizer["Patterns"]</h4>
+        <h4 class="text-center">@LanguageSelect.GetStringSafely(Localizer, "Patterns", Layout.Language)</h4>
         <p>
-            @Localizer["I use patterns"]
+            @LanguageSelect.GetStringSafely(Localizer, "I use patterns", Layout.Language)
         </p>
     </div>
 </div>
@@ -28,16 +28,21 @@
 <div class="row">
     <div class="skill-card">
         <img class="center-50" src="/images/efcf.png" alt="EF Code First Image"/>
-        <h4 class="text-center">@Localizer["Object-Relational Mapping"]</h4>
+        <h4 class="text-center">@LanguageSelect.GetStringSafely(Localizer, "Object-Relational Mapping", Layout.Language)</h4>
         <p>
-            @Localizer["I use an ORM"]
+            @LanguageSelect.GetStringSafely(Localizer, "I use an ORM", Layout.Language)
         </p>
     </div>
     <div class="skill-card">
         <img class="center-33" src="/images/asp-net.png" alt="ASP.Net Image"/>
-        <h4 class="text-center">@Localizer["Web Development"]</h4>
+        <h4 class="text-center">@LanguageSelect.GetStringSafely(Localizer, "Web Development", Layout.Language)</h4>
         <p>
-            @Localizer["I use ASP.Net"]
+            @LanguageSelect.GetStringSafely(Localizer, "I use ASP.Net", Layout.Language)
         </p>
     </div>
 </div>
+
+@code {
+    [CascadingParameter]
+    public required MainLayout Layout { get; set; }
+}

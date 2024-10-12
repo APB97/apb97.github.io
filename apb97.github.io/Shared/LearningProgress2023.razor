@@ -1,67 +1,72 @@
 ﻿@inject IStringLocalizer<LearningProgress2023> Localizer
 
-<h3>@Localizer["Year2023"]</h3>
+<h3>@LanguageSelect.GetStringSafely(Localizer,"Year2023", Layout.Language)</h3>
 <ul>
     <li>
         <h4>JavaScript</h4>
         <ul>
             <li>
-                <b>@Localizer["JS types"]</b>
+                <b>@LanguageSelect.GetStringSafely(Localizer,"JS types", Layout.Language)</b>
                 <br/>
-                <p>@Localizer["JS types description"]</p>
-                <b>@Localizer["Example"]</b>
+                <p>@LanguageSelect.GetStringSafely(Localizer,"JS types description", Layout.Language)</p>
+                <b>@LanguageSelect.GetStringSafely(Localizer,"Example", Layout.Language)</b>
                 <br />
-                <CodeView Code="@Localizer["JS types code"]"/>
+                <CodeView Code="@LanguageSelect.GetStringSafely(Localizer,"JS types code", Layout.Language)"/>
             </li>
             <li>
-                <b>@Localizer["JS functions and arrays"]</b>
+                <b>@LanguageSelect.GetStringSafely(Localizer,"JS functions and arrays", Layout.Language)</b>
                 <br />
-                <p>@Localizer["JS functions and arrays description"]</p>
-                <b>@Localizer["Example"]</b>
+                <p>@LanguageSelect.GetStringSafely(Localizer,"JS functions and arrays description", Layout.Language)</p>
+                <b>@LanguageSelect.GetStringSafely(Localizer,"Example", Layout.Language)</b>
                 <br />
-                <CodeView Code="@Localizer["JS functions and arrays code"]"/>
+                <CodeView Code="@LanguageSelect.GetStringSafely(Localizer,"JS functions and arrays code", Layout.Language)"/>
             </li>
             <li>
-                <b>@Localizer["JS objects"]</b>
+                <b>@LanguageSelect.GetStringSafely(Localizer,"JS objects", Layout.Language)</b>
                 <br />
-                <p>@Localizer["JS objects description"]</p>
-                <b>@Localizer["Example"]</b>
+                <p>@LanguageSelect.GetStringSafely(Localizer,"JS objects description", Layout.Language)</p>
+                <b>@LanguageSelect.GetStringSafely(Localizer,"Example", Layout.Language)</b>
                 <br />
-                <CodeView Code="@Localizer["JS objects code"]"/>
+                <CodeView Code="@LanguageSelect.GetStringSafely(Localizer,"JS objects code", Layout.Language)"/>
             </li>
         </ul>
-        <h4>@Localizer["JavaScript libs"]</h4>
+        <h4>@LanguageSelect.GetStringSafely(Localizer,"JavaScript libs", Layout.Language)</h4>
         <ul>
             <li>
                 <b>Paged.js</b>
                 <br />
-                <p>@Localizer["Paged.js description"]</p>
+                <p>@LanguageSelect.GetStringSafely(Localizer,"Paged.js description", Layout.Language)</p>
             </li>
         </ul>
-        <h4>@Localizer["General knowledge"]</h4>
+        <h4>@LanguageSelect.GetStringSafely(Localizer,"General knowledge", Layout.Language)</h4>
         <ul>
             <li>
-                <b>@Localizer["TPH, TPC, TPT"]</b>
+                <b>@LanguageSelect.GetStringSafely(Localizer,"TPH, TPC, TPT", Layout.Language)</b>
                 <br />
-                <p>@Localizer["TPH, TPC, TPT description"]</p>
+                <p>@LanguageSelect.GetStringSafely(Localizer,"TPH, TPC, TPT description", Layout.Language)</p>
             </li>
         </ul>
         <h4>.NET</h4>
         <ul>
             <li>
-                <b>@Localizer["System.Text.Json"]</b>
+                <b>@LanguageSelect.GetStringSafely(Localizer,"System.Text.Json", Layout.Language)</b>
                 <br />
-                <p>@Localizer["System.Text.Json description"]</p>
-                <a href="https://learn.microsoft.com/en-us/dotnet/standard/serialization/system-text-json/custom-contracts" rel="noopener">@Localizer["Source"]</a>
+                <p>@LanguageSelect.GetStringSafely(Localizer,"System.Text.Json description", Layout.Language)</p>
+                <a href="https://learn.microsoft.com/en-us/dotnet/standard/serialization/system-text-json/custom-contracts" rel="noopener">@LanguageSelect.GetStringSafely(Localizer,"Source", Layout.Language)</a>
             </li>
         </ul>
-        <h4>@Localizer["NuGet packages"]</h4>
+        <h4>@LanguageSelect.GetStringSafely(Localizer,"NuGet packages", Layout.Language)</h4>
         <ul>
             <li>
-                <b>@Localizer["HotChocolate"]</b>
+                <b>@LanguageSelect.GetStringSafely(Localizer,"HotChocolate", Layout.Language)</b>
                 <br />
-                <p>@Localizer["HotChocolate description"]</p>
+                <p>@LanguageSelect.GetStringSafely(Localizer,"HotChocolate description", Layout.Language)</p>
             </li>
         </ul>
     </li>
 </ul>
+
+@code {
+    [CascadingParameter]
+    public required MainLayout Layout { get; set; }
+}

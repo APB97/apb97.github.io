@@ -1,23 +1,37 @@
-﻿@using apb97.github.io.Shared
+﻿@using System.Globalization
+@using apb97.github.io.Shared
 @inherits LayoutComponentBase
 
 @inject IStringLocalizer<MainLayout> Localizer
 
-<div class="page">
-    <div class="sidebar d-flex flex-column" style="position: sticky; top: 0; z-index: 100">
-        <NavMenu @ref="navMenu"/>
-    </div>
-
-    <main>
-        <div class="top-row px-4">
+<CascadingValue Value="this">
+    <div class="page">
+        <div class="sidebar d-flex flex-column" style="position: sticky; top: 0; z-index: 100">
+            <NavMenu @ref="navMenu"/>
         </div>
 
-        <article @onclick="() => navMenu?.CollapseNavMenu()" class="content px-4">
-            @Body
-        </article>
-    </main>
-</div>
+        <main>
+            <div class="top-row px-4">
+            </div>
+
+            <article @onclick="() => navMenu?.CollapseNavMenu()" class="content px-4">
+                @Body
+            </article>
+        </main>
+    </div>
+</CascadingValue>
 
 @code {
     private NavMenu? navMenu;
+
+    public static event Action OnStateChanging = delegate { };
+
+    public void NotifyStateChanged()
+    {
+        StateHasChanged();
+        navMenu?.SetParametersAsync(ParameterView.Empty);
+        OnStateChanging.Invoke();
+    }
+
+    public CultureInfo? Language => navMenu?.Language;
 }

@@ -1,34 +1,39 @@
 ﻿@inject IStringLocalizer<LearningProgress2022> Localizer
 
-<h3>@Localizer["Year2022-last-weeks"]</h3>
+<h3>@LanguageSelect.GetStringSafely(Localizer,"Year2022-last-weeks", Layout.Language)</h3>
 <ul>
     <li>
         <h4>C#</h4>
         <ul>
             <li>
-                <b>@Localizer["Extended property pattern"]</b>
+                <b>@LanguageSelect.GetStringSafely(Localizer,"Extended property pattern", Layout.Language)</b>
                 <br />
-                <p>@Localizer["Extended property pattern description"]</p>
-                <b>@Localizer["Example"]</b>
+                <p>@LanguageSelect.GetStringSafely(Localizer,"Extended property pattern description", Layout.Language)</p>
+                <b>@LanguageSelect.GetStringSafely(Localizer,"Example", Layout.Language)</b>
                 <br />
-                <CodeView Code="@Localizer["Extended property pattern code"]"></CodeView>
+                <CodeView Code="@LanguageSelect.GetStringSafely(Localizer,"Extended property pattern code", Layout.Language)"></CodeView>
             </li>
             <li>
-                <b>@Localizer["Global using directive"]</b>
+                <b>@LanguageSelect.GetStringSafely(Localizer,"Global using directive", Layout.Language)</b>
                 <br />
-                <p>@Localizer["Global using directive description"]</p>
-                <b>@Localizer["Example"]</b>
+                <p>@LanguageSelect.GetStringSafely(Localizer,"Global using directive description", Layout.Language)</p>
+                <b>@LanguageSelect.GetStringSafely(Localizer,"Example", Layout.Language)</b>
                 <br />
-                <CodeView Code="@Localizer["Global using directive code"]" />
+                <CodeView Code="@LanguageSelect.GetStringSafely(Localizer,"Global using directive code", Layout.Language)" />
             </li>
             <li>
-                <b>@Localizer["File-scoped namespace declaration"]</b>
+                <b>@LanguageSelect.GetStringSafely(Localizer,"File-scoped namespace declaration", Layout.Language)</b>
                 <br />
-                <p>@Localizer["File-scoped namespace declaration description"]</p>
-                <b>@Localizer["Example"]</b>
+                <p>@LanguageSelect.GetStringSafely(Localizer,"File-scoped namespace declaration description", Layout.Language)</p>
+                <b>@LanguageSelect.GetStringSafely(Localizer,"Example", Layout.Language)</b>
                 <br />
-                <CodeView Code="@Localizer["File-scoped namespace declaration code"]" />
+                <CodeView Code="@LanguageSelect.GetStringSafely(Localizer,"File-scoped namespace declaration code", Layout.Language)" />
             </li>
         </ul>
     </li>
 </ul>
+
+@code {
+    [CascadingParameter]
+    public required MainLayout Layout { get; set; }
+}

@@ -1,5 +1,6 @@
 ﻿@using apb97.github.io.Services
 
+@implements IDisposable
 @inject IStringLocalizer<AboutMe> Localizer
 @inject IJSRuntime JS
 
@@ -8,16 +9,22 @@
         <div class="d-flex flex-row">
             <div class="col-8 flex-column">
                 <div class="d-flex flex-column">
-                    <AdjustedAnchorHeading Id="aboutme">@Localizer["About me"]</AdjustedAnchorHeading>
-                    <h5>@Localizer["iam_short"]</h5>
+                    <AdjustedAnchorHeading Id="aboutme">@LanguageSelect.GetStringSafely(Localizer, "About me", Layout.Language)</AdjustedAnchorHeading>
+                    <h5>@LanguageSelect.GetStringSafely(Localizer, "iam_short", Layout.Language)</h5>
                 </div>
 
                 <p>
-                    @Localizer["iam_long"]
+                    @LanguageSelect.GetStringSafely(Localizer, "iam_long", Layout.Language)
                 </p>
                 
-                <p class="m-0"><b>@Localizer["degree_label"]</b>@Localizer["degree"]</p>
-                <p class="m-0"><b>@Localizer["status_label"]</b>@Localizer["status"]</p>
+                <p class="m-0">
+                    <b>@LanguageSelect.GetStringSafely(Localizer, "degree_label", Layout.Language)</b>
+                    @LanguageSelect.GetStringSafely(Localizer, "degree", Layout.Language)
+                </p>
+                <p class="m-0">
+                    <b>@LanguageSelect.GetStringSafely(Localizer, "status_label", Layout.Language)</b>
+                    @LanguageSelect.GetStringSafely(Localizer, "status", Layout.Language)
+                </p>
 
                 <HiddenForScreenWidth HideForWidthCondition="width => width < ScreenBreakpoints.Large">
                     <Projects />
@@ -37,11 +44,24 @@
 </div>
 
 @code {
+    [CascadingParameter]
+    public required MainLayout Layout { get; set; }
+
+    protected override void OnInitialized()
+    {
+        MainLayout.OnStateChanging += StateHasChanged;
+    }
+
+    void IDisposable.Dispose()
+    {
+        MainLayout.OnStateChanging -= StateHasChanged;
+    }
+
     private RenderFragment BulletPointsFragment => __builder =>
     {
         <div class="d-flex">
             <div class="col-6 p-2">
-                <p>@Localizer["Technologies I use daily:"]</p>
+                <p>@LanguageSelect.GetStringSafely(Localizer, "Technologies I use daily:", Layout.Language)</p>
                 <ul>
                     <li>.NET 8</li>
                     <li>C# 12</li>
@@ -50,20 +70,20 @@
                     <li>HTML, CSS, JavaScript</li>
                     <li>GraphQL</li>
                     <li>PostgreSQL</li>
-                    <li>@Localizer["OOP"]</li>
-                    <li>@Localizer["ORM"]</li>
-                    <li>@Localizer["DI"]</li>
+                    <li>@LanguageSelect.GetStringSafely(Localizer, "OOP", Layout.Language)</li>
+                    <li>@LanguageSelect.GetStringSafely(Localizer, "ORM", Layout.Language)</li>
+                    <li>@LanguageSelect.GetStringSafely(Localizer, "DI", Layout.Language)</li>
                 </ul>
             </div>
             <div class="col-6 p-2">
-                <p>@Localizer["Other supporting technologies:"]</p>
+                <p>@LanguageSelect.GetStringSafely(Localizer, "Other supporting technologies:", Layout.Language)]</p>
                 <ul>
                     <li>Git</li>
                     <li>JSON</li>
                     <li>SQL</li>
                     <li>YAML</li>
                     <li>Linux</li>
-                    <li>@Localizer["Containers"]</li>
+                    <li>@LanguageSelect.GetStringSafely(Localizer, "Containers", Layout.Language)</li>
                     <li>Podman</li>
                     <li>Usernetes</li>
                 </ul>
