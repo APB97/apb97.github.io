@@ -46,7 +46,8 @@
 
     protected override async Task OnInitializedAsync()
     {
-        await localization.InitializeAsync();
+        localization = new APB97StringLocalizer<LanguageSelect>(LocalizationFactory);
+        await localization.InitializeAsync(Layout.Language);
     }
 
     private async Task SetCultureAndReload(CultureInfo value)
@@ -54,7 +55,7 @@
         CultureInfo.CurrentCulture = CultureInfo.CurrentUICulture = Culture = value;
 
         localization = new APB97StringLocalizer<LanguageSelect>(LocalizationFactory);
-        await localization.InitializeAsync();
+        await localization.InitializeAsync(Layout.Language);
 
         StateHasChanged();
 

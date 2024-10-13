@@ -62,7 +62,8 @@
 
     protected override async Task OnInitializedAsync()
     {
-        await localization.InitializeAsync();
+        localization = new APB97StringLocalizer<CountAndSay>(LocalizationFactory);
+        await localization.InitializeAsync(Layout.Language);
     }
 
     protected override void OnInitialized()
@@ -78,7 +79,7 @@
     private async Task GetResources()
     {
         localization = new APB97StringLocalizer<CountAndSay>(LocalizationFactory);
-        await localization.InitializeAsync();
+        await localization.InitializeAsync(Layout.Language);
         StateHasChanged();
     }
 }

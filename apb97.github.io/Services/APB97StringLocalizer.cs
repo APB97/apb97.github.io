@@ -1,4 +1,6 @@
-﻿namespace apb97.github.io.Services
+﻿using System.Globalization;
+
+namespace apb97.github.io.Services
 {
     public class APB97StringLocalizer<T>
     {
@@ -13,9 +15,9 @@
             this.factory = factory;
         }
 
-        public async Task InitializeAsync()
+        public async Task InitializeAsync(CultureInfo? cultureInfo)
         {
-            localization ??= await factory.GetLocalization<T>(System.Globalization.CultureInfo.CurrentUICulture);
+            localization ??= await factory.GetLocalization<T>(cultureInfo ?? CultureInfo.CurrentUICulture);
         }
 
         public string Localize(string key)
