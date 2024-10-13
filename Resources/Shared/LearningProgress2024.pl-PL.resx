@@ -1,0 +1,180 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Built-in concise syntax for nondesctructive mutation" xml:space="preserve">
+    <value>Wbudowaną zwięzłą składnię na potrzeby niedestrukcyjnej zmiany</value>
+  </data>
+  <data name="Built-in formatting" xml:space="preserve">
+    <value>Wbudowane formatowanie na potrzeby wyświetlania</value>
+  </data>
+  <data name="Built-in value equality" xml:space="preserve">
+    <value>Wbudowane porównywanie wartości pod kątem równości</value>
+  </data>
+  <data name="C# features" xml:space="preserve">
+    <value>Możliwości języka C#</value>
+  </data>
+  <data name="Concise syntax for reference types" xml:space="preserve">
+    <value>Wbudowaną zwięzłą składnię na potrzeby deklarowania typów referencyjnych z niemutowalnymi właściwościami</value>
+  </data>
+  <data name="Constant interpolated strings" xml:space="preserve">
+    <value>Stałe interpolowane łańcuchy znaków</value>
+  </data>
+  <data name="Constant interpolated strings description" xml:space="preserve">
+    <value>Począwszy od C# 10, stałe można zainicjalizować za pomocą interpolacji łańcuchów znaków, o ile wszystkie symbole zastępcze są stałymi łańcuchami. Natomiast symbole zastępcze nie mogą być stałymi numerycznymi, ponieważ są one konwertowane do łańcuchów znaków w trakcie działania aplikacji, gdyż ustawienia regionalne mogą wpływać na ich reprezetancję.</value>
+  </data>
+  <data name="Example" xml:space="preserve">
+    <value>Przykład</value>
+  </data>
+  <data name="General knowledge" xml:space="preserve">
+    <value>Wiedza ogólna</value>
+  </data>
+  <data name="NuGet packages" xml:space="preserve">
+    <value>Pakiety NuGet</value>
+  </data>
+  <data name="Records" xml:space="preserve">
+    <value>Rekordy</value>
+  </data>
+  <data name="Records description" xml:space="preserve">
+    <value>Zarówno typy referencyjne, jak i typy wartościowe można zadeklarować jako rekordy, a ponadto rekordy typu wartościowego można zadeklarować jako tylko do odczytu. Rekordy mogą być mutowalne, lecz ich zamierzononym zastosowaniem jest wspieranie modeli niemutowalnych. Rekordy oferują następujące możliwości:</value>
+  </data>
+  <data name="Source" xml:space="preserve">
+    <value>Źródło</value>
+  </data>
+  <data name="StrawberryShake description" xml:space="preserve">
+    <value>Biblioteka StrawberryShake wspomaga tworzenie klientów GraphQL API, na przykład dla aplikacji używających Blazora, pozwalając na wykorzystanie definicji zapytań i mutacji w celu wygenerowania klas i intefejsów klienta, oraz udostępniając zapytania jako komponenty.</value>
+  </data>
+  <data name="Year2024" xml:space="preserve">
+    <value>2024</value>
+  </data>
+  <data name="Basic" xml:space="preserve">
+    <value>Podstawowe</value>
+  </data>
+  <data name="Linux basic commands" xml:space="preserve">
+    <value>cd (zmień bieżący katalog), ls (wylistuj pliki w katalogu), pwd (wyświetl ścieżkę bieżącego katalogu roboczego), mkdir (utwórz nowy katalog), rmdir (usuń pusty katalog), rm (usuń plik(i)), touch (aktualizuje daty dostępu i modyfikacji pilku), whoami (odpowiada na pytanie wskazując obecnego użytkownika), cat (wyświetla zawartość pliku), more (wyświetla zawartość plików na ograniczonym wyświetlaczu z nawigacją tylko do przodu), less (wyświetla zawartość pliku na ograniczonym wyświetlaczu z nawigacją w obie strony), ping (pinguje wskazany adres za pomocą protokołu ICMP), apt (konsolowy menedżer pakietów dla Ubuntu i podobnych dystrybucji Linuxa), dnf (konsolowy menedżer pakietów dla dystrybucji Fedora).</value>
+  </data>
+  <data name="Linux commands" xml:space="preserve">
+    <value>Komendy linuksowe</value>
+  </data>
+  <data name="Advanced" xml:space="preserve">
+    <value>Zaawansowane</value>
+  </data>
+  <data name="Linux advanced commands" xml:space="preserve">
+    <value>vim (Vi Improved - konsolowy edytor tekstu), sudo (wykonaj komendy jako użytkownik root albo inny użytkownik), grep (szukaj linii z wyrażeniami w tekście).</value>
+  </data>
+</root>

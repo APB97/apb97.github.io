@@ -25,11 +25,11 @@
       "url": "_framework\/icudt.dat"
     },
     {
-      "hash": "sha256-G8Dhow6ZmP0c0P1aNdnJNlfBqNkIq4PHQ4nYAos15xQ=",
+      "hash": "sha256-j1gS19YfrtJiv5zFGVtWz+yKn1yNJLJ+DQrmEVAWwgs=",
       "url": "_framework\/blazor.boot.json"
     },
     {
-      "hash": "sha256-kiVfh8OUfhOsa1b\/VYoAXAFE12zsdOpBk7ZPu9cQwkY=",
+      "hash": "sha256-d016O5Aa17701S3R+tI9NDtDaEdmwI4pPvdrFJeFv38=",
       "url": "_framework\/apb97.github.io.wasm"
     },
     {
@@ -209,7 +209,7 @@
       "url": "_framework\/System.Xml.ReaderWriter.wasm"
     },
     {
-      "hash": "sha256-pP9RzenPOt8XxUNvTDqngTnwpbMj08Nv8+4IoDUsqSY=",
+      "hash": "sha256-uaamh\/dZGG1e9gGNcu0S68cjuCp04BpomeVts8ovp9I=",
       "url": "_framework\/pl-PL\/apb97.github.io.resources.wasm"
     },
     {
@@ -281,5 +281,5 @@
       "url": "manifest.webmanifest"
     }
   ],
-  "version": "ae9Es\/vW"
+  "version": "KXVpIU3A"
 };
