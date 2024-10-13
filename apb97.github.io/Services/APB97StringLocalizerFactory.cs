@@ -23,13 +23,15 @@ namespace apb97.github.io.Services
             Stream localizationStream;
             try
             {
-                localizationStream = await http.GetStreamAsync(options.Value.ResourcesPath + typeof(T).Namespace?.Replace("apb97.github.io", string.Empty)?.Replace('.', '/') + '/' + typeof(T).Name + '.' + cultureInfo.Name + ".resx");
+                if (cultureInfo.Name == "en-US" || cultureInfo.Name == "en") throw new Exception("fallback to neutral culture");
+                
+                localizationStream = await http.GetStreamAsync($"{options.Value.ResourcesPath}{typeof(T).Namespace?.Replace("apb97.github.io", string.Empty)?.Replace('.', '/')}/{typeof(T).Name}.{cultureInfo.Name}.resx");
             }
             catch
             {
                 try
                 {
-                    localizationStream = await http.GetStreamAsync(options.Value.ResourcesPath + typeof(T).Namespace?.Replace("apb97.github.io", string.Empty)?.Replace('.', '/') + '/' + typeof(T).Name + ".resx");
+                    localizationStream = await http.GetStreamAsync($"{options.Value.ResourcesPath}{typeof(T).Namespace?.Replace("apb97.github.io", string.Empty)?.Replace('.', '/')}/{typeof(T).Name}.resx");
                 }
                 catch
                 {
