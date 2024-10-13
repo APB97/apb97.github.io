@@ -66,7 +66,7 @@ async function onFetch(event) {
         const cache = await caches.open(cacheName);
         cachedResponse = await cache.match(request);
 
-        var matches = /\..*$/g.match(event.request.url);
+        var matches = event.request.url.match(/\..*$/g);
         var ttl = MAX_TTL[matches?.[matches.length - 1]];
         if (ttl && parseInt((new Date().getTime() - new Date(cachedResponse.headers.get('date')).getTime()) / 1000) > ttl) {
             cachedResponse = null;
@@ -89,4 +89,4 @@ async function onFetch(event) {
 
     return cachedResponse || fetch(event.request);
 }
-/* Manifest version: NJfQrycY */
+/* Manifest version: qzpOAa1D */
