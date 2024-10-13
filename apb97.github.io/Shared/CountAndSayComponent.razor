@@ -5,49 +5,53 @@
 
 @implements IDisposable
 @inject CountAndSayService Service
+@inject APB97StringLocalizer<CountAndSay> localization
 @inject APB97StringLocalizerFactory LocalizationFactory
 
-<div>
-    <h4>@localization.Localize("Input")</h4>
+@if (ShouldRender())
+{
+    <div>
+        <h4>@localization.Localize("Input")</h4>
 
-    <div class="row">
-        <div class="card-group">
-            <label for="Number" style="margin: 4px">@localization.Localize("NumberOfSayings")</label>
-            <InputNumber TValue="int?" Value="NumberOfSayings" ValueExpression="() => NumberOfSayings" ValueChanged="OnNumberChanged" type="number" min="1" max="30" style="margin: 4px"/>
+        <div class="row">
+            <div class="card-group">
+                <label for="Number" style="margin: 4px">@localization.Localize("NumberOfSayings")</label>
+                <InputNumber TValue="int?" Value="NumberOfSayings" ValueExpression="() => NumberOfSayings" ValueChanged="OnNumberChanged" type="number" min="1" max="30" style="margin: 4px"/>
+            </div>
         </div>
-    </div>
 
-    @{
-        var results = GetResults();
-    }
-    <hr />
-    <AdjustedAnchorHeading Id="@OutputId" FontSize="smaller">@localization.Localize("Output")</AdjustedAnchorHeading>
-    <div class="row">
-        <div class="card-group">
-            <label style="margin: 4px">@localization.Localize("Result")</label>
+        @{
+            var results = GetResults();
+        }
+        <hr />
+        <AdjustedAnchorHeading Id="@OutputId" FontSize="smaller">@localization.Localize("Output")</AdjustedAnchorHeading>
+        <div class="row">
+            <div class="card-group">
+                <label style="margin: 4px">@localization.Localize("Result")</label>
 
-            <code role="status" style="margin: 3px; font-size:large; overflow-wrap: anywhere">
-                @results.result
-            </code>
+                <code role="status" style="margin: 3px; font-size:large; overflow-wrap: anywhere">
+                    @results.result
+                </code>
+            </div>
         </div>
-    </div>
 
-    <h4>@localization.Localize("Explanation")</h4>
-    <div class="row">
-        <p role="status">
-            @{
-                int i = 1;
-                foreach (var explanation in results.explanation)
-                {
-                    <p>
-                        <b>@(++i): </b>
-                        @explanation
-                    </p>
+        <h4>@localization.Localize("Explanation")</h4>
+        <div class="row">
+            <p role="status">
+                @{
+                    int i = 1;
+                    foreach (var explanation in results.explanation)
+                    {
+                        <p>
+                            <b>@(++i): </b>
+                            @explanation
+                        </p>
+                    }
                 }
-            }
-        </p>
+            </p>
+        </div>
     </div>
-</div>
+}
 
 @code {
     public const string OutputId = "output";
@@ -61,11 +65,15 @@
     [Parameter]
     public Action<int?> OnNumberChanged { get; set; } = delegate { };
 
-    private Dictionary<string, string> localization = [];
+    protected override bool ShouldRender()
+    {
+        if (localization.Localization == null) return false;
+        return base.ShouldRender();
+    }
 
     protected override async Task OnInitializedAsync()
     {
-        localization = await LocalizationFactory.GetLocalization<CountAndSay>(Layout.Language ?? System.Globalization.CultureInfo.CurrentUICulture);
+        await localization.InitializeAsync();
     }
 
     protected override void OnInitialized()
@@ -80,7 +88,8 @@
 
     private async Task GetResources()
     {
-        localization = await LocalizationFactory.GetLocalization<CountAndSay>(Layout.Language ?? System.Globalization.CultureInfo.CurrentUICulture);
+        localization = new APB97StringLocalizer<CountAndSay>(LocalizationFactory);
+        await localization.InitializeAsync();
         StateHasChanged();
     }
 

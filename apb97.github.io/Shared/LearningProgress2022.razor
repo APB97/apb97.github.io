@@ -1,50 +1,58 @@
 ﻿@implements IDisposable
+@inject APB97StringLocalizer<LearningProgress2022> localization
 @inject APB97StringLocalizerFactory LocalizationFactory
 
-<h3>@localization.Localize("Year2022-last-weeks")</h3>
-<ul>
-    <li>
-        <h4>C#</h4>
-        <ul>
-            <li>
-                <b>@localization.Localize("Extended property pattern")</b>
-                <br />
-                <p>@localization.Localize("Extended property pattern description")</p>
-                <b>@localization.Localize("Example")</b>
-                <br />
-                <CodeView Code="@localization.Localize("Extended property pattern code")"></CodeView>
-            </li>
-            <li>
-                <b>@localization.Localize("Global using directive")</b>
-                <br />
-                <p>@localization.Localize("Global using directive description")</p>
-                <b>@localization.Localize("Example")</b>
-                <br />
-                <CodeView Code="@localization.Localize("Global using directive code")" />
-            </li>
-            <li>
-                <b>@localization.Localize("File-scoped namespace declaration")</b>
-                <br />
-                <p>@localization.Localize("File-scoped namespace declaration description")</p>
-                <b>@localization.Localize("Example")</b>
-                <br />
-                <CodeView Code="@localization.Localize("File-scoped namespace declaration code")" />
-            </li>
-        </ul>
-    </li>
-</ul>
+@if (ShouldRender())
+{
+    <h3>@localization.Localize("Year2022-last-weeks")</h3>
+    <ul>
+        <li>
+            <h4>C#</h4>
+            <ul>
+                <li>
+                    <b>@localization.Localize("Extended property pattern")</b>
+                    <br />
+                    <p>@localization.Localize("Extended property pattern description")</p>
+                    <b>@localization.Localize("Example")</b>
+                    <br />
+                    <CodeView Code="@localization.Localize("Extended property pattern code")"></CodeView>
+                </li>
+                <li>
+                    <b>@localization.Localize("Global using directive")</b>
+                    <br />
+                    <p>@localization.Localize("Global using directive description")</p>
+                    <b>@localization.Localize("Example")</b>
+                    <br />
+                    <CodeView Code="@localization.Localize("Global using directive code")" />
+                </li>
+                <li>
+                    <b>@localization.Localize("File-scoped namespace declaration")</b>
+                    <br />
+                    <p>@localization.Localize("File-scoped namespace declaration description")</p>
+                    <b>@localization.Localize("Example")</b>
+                    <br />
+                    <CodeView Code="@localization.Localize("File-scoped namespace declaration code")" />
+                </li>
+            </ul>
+        </li>
+    </ul>
+}
 
 @code {
     [CascadingParameter]
     public required MainLayout Layout { get; set; }
-    
-    private Dictionary<string, string> localization = [];
+
+    protected override bool ShouldRender()
+    {
+        if (localization.Localization == null) return false;
+        return base.ShouldRender();
+    }
 
     protected override async Task OnInitializedAsync()
     {
-        localization = await LocalizationFactory.GetLocalization<LearningProgress2022>(Layout.Language ?? System.Globalization.CultureInfo.CurrentUICulture);
+        await localization.InitializeAsync();
     }
-
+    
     protected override void OnInitialized()
     {
         MainLayout.OnStateChanging += GetResources;
@@ -57,7 +65,8 @@
 
     private async Task GetResources()
     {
-        localization = await LocalizationFactory.GetLocalization<LearningProgress2022>(Layout.Language ?? System.Globalization.CultureInfo.CurrentUICulture);
+        localization = new APB97StringLocalizer<LearningProgress2022>(LocalizationFactory);
+        await localization.InitializeAsync();
         StateHasChanged();
     }
 }

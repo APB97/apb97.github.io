@@ -3,55 +3,63 @@
 @implements IDisposable
 @inject IJSRuntime JS
 @inject APB97StringLocalizerFactory LocalizationFactory
+@inject APB97StringLocalizer<AboutMe> localization
 
-<div class="row">
-    <div class="d-flex flex-column">
-        <div class="d-flex flex-row">
-            <div class="col-8 flex-column">
-                <div class="d-flex flex-column">
-                    <AdjustedAnchorHeading Id="aboutme">@localization.Localize("About me")</AdjustedAnchorHeading>
-                    <h5>@localization.Localize("iam_short")</h5>
-                </div>
+@if (ShouldRender())
+{
+    <div class="row">
+        <div class="d-flex flex-column">
+            <div class="d-flex flex-row">
+                <div class="col-8 flex-column">
+                    <div class="d-flex flex-column">
+                        <AdjustedAnchorHeading Id="aboutme">@localization.Localize("About me")</AdjustedAnchorHeading>
+                        <h5>@localization.Localize("iam_short")</h5>
+                    </div>
 
-                <p>
-                    @localization.Localize("iam_long")
-                </p>
+                    <p>
+                        @localization.Localize("iam_long")
+                    </p>
                 
-                <p class="m-0">
-                    <b>@localization.Localize("degree_label")</b>
-                    @localization.Localize("degree")
-                </p>
-                <p class="m-0">
-                    <b>@localization.Localize("status_label")</b>
-                    @localization.Localize("status")
-                </p>
+                    <p class="m-0">
+                        <b>@localization.Localize("degree_label")</b>
+                        @localization.Localize("degree")
+                    </p>
+                    <p class="m-0">
+                        <b>@localization.Localize("status_label")</b>
+                        @localization.Localize("status")
+                    </p>
 
-                <HiddenForScreenWidth HideForWidthCondition="width => width < ScreenBreakpoints.Large">
-                    <Projects />
-                </HiddenForScreenWidth>
+                    <HiddenForScreenWidth HideForWidthCondition="width => width < ScreenBreakpoints.Large">
+                        <Projects />
+                    </HiddenForScreenWidth>
+                </div>
+                <div class="col-4">
+                    <img src="/images/AboutMe.jpg" alt="A picture of myself" style="width: 100%; max-width: 368px; max-height: 552px;" />
+                </div>
             </div>
-            <div class="col-4">
-                <img src="/images/AboutMe.jpg" alt="A picture of myself" style="width: 100%; max-width: 368px; max-height: 552px;" />
-            </div>
+            <HiddenForScreenWidth HideForWidthCondition="width => width >= ScreenBreakpoints.Large">
+                <Projects />
+            </HiddenForScreenWidth>
+            <Challenges />
+            <Skills />
+            @BulletPointsFragment
         </div>
-        <HiddenForScreenWidth HideForWidthCondition="width => width >= ScreenBreakpoints.Large">
-            <Projects />
-        </HiddenForScreenWidth>
-        <Challenges />
-        <Skills />
-        @BulletPointsFragment
     </div>
-</div>
+}
 
 @code {
     [CascadingParameter]
     public required MainLayout Layout { get; set; }
 
-    private Dictionary<string, string> localization = [];
+    protected override bool ShouldRender()
+    {
+        if (localization.Localization == null) return false;
+        return base.ShouldRender();
+    }
 
     protected override async Task OnInitializedAsync()
     {
-        localization = await LocalizationFactory.GetLocalization<AboutMe>(Layout.Language ?? System.Globalization.CultureInfo.CurrentUICulture);
+        await localization.InitializeAsync();
     }
 
     protected override void OnInitialized()
@@ -66,7 +74,8 @@
 
     private async Task GetResources()
     {
-        localization = await LocalizationFactory.GetLocalization<AboutMe>(Layout.Language ?? System.Globalization.CultureInfo.CurrentUICulture);
+        localization = new APB97StringLocalizer<AboutMe>(LocalizationFactory);
+        await localization.InitializeAsync();
         StateHasChanged();
     }
 

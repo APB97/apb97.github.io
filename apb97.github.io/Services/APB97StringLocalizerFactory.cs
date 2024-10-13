@@ -15,7 +15,7 @@ namespace apb97.github.io.Services
             this.http = http;
             this.options = localizationOptions;
         }
-        
+
         public async Task<Dictionary<string, string>> GetLocalization<T>(CultureInfo cultureInfo)
         {
             var results = new Dictionary<string, string>();

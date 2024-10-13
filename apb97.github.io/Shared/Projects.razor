@@ -1,66 +1,74 @@
 ﻿@implements IDisposable
 @inject APB97StringLocalizerFactory LocalizationFactory
+@inject APB97StringLocalizer<Projects> localization
 @inject IJSRuntime JS
 
-<AdjustedAnchorHeading Id="projects">@localization.Localize("Projects")</AdjustedAnchorHeading>
-<div class="d-flex" style="border: medium solid dodgerblue; margin: 2pt;">
-    <div class="col-8 d-flex flex-column">
-        <div class="text-center flex-grow-1">
-            <h5>Web Sudoku</h5>
-            <p>@localization.Localize("Web Sudoku description")</p>
-            <button class="link-primary button-as-link" onclick="history.replaceState(null, '', document.location.href);document.location.assign('/WebSudoku/');">
-                @localization.Localize("See it yourself here")
-            </button>
+@if (ShouldRender())
+{
+    <AdjustedAnchorHeading Id="projects">@localization.Localize("Projects")</AdjustedAnchorHeading>
+    <div class="d-flex" style="border: medium solid dodgerblue; margin: 2pt;">
+        <div class="col-8 d-flex flex-column">
+            <div class="text-center flex-grow-1">
+                <h5>Web Sudoku</h5>
+                <p>@localization.Localize("Web Sudoku description")</p>
+                <button class="link-primary button-as-link" onclick="history.replaceState(null, '', document.location.href);document.location.assign('/WebSudoku/');">
+                    @localization.Localize("See it yourself here")
+                </button>
+            </div>
+            <div class="text-center">
+                <div class="tags">
+                    <span>@localization.Localize(".NET")</span>
+                    <span>@localization.Localize("C#")</span>
+                    <span>@localization.Localize("Blazor")</span>
+                    <span>@localization.Localize("WebAssembly")</span>
+                    <span>@localization.Localize("HTML")</span>
+                    <span>@localization.Localize("CSS")</span>
+                </div>
+            </div>
         </div>
-        <div class="text-center">
-            <div class="tags">
-                <span>@localization.Localize(".NET")</span>
-                <span>@localization.Localize("C#")</span>
-                <span>@localization.Localize("Blazor")</span>
-                <span>@localization.Localize("WebAssembly")</span>
-                <span>@localization.Localize("HTML")</span>
-                <span>@localization.Localize("CSS")</span>
+        <div class="col-4">
+            <div style="align-content: center">
+                <img alt="Web Sudoku Screenshot" src="images/Screenshot - Web Sudoku.png" style="width: 100%;" />
             </div>
         </div>
     </div>
-    <div class="col-4">
-        <div style="align-content: center">
-            <img alt="Web Sudoku Screenshot" src="images/Screenshot - Web Sudoku.png" style="width: 100%;" />
-        </div>
-    </div>
-</div>
 
-<div class="d-flex">
-    <div class="skill-card">
-        <div class="text-center">
-            <h5>Metadata Rename</h5>
+    <div class="d-flex">
+        <div class="skill-card">
+            <div class="text-center">
+                <h5>Metadata Rename</h5>
+            </div>
+            <div class="text-center">
+                <p>@localization.Localize("Rename based on metadata built with WPF.") </p>
+                <a class="link-primary" href="MetadataRename">@localization.Localize("See it yourself here")</a>
+            </div>
         </div>
-        <div class="text-center">
-            <p>@localization.Localize("Rename based on metadata built with WPF.") </p>
-            <a class="link-primary" href="MetadataRename">@localization.Localize("See it yourself here")</a>
-        </div>
-    </div>
 
-    <div class="skill-card">
-        <div class="text-center">
-            <h5>Plot and Integrate</h5>
-        </div>
-        <div class="text-center">
-            <p>@localization.Localize("Plot and calculate definite integral of a function. Built with Windows Forms.") </p>
-            <a class="link-primary" href="PlotAndIntegrate">@localization.Localize("See it yourself here")</a>
+        <div class="skill-card">
+            <div class="text-center">
+                <h5>Plot and Integrate</h5>
+            </div>
+            <div class="text-center">
+                <p>@localization.Localize("Plot and calculate definite integral of a function. Built with Windows Forms.") </p>
+                <a class="link-primary" href="PlotAndIntegrate">@localization.Localize("See it yourself here")</a>
+            </div>
         </div>
     </div>
-</div>
+}
 
 @code{
     [CascadingParameter]
     public required MainLayout Layout { get; set; }
 
-    private Dictionary<string, string> localization = [];
+    protected override bool ShouldRender()
+    {
+        if (localization.Localization == null) return false;
+        return base.ShouldRender();
+    }
 
     protected override async Task OnInitializedAsync()
     {
-        localization = await LocalizationFactory.GetLocalization<Projects>(Layout.Language ?? System.Globalization.CultureInfo.CurrentUICulture);
+        await localization.InitializeAsync();
     }
 
     protected override void OnInitialized()
@@ -75,7 +83,8 @@
 
     private async Task GetResources()
     {
-        localization = await LocalizationFactory.GetLocalization<Projects>(Layout.Language ?? System.Globalization.CultureInfo.CurrentUICulture);
+        localization = new APB97StringLocalizer<Projects>(LocalizationFactory);
+        await localization.InitializeAsync();
         StateHasChanged();
     }
 }

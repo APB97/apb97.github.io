@@ -1,72 +1,76 @@
 ﻿@using Microsoft.Extensions.Localization
 @using System.Globalization
 @implements IDisposable
+@inject APB97StringLocalizer<NavMenu> localization
 @inject APB97StringLocalizerFactory LocalizationFactory
 @inject NavigationManager Navigation
 
-<div class="top-row ps-3 navbar navbar-dark">
-    <div class="container-fluid">
-        <a class="navbar-brand" href="">apb97.github.io</a>
-        <button title="Navigation menu" class="navbar-toggler" @onclick="ToggleNavMenu">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-    </div>
-</div>
-
-<div class="@NavMenuCssClass" style="overflow-y: auto; display: flex; flex-grow: 1; height: 50vh;">
-    <nav class="d-flex flex-column flex-grow-1">
-        <div class="nav-item px-3">
-            <NavLink class="nav-link" href="" Match="NavLinkMatch.All" @onclick="ToggleNavMenu">
-                @localization.Localize("Home")
-            </NavLink>
-        </div>
-        <div class="nav-item px-3">
-            <NavLink class="nav-link" href="LearningProgress" Match="NavLinkMatch.All" @onclick="ToggleNavMenu">
-                @localization.Localize("LearningProgress")
-            </NavLink>
-        </div>
-
-        <p class="text-white-50">@localization.Localize("Projects")</p>
-        <div class="nav-item px-3">
-            <button class="nav-link" onclick="history.replaceState(null, '', document.location.href);document.location.assign('/WebSudoku/');">
-                @localization.Localize("Web Sudoku")
+@if (ShouldRender())
+{
+    <div class="top-row ps-3 navbar navbar-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="">apb97.github.io</a>
+            <button title="Navigation menu" class="navbar-toggler" @onclick="ToggleNavMenu">
+                <span class="navbar-toggler-icon"></span>
             </button>
         </div>
-        <div class="nav-item px-3">
-            <NavLink class="nav-link" href="MetadataRename" @onclick="ToggleNavMenu">
-                @localization.Localize("Metadata Rename")
-            </NavLink>
-        </div>
-        <div class="nav-item px-3">
-            <NavLink class="nav-link" href="PlotAndIntegrate" @onclick="ToggleNavMenu">
-                @localization.Localize("Plot and Integrate")
-            </NavLink>
-        </div>
+    </div>
 
-        <p class="text-white-50">@localization.Localize("Challenges")</p>
-        <div class="nav-item px-3">
-            <NavLink class="nav-link" href="IntegerToRoman" @onclick="ToggleNavMenu">
-                @localization.Localize("Integer to Roman")
-            </NavLink>
-        </div>
-         <div class="nav-item px-3">
-            <NavLink class="nav-link" href="CountAndSay" @onclick="ToggleNavMenu">
-                @localization.Localize("Count and Say")
-            </NavLink>
-        </div>
-        <div class="flex-grow-1">
-
-        </div>
-        <div class="nav-item px-3">
-            <a class="ms-auto nav-link link-info" href="https://github.com/APB97/apb97.github.io" target="_blank">@localization.Localize("Code")</a>
-        </div>
-        <div class="nav-item px-0">
-            <div class="nav-link">
-                <LanguageSelect @ref="language" />
+    <div class="@NavMenuCssClass" style="overflow-y: auto; display: flex; flex-grow: 1; height: 50vh;">
+        <nav class="d-flex flex-column flex-grow-1">
+            <div class="nav-item px-3">
+                <NavLink class="nav-link" href="" Match="NavLinkMatch.All" @onclick="ToggleNavMenu">
+                    @localization.Localize("Home")
+                </NavLink>
             </div>
-        </div>
-    </nav>
-</div>
+            <div class="nav-item px-3">
+                <NavLink class="nav-link" href="LearningProgress" Match="NavLinkMatch.All" @onclick="ToggleNavMenu">
+                    @localization.Localize("LearningProgress")
+                </NavLink>
+            </div>
+
+            <p class="text-white-50">@localization.Localize("Projects")</p>
+            <div class="nav-item px-3">
+                <button class="nav-link" onclick="history.replaceState(null, '', document.location.href);document.location.assign('/WebSudoku/');">
+                    @localization.Localize("Web Sudoku")
+                </button>
+            </div>
+            <div class="nav-item px-3">
+                <NavLink class="nav-link" href="MetadataRename" @onclick="ToggleNavMenu">
+                    @localization.Localize("Metadata Rename")
+                </NavLink>
+            </div>
+            <div class="nav-item px-3">
+                <NavLink class="nav-link" href="PlotAndIntegrate" @onclick="ToggleNavMenu">
+                    @localization.Localize("Plot and Integrate")
+                </NavLink>
+            </div>
+
+            <p class="text-white-50">@localization.Localize("Challenges")</p>
+            <div class="nav-item px-3">
+                <NavLink class="nav-link" href="IntegerToRoman" @onclick="ToggleNavMenu">
+                    @localization.Localize("Integer to Roman")
+                </NavLink>
+            </div>
+             <div class="nav-item px-3">
+                <NavLink class="nav-link" href="CountAndSay" @onclick="ToggleNavMenu">
+                    @localization.Localize("Count and Say")
+                </NavLink>
+            </div>
+            <div class="flex-grow-1">
+
+            </div>
+            <div class="nav-item px-3">
+                <a class="ms-auto nav-link link-info" href="https://github.com/APB97/apb97.github.io" target="_blank">@localization.Localize("Code")</a>
+            </div>
+            <div class="nav-item px-0">
+                <div class="nav-link">
+                    <LanguageSelect @ref="language" />
+                </div>
+            </div>
+        </nav>
+    </div>
+}
 
 @code {
     private bool collapseNavMenu = true;
@@ -88,11 +92,15 @@
         StateHasChanged();
     }
 
-    private Dictionary<string, string> localization = [];
+    protected override bool ShouldRender()
+    {
+        if (localization.Localization == null) return false;
+        return base.ShouldRender();
+    }
 
     protected override async Task OnInitializedAsync()
     {
-        localization = await LocalizationFactory.GetLocalization<NavMenu>(language?.Culture ?? System.Globalization.CultureInfo.CurrentUICulture);
+        await localization.InitializeAsync();
     }
 
     protected override void OnInitialized()
@@ -107,7 +115,8 @@
 
     private async Task GetResources()
     {
-        localization = await LocalizationFactory.GetLocalization<NavMenu>(language?.Culture ?? System.Globalization.CultureInfo.CurrentUICulture);
+        localization = new APB97StringLocalizer<NavMenu>(LocalizationFactory);
+        await localization.InitializeAsync();
         StateHasChanged();
     }
 }

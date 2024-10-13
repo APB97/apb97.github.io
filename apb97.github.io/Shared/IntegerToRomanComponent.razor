@@ -2,34 +2,37 @@
 @using apb97.github.io.Services
 
 @implements IDisposable
+@inject APB97StringLocalizer<IntegerToRoman> localization
 @inject APB97StringLocalizerFactory LocalizationFactory
 
-<div>
-    <h4>@localization.Localize("Input")</h4>
+@if (ShouldRender())
+{
+    <div>
+        <h4>@localization.Localize("Input")</h4>
 
-    <div class="row">
-        <div class="card-group">
-            <label for="Number" style="margin: 4px">@localization.Localize("Number")</label>
-            <InputNumber TValue="int?" Value="Number" ValueChanged="OnNumberChanged" ValueExpression="() => Number" type="number" min="1" max="3999" style="margin: 4px"/>
+        <div class="row">
+            <div class="card-group">
+                <label for="Number" style="margin: 4px">@localization.Localize("Number")</label>
+                <InputNumber TValue="int?" Value="Number" ValueChanged="OnNumberChanged" ValueExpression="() => Number" type="number" min="1" max="3999" style="margin: 4px"/>
+            </div>
+        </div>
+
+        <hr />
+        <AdjustedAnchorHeading Id="@OutputId" FontSize="smaller">@localization.Localize("Output")</AdjustedAnchorHeading>
+        <div class="row">
+            <div class="card-group">
+                <label style="margin: 4px">@localization.Localize("Roman")</label>
+
+                <code role="status" style="margin: 3px; font-size:large">
+                    @if (Number.HasValue)
+                    {
+                        <text>@ConvertToRoman(Number.Value)</text>
+                    }
+                </code>
+            </div>
         </div>
     </div>
-
-    <hr />
-    <AdjustedAnchorHeading Id="@OutputId" FontSize="smaller">@localization.Localize("Output")</AdjustedAnchorHeading>
-    <div class="row">
-        <div class="card-group">
-            <label style="margin: 4px">@localization.Localize("Roman")</label>
-
-            <code role="status" style="margin: 3px; font-size:large">
-                @if (Number.HasValue)
-                {
-                    <text>@ConvertToRoman(Number.Value)</text>
-                }
-            </code>
-        </div>
-    </div>
-
-</div>
+}
 
 @code {
     [CascadingParameter]
@@ -55,11 +58,15 @@
         }
     }
 
-    private Dictionary<string, string> localization = [];
+    protected override bool ShouldRender()
+    {
+        if (localization.Localization == null) return false;
+        return base.ShouldRender();
+    }
 
     protected override async Task OnInitializedAsync()
     {
-        localization = await LocalizationFactory.GetLocalization<IntegerToRoman>(Layout.Language ?? System.Globalization.CultureInfo.CurrentUICulture);
+        await localization.InitializeAsync();
     }
 
     protected override void OnInitialized()
@@ -74,7 +81,8 @@
 
     private async Task GetResources()
     {
-        localization = await LocalizationFactory.GetLocalization<IntegerToRoman>(Layout.Language ?? System.Globalization.CultureInfo.CurrentUICulture);
+        localization = new APB97StringLocalizer<IntegerToRoman>(LocalizationFactory);
+        await localization.InitializeAsync();
         StateHasChanged();
     }
 }

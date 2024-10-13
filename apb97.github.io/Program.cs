@@ -16,6 +16,7 @@ builder.Services.AddLocalization(options =>
 builder.Services.AddScoped<SayService>();
 builder.Services.AddScoped<CountAndSayService>();
 builder.Services.AddScoped<APB97StringLocalizerFactory>();
+builder.Services.AddScoped(typeof(APB97StringLocalizer<>));
 
 builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) });
 

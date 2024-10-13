@@ -5,6 +5,7 @@
 @using apb97.github.io.Shared
 
 @implements IDisposable
+@inject APB97StringLocalizer<LearningProgress> localization
 @inject APB97StringLocalizerFactory LocalizationFactory
 @inject NavigationManager Navigation
 
@@ -50,11 +51,9 @@
         }
     }
 
-    private Dictionary<string, string> localization = [];
-
     protected override async Task OnInitializedAsync()
     {
-        localization = await LocalizationFactory.GetLocalization<LearningProgress>(Layout.Language ?? System.Globalization.CultureInfo.CurrentUICulture);
+        await localization.InitializeAsync();
     }
 
     protected override void OnInitialized()
@@ -69,7 +68,8 @@
 
     private async Task GetResources()
     {
-        localization = await LocalizationFactory.GetLocalization<LearningProgress>(Layout.Language ?? System.Globalization.CultureInfo.CurrentUICulture);
+        localization = new APB97StringLocalizer<LearningProgress>(LocalizationFactory);
+        await localization.InitializeAsync();
         StateHasChanged();
     }
 }

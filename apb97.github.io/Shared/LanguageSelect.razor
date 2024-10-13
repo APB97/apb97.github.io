@@ -9,18 +9,21 @@
 
 @inject IJSRuntime JSRuntime
 @inject NavigationManager Navigation
-@inject IStringLocalizer<LanguageSelect> Localizer
+@inject APB97StringLocalizer<LanguageSelect> localization
 @inject APB97StringLocalizerFactory LocalizationFactory
 
-<label class="text-white">
-    @(localization.Localize("Select your locale")):
-</label>
-<InputSelect style="background-color: transparent; border: none; color: white;" TValue="CultureInfo" DisplayName="Locale" Value="@Culture" ValueChanged="SetCultureAndReload" ValueExpression="() => Culture">
-    @foreach (var culture in supportedCultures)
-    {
-        <option value="@culture.Value" class="@(culture.Value.Name == Culture.Name ? "current" : null)">@culture.Key</option>
-    }
-</InputSelect>
+@if (ShouldRender())
+{
+    <label class="text-white">
+        @(localization.Localize("Select your locale")):
+    </label>
+    <InputSelect style="background-color: transparent; border: none; color: white;" TValue="CultureInfo" DisplayName="Locale" Value="@Culture" ValueChanged="SetCultureAndReload" ValueExpression="() => Culture">
+        @foreach (var culture in supportedCultures)
+        {
+            <option value="@culture.Value" class="@(culture.Value.Name == Culture.Name ? "current" : null)">@culture.Key</option>
+        }
+    </InputSelect>
+}
 
 @code
 {
@@ -35,19 +38,24 @@
         { "Polski", CultureInfo.CreateSpecificCulture("pl") }
     };
 
-    private Dictionary<string, string> localization = [];
+    protected override bool ShouldRender()
+    {
+        if (localization.Localization == null) return false;
+        return base.ShouldRender();
+    }
 
     protected override async Task OnInitializedAsync()
     {
-        localization = await LocalizationFactory.GetLocalization<LanguageSelect>(Culture);
+        await localization.InitializeAsync();
     }
 
     private async Task SetCultureAndReload(CultureInfo value)
     {
         CultureInfo.CurrentCulture = CultureInfo.CurrentUICulture = Culture = value;
 
-        localization = await LocalizationFactory.GetLocalization<LanguageSelect>(value);
-        
+        localization = new APB97StringLocalizer<LanguageSelect>(LocalizationFactory);
+        await localization.InitializeAsync();
+
         StateHasChanged();
 
         Layout.NotifyStateChanged();

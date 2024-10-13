@@ -3,43 +3,51 @@
 @using apb97.github.io.Shared
 
 @implements IDisposable
+@inject APB97StringLocalizer<MetadataRename> localization
 @inject APB97StringLocalizerFactory LocalizationFactory
 
-<PageTitle>Adrian Bieliński - Metadata Rename</PageTitle>
+@if (ShouldRender())
+{
+    <PageTitle>Adrian Bieliński - Metadata Rename</PageTitle>
 
-<h1>Metadata Rename</h1>
+    <h1>Metadata Rename</h1>
 
-<p>@localization.Localize("Rename music files using their metadata with this tool.")</p>
+    <p>@localization.Localize("Rename music files using their metadata with this tool.")</p>
 
-<img class="screenshot-wide" alt="WPF UI" src="https://user-images.githubusercontent.com/16359542/156198027-c851deed-c757-4741-8eff-8d3adfed205d.png"/>
+    <img class="screenshot-wide" alt="WPF UI" src="https://user-images.githubusercontent.com/16359542/156198027-c851deed-c757-4741-8eff-8d3adfed205d.png"/>
 
-<p/>
+    <p/>
 
-<h4>@localization.Localize("Description")</h4>
-<p>
-    @localization.Localize("It allows users to specify properties to use for renaming and directories with files they want to rename.")
-    @localization.Localize("Apart from that, all invalid path characters are removed to ensure renaming operation will be successful.")
-    @localization.Localize("There is default file named skip.txt for words users want to remove from final filenames.")
-</p>
+    <h4>@localization.Localize("Description")</h4>
+    <p>
+        @localization.Localize("It allows users to specify properties to use for renaming and directories with files they want to rename.")
+        @localization.Localize("Apart from that, all invalid path characters are removed to ensure renaming operation will be successful.")
+        @localization.Localize("There is default file named skip.txt for words users want to remove from final filenames.")
+    </p>
 
-<p>
-    @localization.Localize("This WPF application allows selecting directories, properties used, determining order of properties in the final filename and choosing a SkipFile.")
-    @localization.Localize("It allows saving and loading of settings to and from")
-    <code>.json</code>@localization.Localize("file.")
-    @localization.Localize("Application displays messages about changes made to the settings and allows to Silence the output, so it is not updated until the setting is changed.")
-</p>
+    <p>
+        @localization.Localize("This WPF application allows selecting directories, properties used, determining order of properties in the final filename and choosing a SkipFile.")
+        @localization.Localize("It allows saving and loading of settings to and from")
+        <code>.json</code>@localization.Localize("file.")
+        @localization.Localize("Application displays messages about changes made to the settings and allows to Silence the output, so it is not updated until the setting is changed.")
+    </p>
 
-<a href="https://github.com/APB97/MusicRenameWithMetadata">@localization.Localize("GitHub repository")</a>
+    <a href="https://github.com/APB97/MusicRenameWithMetadata">@localization.Localize("GitHub repository")</a>
+}
 
 @code {
     [CascadingParameter]
     public required MainLayout Layout { get; set; }
 
-    private Dictionary<string, string> localization = [];
+    protected override bool ShouldRender()
+    {
+        if (localization.Localization == null) return false;
+        return base.ShouldRender();
+    }
 
     protected override async Task OnInitializedAsync()
     {
-        localization = await LocalizationFactory.GetLocalization<MetadataRename>(Layout.Language ?? System.Globalization.CultureInfo.CurrentUICulture);
+        await localization.InitializeAsync();
     }
 
     protected override void OnInitialized()
@@ -54,7 +62,8 @@
 
     private async Task GetResources()
     {
-        localization = await LocalizationFactory.GetLocalization<MetadataRename>(Layout.Language ?? System.Globalization.CultureInfo.CurrentUICulture);
+        localization = new APB97StringLocalizer<MetadataRename>(LocalizationFactory);
+        await localization.InitializeAsync();
         StateHasChanged();
     }
 }

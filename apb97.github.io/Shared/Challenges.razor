@@ -1,35 +1,42 @@
 ﻿@implements IDisposable
 
-@inject IStringLocalizer<Challenges> Localizer
+@inject APB97StringLocalizer<Challenges> localization
 @inject IJSRuntime JS
 @inject APB97StringLocalizerFactory LocalizationFactory
 
-<AdjustedAnchorHeading Id="challenges">@localization.Localize("Challenges")</AdjustedAnchorHeading>
+@if (ShouldRender())
+{
+    <AdjustedAnchorHeading Id="challenges">@localization.Localize("Challenges")</AdjustedAnchorHeading>
 
-<div class="d-flex">
-    <div class="skill-card">
-        <h4 class="text-center">@localization.Localize("Integer to Roman")</h4>
-        <div class="text-center">
-            <a class="link-primary" href="/IntegerToRoman">@localization.Localize("See this challenge")</a>
+    <div class="d-flex">
+        <div class="skill-card">
+            <h4 class="text-center">@localization.Localize("Integer to Roman")</h4>
+            <div class="text-center">
+                <a class="link-primary" href="/IntegerToRoman">@localization.Localize("See this challenge")</a>
+            </div>
+        </div>
+        <div class="skill-card">
+            <h4 class="text-center">@localization.Localize("Count and say")</h4>
+            <div class="text-center">
+                <a class="link-primary" href="/CountAndSay">@localization.Localize("See this challenge")</a>
+            </div>
         </div>
     </div>
-    <div class="skill-card">
-        <h4 class="text-center">@localization.Localize("Count and say")</h4>
-        <div class="text-center">
-            <a class="link-primary" href="/CountAndSay">@localization.Localize("See this challenge")</a>
-        </div>
-    </div>
-</div>
+}
 
 @code {
     [CascadingParameter]
     public required MainLayout Layout { get; set; }
-
-    private Dictionary<string, string> localization = [];
+    
+    protected override bool ShouldRender()
+    {
+        if (localization.Localization == null) return false;
+        return base.ShouldRender();
+    }
 
     protected override async Task OnInitializedAsync()
     {
-        localization = await LocalizationFactory.GetLocalization<Challenges>(Layout.Language ?? System.Globalization.CultureInfo.CurrentUICulture);
+        await localization.InitializeAsync();
     }
 
     protected override void OnInitialized()
@@ -44,7 +51,8 @@
 
     private async Task GetResources()
     {
-        localization = await LocalizationFactory.GetLocalization<Challenges>(Layout.Language ?? System.Globalization.CultureInfo.CurrentUICulture);
+        localization = new APB97StringLocalizer<Challenges>(LocalizationFactory);
+        await localization.InitializeAsync();
         StateHasChanged();
     }
 }

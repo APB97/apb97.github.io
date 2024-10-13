@@ -3,55 +3,63 @@
 @using apb97.github.io.Shared
 
 @implements IDisposable
+@inject APB97StringLocalizer<PlotAndIntegrate> localization
 @inject APB97StringLocalizerFactory LocalizationFactory
 
-<PageTitle>Adrian Bieliński - Plot and Integrate</PageTitle>
+@if (ShouldRender())
+{
+    <PageTitle>Adrian Bieliński - Plot and Integrate</PageTitle>
 
-<h1>Plot and Integrate</h1>
+    <h1>Plot and Integrate</h1>
 
-<p>@localization.Localize("Windows Forms application that can be used for drawing simple plots and calculating integrals.")</p>
+    <p>@localization.Localize("Windows Forms application that can be used for drawing simple plots and calculating integrals.")</p>
 
-<img class="screenshot-wide" alt="App UI" src="https://raw.githubusercontent.com/APB97/PlotAndIntegrate/main/images/plot-made-larger.png"/>
+    <img class="screenshot-wide" alt="App UI" src="https://raw.githubusercontent.com/APB97/PlotAndIntegrate/main/images/plot-made-larger.png"/>
 
-<p/>
-<h4>@localization.Localize("Functionalities")</h4>
+    <p/>
+    <h4>@localization.Localize("Functionalities")</h4>
 
-<ul>
-    <li>@localization.Localize("Drawing plots of a polynomial function")</li>
-    <li>@localization.Localize("Drawing plots of a logarithmic function")</li>
-    <li>@localization.Localize("Zooming the plot by scrolling the mouse wheel")</li>
-    <li>@localization.Localize("Panning the plot by dragging mouse while mouse button is pressed")</li>
-    <li>@localization.Localize("Saving the image of the plot with use of 'Save as image...' button")</li>
-    <li>@localization.Localize("Calculating definite intergral for a given range")</li>
-    <li>@localization.Localize("Setting axes' labels font size, size of the plot and color of the plot")</li>
-</ul>
+    <ul>
+        <li>@localization.Localize("Drawing plots of a polynomial function")</li>
+        <li>@localization.Localize("Drawing plots of a logarithmic function")</li>
+        <li>@localization.Localize("Zooming the plot by scrolling the mouse wheel")</li>
+        <li>@localization.Localize("Panning the plot by dragging mouse while mouse button is pressed")</li>
+        <li>@localization.Localize("Saving the image of the plot with use of 'Save as image...' button")</li>
+        <li>@localization.Localize("Calculating definite intergral for a given range")</li>
+        <li>@localization.Localize("Setting axes' labels font size, size of the plot and color of the plot")</li>
+    </ul>
 
-<h4>@localization.Localize("Installation")</h4>
+    <h4>@localization.Localize("Installation")</h4>
 
-<ul>
-    <li>
-        <b>@localization.Localize("Option 1")</b>
-        <br/>
-        @localization.Localize("You can download it from 'Releases' section, and either run it or install it with 'setup.exe'.")
-    </li>    
-    <li>
-        <b>@localization.Localize("Option 2")</b>
-        <br/>
-        @localization.Localize("Download the source and compile the solution with your IDE (for this project I used Visual Studio 2019).")
-    </li>    
-</ul>
+    <ul>
+        <li>
+            <b>@localization.Localize("Option 1")</b>
+            <br/>
+            @localization.Localize("You can download it from 'Releases' section, and either run it or install it with 'setup.exe'.")
+        </li>    
+        <li>
+            <b>@localization.Localize("Option 2")</b>
+            <br/>
+            @localization.Localize("Download the source and compile the solution with your IDE (for this project I used Visual Studio 2019).")
+        </li>    
+    </ul>
 
-<a href="https://github.com/APB97/PlotAndIntegrate">@localization.Localize("GitHub repository")</a>
+    <a href="https://github.com/APB97/PlotAndIntegrate">@localization.Localize("GitHub repository")</a>
+}
 
 @code {
     [CascadingParameter]
     public required MainLayout Layout { get; set; }
 
-    private Dictionary<string, string> localization = [];
+    protected override bool ShouldRender()
+    {
+        if (localization.Localization == null) return false;
+        return base.ShouldRender();
+    }
 
     protected override async Task OnInitializedAsync()
     {
-        localization = await LocalizationFactory.GetLocalization<PlotAndIntegrate>(Layout.Language ?? System.Globalization.CultureInfo.CurrentUICulture);
+        await localization.InitializeAsync();
     }
 
     protected override void OnInitialized()
@@ -66,7 +74,8 @@
 
     private async Task GetResources()
     {
-        localization = await LocalizationFactory.GetLocalization<PlotAndIntegrate>(Layout.Language ?? System.Globalization.CultureInfo.CurrentUICulture);
+        localization = new APB97StringLocalizer<PlotAndIntegrate>(LocalizationFactory);
+        await localization.InitializeAsync();
         StateHasChanged();
     }
 }

@@ -1,58 +1,65 @@
 ﻿@implements IDisposable
+@inject APB97StringLocalizer<Skills> localization
 @inject APB97StringLocalizerFactory LocalizationFactory
 
-<AdjustedAnchorHeading Id="skills">@localization.Localize("Skills")</AdjustedAnchorHeading>
+@if (ShouldRender())
+{
+    <AdjustedAnchorHeading Id="skills">@localization.Localize("Skills")</AdjustedAnchorHeading>
 
-<p>
-    @localization.Localize("I usually build")
-    <br/>
-    @localization.Localize("Apart from these") @localization.Localize("Here are my")
-</p>
+    <p>
+        @localization.Localize("I usually build")
+        <br/>
+        @localization.Localize("Apart from these") @localization.Localize("Here are my")
+    </p>
 
-<div class="row">
-    <div class="skill-card">
-        <img class="center-25" src="/images/512px-C_Sharp_wordmark.png" alt="C# Development Image"/>
-        <h4 class="text-center">@localization.Localize("C# Development")</h4>
-        <p>
-            @localization.Localize("I use C#")
-        </p>
+    <div class="row">
+        <div class="skill-card">
+            <img class="center-25" src="/images/512px-C_Sharp_wordmark.png" alt="C# Development Image"/>
+            <h4 class="text-center">@localization.Localize("C# Development")</h4>
+            <p>
+                @localization.Localize("I use C#")
+            </p>
+        </div>
+        <div class="skill-card">
+            <img class="center-50" src="/images/favpng_asp-net-mvc-logo.png" alt="Patterns Image"/>
+            <h4 class="text-center">@localization.Localize("Patterns")</h4>
+            <p>
+                @localization.Localize("I use patterns")
+            </p>
+        </div>
     </div>
-    <div class="skill-card">
-        <img class="center-50" src="/images/favpng_asp-net-mvc-logo.png" alt="Patterns Image"/>
-        <h4 class="text-center">@localization.Localize("Patterns")</h4>
-        <p>
-            @localization.Localize("I use patterns")
-        </p>
-    </div>
-</div>
 
-<div class="row">
-    <div class="skill-card">
-        <img class="center-50" src="/images/efcf.png" alt="EF Code First Image"/>
-        <h4 class="text-center">@localization.Localize("Object-Relational Mapping")</h4>
-        <p>
-            @localization.Localize("I use an ORM")
-        </p>
+    <div class="row">
+        <div class="skill-card">
+            <img class="center-50" src="/images/efcf.png" alt="EF Code First Image"/>
+            <h4 class="text-center">@localization.Localize("Object-Relational Mapping")</h4>
+            <p>
+                @localization.Localize("I use an ORM")
+            </p>
+        </div>
+        <div class="skill-card">
+            <img class="center-33" src="/images/asp-net.png" alt="ASP.Net Image"/>
+            <h4 class="text-center">@localization.Localize("Web Development")</h4>
+            <p>
+                @localization.Localize("I use ASP.Net")
+            </p>
+        </div>
     </div>
-    <div class="skill-card">
-        <img class="center-33" src="/images/asp-net.png" alt="ASP.Net Image"/>
-        <h4 class="text-center">@localization.Localize("Web Development")</h4>
-        <p>
-            @localization.Localize("I use ASP.Net")
-        </p>
-    </div>
-</div>
+}
 
 @code {
     [CascadingParameter]
     public required MainLayout Layout { get; set; }
 
-
-    private Dictionary<string, string> localization = [];
+    protected override bool ShouldRender()
+    {
+        if (localization.Localization == null) return false;
+        return base.ShouldRender();
+    }
 
     protected override async Task OnInitializedAsync()
     {
-        localization = await LocalizationFactory.GetLocalization<Skills>(Layout.Language ?? System.Globalization.CultureInfo.CurrentUICulture);
+        await localization.InitializeAsync();
     }
 
     protected override void OnInitialized()
@@ -67,7 +74,8 @@
 
     private async Task GetResources()
     {
-        localization = await LocalizationFactory.GetLocalization<Skills>(Layout.Language ?? System.Globalization.CultureInfo.CurrentUICulture);
+        localization = new APB97StringLocalizer<Skills>(LocalizationFactory);
+        await localization.InitializeAsync();
         StateHasChanged();
     }
 }
