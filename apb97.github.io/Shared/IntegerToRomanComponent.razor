@@ -59,7 +59,7 @@
 
     protected override async Task OnInitializedAsync()
     {
-        localization = await LocalizationFactory.GetLocalization<Challenges>(Layout.Language ?? System.Globalization.CultureInfo.CurrentUICulture);
+        localization = await LocalizationFactory.GetLocalization<IntegerToRoman>(Layout.Language ?? System.Globalization.CultureInfo.CurrentUICulture);
     }
 
     protected override void OnInitialized()
@@ -74,7 +74,7 @@
 
     private async Task GetResources()
     {
-        localization = await LocalizationFactory.GetLocalization<Challenges>(Layout.Language ?? System.Globalization.CultureInfo.CurrentUICulture);
+        localization = await LocalizationFactory.GetLocalization<IntegerToRoman>(Layout.Language ?? System.Globalization.CultureInfo.CurrentUICulture);
         StateHasChanged();
     }
 }
