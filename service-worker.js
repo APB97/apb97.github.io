@@ -1,7 +1,7 @@
 // Caution! Be sure you understand the caveats before publishing an application with
 // offline support. See https://aka.ms/blazor-offline-considerations
 
-const CACHE_VERSION = "1.0";
+const CACHE_VERSION = "2.0";
 
 const MAX_TTL = {
     '/': 3600,
@@ -22,7 +22,7 @@ self.addEventListener('fetch', event => event.respondWith(onFetch(event)));
 
 const cacheNamePrefix = 'offline-cache-';
 const cacheName = `${cacheNamePrefix}${self.assetsManifest.version}-${CACHE_VERSION}`;
-const offlineAssetsInclude = [ /\.dll$/, /\.pdb$/, /\.wasm/, /\.html/, /\.js$/, /\.json$/, /\.css$/, /\.woff$/, /\.png$/, /\.jpe?g$/, /\.gif$/, /\.ico$/, /\.blat$/, /\.dat$/ ];
+const offlineAssetsInclude = [ /\.dll$/, /\.pdb$/, /\.wasm/, /\.html/, /\.js$/, /\.json$/, /\.css$/, /\.woff$/, /\.png$/, /\.jpe?g$/, /\.gif$/, /\.ico$/, /\.blat$/, /\.dat$/, /\.resx$/ ];
 const offlineAssetsExclude = [ /^service-worker\.js$/ ];
 
 // Replace with your base path if you are hosting on a subfolder. Ensure there is a trailing '/'.
@@ -66,6 +66,12 @@ async function onFetch(event) {
         const cache = await caches.open(cacheName);
         cachedResponse = await cache.match(request);
 
+        var matches = /\..*$/g.match(event.request.url);
+        var ttl = MAX_TTL[matches?.[matches.length - 1]];
+        if (ttl && parseInt((new Date().getTime() - new Date(cachedResponse.headers.get('date')).getTime()) / 1000) > ttl) {
+            cachedResponse = null;
+        }
+
         if (/\/WebSudoku\/(sudoku|rules)/.test(event.request.url)) {
             return fetch('/WebSudoku/');
         }
@@ -83,4 +89,4 @@ async function onFetch(event) {
 
     return cachedResponse || fetch(event.request);
 }
-/* Manifest version: /n5x3o8K */
+/* Manifest version: ae9Es/vW */
