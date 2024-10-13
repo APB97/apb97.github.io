@@ -1,12 +1,14 @@
 ﻿@page "/CountAndSay"
 @page "/CountAndSay/{Number:int?}"
 @using Microsoft.Extensions.Localization
+@using System.Text
 @using apb97.github.io.Shared
 
 @implements IDisposable
 @inject APB97StringLocalizer<CountAndSay> localization
 @inject APB97StringLocalizerFactory LocalizationFactory
 @inject NavigationManager Navigation
+@inject CountAndSayService Service
 
 @if (ShouldRender())
 {
@@ -35,22 +37,66 @@
     <h4>@localization.Localize("Note")</h4>
     <p>@localization.Localize("You can use the url like") <a href="https://apb97.github.io/CountAndSay/12#output">https://apb97.github.io/CountAndSay/12#output</a> @localization.Localize("for any number between") 1 @localization.Localize("and") 30.</p>
 
-    <CountAndSayComponent NumberOfSayings="Number" OnNumberChanged="OnNumberChanged" />
+    <div>
+        <h4>@localization.Localize("Input")</h4>
+
+        <div class="row">
+            <div class="card-group">
+                <label for="Number" style="margin: 4px">@localization.Localize("NumberOfSayings")</label>
+                <InputNumber TValue="int?" Value="Number" ValueExpression="() => Number" ValueChanged="OnNumberChanged" type="number" min="1" max="30" style="margin: 4px" />
+            </div>
+        </div>
+
+        @{
+            var results = GetResults();
+        }
+        <hr />
+        <AdjustedAnchorHeading Id="@OutputId" FontSize="smaller">@localization.Localize("Output")</AdjustedAnchorHeading>
+        <div class="row">
+            <div class="card-group">
+                <label style="margin: 4px">@localization.Localize("Result")</label>
+
+                <code role="status" style="margin: 3px; font-size:large; overflow-wrap: anywhere">
+                    @results.result
+                </code>
+            </div>
+        </div>
+
+        <h4>@localization.Localize("Explanation")</h4>
+        <div class="row">
+            <p role="status">
+                @{
+                    int i = 1;
+                    foreach (var explanation in results.explanation)
+                    {
+                    <p>
+                        <b>@(++i): </b>
+                            @explanation
+                    </p>
+                    }
+                }
+            </p>
+        </div>
+    </div>
 }
 
 @code 
 {
+    public const string OutputId = "output";
+
     [CascadingParameter]
     public required MainLayout Layout { get; set; }
 
     [Parameter]
     public int? Number { get; set; }
 
+    private int? prev;
+
     private void OnNumberChanged(int? number)
     {
-        if (number.HasValue)
+        if (number.HasValue && number != Number)
         {
-            Navigation.NavigateTo($"/CountAndSay/{number.Value}#{CountAndSayComponent.OutputId}");
+            Navigation.NavigateTo($"/CountAndSay/{number.Value}#{OutputId}");
         }
     }
 
@@ -71,6 +117,18 @@
         MainLayout.OnStateChanging += GetResources;
     }
 
+    protected override void OnAfterRender(bool firstRender)
+    {
+        if (firstRender) return;
+        if (!Number.HasValue) return;
+        var target = $"/CountAndSay/{Number.Value}#{OutputId}";
+        if (Number.HasValue && !prev.HasValue)
+        {
+            Navigation.NavigateTo(target);
+            prev = Number;
+        }
+    }
+
     void IDisposable.Dispose()
     {
         MainLayout.OnStateChanging -= GetResources;
@@ -81,5 +139,24 @@
         localization = new APB97StringLocalizer<CountAndSay>(LocalizationFactory);
         await localization.InitializeAsync(Layout.Language);
         StateHasChanged();
+    }
+
+    protected (string result, IEnumerable<string> explanation) GetResults()
+    {
+        if (!Number.HasValue)
+        {
+            return (string.Empty, Array.Empty<string>());
+        }
+
+        try
+        {
+            var stringBuilder = new StringBuilder();
+            var result = Service.CountAndSay(Number.Value, stringBuilder);
+            return (result, stringBuilder.ToString().Split("<br/>", StringSplitOptions.RemoveEmptyEntries));
+        }
+        catch (ArgumentOutOfRangeException)
+        {
+            return (localization.Localize("Out of range") ?? string.Empty, Array.Empty<string>());
+        }
     }
 }

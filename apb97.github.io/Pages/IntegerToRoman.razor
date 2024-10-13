@@ -44,20 +44,48 @@
     <h4>@localization.Localize("Note")</h4>
     <p>@localization.Localize("You can use the url like") <a href="https://apb97.github.io/IntegerToRoman/46#output">https://apb97.github.io/IntegerToRoman/46#output</a> @localization.Localize("to convert") 46 @localization.Localize("to roman numeral"). @localization.Localize("And any number between") 1 @localization.Localize("and") 3999.</p>
 
-    <IntegerToRomanComponent Number="Number" OnNumberChanged="OnNumberChanged" />
+    <div>
+        <h4>@localization.Localize("Input")</h4>
+
+        <div class="row">
+            <div class="card-group">
+                <label for="Number" style="margin: 4px">@localization.Localize("Number")</label>
+                <InputNumber TValue="int?" Value="Number" ValueChanged="OnNumberChanged" ValueExpression="() => Number" type="number" min="1" max="3999" style="margin: 4px" />
+            </div>
+        </div>
+
+        <hr />
+        <AdjustedAnchorHeading Id="@OutputId" FontSize="smaller">@localization.Localize("Output")</AdjustedAnchorHeading>
+        <div class="row">
+            <div class="card-group">
+                <label style="margin: 4px">@localization.Localize("Roman")</label>
+
+                <code role="status" style="margin: 3px; font-size:large">
+                    @if (Number.HasValue)
+                    {
+                        <text>@ConvertToRoman(Number.Value)</text>
+                    }
+                </code>
+            </div>
+        </div>
+    </div>
 }
 @code {
+    public const string OutputId = "output";
+
     [CascadingParameter]
     public required MainLayout Layout { get; set; }
 
     [Parameter]
     public int? Number { get; set; }
 
+    private int? prev;
+
     private void OnNumberChanged(int? number)
     {
-        if (number.HasValue)
+        if (number.HasValue && number != Number)
         {
-            Navigation.NavigateTo($"/IntegerToRoman/{number.Value}#{IntegerToRomanComponent.OutputId}");
+            Navigation.NavigateTo($"/IntegerToRoman/{number.Value}#{OutputId}");
         }
     }
 
@@ -76,6 +104,30 @@
     protected override void OnInitialized()
     {
         MainLayout.OnStateChanging += GetResources;
+    }
+
+    protected override void OnAfterRender(bool firstRender)
+    {
+        if (firstRender) return;
+        if (!Number.HasValue) return;
+        var target = $"/IntegerToRoman/{Number.Value}#{OutputId}";
+        if (Number.HasValue && !prev.HasValue)
+        {
+            Navigation.NavigateTo(target);
+            prev = Number;
+        }
+    }
+
+    protected string ConvertToRoman(int value)
+    {
+        try
+        {
+            return IntegerToRomanService.ToRoman(value);
+        }
+        catch (ArgumentOutOfRangeException)
+        {
+            return localization.Localize("Out of range") ?? string.Empty;
+        }
     }
 
     void IDisposable.Dispose()
