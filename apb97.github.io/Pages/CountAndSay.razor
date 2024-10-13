@@ -110,6 +110,7 @@
     {
         localization = new APB97StringLocalizer<CountAndSay>(LocalizationFactory);
         await localization.InitializeAsync(Layout.Language);
+        await Service.InitializeAsync(Layout.Language);
     }
 
     protected override void OnInitialized()
@@ -138,6 +139,7 @@
     {
         localization = new APB97StringLocalizer<CountAndSay>(LocalizationFactory);
         await localization.InitializeAsync(Layout.Language);
+        await Service.InitializeAsync(Layout.Language);
         StateHasChanged();
     }
 
