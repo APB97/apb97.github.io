@@ -24,13 +24,13 @@
 @code {
     private NavMenu? navMenu;
 
-    public static event Action OnStateChanging = delegate { };
+    public static event Func<Task> OnStateChanging = delegate { return Task.CompletedTask; };
 
     public void NotifyStateChanged()
     {
+        OnStateChanging.Invoke();
         StateHasChanged();
         navMenu?.SetParametersAsync(ParameterView.Empty);
-        OnStateChanging.Invoke();
     }
 
     public CultureInfo? Language => navMenu?.Language;

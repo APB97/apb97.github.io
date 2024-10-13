@@ -1,22 +1,24 @@
 ﻿@using apb97.github.io.Pages
 @using apb97.github.io.Services
-@inject IStringLocalizer<IntegerToRoman> Localizer
+
+@implements IDisposable
+@inject APB97StringLocalizerFactory LocalizationFactory
 
 <div>
-    <h4>@LanguageSelect.GetStringSafely(Localizer, "Input")</h4>
+    <h4>@localization.Localize("Input")</h4>
 
     <div class="row">
         <div class="card-group">
-            <label for="Number" style="margin: 4px">@LanguageSelect.GetStringSafely(Localizer, "Number")</label>
+            <label for="Number" style="margin: 4px">@localization.Localize("Number")</label>
             <InputNumber TValue="int?" Value="Number" ValueChanged="OnNumberChanged" ValueExpression="() => Number" type="number" min="1" max="3999" style="margin: 4px"/>
         </div>
     </div>
 
     <hr />
-    <AdjustedAnchorHeading Id="@OutputId" FontSize="smaller">@LanguageSelect.GetStringSafely(Localizer, "Output")</AdjustedAnchorHeading>
+    <AdjustedAnchorHeading Id="@OutputId" FontSize="smaller">@localization.Localize("Output")</AdjustedAnchorHeading>
     <div class="row">
         <div class="card-group">
-            <label style="margin: 4px">@LanguageSelect.GetStringSafely(Localizer, "Roman")</label>
+            <label style="margin: 4px">@localization.Localize("Roman")</label>
 
             <code role="status" style="margin: 3px; font-size:large">
                 @if (Number.HasValue)
@@ -49,7 +51,30 @@
         }
         catch (ArgumentOutOfRangeException)
         {
-            return LanguageSelect.GetStringSafely(Localizer, "Out of range", Layout.Language) ?? string.Empty;
+            return localization.Localize("Out of range") ?? string.Empty;
         }
+    }
+
+    private Dictionary<string, string> localization = [];
+
+    protected override async Task OnInitializedAsync()
+    {
+        localization = await LocalizationFactory.GetLocalization<Challenges>(Layout.Language ?? System.Globalization.CultureInfo.CurrentUICulture);
+    }
+
+    protected override void OnInitialized()
+    {
+        MainLayout.OnStateChanging += GetResources;
+    }
+
+    void IDisposable.Dispose()
+    {
+        MainLayout.OnStateChanging -= GetResources;
+    }
+
+    private async Task GetResources()
+    {
+        localization = await LocalizationFactory.GetLocalization<Challenges>(Layout.Language ?? System.Globalization.CultureInfo.CurrentUICulture);
+        StateHasChanged();
     }
 }

@@ -1,19 +1,22 @@
-﻿@inject IStringLocalizer<Challenges> Localizer
-@inject IJSRuntime JS
+﻿@implements IDisposable
 
-<AdjustedAnchorHeading Id="challenges">@LanguageSelect.GetStringSafely(Localizer, "Challenges", Layout.Language)</AdjustedAnchorHeading>
+@inject IStringLocalizer<Challenges> Localizer
+@inject IJSRuntime JS
+@inject APB97StringLocalizerFactory LocalizationFactory
+
+<AdjustedAnchorHeading Id="challenges">@localization.Localize("Challenges")</AdjustedAnchorHeading>
 
 <div class="d-flex">
     <div class="skill-card">
-        <h4 class="text-center">@LanguageSelect.GetStringSafely(Localizer, "Integer to Roman", Layout.Language)</h4>
+        <h4 class="text-center">@localization.Localize("Integer to Roman")</h4>
         <div class="text-center">
-            <a class="link-primary" href="/IntegerToRoman">@LanguageSelect.GetStringSafely(Localizer, "See this challenge", Layout.Language)</a>
+            <a class="link-primary" href="/IntegerToRoman">@localization.Localize("See this challenge")</a>
         </div>
     </div>
     <div class="skill-card">
-        <h4 class="text-center">@LanguageSelect.GetStringSafely(Localizer, "Count and say", Layout.Language)</h4>
+        <h4 class="text-center">@localization.Localize("Count and say")</h4>
         <div class="text-center">
-            <a class="link-primary" href="/CountAndSay">@LanguageSelect.GetStringSafely(Localizer, "See this challenge", Layout.Language)</a>
+            <a class="link-primary" href="/CountAndSay">@localization.Localize("See this challenge")</a>
         </div>
     </div>
 </div>
@@ -21,4 +24,27 @@
 @code {
     [CascadingParameter]
     public required MainLayout Layout { get; set; }
+
+    private Dictionary<string, string> localization = [];
+
+    protected override async Task OnInitializedAsync()
+    {
+        localization = await LocalizationFactory.GetLocalization<Challenges>(Layout.Language ?? System.Globalization.CultureInfo.CurrentUICulture);
+    }
+
+    protected override void OnInitialized()
+    {
+        MainLayout.OnStateChanging += GetResources;
+    }
+
+    void IDisposable.Dispose()
+    {
+        MainLayout.OnStateChanging -= GetResources;
+    }
+
+    private async Task GetResources()
+    {
+        localization = await LocalizationFactory.GetLocalization<Challenges>(Layout.Language ?? System.Globalization.CultureInfo.CurrentUICulture);
+        StateHasChanged();
+    }
 }

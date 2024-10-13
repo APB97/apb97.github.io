@@ -2,35 +2,59 @@
 @using Microsoft.Extensions.Localization
 @using apb97.github.io.Shared
 
-@inject IStringLocalizer<MetadataRename> Localizer
+@implements IDisposable
+@inject APB97StringLocalizerFactory LocalizationFactory
 
 <PageTitle>Adrian Bieliński - Metadata Rename</PageTitle>
 
 <h1>Metadata Rename</h1>
 
-<p>@LanguageSelect.GetStringSafely(Localizer,"Rename music files using their metadata with this tool.", Layout.Language)</p>
+<p>@localization.Localize("Rename music files using their metadata with this tool.")</p>
 
 <img class="screenshot-wide" alt="WPF UI" src="https://user-images.githubusercontent.com/16359542/156198027-c851deed-c757-4741-8eff-8d3adfed205d.png"/>
 
 <p/>
 
-<h4>@LanguageSelect.GetStringSafely(Localizer,"Description", Layout.Language)</h4>
+<h4>@localization.Localize("Description")</h4>
 <p>
-    @LanguageSelect.GetStringSafely(Localizer,"It allows users to specify properties to use for renaming and directories with files they want to rename.", Layout.Language)
-    @LanguageSelect.GetStringSafely(Localizer,"Apart from that, all invalid path characters are removed to ensure renaming operation will be successful.", Layout.Language)
-    @LanguageSelect.GetStringSafely(Localizer,"There is default file named skip.txt for words users want to remove from final filenames.", Layout.Language)
+    @localization.Localize("It allows users to specify properties to use for renaming and directories with files they want to rename.")
+    @localization.Localize("Apart from that, all invalid path characters are removed to ensure renaming operation will be successful.")
+    @localization.Localize("There is default file named skip.txt for words users want to remove from final filenames.")
 </p>
 
 <p>
-    @LanguageSelect.GetStringSafely(Localizer,"This WPF application allows selecting directories, properties used, determining order of properties in the final filename and choosing a SkipFile.", Layout.Language)
-    @LanguageSelect.GetStringSafely(Localizer,"It allows saving and loading of settings to and from", Layout.Language)
-    <code>.json</code>@LanguageSelect.GetStringSafely(Localizer,"file.", Layout.Language)
-    @LanguageSelect.GetStringSafely(Localizer,"Application displays messages about changes made to the settings and allows to Silence the output, so it is not updated until the setting is changed.", Layout.Language)
+    @localization.Localize("This WPF application allows selecting directories, properties used, determining order of properties in the final filename and choosing a SkipFile.")
+    @localization.Localize("It allows saving and loading of settings to and from")
+    <code>.json</code>@localization.Localize("file.")
+    @localization.Localize("Application displays messages about changes made to the settings and allows to Silence the output, so it is not updated until the setting is changed.")
 </p>
 
-<a href="https://github.com/APB97/MusicRenameWithMetadata">@LanguageSelect.GetStringSafely(Localizer,"GitHub repository", Layout.Language)</a>
+<a href="https://github.com/APB97/MusicRenameWithMetadata">@localization.Localize("GitHub repository")</a>
 
 @code {
     [CascadingParameter]
     public required MainLayout Layout { get; set; }
+
+    private Dictionary<string, string> localization = [];
+
+    protected override async Task OnInitializedAsync()
+    {
+        localization = await LocalizationFactory.GetLocalization<MetadataRename>(Layout.Language ?? System.Globalization.CultureInfo.CurrentUICulture);
+    }
+
+    protected override void OnInitialized()
+    {
+        MainLayout.OnStateChanging += GetResources;
+    }
+
+    void IDisposable.Dispose()
+    {
+        MainLayout.OnStateChanging -= GetResources;
+    }
+
+    private async Task GetResources()
+    {
+        localization = await LocalizationFactory.GetLocalization<MetadataRename>(Layout.Language ?? System.Globalization.CultureInfo.CurrentUICulture);
+        StateHasChanged();
+    }
 }

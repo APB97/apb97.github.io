@@ -1,15 +1,18 @@
 ﻿@using System.Text
+@using System.Resources
 @using apb97.github.io.Pages
 @using apb97.github.io.Services
+
+@implements IDisposable
 @inject CountAndSayService Service
-@inject IStringLocalizer<CountAndSay> Localizer
+@inject APB97StringLocalizerFactory LocalizationFactory
 
 <div>
-    <h4>@LanguageSelect.GetStringSafely(Localizer, "Input", Layout.Language)</h4>
+    <h4>@localization.Localize("Input")</h4>
 
     <div class="row">
         <div class="card-group">
-            <label for="Number" style="margin: 4px">@LanguageSelect.GetStringSafely(Localizer, "NumberOfSayings", Layout.Language)</label>
+            <label for="Number" style="margin: 4px">@localization.Localize("NumberOfSayings")</label>
             <InputNumber TValue="int?" Value="NumberOfSayings" ValueExpression="() => NumberOfSayings" ValueChanged="OnNumberChanged" type="number" min="1" max="30" style="margin: 4px"/>
         </div>
     </div>
@@ -18,10 +21,10 @@
         var results = GetResults();
     }
     <hr />
-    <AdjustedAnchorHeading Id="@OutputId" FontSize="smaller">@LanguageSelect.GetStringSafely(Localizer, "Output", Layout.Language)</AdjustedAnchorHeading>
+    <AdjustedAnchorHeading Id="@OutputId" FontSize="smaller">@localization.Localize("Output")</AdjustedAnchorHeading>
     <div class="row">
         <div class="card-group">
-            <label style="margin: 4px">@LanguageSelect.GetStringSafely(Localizer, "Result", Layout.Language)</label>
+            <label style="margin: 4px">@localization.Localize("Result")</label>
 
             <code role="status" style="margin: 3px; font-size:large; overflow-wrap: anywhere">
                 @results.result
@@ -29,7 +32,7 @@
         </div>
     </div>
 
-    <h4>@LanguageSelect.GetStringSafely(Localizer, "Explanation", Layout.Language)</h4>
+    <h4>@localization.Localize("Explanation")</h4>
     <div class="row">
         <p role="status">
             @{
@@ -58,6 +61,29 @@
     [Parameter]
     public Action<int?> OnNumberChanged { get; set; } = delegate { };
 
+    private Dictionary<string, string> localization = [];
+
+    protected override async Task OnInitializedAsync()
+    {
+        localization = await LocalizationFactory.GetLocalization<CountAndSay>(Layout.Language ?? System.Globalization.CultureInfo.CurrentUICulture);
+    }
+
+    protected override void OnInitialized()
+    {
+        MainLayout.OnStateChanging += GetResources;
+    }
+
+    void IDisposable.Dispose()
+    {
+        MainLayout.OnStateChanging -= GetResources;
+    }
+
+    private async Task GetResources()
+    {
+        localization = await LocalizationFactory.GetLocalization<CountAndSay>(Layout.Language ?? System.Globalization.CultureInfo.CurrentUICulture);
+        StateHasChanged();
+    }
+
     protected (string result, IEnumerable<string> explanation) GetResults()
     {
         if (!NumberOfSayings.HasValue)
@@ -73,7 +99,7 @@
         }
         catch (ArgumentOutOfRangeException)
         {
-            return (LanguageSelect.GetStringSafely(Localizer, "Out of range", Layout.Language) ?? string.Empty, Array.Empty<string>());
+            return (localization.Localize("Out of range") ?? string.Empty, Array.Empty<string>());
         }
     }
 }

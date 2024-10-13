@@ -1,29 +1,29 @@
-﻿@using apb97.github.io.Services
+﻿@using System.Resources
 
 @implements IDisposable
-@inject IStringLocalizer<AboutMe> Localizer
 @inject IJSRuntime JS
+@inject APB97StringLocalizerFactory LocalizationFactory
 
 <div class="row">
     <div class="d-flex flex-column">
         <div class="d-flex flex-row">
             <div class="col-8 flex-column">
                 <div class="d-flex flex-column">
-                    <AdjustedAnchorHeading Id="aboutme">@LanguageSelect.GetStringSafely(Localizer, "About me", Layout.Language)</AdjustedAnchorHeading>
-                    <h5>@LanguageSelect.GetStringSafely(Localizer, "iam_short", Layout.Language)</h5>
+                    <AdjustedAnchorHeading Id="aboutme">@localization.Localize("About me")</AdjustedAnchorHeading>
+                    <h5>@localization.Localize("iam_short")</h5>
                 </div>
 
                 <p>
-                    @LanguageSelect.GetStringSafely(Localizer, "iam_long", Layout.Language)
+                    @localization.Localize("iam_long")
                 </p>
                 
                 <p class="m-0">
-                    <b>@LanguageSelect.GetStringSafely(Localizer, "degree_label", Layout.Language)</b>
-                    @LanguageSelect.GetStringSafely(Localizer, "degree", Layout.Language)
+                    <b>@localization.Localize("degree_label")</b>
+                    @localization.Localize("degree")
                 </p>
                 <p class="m-0">
-                    <b>@LanguageSelect.GetStringSafely(Localizer, "status_label", Layout.Language)</b>
-                    @LanguageSelect.GetStringSafely(Localizer, "status", Layout.Language)
+                    <b>@localization.Localize("status_label")</b>
+                    @localization.Localize("status")
                 </p>
 
                 <HiddenForScreenWidth HideForWidthCondition="width => width < ScreenBreakpoints.Large">
@@ -47,21 +47,34 @@
     [CascadingParameter]
     public required MainLayout Layout { get; set; }
 
+    private Dictionary<string, string> localization = [];
+
+    protected override async Task OnInitializedAsync()
+    {
+        localization = await LocalizationFactory.GetLocalization<AboutMe>(Layout.Language ?? System.Globalization.CultureInfo.CurrentUICulture);
+    }
+
     protected override void OnInitialized()
     {
-        MainLayout.OnStateChanging += StateHasChanged;
+        MainLayout.OnStateChanging += GetResources;
     }
 
     void IDisposable.Dispose()
     {
-        MainLayout.OnStateChanging -= StateHasChanged;
+        MainLayout.OnStateChanging -= GetResources;
+    }
+
+    private async Task GetResources()
+    {
+        localization = await LocalizationFactory.GetLocalization<AboutMe>(Layout.Language ?? System.Globalization.CultureInfo.CurrentUICulture);
+        StateHasChanged();
     }
 
     private RenderFragment BulletPointsFragment => __builder =>
     {
         <div class="d-flex">
             <div class="col-6 p-2">
-                <p>@LanguageSelect.GetStringSafely(Localizer, "Technologies I use daily:", Layout.Language)</p>
+                <p>@localization.Localize("Technologies I use daily:")</p>
                 <ul>
                     <li>.NET 8</li>
                     <li>C# 12</li>
@@ -70,20 +83,20 @@
                     <li>HTML, CSS, JavaScript</li>
                     <li>GraphQL</li>
                     <li>PostgreSQL</li>
-                    <li>@LanguageSelect.GetStringSafely(Localizer, "OOP", Layout.Language)</li>
-                    <li>@LanguageSelect.GetStringSafely(Localizer, "ORM", Layout.Language)</li>
-                    <li>@LanguageSelect.GetStringSafely(Localizer, "DI", Layout.Language)</li>
+                    <li>@localization.Localize("OOP")</li>
+                    <li>@localization.Localize("ORM")</li>
+                    <li>@localization.Localize("DI")</li>
                 </ul>
             </div>
             <div class="col-6 p-2">
-                <p>@LanguageSelect.GetStringSafely(Localizer, "Other supporting technologies:", Layout.Language)]</p>
+                <p>@localization.Localize("Other supporting technologies:")</p>
                 <ul>
                     <li>Git</li>
                     <li>JSON</li>
                     <li>SQL</li>
                     <li>YAML</li>
                     <li>Linux</li>
-                    <li>@LanguageSelect.GetStringSafely(Localizer, "Containers", Layout.Language)</li>
+                    <li>@localization.Localize("Containers")</li>
                     <li>Podman</li>
                     <li>Usernetes</li>
                 </ul>

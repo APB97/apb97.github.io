@@ -3,14 +3,16 @@
 @using Microsoft.Extensions.Localization
 @using System.Reflection;
 @using apb97.github.io.Shared
-@inject IStringLocalizer<LearningProgress> Localizer
+
+@implements IDisposable
+@inject APB97StringLocalizerFactory LocalizationFactory
 @inject NavigationManager Navigation
 
-<PageTitle>Adrian Bieliński - @LanguageSelect.GetStringSafely(Localizer,"LearningProgress", Layout.Language) @Year</PageTitle>
+<PageTitle>Adrian Bieliński - @localization.Localize("LearningProgress") @Year</PageTitle>
 
-<h2>@LanguageSelect.GetStringSafely(Localizer,"LearningProgress", Layout.Language)</h2>
+<h2>@localization.Localize("LearningProgress")</h2>
 
-<label>@LanguageSelect.GetStringSafely(Localizer,"Year", Layout.Language)</label>
+<label>@localization.Localize("Year")</label>
 <InputNumber TValue="int" Value="Year" ValueChanged="OnYearChanged" ValueExpression="() => Year" min="@MinYear" max="@RecentYear" />
 
 <DynamicComponent Type="GetDynamicComponentType(Year)" />
@@ -46,5 +48,28 @@
         {
             Navigation.NavigateTo($"/LearningProgress/{year}");
         }
+    }
+
+    private Dictionary<string, string> localization = [];
+
+    protected override async Task OnInitializedAsync()
+    {
+        localization = await LocalizationFactory.GetLocalization<LearningProgress>(Layout.Language ?? System.Globalization.CultureInfo.CurrentUICulture);
+    }
+
+    protected override void OnInitialized()
+    {
+        MainLayout.OnStateChanging += GetResources;
+    }
+
+    void IDisposable.Dispose()
+    {
+        MainLayout.OnStateChanging -= GetResources;
+    }
+
+    private async Task GetResources()
+    {
+        localization = await LocalizationFactory.GetLocalization<LearningProgress>(Layout.Language ?? System.Globalization.CultureInfo.CurrentUICulture);
+        StateHasChanged();
     }
 }

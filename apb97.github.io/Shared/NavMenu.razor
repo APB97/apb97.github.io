@@ -1,6 +1,7 @@
 ﻿@using Microsoft.Extensions.Localization
 @using System.Globalization
-@inject IStringLocalizer<NavMenu> Localizer
+@implements IDisposable
+@inject APB97StringLocalizerFactory LocalizationFactory
 @inject NavigationManager Navigation
 
 <div class="top-row ps-3 navbar navbar-dark">
@@ -16,48 +17,48 @@
     <nav class="d-flex flex-column flex-grow-1">
         <div class="nav-item px-3">
             <NavLink class="nav-link" href="" Match="NavLinkMatch.All" @onclick="ToggleNavMenu">
-                @LanguageSelect.GetStringSafely(Localizer, "Home", language?.Culture)
+                @localization.Localize("Home")
             </NavLink>
         </div>
         <div class="nav-item px-3">
             <NavLink class="nav-link" href="LearningProgress" Match="NavLinkMatch.All" @onclick="ToggleNavMenu">
-                @LanguageSelect.GetStringSafely(Localizer, "LearningProgress", language?.Culture)
+                @localization.Localize("LearningProgress")
             </NavLink>
         </div>
 
-        <p class="text-white-50">@LanguageSelect.GetStringSafely(Localizer, "Projects", language?.Culture)</p>
+        <p class="text-white-50">@localization.Localize("Projects")</p>
         <div class="nav-item px-3">
             <button class="nav-link" onclick="history.replaceState(null, '', document.location.href);document.location.assign('/WebSudoku/');">
-                @LanguageSelect.GetStringSafely(Localizer, "Web Sudoku", language?.Culture)
+                @localization.Localize("Web Sudoku")
             </button>
         </div>
         <div class="nav-item px-3">
             <NavLink class="nav-link" href="MetadataRename" @onclick="ToggleNavMenu">
-                @LanguageSelect.GetStringSafely(Localizer, "Metadata Rename", language?.Culture)
+                @localization.Localize("Metadata Rename")
             </NavLink>
         </div>
         <div class="nav-item px-3">
             <NavLink class="nav-link" href="PlotAndIntegrate" @onclick="ToggleNavMenu">
-                @LanguageSelect.GetStringSafely(Localizer, "Plot and Integrate", language?.Culture)
+                @localization.Localize("Plot and Integrate")
             </NavLink>
         </div>
 
-        <p class="text-white-50">@LanguageSelect.GetStringSafely(Localizer, "Challenges", language?.Culture)</p>
+        <p class="text-white-50">@localization.Localize("Challenges")</p>
         <div class="nav-item px-3">
             <NavLink class="nav-link" href="IntegerToRoman" @onclick="ToggleNavMenu">
-                @LanguageSelect.GetStringSafely(Localizer, "Integer to Roman", language?.Culture)
+                @localization.Localize("Integer to Roman")
             </NavLink>
         </div>
          <div class="nav-item px-3">
             <NavLink class="nav-link" href="CountAndSay" @onclick="ToggleNavMenu">
-                @LanguageSelect.GetStringSafely(Localizer, "Count and Say", language?.Culture)
+                @localization.Localize("Count and Say")
             </NavLink>
         </div>
         <div class="flex-grow-1">
 
         </div>
         <div class="nav-item px-3">
-            <a class="ms-auto nav-link link-info" href="https://github.com/APB97/apb97.github.io" target="_blank">@Localizer["Code"]</a>
+            <a class="ms-auto nav-link link-info" href="https://github.com/APB97/apb97.github.io" target="_blank">@localization.Localize("Code")</a>
         </div>
         <div class="nav-item px-0">
             <div class="nav-link">
@@ -84,6 +85,29 @@
     public void CollapseNavMenu()
     {
         collapseNavMenu = true;
+        StateHasChanged();
+    }
+
+    private Dictionary<string, string> localization = [];
+
+    protected override async Task OnInitializedAsync()
+    {
+        localization = await LocalizationFactory.GetLocalization<NavMenu>(language?.Culture ?? System.Globalization.CultureInfo.CurrentUICulture);
+    }
+
+    protected override void OnInitialized()
+    {
+        MainLayout.OnStateChanging += GetResources;
+    }
+
+    void IDisposable.Dispose()
+    {
+        MainLayout.OnStateChanging -= GetResources;
+    }
+
+    private async Task GetResources()
+    {
+        localization = await LocalizationFactory.GetLocalization<NavMenu>(language?.Culture ?? System.Globalization.CultureInfo.CurrentUICulture);
         StateHasChanged();
     }
 }

@@ -3,33 +3,34 @@
 @using Microsoft.Extensions.Localization
 @using apb97.github.io.Shared
 
-@inject IStringLocalizer<CountAndSay> Localizer
+@implements IDisposable
+@inject APB97StringLocalizerFactory LocalizationFactory
 @inject NavigationManager Navigation
 
-<PageTitle>Adrian Bieliński - @LanguageSelect.GetStringSafely(Localizer,"Count and say", Layout.Language)</PageTitle>
+<PageTitle>Adrian Bieliński - @localization.Localize("Count and say")</PageTitle>
 
-<h1>@LanguageSelect.GetStringSafely(Localizer,"Count and say", Layout.Language)</h1>
+<h1>@localization.Localize("Count and say")</h1>
 <hr/>
-<h4>@LanguageSelect.GetStringSafely(Localizer,"Challenge description", Layout.Language)</h4>
+<h4>@localization.Localize("Challenge description")</h4>
 <p>
-    @LanguageSelect.GetStringSafely(Localizer,"The count-and-say sequence is a sequence", Layout.Language):
+    @localization.Localize("The count-and-say sequence is a sequence"):
 </p>
 <ul>
     <li>
-        <code>@LanguageSelect.GetStringSafely(Localizer,"functionName", Layout.Language) (1) = "1"</code>
+        <code>@localization.Localize("functionName") (1) = "1"</code>
     </li>
     <li>
-        <code>@LanguageSelect.GetStringSafely(Localizer,"functionName", Layout.Language) (n)</code> @LanguageSelect.GetStringSafely(Localizer,"is the way you would 'say' the digit string from", Layout.Language)
-        <code>@LanguageSelect.GetStringSafely(Localizer,"functionName", Layout.Language) (n-1)</code>, @LanguageSelect.GetStringSafely(Localizer,"which is then converted into a different digit string", Layout.Language).
+        <code>@localization.Localize("functionName") (n)</code> @localization.Localize("is the way you would 'say' the digit string from")
+        <code>@localization.Localize("functionName") (n-1)</code>, @localization.Localize("which is then converted into a different digit string").
     </li>
 </ul>
 
-@LanguageSelect.GetStringSafely(Localizer,"To determine how you", Layout.Language)
-@LanguageSelect.GetStringSafely(Localizer,"Then for each group, say", Layout.Language)
-@LanguageSelect.GetStringSafely(Localizer,"To convert the saying", Layout.Language)
+@localization.Localize("To determine how you")
+@localization.Localize("Then for each group, say")
+@localization.Localize("To convert the saying")
 
-<h4>@LanguageSelect.GetStringSafely(Localizer,"Note", Layout.Language)</h4>
-<p>@LanguageSelect.GetStringSafely(Localizer,"You can use the url like", Layout.Language) <a href="https://apb97.github.io/CountAndSay/12#output">https://apb97.github.io/CountAndSay/12#output</a> @LanguageSelect.GetStringSafely(Localizer,"for any number between", Layout.Language) 1 @LanguageSelect.GetStringSafely(Localizer,"and", Layout.Language) 30.</p>
+<h4>@localization.Localize("Note")</h4>
+<p>@localization.Localize("You can use the url like") <a href="https://apb97.github.io/CountAndSay/12#output">https://apb97.github.io/CountAndSay/12#output</a> @localization.Localize("for any number between") 1 @localization.Localize("and") 30.</p>
 
 <CountAndSayComponent NumberOfSayings="Number" OnNumberChanged="OnNumberChanged" />
 
@@ -46,5 +47,28 @@
         {
             Navigation.NavigateTo($"/CountAndSay/{number.Value}#{CountAndSayComponent.OutputId}");
         }
+    }
+
+    private Dictionary<string, string> localization = [];
+
+    protected override async Task OnInitializedAsync()
+    {
+        localization = await LocalizationFactory.GetLocalization<CountAndSay>(Layout.Language ?? System.Globalization.CultureInfo.CurrentUICulture);
+    }
+
+    protected override void OnInitialized()
+    {
+        MainLayout.OnStateChanging += GetResources;
+    }
+
+    void IDisposable.Dispose()
+    {
+        MainLayout.OnStateChanging -= GetResources;
+    }
+
+    private async Task GetResources()
+    {
+        localization = await LocalizationFactory.GetLocalization<CountAndSay>(Layout.Language ?? System.Globalization.CultureInfo.CurrentUICulture);
+        StateHasChanged();
     }
 }

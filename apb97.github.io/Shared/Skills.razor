@@ -1,26 +1,27 @@
-﻿@inject IStringLocalizer<Skills> Localizer
+﻿@implements IDisposable
+@inject APB97StringLocalizerFactory LocalizationFactory
 
-<AdjustedAnchorHeading Id="skills">@LanguageSelect.GetStringSafely(Localizer, "Skills", Layout.Language)</AdjustedAnchorHeading>
+<AdjustedAnchorHeading Id="skills">@localization.Localize("Skills")</AdjustedAnchorHeading>
 
 <p>
-    @LanguageSelect.GetStringSafely(Localizer, "I usually build", Layout.Language)
+    @localization.Localize("I usually build")
     <br/>
-    @LanguageSelect.GetStringSafely(Localizer, "Apart from these", Layout.Language) @LanguageSelect.GetStringSafely(Localizer, "Here are my", Layout.Language)
+    @localization.Localize("Apart from these") @localization.Localize("Here are my")
 </p>
 
 <div class="row">
     <div class="skill-card">
         <img class="center-25" src="/images/512px-C_Sharp_wordmark.png" alt="C# Development Image"/>
-        <h4 class="text-center">@LanguageSelect.GetStringSafely(Localizer, "C# Development", Layout.Language)</h4>
+        <h4 class="text-center">@localization.Localize("C# Development")</h4>
         <p>
-            @LanguageSelect.GetStringSafely(Localizer, "I use C#", Layout.Language)
+            @localization.Localize("I use C#")
         </p>
     </div>
     <div class="skill-card">
         <img class="center-50" src="/images/favpng_asp-net-mvc-logo.png" alt="Patterns Image"/>
-        <h4 class="text-center">@LanguageSelect.GetStringSafely(Localizer, "Patterns", Layout.Language)</h4>
+        <h4 class="text-center">@localization.Localize("Patterns")</h4>
         <p>
-            @LanguageSelect.GetStringSafely(Localizer, "I use patterns", Layout.Language)
+            @localization.Localize("I use patterns")
         </p>
     </div>
 </div>
@@ -28,16 +29,16 @@
 <div class="row">
     <div class="skill-card">
         <img class="center-50" src="/images/efcf.png" alt="EF Code First Image"/>
-        <h4 class="text-center">@LanguageSelect.GetStringSafely(Localizer, "Object-Relational Mapping", Layout.Language)</h4>
+        <h4 class="text-center">@localization.Localize("Object-Relational Mapping")</h4>
         <p>
-            @LanguageSelect.GetStringSafely(Localizer, "I use an ORM", Layout.Language)
+            @localization.Localize("I use an ORM")
         </p>
     </div>
     <div class="skill-card">
         <img class="center-33" src="/images/asp-net.png" alt="ASP.Net Image"/>
-        <h4 class="text-center">@LanguageSelect.GetStringSafely(Localizer, "Web Development", Layout.Language)</h4>
+        <h4 class="text-center">@localization.Localize("Web Development")</h4>
         <p>
-            @LanguageSelect.GetStringSafely(Localizer, "I use ASP.Net", Layout.Language)
+            @localization.Localize("I use ASP.Net")
         </p>
     </div>
 </div>
@@ -45,4 +46,28 @@
 @code {
     [CascadingParameter]
     public required MainLayout Layout { get; set; }
+
+
+    private Dictionary<string, string> localization = [];
+
+    protected override async Task OnInitializedAsync()
+    {
+        localization = await LocalizationFactory.GetLocalization<Skills>(Layout.Language ?? System.Globalization.CultureInfo.CurrentUICulture);
+    }
+
+    protected override void OnInitialized()
+    {
+        MainLayout.OnStateChanging += GetResources;
+    }
+
+    void IDisposable.Dispose()
+    {
+        MainLayout.OnStateChanging -= GetResources;
+    }
+
+    private async Task GetResources()
+    {
+        localization = await LocalizationFactory.GetLocalization<Skills>(Layout.Language ?? System.Globalization.CultureInfo.CurrentUICulture);
+        StateHasChanged();
+    }
 }

@@ -3,42 +3,43 @@
 @using Microsoft.Extensions.Localization
 @using apb97.github.io.Shared
 
-@inject IStringLocalizer<IntegerToRoman> Localizer
+@implements IDisposable
+@inject APB97StringLocalizerFactory LocalizationFactory
 @inject NavigationManager Navigation
 
-<PageTitle>Adrian Bieliński - @LanguageSelect.GetStringSafely(Localizer,"Integer to Roman", Layout.Language)</PageTitle>
+<PageTitle>Adrian Bieliński - @localization.Localize("Integer to Roman")</PageTitle>
 
-<h1>@LanguageSelect.GetStringSafely(Localizer,"Integer to Roman", Layout.Language)</h1>
+<h1>@localization.Localize("Integer to Roman")</h1>
 <hr/>
-<h4>@LanguageSelect.GetStringSafely(Localizer,"Challenge description", Layout.Language)</h4>
+<h4>@localization.Localize("Challenge description")</h4>
 
-<p>@LanguageSelect.GetStringSafely(Localizer,"Roman numerals are represented by", Layout.Language)<code>I</code>, <code>V</code>, <code>X</code>, <code>L</code>, <code>C</code>, <code>D</code> @LanguageSelect.GetStringSafely(Localizer,"and", Layout.Language) <code>M</code>.</p>
-<p>@LanguageSelect.GetStringSafely(Localizer,"They represent the following", Layout.Language)<code>1</code>, <code>5</code>, <code>10</code>, <code>50</code>, <code>100</code>, <code>500</code>, <code>1000</code>.</p>
+<p>@localization.Localize("Roman numerals are represented by")<code>I</code>, <code>V</code>, <code>X</code>, <code>L</code>, <code>C</code>, <code>D</code> @localization.Localize("and") <code>M</code>.</p>
+<p>@localization.Localize("They represent the following")<code>1</code>, <code>5</code>, <code>10</code>, <code>50</code>, <code>100</code>, <code>500</code>, <code>1000</code>.</p>
 <p>
-    @LanguageSelect.GetStringSafely(Localizer,"For example,", Layout.Language) <code>3</code> @LanguageSelect.GetStringSafely(Localizer,"is written as", Layout.Language) <code>III</code> @LanguageSelect.GetStringSafely(Localizer,"in Roman numeral,", Layout.Language)
-    <code>12</code> @LanguageSelect.GetStringSafely(Localizer,"is written as", Layout.Language) <code>XII</code> @LanguageSelect.GetStringSafely(Localizer,"and", Layout.Language) <code>28</code> @LanguageSelect.GetStringSafely(Localizer,"is written as", Layout.Language) <code>XXVIII</code>.
+    @localization.Localize("For example,") <code>3</code> @localization.Localize("is written as") <code>III</code> @localization.Localize("in Roman numeral,")
+    <code>12</code> @localization.Localize("is written as") <code>XII</code> @localization.Localize("and") <code>28</code> @localization.Localize("is written as") <code>XXVIII</code>.
 </p>
 <p>
-    @LanguageSelect.GetStringSafely(Localizer,"Roman numerals are usually", Layout.Language)
-    @LanguageSelect.GetStringSafely(Localizer,"However the numeral for", Layout.Language) <code>4</code> @LanguageSelect.GetStringSafely(Localizer,"is not", Layout.Language) <code>IIII</code> @LanguageSelect.GetStringSafely(Localizer,", but it is", Layout.Language) <code>IV</code> (5 - 1). @LanguageSelect.GetStringSafely(Localizer,"Similarly", Layout.Language) <code>9</code> @LanguageSelect.GetStringSafely(Localizer,"is written as", Layout.Language) <code>IX</code> (10 - 1).
-    @LanguageSelect.GetStringSafely(Localizer,"Subtraction is used", Layout.Language)
+    @localization.Localize("Roman numerals are usually")
+    @localization.Localize("However the numeral for") <code>4</code> @localization.Localize("is not") <code>IIII</code> @localization.Localize(", but it is") <code>IV</code> (5 - 1). @localization.Localize("Similarly") <code>9</code> @localization.Localize("is written as") <code>IX</code> (10 - 1).
+    @localization.Localize("Subtraction is used")
     <ul>
         <li>
-            <code>I</code> @LanguageSelect.GetStringSafely(Localizer,"can be placed before", Layout.Language) <code>V</code> @LanguageSelect.GetStringSafely(Localizer,"and", Layout.Language) <code>X</code> @LanguageSelect.GetStringSafely(Localizer,"to make", Layout.Language) <code>4</code> @LanguageSelect.GetStringSafely(Localizer,"and", Layout.Language) <code>9</code>.
+            <code>I</code> @localization.Localize("can be placed before") <code>V</code> @localization.Localize("and") <code>X</code> @localization.Localize("to make") <code>4</code> @localization.Localize("and") <code>9</code>.
         </li>
         <li>
-            <code>X</code> @LanguageSelect.GetStringSafely(Localizer,"can be placed before", Layout.Language) <code>L</code> @LanguageSelect.GetStringSafely(Localizer,"and", Layout.Language) <code>C</code> @LanguageSelect.GetStringSafely(Localizer,"to make", Layout.Language) <code>40</code> @LanguageSelect.GetStringSafely(Localizer,"and", Layout.Language) <code>90</code>.
+            <code>X</code> @localization.Localize("can be placed before") <code>L</code> @localization.Localize("and") <code>C</code> @localization.Localize("to make") <code>40</code> @localization.Localize("and") <code>90</code>.
         </li>
         <li>
-            <code>C</code> @LanguageSelect.GetStringSafely(Localizer,"can be placed before", Layout.Language) <code>D</code> @LanguageSelect.GetStringSafely(Localizer,"and", Layout.Language) <code>M</code> @LanguageSelect.GetStringSafely(Localizer,"to make", Layout.Language) <code>400</code> @LanguageSelect.GetStringSafely(Localizer,"and", Layout.Language) <code>900</code>.
+            <code>C</code> @localization.Localize("can be placed before") <code>D</code> @localization.Localize("and") <code>M</code> @localization.Localize("to make") <code>400</code> @localization.Localize("and") <code>900</code>.
         </li>
     </ul>
 </p>
 <br/>
-<p>@LanguageSelect.GetStringSafely(Localizer,"Given an integer convert it", Layout.Language)</p>
+<p>@localization.Localize("Given an integer convert it")</p>
 
-<h4>@LanguageSelect.GetStringSafely(Localizer,"Note", Layout.Language)</h4>
-<p>@LanguageSelect.GetStringSafely(Localizer,"You can use the url like", Layout.Language) <a href="https://apb97.github.io/IntegerToRoman/46#output">https://apb97.github.io/IntegerToRoman/46#output</a> @LanguageSelect.GetStringSafely(Localizer,"to convert", Layout.Language) 46 @LanguageSelect.GetStringSafely(Localizer,"to roman numeral", Layout.Language). @LanguageSelect.GetStringSafely(Localizer,"And any number between", Layout.Language) 1 @LanguageSelect.GetStringSafely(Localizer,"and", Layout.Language) 3999.</p>
+<h4>@localization.Localize("Note")</h4>
+<p>@localization.Localize("You can use the url like") <a href="https://apb97.github.io/IntegerToRoman/46#output">https://apb97.github.io/IntegerToRoman/46#output</a> @localization.Localize("to convert") 46 @localization.Localize("to roman numeral"). @localization.Localize("And any number between") 1 @localization.Localize("and") 3999.</p>
 
 <IntegerToRomanComponent Number="Number" OnNumberChanged="OnNumberChanged" />
 
@@ -55,5 +56,28 @@
         {
             Navigation.NavigateTo($"/IntegerToRoman/{number.Value}#{IntegerToRomanComponent.OutputId}");
         }
+    }
+
+    private Dictionary<string, string> localization = [];
+
+    protected override async Task OnInitializedAsync()
+    {
+        localization = await LocalizationFactory.GetLocalization<IntegerToRoman>(Layout.Language ?? System.Globalization.CultureInfo.CurrentUICulture);
+    }
+
+    protected override void OnInitialized()
+    {
+        MainLayout.OnStateChanging += GetResources;
+    }
+
+    void IDisposable.Dispose()
+    {
+        MainLayout.OnStateChanging -= GetResources;
+    }
+
+    private async Task GetResources()
+    {
+        localization = await LocalizationFactory.GetLocalization<IntegerToRoman>(Layout.Language ?? System.Globalization.CultureInfo.CurrentUICulture);
+        StateHasChanged();
     }
 }

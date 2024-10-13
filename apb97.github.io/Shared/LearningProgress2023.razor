@@ -1,66 +1,67 @@
-﻿@inject IStringLocalizer<LearningProgress2023> Localizer
+﻿@implements IDisposable
+@inject APB97StringLocalizerFactory LocalizationFactory
 
-<h3>@LanguageSelect.GetStringSafely(Localizer,"Year2023", Layout.Language)</h3>
+<h3>@localization.Localize("Year2023")</h3>
 <ul>
     <li>
         <h4>JavaScript</h4>
         <ul>
             <li>
-                <b>@LanguageSelect.GetStringSafely(Localizer,"JS types", Layout.Language)</b>
+                <b>@localization.Localize("JS types")</b>
                 <br/>
-                <p>@LanguageSelect.GetStringSafely(Localizer,"JS types description", Layout.Language)</p>
-                <b>@LanguageSelect.GetStringSafely(Localizer,"Example", Layout.Language)</b>
+                <p>@localization.Localize("JS types description")</p>
+                <b>@localization.Localize("Example")</b>
                 <br />
-                <CodeView Code="@LanguageSelect.GetStringSafely(Localizer,"JS types code", Layout.Language)"/>
+                <CodeView Code="@localization.Localize("JS types code")"/>
             </li>
             <li>
-                <b>@LanguageSelect.GetStringSafely(Localizer,"JS functions and arrays", Layout.Language)</b>
+                <b>@localization.Localize("JS functions and arrays")</b>
                 <br />
-                <p>@LanguageSelect.GetStringSafely(Localizer,"JS functions and arrays description", Layout.Language)</p>
-                <b>@LanguageSelect.GetStringSafely(Localizer,"Example", Layout.Language)</b>
+                <p>@localization.Localize("JS functions and arrays description")</p>
+                <b>@localization.Localize("Example")</b>
                 <br />
-                <CodeView Code="@LanguageSelect.GetStringSafely(Localizer,"JS functions and arrays code", Layout.Language)"/>
+                <CodeView Code="@localization.Localize("JS functions and arrays code")"/>
             </li>
             <li>
-                <b>@LanguageSelect.GetStringSafely(Localizer,"JS objects", Layout.Language)</b>
+                <b>@localization.Localize("JS objects")</b>
                 <br />
-                <p>@LanguageSelect.GetStringSafely(Localizer,"JS objects description", Layout.Language)</p>
-                <b>@LanguageSelect.GetStringSafely(Localizer,"Example", Layout.Language)</b>
+                <p>@localization.Localize("JS objects description")</p>
+                <b>@localization.Localize("Example")</b>
                 <br />
-                <CodeView Code="@LanguageSelect.GetStringSafely(Localizer,"JS objects code", Layout.Language)"/>
+                <CodeView Code="@localization.Localize("JS objects code")"/>
             </li>
         </ul>
-        <h4>@LanguageSelect.GetStringSafely(Localizer,"JavaScript libs", Layout.Language)</h4>
+        <h4>@localization.Localize("JavaScript libs")</h4>
         <ul>
             <li>
                 <b>Paged.js</b>
                 <br />
-                <p>@LanguageSelect.GetStringSafely(Localizer,"Paged.js description", Layout.Language)</p>
+                <p>@localization.Localize("Paged.js description")</p>
             </li>
         </ul>
-        <h4>@LanguageSelect.GetStringSafely(Localizer,"General knowledge", Layout.Language)</h4>
+        <h4>@localization.Localize("General knowledge")</h4>
         <ul>
             <li>
-                <b>@LanguageSelect.GetStringSafely(Localizer,"TPH, TPC, TPT", Layout.Language)</b>
+                <b>@localization.Localize("TPH, TPC, TPT")</b>
                 <br />
-                <p>@LanguageSelect.GetStringSafely(Localizer,"TPH, TPC, TPT description", Layout.Language)</p>
+                <p>@localization.Localize("TPH, TPC, TPT description")</p>
             </li>
         </ul>
         <h4>.NET</h4>
         <ul>
             <li>
-                <b>@LanguageSelect.GetStringSafely(Localizer,"System.Text.Json", Layout.Language)</b>
+                <b>@localization.Localize("System.Text.Json")</b>
                 <br />
-                <p>@LanguageSelect.GetStringSafely(Localizer,"System.Text.Json description", Layout.Language)</p>
-                <a href="https://learn.microsoft.com/en-us/dotnet/standard/serialization/system-text-json/custom-contracts" rel="noopener">@LanguageSelect.GetStringSafely(Localizer,"Source", Layout.Language)</a>
+                <p>@localization.Localize("System.Text.Json description")</p>
+                <a href="https://learn.microsoft.com/en-us/dotnet/standard/serialization/system-text-json/custom-contracts" rel="noopener">@localization.Localize("Source")</a>
             </li>
         </ul>
-        <h4>@LanguageSelect.GetStringSafely(Localizer,"NuGet packages", Layout.Language)</h4>
+        <h4>@localization.Localize("NuGet packages")</h4>
         <ul>
             <li>
-                <b>@LanguageSelect.GetStringSafely(Localizer,"HotChocolate", Layout.Language)</b>
+                <b>@localization.Localize("HotChocolate")</b>
                 <br />
-                <p>@LanguageSelect.GetStringSafely(Localizer,"HotChocolate description", Layout.Language)</p>
+                <p>@localization.Localize("HotChocolate description")</p>
             </li>
         </ul>
     </li>
@@ -69,4 +70,27 @@
 @code {
     [CascadingParameter]
     public required MainLayout Layout { get; set; }
+
+    private Dictionary<string, string> localization = [];
+
+    protected override async Task OnInitializedAsync()
+    {
+        localization = await LocalizationFactory.GetLocalization<LearningProgress2023>(Layout.Language ?? System.Globalization.CultureInfo.CurrentUICulture);
+    }
+
+    protected override void OnInitialized()
+    {
+        MainLayout.OnStateChanging += GetResources;
+    }
+
+    void IDisposable.Dispose()
+    {
+        MainLayout.OnStateChanging -= GetResources;
+    }
+
+    private async Task GetResources()
+    {
+        localization = await LocalizationFactory.GetLocalization<LearningProgress2023>(Layout.Language ?? System.Globalization.CultureInfo.CurrentUICulture);
+        StateHasChanged();
+    }
 }

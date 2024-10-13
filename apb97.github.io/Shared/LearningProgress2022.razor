@@ -1,33 +1,34 @@
-﻿@inject IStringLocalizer<LearningProgress2022> Localizer
+﻿@implements IDisposable
+@inject APB97StringLocalizerFactory LocalizationFactory
 
-<h3>@LanguageSelect.GetStringSafely(Localizer,"Year2022-last-weeks", Layout.Language)</h3>
+<h3>@localization.Localize("Year2022-last-weeks")</h3>
 <ul>
     <li>
         <h4>C#</h4>
         <ul>
             <li>
-                <b>@LanguageSelect.GetStringSafely(Localizer,"Extended property pattern", Layout.Language)</b>
+                <b>@localization.Localize("Extended property pattern")</b>
                 <br />
-                <p>@LanguageSelect.GetStringSafely(Localizer,"Extended property pattern description", Layout.Language)</p>
-                <b>@LanguageSelect.GetStringSafely(Localizer,"Example", Layout.Language)</b>
+                <p>@localization.Localize("Extended property pattern description")</p>
+                <b>@localization.Localize("Example")</b>
                 <br />
-                <CodeView Code="@LanguageSelect.GetStringSafely(Localizer,"Extended property pattern code", Layout.Language)"></CodeView>
+                <CodeView Code="@localization.Localize("Extended property pattern code")"></CodeView>
             </li>
             <li>
-                <b>@LanguageSelect.GetStringSafely(Localizer,"Global using directive", Layout.Language)</b>
+                <b>@localization.Localize("Global using directive")</b>
                 <br />
-                <p>@LanguageSelect.GetStringSafely(Localizer,"Global using directive description", Layout.Language)</p>
-                <b>@LanguageSelect.GetStringSafely(Localizer,"Example", Layout.Language)</b>
+                <p>@localization.Localize("Global using directive description")</p>
+                <b>@localization.Localize("Example")</b>
                 <br />
-                <CodeView Code="@LanguageSelect.GetStringSafely(Localizer,"Global using directive code", Layout.Language)" />
+                <CodeView Code="@localization.Localize("Global using directive code")" />
             </li>
             <li>
-                <b>@LanguageSelect.GetStringSafely(Localizer,"File-scoped namespace declaration", Layout.Language)</b>
+                <b>@localization.Localize("File-scoped namespace declaration")</b>
                 <br />
-                <p>@LanguageSelect.GetStringSafely(Localizer,"File-scoped namespace declaration description", Layout.Language)</p>
-                <b>@LanguageSelect.GetStringSafely(Localizer,"Example", Layout.Language)</b>
+                <p>@localization.Localize("File-scoped namespace declaration description")</p>
+                <b>@localization.Localize("Example")</b>
                 <br />
-                <CodeView Code="@LanguageSelect.GetStringSafely(Localizer,"File-scoped namespace declaration code", Layout.Language)" />
+                <CodeView Code="@localization.Localize("File-scoped namespace declaration code")" />
             </li>
         </ul>
     </li>
@@ -36,4 +37,27 @@
 @code {
     [CascadingParameter]
     public required MainLayout Layout { get; set; }
+    
+    private Dictionary<string, string> localization = [];
+
+    protected override async Task OnInitializedAsync()
+    {
+        localization = await LocalizationFactory.GetLocalization<LearningProgress2022>(Layout.Language ?? System.Globalization.CultureInfo.CurrentUICulture);
+    }
+
+    protected override void OnInitialized()
+    {
+        MainLayout.OnStateChanging += GetResources;
+    }
+
+    void IDisposable.Dispose()
+    {
+        MainLayout.OnStateChanging -= GetResources;
+    }
+
+    private async Task GetResources()
+    {
+        localization = await LocalizationFactory.GetLocalization<LearningProgress2022>(Layout.Language ?? System.Globalization.CultureInfo.CurrentUICulture);
+        StateHasChanged();
+    }
 }

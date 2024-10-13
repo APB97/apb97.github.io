@@ -1,51 +1,52 @@
-﻿@inject IStringLocalizer<LearningProgress2024> Localizer
+﻿@implements IDisposable
+@inject APB97StringLocalizerFactory LocalizationFactory
 
-<h3>@LanguageSelect.GetStringSafely(Localizer, "Year2024", Layout.Language)</h3>
+<h3>@localization.Localize("Year2024")</h3>
 
 <ul>
     <li>
-        <h4>@LanguageSelect.GetStringSafely(Localizer, "C# features", Layout.Language)</h4>
+        <h4>@localization.Localize("C# features")</h4>
         <ul>
             <li>
-                <b>@LanguageSelect.GetStringSafely(Localizer, "Records", Layout.Language)</b>
+                <b>@localization.Localize("Records")</b>
                 <br />
-                <span>@LanguageSelect.GetStringSafely(Localizer, "Records description", Layout.Language)</span>
+                <span>@localization.Localize("Records description")</span>
                 <ul>
-                    <li>@LanguageSelect.GetStringSafely(Localizer, "Concise syntax for reference types", Layout.Language)</li>
-                    <li>@LanguageSelect.GetStringSafely(Localizer, "Built-in value equality", Layout.Language)</li>
-                    <li>@LanguageSelect.GetStringSafely(Localizer, "Built-in concise syntax for nondesctructive mutation", Layout.Language)</li>
-                    <li>@LanguageSelect.GetStringSafely(Localizer, "Built-in formatting", Layout.Language)</li>
+                    <li>@localization.Localize("Concise syntax for reference types")</li>
+                    <li>@localization.Localize("Built-in value equality")</li>
+                    <li>@localization.Localize("Built-in concise syntax for nondesctructive mutation")</li>
+                    <li>@localization.Localize("Built-in formatting")</li>
                 </ul>
             </li>
             <li>
-                <b>@LanguageSelect.GetStringSafely(Localizer, "Constant interpolated strings", Layout.Language)</b>
+                <b>@localization.Localize("Constant interpolated strings")</b>
                 <br />
-                <p>@LanguageSelect.GetStringSafely(Localizer, "Constant interpolated strings description", Layout.Language)</p>
+                <p>@localization.Localize("Constant interpolated strings description")</p>
             </li>
         </ul>
     </li>
     <li>
-        <h4>@LanguageSelect.GetStringSafely(Localizer, "NuGet packages", Layout.Language)</h4>
+        <h4>@localization.Localize("NuGet packages")</h4>
         <ul>
             <li>
                 <b>StrawberryShake</b>
                 <br />
-                <p>@LanguageSelect.GetStringSafely(Localizer, "StrawberryShake description", Layout.Language)</p>
+                <p>@localization.Localize("StrawberryShake description")</p>
             </li>
         </ul>
     </li>
     <li>
-        <h4>@LanguageSelect.GetStringSafely(Localizer, "Linux commands", Layout.Language)</h4>
+        <h4>@localization.Localize("Linux commands")</h4>
         <ul>
             <li>
-                <b>@LanguageSelect.GetStringSafely(Localizer, "Basic", Layout.Language)</b>
+                <b>@localization.Localize("Basic")</b>
                 <br />
-                @LanguageSelect.GetStringSafely(Localizer, "Linux basic commands", Layout.Language)
+                @localization.Localize("Linux basic commands")
             </li>
             <li>
-                <b>@LanguageSelect.GetStringSafely(Localizer, "Advanced", Layout.Language)</b>
+                <b>@localization.Localize("Advanced")</b>
                 <br />
-                @LanguageSelect.GetStringSafely(Localizer, "Linux advanced commands", Layout.Language)
+                @localization.Localize("Linux advanced commands")
             </li>
         </ul>
     </li>
@@ -54,4 +55,27 @@
 @code {
     [CascadingParameter]
     public required MainLayout Layout { get; set; }
+
+    private Dictionary<string, string> localization = [];
+
+    protected override async Task OnInitializedAsync()
+    {
+        localization = await LocalizationFactory.GetLocalization<LearningProgress2024>(Layout.Language ?? System.Globalization.CultureInfo.CurrentUICulture);
+    }
+
+    protected override void OnInitialized()
+    {
+        MainLayout.OnStateChanging += GetResources;
+    }
+
+    void IDisposable.Dispose()
+    {
+        MainLayout.OnStateChanging -= GetResources;
+    }
+
+    private async Task GetResources()
+    {
+        localization = await LocalizationFactory.GetLocalization<LearningProgress2024>(Layout.Language ?? System.Globalization.CultureInfo.CurrentUICulture);
+        StateHasChanged();
+    }
 }

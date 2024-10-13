@@ -1,24 +1,25 @@
-﻿@inject IStringLocalizer<Projects> Localizer
+﻿@implements IDisposable
+@inject APB97StringLocalizerFactory LocalizationFactory
 @inject IJSRuntime JS
 
-<AdjustedAnchorHeading Id="projects">@LanguageSelect.GetStringSafely(Localizer, "Projects", Layout.Language)</AdjustedAnchorHeading>
+<AdjustedAnchorHeading Id="projects">@localization.Localize("Projects")</AdjustedAnchorHeading>
 <div class="d-flex" style="border: medium solid dodgerblue; margin: 2pt;">
     <div class="col-8 d-flex flex-column">
         <div class="text-center flex-grow-1">
             <h5>Web Sudoku</h5>
-            <p>@LanguageSelect.GetStringSafely(Localizer, "Web Sudoku description", Layout.Language)</p>
+            <p>@localization.Localize("Web Sudoku description")</p>
             <button class="link-primary button-as-link" onclick="history.replaceState(null, '', document.location.href);document.location.assign('/WebSudoku/');">
-                @LanguageSelect.GetStringSafely(Localizer, "See it yourself here", Layout.Language)
+                @localization.Localize("See it yourself here")
             </button>
         </div>
         <div class="text-center">
             <div class="tags">
-                <span>@LanguageSelect.GetStringSafely(Localizer, ".NET", Layout.Language)</span>
-                <span>@LanguageSelect.GetStringSafely(Localizer, "C#", Layout.Language)</span>
-                <span>@LanguageSelect.GetStringSafely(Localizer, "Blazor", Layout.Language)</span>
-                <span>@LanguageSelect.GetStringSafely(Localizer, "WebAssembly", Layout.Language)</span>
-                <span>@LanguageSelect.GetStringSafely(Localizer, "HTML", Layout.Language)</span>
-                <span>@LanguageSelect.GetStringSafely(Localizer, "CSS", Layout.Language)</span>
+                <span>@localization.Localize(".NET")</span>
+                <span>@localization.Localize("C#")</span>
+                <span>@localization.Localize("Blazor")</span>
+                <span>@localization.Localize("WebAssembly")</span>
+                <span>@localization.Localize("HTML")</span>
+                <span>@localization.Localize("CSS")</span>
             </div>
         </div>
     </div>
@@ -35,8 +36,8 @@
             <h5>Metadata Rename</h5>
         </div>
         <div class="text-center">
-            <p>@LanguageSelect.GetStringSafely(Localizer, "Rename based on metadata built with WPF.", Layout.Language) </p>
-            <a class="link-primary" href="MetadataRename">@LanguageSelect.GetStringSafely(Localizer, "See it yourself here", Layout.Language)</a>
+            <p>@localization.Localize("Rename based on metadata built with WPF.") </p>
+            <a class="link-primary" href="MetadataRename">@localization.Localize("See it yourself here")</a>
         </div>
     </div>
 
@@ -45,8 +46,8 @@
             <h5>Plot and Integrate</h5>
         </div>
         <div class="text-center">
-            <p>@LanguageSelect.GetStringSafely(Localizer, "Plot and calculate definite integral of a function. Built with Windows Forms.", Layout.Language) </p>
-            <a class="link-primary" href="PlotAndIntegrate">@LanguageSelect.GetStringSafely(Localizer, "See it yourself here", Layout.Language)</a>
+            <p>@localization.Localize("Plot and calculate definite integral of a function. Built with Windows Forms.") </p>
+            <a class="link-primary" href="PlotAndIntegrate">@localization.Localize("See it yourself here")</a>
         </div>
     </div>
 </div>
@@ -54,4 +55,27 @@
 @code{
     [CascadingParameter]
     public required MainLayout Layout { get; set; }
+
+    private Dictionary<string, string> localization = [];
+
+    protected override async Task OnInitializedAsync()
+    {
+        localization = await LocalizationFactory.GetLocalization<Projects>(Layout.Language ?? System.Globalization.CultureInfo.CurrentUICulture);
+    }
+
+    protected override void OnInitialized()
+    {
+        MainLayout.OnStateChanging += GetResources;
+    }
+
+    void IDisposable.Dispose()
+    {
+        MainLayout.OnStateChanging -= GetResources;
+    }
+
+    private async Task GetResources()
+    {
+        localization = await LocalizationFactory.GetLocalization<Projects>(Layout.Language ?? System.Globalization.CultureInfo.CurrentUICulture);
+        StateHasChanged();
+    }
 }
