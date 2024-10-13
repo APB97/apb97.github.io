@@ -1,4 +1,5 @@
-﻿using System.Text;
+﻿using System.Globalization;
+using System.Text;
 
 namespace apb97.github.io.Services;
 
@@ -9,6 +10,12 @@ public class CountAndSayService
     public CountAndSayService(SayService? sayService)
     {
         _sayService = sayService;
+    }
+
+    public async Task InitializeAsync(CultureInfo? cultureInfo)
+    {
+        if (_sayService is null) return;
+        await _sayService.InitializeAsync(cultureInfo);
     }
 
     public string CountAndSay(int numberOfSayings, StringBuilder details)

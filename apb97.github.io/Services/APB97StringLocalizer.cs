@@ -17,7 +17,7 @@ namespace apb97.github.io.Services
 
         public async Task InitializeAsync(CultureInfo? cultureInfo)
         {
-            localization ??= await factory.GetLocalization<T>(cultureInfo ?? CultureInfo.CurrentUICulture);
+            localization = await factory.GetLocalization<T>(cultureInfo ?? CultureInfo.CurrentUICulture);
         }
 
         public string Localize(string key)
