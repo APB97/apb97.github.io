@@ -35,7 +35,7 @@
     <span>@localization.Localize("To convert the saying")</span>
 
     <h4>@localization.Localize("Note")</h4>
-    <p>@localization.Localize("You can use the url like") <a href="https://apb97.github.io/CountAndSay/12#output">https://apb97.github.io/CountAndSay/12#output</a> @localization.Localize("for any number between") 1 @localization.Localize("and") 30.</p>
+    <p>@localization.Localize("You can use the url like") <a class="btn-link link-primary" @onclick="@(() => Navigation.NavigateTo("/CountAndSay/12#output", replace: true))" href="https://apb97.github.io/CountAndSay/12#output">https://apb97.github.io/CountAndSay/12#output</a> @localization.Localize("for any number between") 1 @localization.Localize("and") 30.</p>
 
     <div>
         <h4>@localization.Localize("Input")</h4>
