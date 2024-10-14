@@ -25,11 +25,11 @@
       "url": "_framework\/icudt.dat"
     },
     {
-      "hash": "sha256-E+tJ7UlkVa4tHFOgTdJm1qewRInqK5BNkAuPBapGBx8=",
+      "hash": "sha256-516Sfyj3Rw\/w+N9OP4JOiiv1HUlDpCPbYD1vhVs5\/Vg=",
       "url": "_framework\/blazor.boot.json"
     },
     {
-      "hash": "sha256-ZJ7LEdUXRiMseu8EDZ\/brLOkAGikjruT\/Gwjg0tgFjk=",
+      "hash": "sha256-87Rjqx6Mwo4aRsnKY3RCcniyk9GZO+4zoo2+SzLCO\/U=",
       "url": "_framework\/apb97.github.io.wasm"
     },
     {
@@ -161,7 +161,7 @@
       "url": "_framework\/System.ObjectModel.wasm"
     },
     {
-      "hash": "sha256-xCj1g7w9ZoRqNsNEa4omjoo5thU2oUf9d+H47WNPvH4=",
+      "hash": "sha256-UABcldDfzECZH0Bplp1ImuJ9xNDz\/uueNZkT8n936sU=",
       "url": "_framework\/System.Private.CoreLib.wasm"
     },
     {
@@ -209,7 +209,7 @@
       "url": "_framework\/System.Xml.ReaderWriter.wasm"
     },
     {
-      "hash": "sha256-RWJL513QmTJkfWzJ6BEUZSroP2fcWwW3+B72xFnPzCs=",
+      "hash": "sha256-8KZ1UtCO+T9qTpp++NlyF+brb3198kMX7IDP+INxjYc=",
       "url": "_framework\/pl-PL\/apb97.github.io.resources.wasm"
     },
     {
@@ -281,5 +281,5 @@
       "url": "manifest.webmanifest"
     }
   ],
-  "version": "LkyCZCE7"
+  "version": "aQ4Bsq6M"
 };
