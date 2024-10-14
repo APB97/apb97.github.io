@@ -84,12 +84,13 @@ main[b-0clx55j7wy] {
 }
 /* /Shared/LanguageSelect.razor.rz.scp.css */
 option[b-obldctxof6] {
-    background-color: #340a4b;
-    color: white;
+    background-color: unset;
+    color: black;
 }
 
 option.current[b-obldctxof6] {
     color: gray;
+    background-color: unset;
 }
 /* /Shared/NavMenu.razor.rz.scp.css */
 .navbar-toggler[b-tj5vwyctyx] {
