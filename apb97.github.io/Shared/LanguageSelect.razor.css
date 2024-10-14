@@ -1,8 +1,9 @@
 ﻿option {
-    background-color: #340a4b;
-    color: white;
+    background-color: unset;
+    color: black;
 }
 
 option.current {
     color: gray;
+    background-color: unset;
 }
