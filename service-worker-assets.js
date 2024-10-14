@@ -25,11 +25,11 @@
       "url": "_framework\/icudt.dat"
     },
     {
-      "hash": "sha256-JyJcNwlw1qS2NctQsbqUPB2PGqVlOTB0CnCTE8w4rnw=",
+      "hash": "sha256-bxWUiKWb7hWIMFAyGhgHInp1dXry78dYD4QlNoqgy+k=",
       "url": "_framework\/blazor.boot.json"
     },
     {
-      "hash": "sha256-JDjkrziyBbHq6LYoEHlNPqsqO3DCmXz+Ce11m9tsWRQ=",
+      "hash": "sha256-pGtLzb3d2RlX88fMjOCHiQc8DZ1Y76ETp+jVvuFKKUM=",
       "url": "_framework\/apb97.github.io.wasm"
     },
     {
@@ -209,7 +209,7 @@
       "url": "_framework\/System.Xml.ReaderWriter.wasm"
     },
     {
-      "hash": "sha256-jXx7dPYj4slPo4I9jvlOwNLAGnorJbFhLm8ESZpLr+g=",
+      "hash": "sha256-Vcg2pYB\/ON6uxhPA7qE\/FxbkIDBESH8Hv+nNxVvgVRA=",
       "url": "_framework\/pl-PL\/apb97.github.io.resources.wasm"
     },
     {
@@ -273,7 +273,7 @@
       "url": "images\/Screenshot - Web Sudoku.png"
     },
     {
-      "hash": "sha256-E+XJjBzn0iNvjdi99c49I0LSn8dHET\/AQYhX0grg4pk=",
+      "hash": "sha256-Z1\/ZZioUgU1ZbH\/TT0K1ZbfejvHjjWzueJoSqj7ytrY=",
       "url": "index.html"
     },
     {
@@ -281,5 +281,5 @@
       "url": "manifest.webmanifest"
     }
   ],
-  "version": "CBf8sLt+"
+  "version": "uj7g+sbA"
 };
