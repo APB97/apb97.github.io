@@ -31,7 +31,7 @@
     </div>
     <script>
         window.blazorCulture = {
-            get: () => window.localStorage['BlazorCulture'],
+            get: () => window.localStorage['BlazorCulture'] ?? 'en-US',
             set: (value) => window.localStorage['BlazorCulture'] = value
         };
     </script>
