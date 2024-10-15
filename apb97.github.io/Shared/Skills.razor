@@ -57,7 +57,7 @@
     protected override async Task OnInitializedAsync()
     {
         localization = new APB97StringLocalizer<Skills>(LocalizationFactory);
-        await localization.InitializeAsync(CultureInfo.CurrentUICulture);
+        await localization.InitializeAsync(LanguageSelect.Culture);
     }
 
     protected override void OnInitialized()
@@ -73,7 +73,7 @@
     private async Task GetResources()
     {
         localization = new APB97StringLocalizer<Skills>(LocalizationFactory);
-        await localization.InitializeAsync(CultureInfo.CurrentUICulture);
+        await localization.InitializeAsync(LanguageSelect.Culture);
         StateHasChanged();
     }
 }
