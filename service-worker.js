@@ -1,7 +1,7 @@
 // Caution! Be sure you understand the caveats before publishing an application with
 // offline support. See https://aka.ms/blazor-offline-considerations
 
-const CACHE_VERSION = "2.0";
+const CACHE_VERSION = "2.0.1";
 
 const MAX_TTL = {
     '/': 3600,
@@ -9,6 +9,7 @@ const MAX_TTL = {
     json: 43200,
     js: 86400,
     css: 86400,
+    resx: 3600
 };
 
 const CACHE_BLACKLIST = [
@@ -89,4 +90,4 @@ async function onFetch(event) {
 
     return cachedResponse || fetch(event.request);
 }
-/* Manifest version: pK/cRNh/ */
+/* Manifest version: f0SR7mE8 */
