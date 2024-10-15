@@ -3,18 +3,11 @@ using System.Text;
 
 namespace apb97.github.io.Services;
 
-public class SayService
+public class SayService(APB97StringLocalizer<SayService> localizer)
 {
-    private readonly APB97StringLocalizer<SayService> _localizer;
-
-    public SayService(APB97StringLocalizer<SayService> localizer)
-    {
-        _localizer = localizer;
-    }
-
     public async Task InitializeAsync(CultureInfo? cultureInfo)
     {
-        await _localizer.InitializeAsync(cultureInfo ?? CultureInfo.CurrentUICulture);
+        await localizer.InitializeAsync(cultureInfo ?? CultureInfo.CurrentUICulture);
     }
 
     public string Say(string digitString)
@@ -25,17 +18,17 @@ public class SayService
         {
             if (i % 2 == 0)
             {
-                builder.Append(_localizer.Localize($"{digitString[i]} word"));
+                builder.Append(localizer.Localize($"{digitString[i]} word"));
             }
             else
             {
                 if (digitString[i - 1] == '1')
                 {
-                    builder.Append($" {_localizer.Localize($"{digitString[i]} singular")}");
+                    builder.Append($" {localizer.Localize($"{digitString[i]} singular")}");
                 }
                 else
                 {
-                    builder.Append($" {_localizer.Localize($"{digitString[i]} plural")}");
+                    builder.Append($" {localizer.Localize($"{digitString[i]} plural")}");
                 }
 
                 if (i != digitString.Length - 1)

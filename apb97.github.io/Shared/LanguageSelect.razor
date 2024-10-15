@@ -63,7 +63,7 @@
 
     private async Task SetCultureAndReload(CultureInfo value)
     {
-        CultureInfo.CurrentCulture = LanguageSelect.Culture = Culture = value;
+        CultureInfo.CurrentCulture = CultureInfo.CurrentUICulture = LanguageSelect.Culture = value;
 
         localization = new APB97StringLocalizer<LanguageSelect>(LocalizationFactory);
         await localization.InitializeAsync(value);

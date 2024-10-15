@@ -3,19 +3,12 @@ using System.Text;
 
 namespace apb97.github.io.Services;
 
-public class CountAndSayService
+public class CountAndSayService(SayService? sayService)
 {
-    private readonly SayService? _sayService;
-
-    public CountAndSayService(SayService? sayService)
-    {
-        _sayService = sayService;
-    }
-
     public async Task InitializeAsync(CultureInfo? cultureInfo)
     {
-        if (_sayService is null) return;
-        await _sayService.InitializeAsync(cultureInfo);
+        if (sayService is null) return;
+        await sayService.InitializeAsync(cultureInfo);
     }
 
     public string CountAndSay(int numberOfSayings, StringBuilder details)
@@ -57,7 +50,7 @@ public class CountAndSayService
             .Append(digit);
 
         var result = builder.ToString();
-        details.Append(_sayService?.Say(result));
+        details.Append(sayService?.Say(result));
         return result;
     }
 }
