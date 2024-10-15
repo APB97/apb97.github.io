@@ -10,6 +10,9 @@
     <div class="top-row ps-3 navbar navbar-dark">
         <div class="container-fluid">
             <a class="navbar-brand" href="">apb97.github.io</a>
+            <HiddenForScreenWidth HideForWidthCondition="w => w > ScreenBreakpoints.Medium">
+                <LanguageSelect @ref="language" />
+            </HiddenForScreenWidth>
             <button title="Navigation menu" class="navbar-toggler" @onclick="ToggleNavMenu">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -65,7 +68,9 @@
             </div>
             <div class="nav-item px-0">
                 <div class="nav-link">
-                    <LanguageSelect @ref="language" />
+                    <HiddenForScreenWidth HideForWidthCondition="w => w <= ScreenBreakpoints.Medium">
+                        <LanguageSelect @ref="language" />
+                    </HiddenForScreenWidth>
                 </div>
             </div>
         </nav>
