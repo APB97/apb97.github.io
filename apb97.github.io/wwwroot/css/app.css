@@ -207,7 +207,12 @@ article {
     }
 
 code {
-    color: #c02d76;
+    --code-color: #ff7dbe;
+    color: var(--code-color);
+}
+
+.link-primary {
+    color: #71abff;
 }
 
 input {

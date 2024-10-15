@@ -23,43 +23,34 @@
         <nav class="d-flex flex-column flex-grow-1">
             <div class="nav-item px-3">
                 <NavLink class="nav-link" href="" Match="NavLinkMatch.All" @onclick="ToggleNavMenu">
-                    @localization.Localize("Home")
+                    @localization.Localize("About me")
                 </NavLink>
             </div>
+
+            <div class="nav-item px-3">
+                <NavLink class="nav-link" href="#projects" @onclick="ToggleNavMenu">
+                    @localization.Localize("Projects")
+                </NavLink>
+            </div>
+
+            <div class="nav-item px-3">
+                <NavLink class="nav-link" href="#challenges" @onclick="ToggleNavMenu">
+                    @localization.Localize("Challenges")
+                </NavLink>
+            </div>
+
+            <div class="nav-item px-3">
+                <NavLink class="nav-link" href="#skills" @onclick="ToggleNavMenu">
+                    @localization.Localize("Skills")
+                </NavLink>
+            </div>
+
             <div class="nav-item px-3">
                 <NavLink class="nav-link" href="LearningProgress" Match="NavLinkMatch.All" @onclick="ToggleNavMenu">
                     @localization.Localize("LearningProgress")
                 </NavLink>
             </div>
-
-            <p class="text-white-50">@localization.Localize("Projects")</p>
-            <div class="nav-item px-3">
-                <button class="nav-link" onclick="history.replaceState(null, '', document.location.href);document.location.assign('/WebSudoku/');">
-                    @localization.Localize("Web Sudoku")
-                </button>
-            </div>
-            <div class="nav-item px-3">
-                <NavLink class="nav-link" href="MetadataRename" @onclick="ToggleNavMenu">
-                    @localization.Localize("Metadata Rename")
-                </NavLink>
-            </div>
-            <div class="nav-item px-3">
-                <NavLink class="nav-link" href="PlotAndIntegrate" @onclick="ToggleNavMenu">
-                    @localization.Localize("Plot and Integrate")
-                </NavLink>
-            </div>
-
-            <p class="text-white-50">@localization.Localize("Challenges")</p>
-            <div class="nav-item px-3">
-                <NavLink class="nav-link" href="IntegerToRoman" @onclick="ToggleNavMenu">
-                    @localization.Localize("Integer to Roman")
-                </NavLink>
-            </div>
-             <div class="nav-item px-3">
-                <NavLink class="nav-link" href="CountAndSay" @onclick="ToggleNavMenu">
-                    @localization.Localize("Count and Say")
-                </NavLink>
-            </div>
+            
             <div class="flex-grow-1">
 
             </div>

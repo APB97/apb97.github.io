@@ -13,10 +13,9 @@
 .tags > span {
     pointer-events: auto;
     display: inline-block;
-    --tags-bg-color: linear-gradient(transparent 40%, rgb(200 0 200));
+    --tags-bg-color: linear-gradient(transparent 40%, #ab47bc);
     background: var(--tags-bg-color);
 }
-
 
 a {
     font-size: larger;
