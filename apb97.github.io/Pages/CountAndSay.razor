@@ -125,7 +125,7 @@
         var target = $"/CountAndSay/{Number.Value}#{OutputId}";
         if (Number.HasValue && !prev.HasValue)
         {
-            Navigation.NavigateTo(target);
+            Navigation.NavigateTo(target, replace: true);
             prev = Number;
         }
     }
