@@ -2,7 +2,6 @@
 
 @inject APB97StringLocalizer<Challenges> localization
 @inject IJSRuntime JS
-@inject APB97StringLocalizerFactory LocalizationFactory
 
 @if (ShouldRender())
 {
@@ -33,7 +32,6 @@
 
     protected override async Task OnInitializedAsync()
     {
-        localization = new APB97StringLocalizer<Challenges>(LocalizationFactory);
         await localization.InitializeAsync(LanguageSelect.Culture);
     }
 
@@ -49,7 +47,6 @@
 
     private async Task GetResources()
     {
-        localization = new APB97StringLocalizer<Challenges>(LocalizationFactory);
         await localization.InitializeAsync(LanguageSelect.Culture);
         StateHasChanged();
     }
