@@ -57,9 +57,6 @@
 }
 
 @code {
-    [CascadingParameter]
-    public required MainLayout Layout { get; set; }
-
     protected override bool ShouldRender()
     {
         if (localization.Localization == null) return false;
@@ -69,7 +66,7 @@
     protected override async Task OnInitializedAsync()
     {
         localization = new APB97StringLocalizer<LearningProgress2024>(LocalizationFactory);
-        await localization.InitializeAsync(Layout.Language);
+        await localization.InitializeAsync(CultureInfo.CurrentUICulture);
     }
 
     protected override void OnInitialized()
@@ -85,7 +82,7 @@
     private async Task GetResources()
     {
         localization = new APB97StringLocalizer<LearningProgress2024>(LocalizationFactory);
-        await localization.InitializeAsync(Layout.Language);
+        await localization.InitializeAsync(CultureInfo.CurrentUICulture);
         StateHasChanged();
     }
 }

@@ -17,7 +17,7 @@
     <label class="text-white">
         @(localization.Localize("Select your locale")):
     </label>
-    <InputSelect style="background-color: transparent; border: none; color: white;" TValue="CultureInfo" DisplayName="Locale" Value="@Culture" ValueChanged="SetCultureAndReload" ValueExpression="() => Culture">
+    <InputSelect style="background-color: transparent; border: none; color: white;" TValue="CultureInfo" DisplayName="Locale" Value="@CurrentUICulture" ValueChanged="SetCultureAndReload" ValueExpression="() => CurrentUICulture">
         @foreach (var culture in supportedCultures)
         {
             <option value="@culture.Value" class="@(culture.Value.Name == Culture.Name ? "current" : null)">@culture.Key</option>
@@ -30,7 +30,9 @@
     [CascadingParameter]
     public required MainLayout Layout { get; set; }
 
-    public CultureInfo Culture { get; private set; } = CultureInfo.CurrentUICulture;
+    public CultureInfo CurrentUICulture { get => Culture; private set => Culture = value; }
+
+    public static CultureInfo Culture { get; private set; } = CultureInfo.CurrentUICulture;
 
     private readonly IReadOnlyDictionary<string, CultureInfo> supportedCultures = new Dictionary<string, CultureInfo>
     {
@@ -47,7 +49,16 @@
     protected override async Task OnInitializedAsync()
     {
         localization = new APB97StringLocalizer<LanguageSelect>(LocalizationFactory);
-        await localization.InitializeAsync(Layout.Language);
+        await localization.InitializeAsync(CultureInfo.CurrentUICulture);
+    }
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            await localization.InitializeAsync(Culture);
+            StateHasChanged();
+        }
     }
 
     private async Task SetCultureAndReload(CultureInfo value)
@@ -55,7 +66,7 @@
         CultureInfo.CurrentCulture = CultureInfo.CurrentUICulture = Culture = value;
 
         localization = new APB97StringLocalizer<LanguageSelect>(LocalizationFactory);
-        await localization.InitializeAsync(Layout.Language);
+        await localization.InitializeAsync(value);
 
         StateHasChanged();
 

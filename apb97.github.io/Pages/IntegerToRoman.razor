@@ -73,9 +73,6 @@
 @code {
     public const string OutputId = "output";
 
-    [CascadingParameter]
-    public required MainLayout Layout { get; set; }
-
     [Parameter]
     public int? Number { get; set; }
 
@@ -98,7 +95,7 @@
     protected override async Task OnInitializedAsync()
     {
         localization = new APB97StringLocalizer<IntegerToRoman>(LocalizationFactory);
-        await localization.InitializeAsync(Layout.Language);
+        await localization.InitializeAsync(CultureInfo.CurrentUICulture);
     }
 
     protected override void OnInitialized()
@@ -138,7 +135,7 @@
     private async Task GetResources()
     {
         localization = new APB97StringLocalizer<IntegerToRoman>(LocalizationFactory);
-        await localization.InitializeAsync(Layout.Language);
+        await localization.InitializeAsync(CultureInfo.CurrentUICulture);
         StateHasChanged();
     }
 }
