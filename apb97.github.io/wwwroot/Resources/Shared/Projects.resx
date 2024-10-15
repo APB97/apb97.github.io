@@ -124,7 +124,7 @@
     <value>See it yourself here</value>
   </data>
   <data name="Web Sudoku description" xml:space="preserve">
-    <value>Sudoku with features like: save and load, printing single or multiple sudoku boards, automatic validation of input values with rules of sudoku, and naviagation from cell to cell with arrow keys.</value>
+    <value>Sudoku with features like: save and load, printing single or multiple sudoku boards, automatic validation of input values with rules of sudoku, and navigation from cell to cell with arrow keys.</value>
   </data>
   <data name="Plot and calculate definite integral of a function. Built with Windows Forms." xml:space="preserve">
     <value>Plot and calculate definite integral of a function. Built with Windows Forms.</value>

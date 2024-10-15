@@ -124,7 +124,7 @@
     <value>Sprawdź tutaj</value>
   </data>
   <data name="Web Sudoku description" xml:space="preserve">
-    <value>Sudoku z funkcjonalościami: zapis i odczyt, drukowanie pojedynczego lub wielu sudoku, automatyczna walidacja wprowadzanych wartości według zasad sudoku, oraz nawigacja między komórkami za pomocą strzałek.</value>
+    <value>Sudoku z funkcjonalnościami: zapis i odczyt, drukowanie pojedynczego lub wielu sudoku, automatyczna walidacja wprowadzanych wartości według zasad sudoku, oraz nawigacja między komórkami za pomocą strzałek.</value>
   </data>
   <data name="Plot and calculate definite integral of a function. Built with Windows Forms." xml:space="preserve">
     <value>Narysuj wykres i oblicz całkę oznaczoną funkcji. Zbudowane z użyciem Windows Forms.</value>
