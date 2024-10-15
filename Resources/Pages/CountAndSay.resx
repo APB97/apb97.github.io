@@ -186,7 +186,7 @@
   <data name="which is then converted into a different digit string" xml:space="preserve">
     <value>which is then converted into a different digit string</value>
   </data>
-  <data name="You can use the url like" xml:space="preserve">
-    <value>You can use the URL like</value>
+  <data name="You can use the url" xml:space="preserve">
+    <value>You can use the URL from the address bar to navigate to the page and move to the "Output" section.</value>
   </data>
 </root>

@@ -186,7 +186,7 @@
   <data name="which is then converted into a different digit string" xml:space="preserve">
     <value>który jest potem konwertowany na kolejny ciąg znaków złożony z cyfr</value>
   </data>
-  <data name="You can use the url like" xml:space="preserve">
-    <value>Możesz użyć adresu URL postaci</value>
+  <data name="You can use the url" xml:space="preserve">
+    <value>Możesz użyć adresu URL z paska adresu aby odwiedzić stronę i jednocześnie przewinąć do sekcji "Wyjście"</value>
   </data>
 </root>
