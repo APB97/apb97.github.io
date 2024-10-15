@@ -1,5 +1,4 @@
 ﻿@implements IDisposable
-@inject APB97StringLocalizerFactory LocalizationFactory
 @inject APB97StringLocalizer<Projects> localization
 @inject IJSRuntime JS
 
@@ -59,7 +58,6 @@
 
     protected override async Task OnInitializedAsync()
     {
-        localization = new APB97StringLocalizer<Projects>(LocalizationFactory);
         await localization.InitializeAsync(LanguageSelect.Culture);
     }
 
@@ -84,7 +82,6 @@
 
     private async Task GetResources()
     {
-        localization = new APB97StringLocalizer<Projects>(LocalizationFactory);
         await localization.InitializeAsync(LanguageSelect.Culture);
         StateHasChanged();
     }
