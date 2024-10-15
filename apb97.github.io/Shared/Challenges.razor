@@ -8,19 +8,15 @@
 {
     <AdjustedAnchorHeading Id="challenges">@localization.Localize("Challenges")</AdjustedAnchorHeading>
 
-    <div class="d-flex">
-        <div class="skill-card">
-            <h4 class="text-center">@localization.Localize("Integer to Roman")</h4>
-            <div class="text-center">
-                <a class="link-primary" href="/IntegerToRoman">@localization.Localize("See this challenge")</a>
-            </div>
-        </div>
-        <div class="skill-card">
-            <h4 class="text-center">@localization.Localize("Count and say")</h4>
-            <div class="text-center">
-                <a class="link-primary" href="/CountAndSay">@localization.Localize("See this challenge")</a>
-            </div>
-        </div>
+    <div class="d-flex" style="font-size: larger">
+        <ul style="list-style-type: none;">
+            <li>
+                <a class="link-primary" href="/IntegerToRoman"><span>@localization.Localize("Integer to Roman")</span></a>
+            </li>
+            <li>
+                <a class="link-primary" href="/CountAndSay"><span>@localization.Localize("Count and say")</span></a>
+            </li>
+        </ul>
     </div>
 }
 

@@ -9,11 +9,10 @@
     <div class="d-flex" style="border: medium solid dodgerblue; margin: 2pt;">
         <div class="col-8 d-flex flex-column">
             <div class="text-center flex-grow-1">
-                <h5>Web Sudoku</h5>
+                <a class="link-primary" onclick="history.replaceState(null, '', document.location.href);document.location.assign('/WebSudoku/');">
+                    <span>Web Sudoku</span>
+                </a>
                 <p>@localization.Localize("Web Sudoku description")</p>
-                <button class="link-primary button-as-link" onclick="history.replaceState(null, '', document.location.href);document.location.assign('/WebSudoku/');">
-                    @localization.Localize("See it yourself here")
-                </button>
             </div>
             <div class="text-center">
                 <div class="tags">
@@ -35,23 +34,17 @@
     </div>
 
     <div class="d-flex">
-        <div class="skill-card">
+        <div style="border: medium solid darkslategray; margin: 2pt;">
             <div class="text-center">
-                <h5>Metadata Rename</h5>
-            </div>
-            <div class="text-center">
+                <a class="link-primary" href="MetadataRename"><span>Metadata Rename</span></a>
                 <p>@localization.Localize("Rename based on metadata built with WPF.") </p>
-                <a class="link-primary" href="MetadataRename">@localization.Localize("See it yourself here")</a>
             </div>
         </div>
 
-        <div class="skill-card">
+        <div class="flex-grow-1" style="border: medium solid darkslategray; margin: 2pt;">
             <div class="text-center">
-                <h5>Plot and Integrate</h5>
-            </div>
-            <div class="text-center">
+                <a class="link-primary" href="PlotAndIntegrate"><span>Plot and Integrate</span></a>
                 <p>@localization.Localize("Plot and calculate definite integral of a function. Built with Windows Forms.") </p>
-                <a class="link-primary" href="PlotAndIntegrate">@localization.Localize("See it yourself here")</a>
             </div>
         </div>
     </div>

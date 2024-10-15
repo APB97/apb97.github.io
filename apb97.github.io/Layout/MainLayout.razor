@@ -2,6 +2,18 @@
 @using apb97.github.io.Shared
 @inherits LayoutComponentBase
 
+
+@if (LayoutMode == "Light")
+{
+    <style>
+        body, html {
+            --page-bg-color: white;
+            --page-fg-color: black;
+            --tags-bg-color: linear-gradient(transparent 75%, purple);
+        }
+    </style>
+}
+
 <CascadingValue Value="this">
     <div class="page">
         <div class="sidebar d-flex flex-column" style="position: sticky; top: 0; z-index: 100">
@@ -9,9 +21,6 @@
         </div>
 
         <main>
-            <div class="top-row px-4">
-            </div>
-
             <article @onclick="() => navMenu?.CollapseNavMenu()" class="content px-4">
                 @Body
             </article>
@@ -21,6 +30,8 @@
 
 @code {
     private NavMenu? navMenu;
+
+    private string LayoutMode { get; set; } = "Dark";
 
     public static event Func<Task> OnStateChanging = delegate { return Task.CompletedTask; };
 

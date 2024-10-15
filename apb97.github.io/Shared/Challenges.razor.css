@@ -1,11 +1,5 @@
-﻿/* for mobile view */
-@media (max-width: 640px) {
-    * {
-        --nav-top-height: 56px;
-    }
-}
-
-a{
+﻿a {
+    font-size: larger;
     text-decoration: none !important;
 }
 
