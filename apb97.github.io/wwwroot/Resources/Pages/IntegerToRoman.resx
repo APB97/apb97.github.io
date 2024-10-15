@@ -198,7 +198,7 @@
   <data name="to roman numeral" xml:space="preserve">
     <value>to roman numeral</value>
   </data>
-  <data name="You can use the url like" xml:space="preserve">
-    <value>You can use the URL like</value>
+  <data name="You can use the url" xml:space="preserve">
+    <value>You can use the URL from the address bar to navigate to the page and move to the "Output" section.</value>
   </data>
 </root>
