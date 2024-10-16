@@ -1,12 +1,11 @@
-﻿using Microsoft.Extensions.Localization;
-using Microsoft.Extensions.Options;
+﻿using Microsoft.Extensions.Options;
 using System.Globalization;
 using System.Text;
 using System.Xml;
 
 namespace apb97.github.io.Services
 {
-    public class APB97StringLocalizerFactory(HttpClient http, IOptions<LocalizationOptions> localizationOptions)
+    public class APB97StringLocalizerFactory(HttpClient http, IOptions<APB97LocalizationOptions> localizationOptions)
     {
         public async Task<Dictionary<string, string>> GetLocalization<T>(CultureInfo cultureInfo)
         {
@@ -62,9 +61,9 @@ namespace apb97.github.io.Services
         {
             var type = typeof(T);
             var builder = new StringBuilder();
-            if (type.Namespace?.StartsWith("apb97.github.io") == true)
+            if (type.Namespace?.StartsWith(localizationOptions.Value.ProjectNamespace) == true)
             {
-                builder.Append(type.Namespace.Remove(0, "apb97.github.io".Length).Replace('.', '/'));
+                builder.Append(type.Namespace.Remove(0, localizationOptions.Value.ProjectNamespace.Length).Replace('.', '/'));
             }
             else if (type.Namespace != null)
             {
