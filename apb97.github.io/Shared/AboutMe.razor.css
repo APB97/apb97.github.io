@@ -1,1 +1,11 @@
-﻿
+﻿p:before {
+    font-family: monospace;
+    content: '<!-- ';
+    color: gray;
+}
+
+p:after {
+    font-family: monospace;
+    content: ' -->';
+    color: gray;
+}
