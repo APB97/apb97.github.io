@@ -72,38 +72,4 @@
         await localization.InitializeAsync(LanguageSelect.Culture);
         StateHasChanged();
     }
-
-    private RenderFragment BulletPointsFragment => __builder =>
-    {
-        <div class="d-flex">
-            <div class="col-6 p-2">
-                <p>@localization.Localize("Technologies I use daily:")</p>
-                <ul>
-                    <li>.NET 8</li>
-                    <li>C# 12</li>
-                    <li>ASP.NET Core</li>
-                    <li>Blazor</li>
-                    <li>HTML, CSS, JavaScript</li>
-                    <li>GraphQL</li>
-                    <li>PostgreSQL</li>
-                    <li>@localization.Localize("OOP")</li>
-                    <li>@localization.Localize("ORM")</li>
-                    <li>@localization.Localize("DI")</li>
-                </ul>
-            </div>
-            <div class="col-6 p-2">
-                <p>@localization.Localize("Other supporting technologies:")</p>
-                <ul>
-                    <li>Git</li>
-                    <li>JSON</li>
-                    <li>SQL</li>
-                    <li>YAML</li>
-                    <li>Linux</li>
-                    <li>@localization.Localize("Containers")</li>
-                    <li>Podman</li>
-                    <li>Usernetes</li>
-                </ul>
-            </div>
-        </div>
-    };
 }
