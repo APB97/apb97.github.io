@@ -1,0 +1,15 @@
+﻿<a style="@Style" class="nav-link" href="@Href"
+    onclick="document.querySelectorAll('a.nav-link.active')?.forEach(n => n.classList.remove('active')); this.classList.add('active');">
+    @ChildContent
+</a>
+
+@code {
+    [Parameter]
+    public required RenderFragment ChildContent { get; set; }
+
+    [Parameter]
+    public required string Href { get; set; }
+
+    [Parameter]
+    public string? Style { get; set; }
+}

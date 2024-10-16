@@ -7,9 +7,11 @@
 {
     <div class="top-row ps-3 navbar navbar-dark">
         <div class="container-fluid">
-            <a class="navbar-brand" href="">APB97</a>
+            <ABP97NavLink Style="color: white;" Href="/">APB97</ABP97NavLink>
             <HiddenForScreenWidth HideForWidthCondition="w => w > ScreenBreakpoints.Medium">
-                <LanguageSelect @ref="language" />
+                <div>
+                    <LanguageSelect @ref="language" />
+                </div>
             </HiddenForScreenWidth>
             <button title="Navigation menu" class="navbar-toggler" @onclick="ToggleNavMenu">
                 <span class="navbar-toggler-icon"></span>
@@ -19,34 +21,34 @@
 
     <div class="@NavMenuCssClass" style="overflow-y: auto; display: flex; flex-grow: 1; height: 50vh;">
         <nav class="d-flex flex-column flex-grow-1">
-            <div class="nav-item px-3">
-                <NavLink class="nav-link" href="" Match="NavLinkMatch.All" @onclick="ToggleNavMenu">
+            <div class="nav-item px-3" @onclick="CollapseNavMenu">
+                <ABP97NavLink Href="#aboutme">
                     @localization.Localize("About me")
-                </NavLink>
+                </ABP97NavLink>
             </div>
 
-            <div class="nav-item px-3">
-                <NavLink class="nav-link" href="#projects" @onclick="ToggleNavMenu">
+            <div class="nav-item px-3" @onclick="CollapseNavMenu">
+                <ABP97NavLink Href="#projects">
                     @localization.Localize("Projects")
-                </NavLink>
+                </ABP97NavLink>
             </div>
 
-            <div class="nav-item px-3">
-                <NavLink class="nav-link" href="#challenges" @onclick="ToggleNavMenu">
+            <div class="nav-item px-3" @onclick="CollapseNavMenu">
+                <ABP97NavLink Href="#challenges" >
                     @localization.Localize("Challenges")
-                </NavLink>
+                </ABP97NavLink>
             </div>
 
-            <div class="nav-item px-3">
-                <NavLink class="nav-link" href="#skills" @onclick="ToggleNavMenu">
+            <div class="nav-item px-3" @onclick="CollapseNavMenu">
+                <ABP97NavLink Href="#skills">
                     @localization.Localize("Skills")
-                </NavLink>
+                </ABP97NavLink>
             </div>
 
-            <div class="nav-item px-3">
-                <NavLink class="nav-link" href="LearningProgress" Match="NavLinkMatch.All" @onclick="ToggleNavMenu">
+            <div class="nav-item px-3" @onclick="CollapseNavMenu">
+                <ABP97NavLink Href="LearningProgress">
                     @localization.Localize("LearningProgress")
-                </NavLink>
+                </ABP97NavLink>
             </div>
             
             <div class="flex-grow-1">
