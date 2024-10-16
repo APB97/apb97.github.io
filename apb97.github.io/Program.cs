@@ -2,6 +2,7 @@ using apb97.github.io;
 using apb97.github.io.Services;
 using Microsoft.AspNetCore.Components.Web;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
+using Microsoft.Extensions.Options;
 using Microsoft.JSInterop;
 using System.Globalization;
 
@@ -9,12 +10,14 @@ var builder = WebAssemblyHostBuilder.CreateDefault(args);
 builder.RootComponents.Add<App>("#app");
 builder.RootComponents.Add<HeadOutlet>("head::after");
 
-builder.Services.AddLocalization(options =>
-{
-    options.ResourcesPath = "Resources";
-});
 builder.Services.AddScoped<SayService>();
 builder.Services.AddScoped<CountAndSayService>();
+
+builder.Services.AddSingleton(_ => Options.Create(new APB97LocalizationOptions
+{
+    ResourcesPath = "Resources",
+    ProjectNamespace = "apb97.github.io"
+}));
 builder.Services.AddScoped<APB97StringLocalizerFactory>();
 builder.Services.AddScoped(typeof(APB97StringLocalizer<>));
 
