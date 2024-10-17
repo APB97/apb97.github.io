@@ -1,6 +1,4 @@
 ﻿@using System.Text.RegularExpressions
-@inject NavigationManager Navigation
-@inject IJSRuntime JS
 
 <!-- uses --nav-top-height variable to fix issue with anchor tags target position after navigation while in mobile view -->
 <!-- disables pointer-events on h2 tag and reenables on a tag to allow click to pass through -->
@@ -8,10 +6,12 @@
     <a class="link-primary" style="pointer-events: auto; position: relative; top: var(--nav-top-height); font-size: @(FontSize ?? DefaultFontSize)"
         onclick="document.location.assign('#@Id'); document.querySelectorAll('a.nav-link.active')?.forEach(n => n.classList.remove('active')); document.querySelector(`a.nav-link[href='${document.location.pathname.replace(/\//, '')}${document.location.hash}']`)?.classList?.add('active');">
         <span>
-            @ChildContent
+            @Heading
         </span>
     </a>
 </h2>
+
+@ChildContent
 
 @code {
     public const string DefaultFontSize = "unset";
@@ -25,35 +25,8 @@
     public required RenderFragment ChildContent { get; set; }
 
     [Parameter]
+    public required string Heading { get; set; }
+
+    [Parameter]
     public string? FontSize { get; set; }
-
-    public string Url => $"{HashPattern.Replace(Navigation.Uri, string.Empty)}#{Id}";
-
-    private bool skipNavigate;
-
-    private IJSObjectReference? module;
-
-    protected override async Task OnInitializedAsync()
-    {
-        module = await JS.InvokeAsync<IJSObjectReference>("import", "./Shared/AdjustedAnchorHeading.razor.js");
-    }
-
-    protected override async Task OnAfterRenderAsync(bool firstRender)
-    {
-        if (skipNavigate) return;
-        skipNavigate = true;
-
-        using var cts = new CancellationTokenSource(TimeSpan.FromSeconds(5));
-        await Task.CompletedTask.ContinueWith(async task =>
-        {
-            while (!Navigation.Uri.Equals(Url, StringComparison.InvariantCultureIgnoreCase))
-            {
-                await Task.Delay(TimeSpan.FromSeconds(1));
-            }
-            Navigation.NavigateTo(Url);
-            
-            if (module is null) return;
-            await module.InvokeVoidAsync("activateCurrentLink", Url);
-        }, cts.Token);
-    }
 }

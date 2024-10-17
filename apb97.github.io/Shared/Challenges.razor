@@ -5,18 +5,18 @@
 
 @if (ShouldRender())
 {
-    <AdjustedAnchorHeading Id="challenges">@localization.Localize("Challenges")</AdjustedAnchorHeading>
-
-    <div class="d-flex" style="font-size: larger">
-        <ul style="list-style-type: none;">
-            <li>
-                <a class="link-primary" href="/IntegerToRoman"><span>@localization.Localize("Integer to Roman")</span></a>
-            </li>
-            <li>
-                <a class="link-primary" href="/CountAndSay"><span>@localization.Localize("Count and say")</span></a>
-            </li>
-        </ul>
-    </div>
+    <AdjustedAnchorHeading Id="challenges" Heading="@localization.Localize("Challenges")">
+        <div class="d-flex" style="font-size: larger">
+            <ul style="list-style-type: none;">
+                <li>
+                    <a class="link-primary" href="/IntegerToRoman"><span>@localization.Localize("Integer to Roman")</span></a>
+                </li>
+                <li>
+                    <a class="link-primary" href="/CountAndSay"><span>@localization.Localize("Count and say")</span></a>
+                </li>
+            </ul>
+        </div>
+    </AdjustedAnchorHeading>
 }
 
 @code {
