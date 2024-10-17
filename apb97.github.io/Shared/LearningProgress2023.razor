@@ -1,74 +1,71 @@
 ﻿@implements IDisposable
 @inject APB97StringLocalizer<LearningProgress2023> localization
 
-@if (ShouldRender())
-{
-    <h3>@localization.Localize("Year2023")</h3>
-    <ul>
-        <li>
-            <h4>JavaScript</h4>
-            <ul>
-                <li>
-                    <b>@localization.Localize("JS types")</b>
-                    <br/>
-                    <p>@localization.Localize("JS types description")</p>
-                    <b>@localization.Localize("Example")</b>
-                    <br />
-                    <CodeView Code="@localization.Localize("JS types code")"/>
-                </li>
-                <li>
-                    <b>@localization.Localize("JS functions and arrays")</b>
-                    <br />
-                    <p>@localization.Localize("JS functions and arrays description")</p>
-                    <b>@localization.Localize("Example")</b>
-                    <br />
-                    <CodeView Code="@localization.Localize("JS functions and arrays code")"/>
-                </li>
-                <li>
-                    <b>@localization.Localize("JS objects")</b>
-                    <br />
-                    <p>@localization.Localize("JS objects description")</p>
-                    <b>@localization.Localize("Example")</b>
-                    <br />
-                    <CodeView Code="@localization.Localize("JS objects code")"/>
-                </li>
-            </ul>
-            <h4>@localization.Localize("JavaScript libs")</h4>
-            <ul>
-                <li>
-                    <b>Paged.js</b>
-                    <br />
-                    <p>@localization.Localize("Paged.js description")</p>
-                </li>
-            </ul>
-            <h4>@localization.Localize("General knowledge")</h4>
-            <ul>
-                <li>
-                    <b>@localization.Localize("TPH, TPC, TPT")</b>
-                    <br />
-                    <p>@localization.Localize("TPH, TPC, TPT description")</p>
-                </li>
-            </ul>
-            <h4>.NET</h4>
-            <ul>
-                <li>
-                    <b>@localization.Localize("System.Text.Json")</b>
-                    <br />
-                    <p>@localization.Localize("System.Text.Json description")</p>
-                    <a href="https://learn.microsoft.com/en-us/dotnet/standard/serialization/system-text-json/custom-contracts" rel="noopener">@localization.Localize("Source")</a>
-                </li>
-            </ul>
-            <h4>@localization.Localize("NuGet packages")</h4>
-            <ul>
-                <li>
-                    <b>@localization.Localize("HotChocolate")</b>
-                    <br />
-                    <p>@localization.Localize("HotChocolate description")</p>
-                </li>
-            </ul>
-        </li>
-    </ul>
-}
+<h3>@localization.Localize("Year2023")</h3>
+<ul>
+    <li>
+        <h4>JavaScript</h4>
+        <ul>
+            <li>
+                <b>@localization.Localize("JS types")</b>
+                <br/>
+                <p>@localization.Localize("JS types description")</p>
+                <b>@localization.Localize("Example")</b>
+                <br />
+                <CodeView Code="@localization.Localize("JS types code")"/>
+            </li>
+            <li>
+                <b>@localization.Localize("JS functions and arrays")</b>
+                <br />
+                <p>@localization.Localize("JS functions and arrays description")</p>
+                <b>@localization.Localize("Example")</b>
+                <br />
+                <CodeView Code="@localization.Localize("JS functions and arrays code")"/>
+            </li>
+            <li>
+                <b>@localization.Localize("JS objects")</b>
+                <br />
+                <p>@localization.Localize("JS objects description")</p>
+                <b>@localization.Localize("Example")</b>
+                <br />
+                <CodeView Code="@localization.Localize("JS objects code")"/>
+            </li>
+        </ul>
+        <h4>@localization.Localize("JavaScript libs")</h4>
+        <ul>
+            <li>
+                <b>Paged.js</b>
+                <br />
+                <p>@localization.Localize("Paged.js description")</p>
+            </li>
+        </ul>
+        <h4>@localization.Localize("General knowledge")</h4>
+        <ul>
+            <li>
+                <b>@localization.Localize("TPH, TPC, TPT")</b>
+                <br />
+                <p>@localization.Localize("TPH, TPC, TPT description")</p>
+            </li>
+        </ul>
+        <h4>.NET</h4>
+        <ul>
+            <li>
+                <b>@localization.Localize("System.Text.Json")</b>
+                <br />
+                <p>@localization.Localize("System.Text.Json description")</p>
+                <a href="https://learn.microsoft.com/en-us/dotnet/standard/serialization/system-text-json/custom-contracts" rel="noopener">@localization.Localize("Source")</a>
+            </li>
+        </ul>
+        <h4>@localization.Localize("NuGet packages")</h4>
+        <ul>
+            <li>
+                <b>@localization.Localize("HotChocolate")</b>
+                <br />
+                <p>@localization.Localize("HotChocolate description")</p>
+            </li>
+        </ul>
+    </li>
+</ul>
 
 @code {
     protected override bool ShouldRender()
