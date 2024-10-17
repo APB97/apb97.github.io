@@ -82,6 +82,47 @@ main[b-0clx55j7wy] {
         --nav-top-height: 56px;
     }
 }
+
+a[b-46y0xc37f0]{
+    text-decoration: none !important;
+}
+
+a span[b-46y0xc37f0] {
+    text-decoration: underline;
+}
+
+a[b-46y0xc37f0]:before {
+    content: '<';
+    color: gray;
+    text-decoration: none !important;
+}
+
+a[b-46y0xc37f0]:after {
+    content: ' />';
+    color: gray;
+    text-decoration: none !important;
+}
+/* /Shared/Challenges.razor.rz.scp.css */
+a[b-51ycega2eh] {
+    font-size: larger;
+    text-decoration: none !important;
+}
+
+a span[b-51ycega2eh] {
+    text-decoration: underline;
+}
+
+a[b-51ycega2eh]:before {
+    content: '<';
+    color: gray;
+    text-decoration: none !important;
+}
+
+a[b-51ycega2eh]:after {
+    content: ' />';
+    color: gray;
+    text-decoration: none !important;
+}
 /* /Shared/LanguageSelect.razor.rz.scp.css */
 option[b-obldctxof6] {
     background-color: unset;
@@ -178,9 +219,51 @@ option.current[b-obldctxof6] {
 .tags > span[b-2m7ak20tsl] {
     pointer-events: auto;
     display: inline-block;
-    background: linear-gradient(transparent 75%, purple);
+    --tags-bg-color: linear-gradient(transparent 40%, #ab47bc);
+    background: var(--tags-bg-color);
+}
+
+a[b-2m7ak20tsl] {
+    font-size: larger;
+    text-decoration: none !important;
+    cursor: pointer !important;
+}
+
+a span[b-2m7ak20tsl] {
+    text-decoration: underline;
+}
+
+a[b-2m7ak20tsl]:before {
+    content: '<';
+    color: gray;
+    text-decoration: none !important;
+}
+
+a[b-2m7ak20tsl]:after {
+    content: ' />';
+    color: gray;
+    text-decoration: none !important;
+}
+
+a:not([href]):not([class])[b-2m7ak20tsl] {
+    color: #0071c1;
+    cursor: pointer;
+}
+
+a:not([href]):not([class]):hover[b-2m7ak20tsl] {
+    color: #0a58ca;
 }
 /* /Shared/Skills.razor.rz.scp.css */
 img[b-bulq7u251s] {
     max-height: 64px;
+}
+
+li > span[b-bulq7u251s]:before {
+    color: gray;
+    content: '<';
+}
+
+li > span[b-bulq7u251s]:after {
+    color: gray;
+    content: ' />';
 }

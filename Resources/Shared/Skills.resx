@@ -120,37 +120,43 @@
   <data name="Apart from these" xml:space="preserve">
     <value>Apart from these, I ocassionally made some of my projects with Python or PHP.</value>
   </data>
-  <data name="C# Development" xml:space="preserve">
-    <value>C# Development</value>
+  <data name="Application Development" xml:space="preserve">
+    <value>Application Development</value>
   </data>
   <data name="Here are my" xml:space="preserve">
     <value>Here are my key technical skills:</value>
   </data>
-  <data name="I use an ORM" xml:space="preserve">
-    <value>I use an ORM called Entity Framework Core with Code First approach to create database structure based on Model classes.</value>
-  </data>
-  <data name="I use ASP.Net" xml:space="preserve">
-    <value>I use ASP.NET Core (previously I used ASP.NET) to develop web applications, with a mix of C#, HTML, CSS and client-side JavaScript.</value>
-  </data>
-  <data name="I use C#" xml:space="preserve">
-    <value>I use C# programming language on a daily basis to build desktop apps and websites. C# is one of the managed languages that allow use of .NET platform's capabilities. Examples of my work with that language can be viewed in my projects section.</value>
-  </data>
-  <data name="I use patterns" xml:space="preserve">
-    <value>I use patterns and frameworks to build apps. For ASP.NET Core projects I usually use Blazor (previously I used MVC) and for desktop apps (WPF, UWP) I use MVVM.</value>
-  </data>
-  <data name="I usually build" xml:space="preserve">
-    <value>I usually build web applications with use of C#, ASP.NET Core, HTML, CSS, JavaScript, and desktop applications with WPF or Windows Forms.</value>
-  </data>
   <data name="Object-Relational Mapping" xml:space="preserve">
     <value>Object-Relational Mapping</value>
   </data>
-  <data name="Patterns" xml:space="preserve">
-    <value>Patterns</value>
+  <data name="Patterns and Frameworks" xml:space="preserve">
+    <value>Patterns and Frameworks</value>
   </data>
   <data name="Skills" xml:space="preserve">
     <value>Skills</value>
   </data>
   <data name="Web Development" xml:space="preserve">
     <value>Web Development</value>
+  </data>
+  <data name="Useful Technologies" xml:space="preserve">
+    <value>Useful Technologies</value>
+  </data>
+  <data name="Client-side JavaScript" xml:space="preserve">
+    <value>Client-side JavaScript</value>
+  </data>
+  <data name="Desktop" xml:space="preserve">
+    <value>Desktop</value>
+  </data>
+  <data name="Web" xml:space="preserve">
+    <value>Web</value>
+  </data>
+  <data name="Dependency Injection" xml:space="preserve">
+    <value>Dependency Injection</value>
+  </data>
+  <data name="Code First" xml:space="preserve">
+    <value>Code First approach</value>
+  </data>
+  <data name="Containers" xml:space="preserve">
+    <value>Containers</value>
   </data>
 </root>

@@ -130,29 +130,11 @@ Take a look at my portfolio projects to see if we can work together.</value>
   <data name="iam_short" xml:space="preserve">
     <value>I'm Adrian Bieliński, a software developer</value>
   </data>
-  <data name="Technologies I use daily:" xml:space="preserve">
-    <value>Technologies and concepts I use daily:</value>
-  </data>
   <data name="whoami" xml:space="preserve">
     <value>Who am I?</value>
   </data>
   <data name="About me" xml:space="preserve">
     <value>About me</value>
-  </data>
-  <data name="OOP" xml:space="preserve">
-    <value>Object-Oriented Programming</value>
-  </data>
-  <data name="ORM" xml:space="preserve">
-    <value>Object-Relational Mapping</value>
-  </data>
-  <data name="DI" xml:space="preserve">
-    <value>Dependency Injection</value>
-  </data>
-  <data name="Other supporting technologies:" xml:space="preserve">
-    <value>Other supporting technologies:</value>
-  </data>
-  <data name="Containers" xml:space="preserve">
-    <value>Containers</value>
   </data>
   <data name="status_label" xml:space="preserve">
     <value>Employment status: </value>
