@@ -8,6 +8,6 @@
     currentNavLink?.classList?.add('active');
     currentNavLink?.click();
     if (h == null && currentNavLink != null) {
-        setTimeout(r => activateCurrentLink(url, hash), 200);
+        setTimeout(r => activateCurrentLink(url, hash), 250);
     }
 }

@@ -4,7 +4,7 @@
 @if (!Rendered)
 {
     Rendered = true;
-    Task.CompletedTask.ContinueWith(async t =>
+    Task.Delay(250).ContinueWith(async t =>
     {
         Navigation.NavigateTo(Navigation.Uri, replace: true);
         var urlSplit = Navigation.Uri.Split('#');

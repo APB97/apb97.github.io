@@ -207,15 +207,18 @@ article {
     }
 
 code {
-    --code-color: #ff7dbe;
+    --code-color: #bf95ff;
     color: var(--code-color);
 }
 
 .link-primary {
-    color: #71abff;
+    --link-color: #71abff;
+    color: var(--link-color);
 }
 
 input {
-    color: white;
-    background-color: rgb(55, 55, 55);
+    --input-fg-color: white;
+    color: var(--input-fg-color);
+    --input-bg-color: rgb(55, 55, 55);
+    background-color: var(--input-bg-color);
 }

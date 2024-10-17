@@ -8,9 +8,23 @@
     <div class="top-row ps-3 navbar navbar-dark">
         <div class="container-fluid">
             <ABP97NavLink Style="color: white;" Href="/">APB97</ABP97NavLink>
+            <button style="border: none; background-color: transparent; padding: 0;" @onclick="() => Layout.ToggleLayoutMode()">
+                @if (Layout.LayoutMode == "Light")
+                {
+                    <div onclick="localStorage.setItem('LayoutMode', 'Dark')">
+                        <img style="height: 2rem; filter: invert(0.95);" src="/images/dark.svg" />
+                    </div>
+                }
+                else
+                {
+                    <div onclick="localStorage.setItem('LayoutMode', 'Light')">
+                        <img style="height: 2rem; filter: invert(0.95);" src="/images/light.svg" />
+                    </div>
+                }
+            </button>
             <HiddenForScreenWidth HideForWidthCondition="w => w > ScreenBreakpoints.Medium">
                 <div>
-                    <LanguageSelect @ref="language" />
+                    <LanguageSelect />
                 </div>
             </HiddenForScreenWidth>
             <button title="Navigation menu" class="navbar-toggler" @onclick="ToggleNavMenu">
@@ -60,7 +74,7 @@
             <div class="nav-item px-0">
                 <div class="nav-link">
                     <HiddenForScreenWidth HideForWidthCondition="w => w <= ScreenBreakpoints.Medium">
-                        <LanguageSelect @ref="language" />
+                        <LanguageSelect />
                     </HiddenForScreenWidth>
                 </div>
             </div>
@@ -69,11 +83,10 @@
 }
 
 @code {
+    [CascadingParameter]
+    public required MainLayout Layout { get; set; }
+
     private bool collapseNavMenu = true;
-
-    private LanguageSelect? language;
-
-    public CultureInfo? Language => LanguageSelect.Culture;
 
     private string? NavMenuCssClass => collapseNavMenu ? "collapse" : null;
 
@@ -96,7 +109,7 @@
 
     protected override async Task OnInitializedAsync()
     {
-        await localization.InitializeAsync(Language);
+        await localization.InitializeAsync(LanguageSelect.Culture);
     }
 
     protected override void OnInitialized()
@@ -111,7 +124,7 @@
 
     private async Task GetResources()
     {
-        await localization.InitializeAsync(Language);
+        await localization.InitializeAsync(LanguageSelect.Culture);
         StateHasChanged();
     }
 }
