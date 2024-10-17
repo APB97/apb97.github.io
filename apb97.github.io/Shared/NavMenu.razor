@@ -7,9 +7,25 @@
 {
     <div class="top-row ps-3 navbar navbar-dark">
         <div class="container-fluid">
-            <a class="navbar-brand" href="">APB97</a>
+            <ABP97NavLink Style="color: white;" Href="/">APB97</ABP97NavLink>
+            <button style="border: none; background-color: transparent; padding: 0;" @onclick="() => Layout.ToggleLayoutMode()">
+                @if (Layout.LayoutMode == "Light")
+                {
+                    <div onclick="localStorage.setItem('LayoutMode', 'Dark')">
+                        <img style="height: 2rem; filter: invert(0.95);" src="/images/dark.svg" />
+                    </div>
+                }
+                else
+                {
+                    <div onclick="localStorage.setItem('LayoutMode', 'Light')">
+                        <img style="height: 2rem; filter: invert(0.95);" src="/images/light.svg" />
+                    </div>
+                }
+            </button>
             <HiddenForScreenWidth HideForWidthCondition="w => w > ScreenBreakpoints.Medium">
-                <LanguageSelect @ref="language" />
+                <div>
+                    <LanguageSelect />
+                </div>
             </HiddenForScreenWidth>
             <button title="Navigation menu" class="navbar-toggler" @onclick="ToggleNavMenu">
                 <span class="navbar-toggler-icon"></span>
@@ -19,45 +35,36 @@
 
     <div class="@NavMenuCssClass" style="overflow-y: auto; display: flex; flex-grow: 1; height: 50vh;">
         <nav class="d-flex flex-column flex-grow-1">
-            <div class="nav-item px-3">
-                <NavLink class="nav-link" href="" Match="NavLinkMatch.All" @onclick="ToggleNavMenu">
-                    @localization.Localize("Home")
-                </NavLink>
+            <div class="nav-item px-3" @onclick="CollapseNavMenu">
+                <ABP97NavLink Href="#aboutme">
+                    @localization.Localize("About me")
+                </ABP97NavLink>
             </div>
-            <div class="nav-item px-3">
-                <NavLink class="nav-link" href="LearningProgress" Match="NavLinkMatch.All" @onclick="ToggleNavMenu">
+
+            <div class="nav-item px-3" @onclick="CollapseNavMenu">
+                <ABP97NavLink Href="#projects">
+                    @localization.Localize("Projects")
+                </ABP97NavLink>
+            </div>
+
+            <div class="nav-item px-3" @onclick="CollapseNavMenu">
+                <ABP97NavLink Href="#challenges" >
+                    @localization.Localize("Challenges")
+                </ABP97NavLink>
+            </div>
+
+            <div class="nav-item px-3" @onclick="CollapseNavMenu">
+                <ABP97NavLink Href="#skills">
+                    @localization.Localize("Skills")
+                </ABP97NavLink>
+            </div>
+
+            <div class="nav-item px-3" @onclick="CollapseNavMenu">
+                <ABP97NavLink Href="#learning">
                     @localization.Localize("LearningProgress")
-                </NavLink>
+                </ABP97NavLink>
             </div>
-
-            <p class="text-white-50">@localization.Localize("Projects")</p>
-            <div class="nav-item px-3">
-                <button class="nav-link" onclick="history.replaceState(null, '', document.location.href);document.location.assign('/WebSudoku/');">
-                    @localization.Localize("Web Sudoku")
-                </button>
-            </div>
-            <div class="nav-item px-3">
-                <NavLink class="nav-link" href="MetadataRename" @onclick="ToggleNavMenu">
-                    @localization.Localize("Metadata Rename")
-                </NavLink>
-            </div>
-            <div class="nav-item px-3">
-                <NavLink class="nav-link" href="PlotAndIntegrate" @onclick="ToggleNavMenu">
-                    @localization.Localize("Plot and Integrate")
-                </NavLink>
-            </div>
-
-            <p class="text-white-50">@localization.Localize("Challenges")</p>
-            <div class="nav-item px-3">
-                <NavLink class="nav-link" href="IntegerToRoman" @onclick="ToggleNavMenu">
-                    @localization.Localize("Integer to Roman")
-                </NavLink>
-            </div>
-             <div class="nav-item px-3">
-                <NavLink class="nav-link" href="CountAndSay" @onclick="ToggleNavMenu">
-                    @localization.Localize("Count and Say")
-                </NavLink>
-            </div>
+            
             <div class="flex-grow-1">
 
             </div>
@@ -67,7 +74,7 @@
             <div class="nav-item px-0">
                 <div class="nav-link">
                     <HiddenForScreenWidth HideForWidthCondition="w => w <= ScreenBreakpoints.Medium">
-                        <LanguageSelect @ref="language" />
+                        <LanguageSelect />
                     </HiddenForScreenWidth>
                 </div>
             </div>
@@ -76,11 +83,10 @@
 }
 
 @code {
+    [CascadingParameter]
+    public required MainLayout Layout { get; set; }
+
     private bool collapseNavMenu = true;
-
-    private LanguageSelect? language;
-
-    public CultureInfo? Language => LanguageSelect.Culture;
 
     private string? NavMenuCssClass => collapseNavMenu ? "collapse" : null;
 
@@ -103,7 +109,7 @@
 
     protected override async Task OnInitializedAsync()
     {
-        await localization.InitializeAsync(Language);
+        await localization.InitializeAsync(LanguageSelect.Culture);
     }
 
     protected override void OnInitialized()
@@ -118,7 +124,7 @@
 
     private async Task GetResources()
     {
-        await localization.InitializeAsync(Language);
+        await localization.InitializeAsync(LanguageSelect.Culture);
         StateHasChanged();
     }
 }

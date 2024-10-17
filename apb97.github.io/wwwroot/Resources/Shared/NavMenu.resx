@@ -138,4 +138,10 @@
   <data name="Code" xml:space="preserve">
     <value>Code</value>
   </data>
+  <data name="About me" xml:space="preserve">
+    <value>About me</value>
+  </data>
+  <data name="Skills" xml:space="preserve">
+    <value>Skills</value>
+  </data>
 </root>

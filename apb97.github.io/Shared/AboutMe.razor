@@ -1,47 +1,50 @@
 ﻿@using System.Resources
+@using apb97.github.io.Pages
 
 @implements IDisposable
 @inject IJSRuntime JS
 @inject APB97StringLocalizer<AboutMe> localization
+@inject NavigationManager Navigation
 
 @if (ShouldRender())
 {
     <div class="row">
         <div class="d-flex flex-column">
-            <div class="d-flex flex-row">
-                <div class="col-8 flex-column">
-                    <div class="d-flex flex-column">
-                        <AdjustedAnchorHeading Id="aboutme">@localization.Localize("About me")</AdjustedAnchorHeading>
-                        <h5>@localization.Localize("iam_short")</h5>
-                    </div>
+            <AdjustedAnchorHeading Id="aboutme" Heading="@localization.Localize("About me")">
+                <div class="d-flex flex-row">
+                    <div class="col-8 flex-column">
+                            <div class="d-flex flex-column">
+                                <p style="font-size: larger">@localization.Localize("iam_short")</p>
+                            </div>
 
-                    <p>
-                        @localization.Localize("iam_long")
-                    </p>
+                            <p>
+                                @localization.Localize("iam_long")
+                            </p>
                 
-                    <p class="m-0">
-                        <b>@localization.Localize("degree_label")</b>
-                        @localization.Localize("degree")
-                    </p>
-                    <p class="m-0">
-                        <b>@localization.Localize("status_label")</b>
-                        @localization.Localize("status")
-                    </p>
-
-                    <HiddenForScreenWidth HideForWidthCondition="width => width < ScreenBreakpoints.Large">
-                        <Projects />
-                    </HiddenForScreenWidth>
+                            <p class="m-0">
+                                <b>@localization.Localize("degree_label")</b>
+                                @localization.Localize("degree")
+                            </p>
+                            <p class="m-0">
+                                <b>@localization.Localize("status_label")</b>
+                                @localization.Localize("status")
+                            </p>
+                            <HiddenForScreenWidth HideForWidthCondition="width => width < ScreenBreakpoints.Large">
+                                <Projects />
+                            </HiddenForScreenWidth>
+                    </div>
+                    <div class="col-4">
+                        <img src="/images/AboutMe.jpg" alt="A picture of myself" style="width: 100%; max-width: 368px; max-height: 552px;" />
+                    </div>
                 </div>
-                <div class="col-4">
-                    <img src="/images/AboutMe.jpg" alt="A picture of myself" style="width: 100%; max-width: 368px; max-height: 552px;" />
-                </div>
-            </div>
-            <HiddenForScreenWidth HideForWidthCondition="width => width >= ScreenBreakpoints.Large">
-                <Projects />
-            </HiddenForScreenWidth>
-            <Challenges />
-            <Skills />
-            @BulletPointsFragment
+                <HiddenForScreenWidth HideForWidthCondition="width => width >= ScreenBreakpoints.Large">
+                    <Projects />
+                </HiddenForScreenWidth>
+                <Challenges />
+                <Skills />
+                <LearningProgress />
+                <NavigationByIdFix />
+            </AdjustedAnchorHeading>
         </div>
     </div>
 }
@@ -73,38 +76,4 @@
         await localization.InitializeAsync(LanguageSelect.Culture);
         StateHasChanged();
     }
-
-    private RenderFragment BulletPointsFragment => __builder =>
-    {
-        <div class="d-flex">
-            <div class="col-6 p-2">
-                <p>@localization.Localize("Technologies I use daily:")</p>
-                <ul>
-                    <li>.NET 8</li>
-                    <li>C# 12</li>
-                    <li>ASP.NET Core</li>
-                    <li>Blazor</li>
-                    <li>HTML, CSS, JavaScript</li>
-                    <li>GraphQL</li>
-                    <li>PostgreSQL</li>
-                    <li>@localization.Localize("OOP")</li>
-                    <li>@localization.Localize("ORM")</li>
-                    <li>@localization.Localize("DI")</li>
-                </ul>
-            </div>
-            <div class="col-6 p-2">
-                <p>@localization.Localize("Other supporting technologies:")</p>
-                <ul>
-                    <li>Git</li>
-                    <li>JSON</li>
-                    <li>SQL</li>
-                    <li>YAML</li>
-                    <li>Linux</li>
-                    <li>@localization.Localize("Containers")</li>
-                    <li>Podman</li>
-                    <li>Usernetes</li>
-                </ul>
-            </div>
-        </div>
-    };
 }

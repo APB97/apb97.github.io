@@ -3,47 +3,154 @@
 
 @if (ShouldRender())
 {
-    <AdjustedAnchorHeading Id="skills">@localization.Localize("Skills")</AdjustedAnchorHeading>
+    <AdjustedAnchorHeading Id="skills" Heading="@localization.Localize("Skills")">
+        <div class="row">
+            <div class="skill-card">
+                <div class="d-flex">
+                    <div class="flex-grow-1"></div>
+                    <h4 class="text-center" style="margin-left: 2pt;">@localization.Localize("Application Development")</h4>
+                    <div class="flex-grow-1"></div>
+                </div>
+                <div class="d-flex flex-row">
+                    <ul class="w-50" style="list-style-type: none;">
+                        <li>
+                            <span>ASP.NET Core</span>
+                        </li>
+                        <li>
+                            <span>WPF</span>
+                        </li>
+                        <li>
+                            <span>Windows Forms</span>
+                        </li>
+                        <li>
+                            <span>.NET 8</span>
+                        </li>
+                    </ul>
+                    <ul class="w-50" style="list-style-type: none;">
+                        <li>
+                            <span>@localization.Localize("Web")</span>
+                        </li>
+                        <li>
+                            <span>@localization.Localize("Desktop")</span>
+                        </li>
+                        <li>
+                            <span>C# 12</span>
+                        </li>
+                        <li>
+                            <span>Git</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="skill-card">
+                <h4 class="text-center">@localization.Localize("Patterns and Frameworks")</h4>
 
-    <p>
-        @localization.Localize("I usually build")
-        <br/>
-        @localization.Localize("Apart from these") @localization.Localize("Here are my")
-    </p>
+                <div class="d-flex flex-row">
+                    <ul class="w-50" style="list-style-type: none;">
+                        <li>
+                            <span>ASP.NET Core</span>
+                        </li>
+                        <li>
+                            <span>Entity Framework Core</span>
+                        </li>
+                        <li>
+                            <span>@localization.Localize("Code First")</span>
+                        </li>
+                        <li>
+                            <span>MVVM</span>
+                        </li>
+                    </ul>
+                    <ul class="w-50" style="list-style-type: none;">
+                        <li>
+                            <span>MVC</span>
+                        </li>
+                        <li>
+                            <span>ORM</span>
+                        </li>
+                        <li>
+                            <span>@localization.Localize("Dependency Injection")</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
 
-    <div class="row">
-        <div class="skill-card">
-            <img class="center-25" src="/images/512px-C_Sharp_wordmark.png" alt="C# Development Image"/>
-            <h4 class="text-center">@localization.Localize("C# Development")</h4>
-            <p>
-                @localization.Localize("I use C#")
-            </p>
-        </div>
-        <div class="skill-card">
-            <img class="center-50" src="/images/favpng_asp-net-mvc-logo.png" alt="Patterns Image"/>
-            <h4 class="text-center">@localization.Localize("Patterns")</h4>
-            <p>
-                @localization.Localize("I use patterns")
-            </p>
-        </div>
-    </div>
+        <div class="row">
+            <div class="skill-card">
+                <h4 class="text-center">@localization.Localize("Web Development")</h4>
+                <div class="d-flex flex-row">
+                    <ul class="w-50" style="list-style-type: none;">
+                        <li>
+                            <span>ASP.NET Core</span>
+                        </li>
+                        <li>
+                            <span>Blazor</span>
+                        </li>
+                        <li>
+                            <span>.NET 8 & C# 12</span>
+                        </li>
+                    </ul>
+                    <ul class="w-50" style="list-style-type: none;">
+                        <li>
+                            <span>HTML</span>
+                        </li>
+                        <li>
+                            <span>CSS</span>
+                        </li>
+                        <li>
+                            <span>@localization.Localize("Client-side JavaScript")</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
 
-    <div class="row">
-        <div class="skill-card">
-            <img class="center-50" src="/images/efcf.png" alt="EF Code First Image"/>
-            <h4 class="text-center">@localization.Localize("Object-Relational Mapping")</h4>
-            <p>
-                @localization.Localize("I use an ORM")
-            </p>
+            <div class="skill-card">
+                <h4 class="text-center">@localization.Localize("Useful Technologies")</h4>
+                <div class="d-flex flex-row">
+                    <ul class="w-50" style="list-style-type: none;">
+                        <li>
+                            <span>SQL</span>
+                        </li>
+                        <li>
+                            <span>GraphQL</span>
+                        </li>
+                        <li>
+                            <span>HTML</span>
+                        </li>
+                        <li>
+                            <span>CSS</span>
+                        </li>
+                        <li>
+                            <span>Linux</span>
+                        </li>
+                        <li>
+                            <span>Podman</span>
+                        </li>
+                    </ul>
+                    <ul class="w-50" style="list-style-type: none;">
+                        <li>
+                            <span>PostgreSQL</span>
+                        </li>
+                        <li>
+                            <span>JSON</span>
+                        </li>
+                        <li>
+                            <span>JavaScript</span>
+                        </li>
+                        <li>
+                            <span>YAML</span>
+                        </li>
+                        <li>
+                            <span>@localization.Localize("Containers")</span>
+                        </li>
+                        <li>
+                            <span>Docker</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
         </div>
-        <div class="skill-card">
-            <img class="center-33" src="/images/asp-net.png" alt="ASP.Net Image"/>
-            <h4 class="text-center">@localization.Localize("Web Development")</h4>
-            <p>
-                @localization.Localize("I use ASP.Net")
-            </p>
-        </div>
-    </div>
+    </AdjustedAnchorHeading>
 }
 
 @code {

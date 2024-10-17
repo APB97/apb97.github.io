@@ -2,6 +2,23 @@
 @using apb97.github.io.Shared
 @inherits LayoutComponentBase
 
+@inject IJSRuntime JS
+
+@if (LayoutMode == "Light")
+{
+    <style>
+        * {
+            --page-bg-color: white !important;
+            --page-fg-color: black !important;
+            --tags-bg-color: linear-gradient(transparent 60%, purple) !important;
+            --code-color: #5e00ef !important;
+            --input-bg-color: white !important;
+            --input-fg-color: black !important;
+            --link-color: #0068ff !important;
+        }
+    </style>
+}
+
 <CascadingValue Value="this">
     <div class="page">
         <div class="sidebar d-flex flex-column" style="position: sticky; top: 0; z-index: 100">
@@ -9,9 +26,6 @@
         </div>
 
         <main>
-            <div class="top-row px-4">
-            </div>
-
             <article @onclick="() => navMenu?.CollapseNavMenu()" class="content px-4">
                 @Body
             </article>
@@ -22,7 +36,22 @@
 @code {
     private NavMenu? navMenu;
 
+    public string LayoutMode { get; private set; } = "Dark";
+
     public static event Func<Task> OnStateChanging = delegate { return Task.CompletedTask; };
+
+    protected override async Task OnInitializedAsync()
+    {
+        var modeSetting = await JS.InvokeAsync<string>("localStorage.getItem", "LayoutMode");
+        if (string.IsNullOrEmpty(modeSetting)) return;
+        LayoutMode = modeSetting;
+    }
+
+    public void ToggleLayoutMode()
+    {
+        LayoutMode = LayoutMode == "Dark" ? "Light" : "Dark";
+        StateHasChanged();
+    }
 
     public void NotifyStateChanged()
     {
@@ -30,6 +59,4 @@
         StateHasChanged();
         navMenu?.SetParametersAsync(ParameterView.Empty);
     }
-
-    public CultureInfo? Language => navMenu?.Language;
 }

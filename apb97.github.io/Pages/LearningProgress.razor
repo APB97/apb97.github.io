@@ -1,20 +1,31 @@
-﻿@page "/LearningProgress/{Year:int=2024}"
-
-@using System.Reflection;
+﻿@using System.Reflection;
 @using apb97.github.io.Shared
 
 @implements IDisposable
 @inject APB97StringLocalizer<LearningProgress> localization
-@inject NavigationManager Navigation
 
-<PageTitle>Adrian Bieliński - @localization.Localize("LearningProgress") @Year</PageTitle>
+@if(ShouldRender())
+{
+    <AdjustedAnchorHeading Id="learning" Heading="@localization.Localize("LearningProgress")">
+        <label for="year">@localization.Localize("Year")</label>
+        <InputNumber id="year" TValue="int" Value="Year" ValueChanged="OnYearChanged" ValueExpression="() => Year" min="@MinYear" max="@RecentYear" />
 
-<h2>@localization.Localize("LearningProgress")</h2>
-
-<label>@localization.Localize("Year")</label>
-<InputNumber TValue="int" Value="Year" ValueChanged="OnYearChanged" ValueExpression="() => Year" min="@MinYear" max="@RecentYear" />
-
-<DynamicComponent Type="GetDynamicComponentType(Year)" />
+        <div>
+            @switch (Year)
+            {
+                case 2024:
+                    <LearningProgress2024 />
+                    break;
+                case 2023:
+                    <LearningProgress2023 />
+                    break;
+                case 2022:
+                    <LearningProgress2022 />
+                    break;
+            }
+        </div>
+    </AdjustedAnchorHeading>
+}
 
 @code {
     [Parameter]
@@ -32,18 +43,13 @@
 
     private void OnYearChanged(int year)
     {
-        if (year > RecentYear)
-        {
-            Navigation.NavigateTo($"/LearningProgress/{RecentYear}");
-        }
-        else if (year < MinYear)
-        {
-            Navigation.NavigateTo($"/LearningProgress/{MinYear}");
-        }
-        else
-        {
-            Navigation.NavigateTo($"/LearningProgress/{year}");
-        }
+        Year = Math.Clamp(year, MinYear, RecentYear);
+    }
+
+    protected override bool ShouldRender()
+    {
+        if (localization.Localization == null) return false;
+        return base.ShouldRender();
     }
 
     protected override async Task OnInitializedAsync()

@@ -53,19 +53,20 @@
         </div>
 
         <hr />
-        <AdjustedAnchorHeading Id="@OutputId" FontSize="smaller">@localization.Localize("Output")</AdjustedAnchorHeading>
-        <div class="row">
-            <div class="card-group">
-                <label style="margin: 4px">@localization.Localize("Roman")</label>
+        <AdjustedAnchorHeading Id="@OutputId" FontSize="smaller" Heading="@localization.Localize("Output")">
+            <div class="row">
+                <div class="card-group">
+                    <label style="margin: 4px">@localization.Localize("Roman")</label>
 
-                <code role="status" style="margin: 3px; font-size:large">
-                    @if (Number.HasValue)
-                    {
-                        <text>@ConvertToRoman(Number.Value)</text>
-                    }
-                </code>
+                    <code role="status" style="margin: 3px; font-size:large">
+                        @if (Number.HasValue)
+                        {
+                            <text>@ConvertToRoman(Number.Value)</text>
+                        }
+                    </code>
+                </div>
             </div>
-        </div>
+        </AdjustedAnchorHeading>
     </div>
 }
 @code {

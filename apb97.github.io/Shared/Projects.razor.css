@@ -13,5 +13,37 @@
 .tags > span {
     pointer-events: auto;
     display: inline-block;
-    background: linear-gradient(transparent 75%, purple);
+    --tags-bg-color: linear-gradient(transparent 40%, #ab47bc);
+    background: var(--tags-bg-color);
+}
+
+a {
+    font-size: larger;
+    text-decoration: none !important;
+    cursor: pointer !important;
+}
+
+a span {
+    text-decoration: underline;
+}
+
+a:before {
+    content: '<';
+    color: gray;
+    text-decoration: none !important;
+}
+
+a:after {
+    content: ' />';
+    color: gray;
+    text-decoration: none !important;
+}
+
+a:not([href]):not([class]) {
+    color: #0071c1;
+    cursor: pointer;
+}
+
+a:not([href]):not([class]):hover {
+    color: #0a58ca;
 }

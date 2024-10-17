@@ -120,37 +120,43 @@
   <data name="Apart from these" xml:space="preserve">
     <value>Poza nimi, część ze swoich projektów wykonałem używając języka Python lub języka PHP.</value>
   </data>
-  <data name="C# Development" xml:space="preserve">
-    <value>Programowanie w języku C#</value>
+  <data name="Application Development" xml:space="preserve">
+    <value>Tworzenie aplikacji</value>
   </data>
   <data name="Here are my" xml:space="preserve">
     <value>Poniżej znajdują się moje kluczowe zdolności techniczne:</value>
   </data>
-  <data name="I use an ORM" xml:space="preserve">
-    <value>Korzystam z Enitity Framework Core wraz z podejściem Code-first aby tworzyć strukturę bazy danych na podstawie klas Modelu.</value>
-  </data>
-  <data name="I use ASP.Net" xml:space="preserve">
-    <value>Korzystam z ASP.NET Core (wcześniej używałem ASP.NET) by tworzyć aplikacje internetowe, łącząc C#, HTML, CSS oraz JavaScript (po stronie klienta).</value>
-  </data>
-  <data name="I use C#" xml:space="preserve">
-    <value>Korzystam na co dzień z języka C#, by tworzyć aplikacje na pulpit i strony internetowe. C# jest jednym z zarządzanych języków programowania, które pozwalają na wykorzystanie możliwości plaformy .NET. Przykłady mojej pracy znaleźć można w sekcji Projekty.</value>
-  </data>
-  <data name="I use patterns" xml:space="preserve">
-    <value>Korzystam ze wzorców i bibliotek podczas tworzenia aplikacji. Dla aplikacji ASP.NET Core zwykle korzystam z Blazora (wcześniej korzystałem ze wzorca MVC), a dla aplikacji na pulpit (takich jak aplikacje WPF lub UWP) korzystam z MVVM.</value>
-  </data>
-  <data name="I usually build" xml:space="preserve">
-    <value>Zwykle tworzę aplikacje internetowe z użyciem języków C#, HTML, JavaScript, CSS oraz technologii ASP.NET Core, oraz aplikacje na pulpit korzystając z WPF lub Windows Forms.</value>
-  </data>
   <data name="Object-Relational Mapping" xml:space="preserve">
     <value>Mapowanie obiektowo-relacyjne</value>
   </data>
-  <data name="Patterns" xml:space="preserve">
-    <value>Wzorce</value>
+  <data name="Patterns and Frameworks" xml:space="preserve">
+    <value>Wzorce i biblioteki</value>
   </data>
   <data name="Skills" xml:space="preserve">
     <value>Umiejętności</value>
   </data>
   <data name="Web Development" xml:space="preserve">
     <value>Tworzenie stron</value>
+  </data>
+  <data name="Useful Technologies" xml:space="preserve">
+    <value>Przydatne technologie</value>
+  </data>
+  <data name="Client-side JavaScript" xml:space="preserve">
+    <value>JavaScript po stronie klienta</value>
+  </data>
+  <data name="Desktop" xml:space="preserve">
+    <value>Na pulpit</value>
+  </data>
+  <data name="Web" xml:space="preserve">
+    <value>Internetowe</value>
+  </data>
+  <data name="Dependency Injection" xml:space="preserve">
+    <value>Wstrzykiwanie zależności</value>
+  </data>
+  <data name="Code First" xml:space="preserve">
+    <value>Podejście Code First</value>
+  </data>
+  <data name="Containers" xml:space="preserve">
+    <value>Kontenery</value>
   </data>
 </root>
