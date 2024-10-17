@@ -43,29 +43,13 @@
                 <Challenges />
                 <Skills />
                 <LearningProgress />
-                @{
-                    if (!Rendered)
-                    {
-                        Rendered = true;
-                        Task.CompletedTask.ContinueWith(async t =>
-                        {
-                            Navigation.NavigateTo(Navigation.Uri, replace: true);
-                            var urlSplit = Navigation.Uri.Split('#');
-                            if (urlSplit.Length == 2 && module is not null)
-                                await module.InvokeVoidAsync("activateCurrentLink", Navigation.Uri, $"#{urlSplit[1]}");
-                        });
-                    }
-                }
+                <NavigationByIdFix />
             </AdjustedAnchorHeading>
         </div>
     </div>
 }
 
 @code {
-    public bool Rendered{ get; private set; }
-
-    private IJSObjectReference? module;
-
     protected override bool ShouldRender()
     {
         if (localization.Localization == null) return false;
@@ -75,7 +59,6 @@
     protected override async Task OnInitializedAsync()
     {
         await localization.InitializeAsync(LanguageSelect.Culture);
-        module = await JS.InvokeAsync<IJSObjectReference>("import", "./Shared/AdjustedAnchorHeading.razor.js");
     }
 
     protected override void OnInitialized()
