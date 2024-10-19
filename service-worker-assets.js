@@ -25,11 +25,11 @@
       "url": "_framework\/icudt.dat"
     },
     {
-      "hash": "sha256-4XlLQGaHvwG\/H7zGafuJEQGKRk06cZf1P4zbBUIoGV8=",
+      "hash": "sha256-coobLTYi9Tt7aINnD3S9Yryc5aJO\/x55CApQcyO\/ZyI=",
       "url": "_framework\/blazor.boot.json"
     },
     {
-      "hash": "sha256-1yUS29TPYkPLkKkvtdIPPntPfQXztgjBR2pdmpl0vm8=",
+      "hash": "sha256-7gkduYp+XiZ41IgvwaJsVD05t8LIRdbiuMbQMZRIwUk=",
       "url": "_framework\/apb97.github.io.wasm"
     },
     {
@@ -241,35 +241,23 @@
       "url": "icon-512.png"
     },
     {
-      "hash": "sha256-woC6McBNtZDjr5zpnujYOwqrWNaKj\/Jm4fLwZsbbkhY=",
-      "url": "images\/512px-C_Sharp_wordmark.png"
-    },
-    {
       "hash": "sha256-jcyBdoHX\/rEdDfuyWUGhV\/WZ7w6cemU4ZpUmod8kRd8=",
       "url": "images\/AboutMe.jpg"
-    },
-    {
-      "hash": "sha256-SvS7M9krLhdyeMR9xasqLW7b2DBVAMRTpoeb7B9f9Eg=",
-      "url": "images\/asp-net.png"
     },
     {
       "hash": "sha256-bEjOxcnRH8zRkoNId0q8fHrbl0t6oKfHBgS0sJ0f\/b4=",
       "url": "images\/dark.svg"
     },
     {
-      "hash": "sha256-i3tzLctUiKx19kk9lZ86UwtHqQmLn0riy8qK6DXg+4A=",
-      "url": "images\/efcf.png"
-    },
-    {
-      "hash": "sha256-haG8PUF0ADvNUoFl2g0HxTaOAa4fBFoTsXrY7eoF0pI=",
-      "url": "images\/favpng_asp-net-mvc-logo.png"
-    },
-    {
       "hash": "sha256-RPsHNriV7cdCoTzJl30fZoTw9\/4PRelthBiik91vRDY=",
       "url": "images\/light.svg"
     },
     {
-      "hash": "sha256-ATDyLak9XicNCkkFYfJsUjw5S6yveEU7jPUPO0DaP9M=",
+      "hash": "sha256-4EWREx3cZdos4r3PzzgLqK7CQPXsX9uC3Zggqt8YjrQ=",
+      "url": "images\/Screenshot - Web Sudoku Dark.png"
+    },
+    {
+      "hash": "sha256-Wep4syMP88HCIf8G03\/qcOGE4X20A\/iK9xvau20Ql3E=",
       "url": "images\/Screenshot - Web Sudoku.png"
     },
     {
@@ -409,5 +397,5 @@
       "url": "Resources\/Shared\/Skills.resx"
     }
   ],
-  "version": "BNyLePTS"
+  "version": "DwklP68l"
 };
