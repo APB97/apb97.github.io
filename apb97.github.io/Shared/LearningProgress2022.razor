@@ -37,8 +37,7 @@
 @code {
     protected override bool ShouldRender()
     {
-        if (localization.Localization == null) return false;
-        return base.ShouldRender();
+        return localization.IsReady;
     }
 
     protected override async Task OnInitializedAsync()

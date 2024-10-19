@@ -6,7 +6,7 @@ namespace apb97.github.io.Services
     {
         private Dictionary<string, string>? localization;
 
-        public Dictionary<string, string>? Localization => localization;
+        public bool IsReady => localization != null;
 
         public async Task InitializeAsync(CultureInfo? cultureInfo)
         {
@@ -15,7 +15,10 @@ namespace apb97.github.io.Services
 
         public string Localize(string key)
         {
-            if (localization?.TryGetValue(key, out var result) != true)
+            if (localization == null)
+                return string.Empty;
+
+            if (localization.TryGetValue(key, out var result) != true)
                 return key;
 
             return result ?? key;

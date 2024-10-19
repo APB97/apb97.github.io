@@ -52,7 +52,7 @@
 @code {
     protected override bool ShouldRender()
     {
-        if (localization.Localization == null) return false;
+        if (localization.IsReady == null) return false;
         return base.ShouldRender();
     }
 
