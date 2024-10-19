@@ -25,11 +25,11 @@
       "url": "_framework\/icudt.dat"
     },
     {
-      "hash": "sha256-coobLTYi9Tt7aINnD3S9Yryc5aJO\/x55CApQcyO\/ZyI=",
+      "hash": "sha256-YD1VlqjH+5iJI1BLNDL0By\/0FJhJV1hjcDt90uB\/K9o=",
       "url": "_framework\/blazor.boot.json"
     },
     {
-      "hash": "sha256-7gkduYp+XiZ41IgvwaJsVD05t8LIRdbiuMbQMZRIwUk=",
+      "hash": "sha256-Jh0QcU11lx49AkOf8IU7+pzYafN6KxhjRc+k271teQQ=",
       "url": "_framework\/apb97.github.io.wasm"
     },
     {
@@ -397,5 +397,5 @@
       "url": "Resources\/Shared\/Skills.resx"
     }
   ],
-  "version": "DwklP68l"
+  "version": "bzdrHB2Y"
 };
