@@ -25,11 +25,11 @@
       "url": "_framework\/icudt.dat"
     },
     {
-      "hash": "sha256-\/qMYRvvPcGBQze4zLc2gDGM0PwljW6CDYtDmaY0HdgU=",
+      "hash": "sha256-4XlLQGaHvwG\/H7zGafuJEQGKRk06cZf1P4zbBUIoGV8=",
       "url": "_framework\/blazor.boot.json"
     },
     {
-      "hash": "sha256-zHT9TFQ9b9M+2zeWMSS9hp2iI7KOMsmsQ0GYUR+8GVk=",
+      "hash": "sha256-1yUS29TPYkPLkKkvtdIPPntPfQXztgjBR2pdmpl0vm8=",
       "url": "_framework\/apb97.github.io.wasm"
     },
     {
@@ -201,11 +201,7 @@
       "url": "_framework\/System.Xml.ReaderWriter.wasm"
     },
     {
-      "hash": "sha256-Afo3T8TOv7cJ3BnWQ7ssn+Q\/SrHSURCgmRw\/YsfS9sQ=",
-      "url": "_framework\/pl-PL\/apb97.github.io.resources.wasm"
-    },
-    {
-      "hash": "sha256-pOZvHs5yum8ltsyz88fH+IcqXyN9em5Xj3Q1A4Fae6U=",
+      "hash": "sha256-AnJIVNltzanO2Al1yzQZ864sVKlPaLYVgPyycQdIaRs=",
       "url": "apb97.github.io.styles.css"
     },
     {
@@ -221,7 +217,7 @@
       "url": "404.html"
     },
     {
-      "hash": "sha256-BXq\/0rOiOf+4LsvqnfHyhUgyCScan8zZVbQzK502cRk=",
+      "hash": "sha256-bubdzuVjbuKOOW4MQW1d1O2eBmyrAjfx\/lpfm0KlAug=",
       "url": "css\/app.css"
     },
     {
@@ -283,7 +279,135 @@
     {
       "hash": "sha256-TXZ\/tF6mB0sTO0Q9vfcuqouPVd4soW6OfAnK\/dYCW\/k=",
       "url": "manifest.webmanifest"
+    },
+    {
+      "hash": "sha256-TT7pBZ9bmKsYBvaRbr6iqMVgI\/jGPd\/YC3N40n0aoPY=",
+      "url": "Resources\/Layout\/MainLayout.pl-PL.resx"
+    },
+    {
+      "hash": "sha256-TT7pBZ9bmKsYBvaRbr6iqMVgI\/jGPd\/YC3N40n0aoPY=",
+      "url": "Resources\/Layout\/MainLayout.resx"
+    },
+    {
+      "hash": "sha256-rZ9ohGFjMh5OUUxCEsV4UqXD\/S44NvldD4iWNYrV\/lI=",
+      "url": "Resources\/Pages\/CountAndSay.pl-PL.resx"
+    },
+    {
+      "hash": "sha256-dxkr03vKeJYOXsOvfNv3F42EcFIByFsE1Hx6TG1ylL8=",
+      "url": "Resources\/Pages\/CountAndSay.resx"
+    },
+    {
+      "hash": "sha256-Ux+lNrtf3eNIoUepozJXj7P\/WUVw3AizIMOOxxWGcro=",
+      "url": "Resources\/Pages\/IntegerToRoman.pl-PL.resx"
+    },
+    {
+      "hash": "sha256-2Fjesa9XRNRziDEI7PFMZLTIOiwoCYRbXGn7M8KSp1M=",
+      "url": "Resources\/Pages\/IntegerToRoman.resx"
+    },
+    {
+      "hash": "sha256-wY3Ufqt+JetLyEbo8nuCYhYa2K6p6TJIcwccsUsA\/cw=",
+      "url": "Resources\/Pages\/LearningProgress.pl-PL.resx"
+    },
+    {
+      "hash": "sha256-C5K1qjps6TRfRu5Bs6jQXyGslxPhnhCNiWRaWR06m3w=",
+      "url": "Resources\/Pages\/LearningProgress.resx"
+    },
+    {
+      "hash": "sha256-STOVNYYMmnR12lGJVxImnNOF7e25j5OFgvBdCsK5SGE=",
+      "url": "Resources\/Pages\/MetadataRename.pl-PL.resx"
+    },
+    {
+      "hash": "sha256-vu1snSvpqfeJrVnQMd9mEy0oDgmzFp9QWOpS0yWH9Sg=",
+      "url": "Resources\/Pages\/MetadataRename.resx"
+    },
+    {
+      "hash": "sha256-7kFZ9e\/4e2X3ilrZLLzoYnVtByo\/Z7djp\/tY\/Q\/EmZc=",
+      "url": "Resources\/Pages\/PlotAndIntegrate.pl-PL.resx"
+    },
+    {
+      "hash": "sha256-a06kKRvIy4eVc6ti5oxOG9h\/wV4Rqntwjir9B+n3C6c=",
+      "url": "Resources\/Pages\/PlotAndIntegrate.resx"
+    },
+    {
+      "hash": "sha256-cKschS6LwcXJtqEKK7QV3qaMoxy1VuXTSvRuSPsaTfc=",
+      "url": "Resources\/Services\/SayService.pl-PL.resx"
+    },
+    {
+      "hash": "sha256-4yAj8iO7CxN1BM65FlHGq0DhLNsgdUP4YJ8qOxs5Ohc=",
+      "url": "Resources\/Services\/SayService.resx"
+    },
+    {
+      "hash": "sha256-zZokpih9oWUc9aRIUyTdkJlQxAkGrHY\/kVPT+eo4bxw=",
+      "url": "Resources\/Shared\/AboutMe.pl-PL.resx"
+    },
+    {
+      "hash": "sha256-LXjBFYxc\/hmm+x+0LR3u+6kTYEGmQEytvD+ep+sG4gY=",
+      "url": "Resources\/Shared\/AboutMe.resx"
+    },
+    {
+      "hash": "sha256-n+ccZ9CcxaSkoBv34NbdqSmwe+jWsbffrl+6cuepNBg=",
+      "url": "Resources\/Shared\/Challenges.pl-PL.resx"
+    },
+    {
+      "hash": "sha256-22asnu+nmO4PmZzqE\/GVJb9rmPDTALQLdAdv\/bPc+Wo=",
+      "url": "Resources\/Shared\/Challenges.resx"
+    },
+    {
+      "hash": "sha256-Xv86Uk42tEVhkpA+sEVvfIlSKhbSLdCFUFeuc4Jt9es=",
+      "url": "Resources\/Shared\/LanguageSelect.pl-PL.resx"
+    },
+    {
+      "hash": "sha256-oWJTex9rxeuzTZixm6wg\/XJ3T19cDjOjFnN2+bucN1E=",
+      "url": "Resources\/Shared\/LanguageSelect.resx"
+    },
+    {
+      "hash": "sha256-FkBt5Izk0z5Q9d2b6KVY0FI7rzeM3z8MJnSEyJIZMYU=",
+      "url": "Resources\/Shared\/LearningProgress2022.pl-PL.resx"
+    },
+    {
+      "hash": "sha256-8QgmG0jWIgm1CfA2DyQ7DQGZuwQQFe33o5xazbErvZs=",
+      "url": "Resources\/Shared\/LearningProgress2022.resx"
+    },
+    {
+      "hash": "sha256-Nccs32vh9IQCD5njT3VrMlDowPF52tQpa8AjdJ2PWzU=",
+      "url": "Resources\/Shared\/LearningProgress2023.pl-PL.resx"
+    },
+    {
+      "hash": "sha256-s2CiEb48mlCwxb19tk4rSj+2TLddAHAW20gaT6+ID1E=",
+      "url": "Resources\/Shared\/LearningProgress2023.resx"
+    },
+    {
+      "hash": "sha256-TujF7leGvd5YKvA6UdCHX6+4rHP3SWvuhSW5zmAsQLc=",
+      "url": "Resources\/Shared\/LearningProgress2024.pl-PL.resx"
+    },
+    {
+      "hash": "sha256-auIl\/UQB9to7LUADiVpsGkHD2RMfPltYLHJtC182k9E=",
+      "url": "Resources\/Shared\/LearningProgress2024.resx"
+    },
+    {
+      "hash": "sha256-ZyHJJ38s5IhOgGF\/OEOuTsu3DF4aJBNgoksmIhJGzvk=",
+      "url": "Resources\/Shared\/NavMenu.pl-PL.resx"
+    },
+    {
+      "hash": "sha256-9shjWy4+I+eWH07ui5cHDlB7BrlRK9ZvPRWS1OmV+nk=",
+      "url": "Resources\/Shared\/NavMenu.resx"
+    },
+    {
+      "hash": "sha256-JkI637WgwaKlCdzVy3j9joW8FP261cHH\/NwodYLXp2I=",
+      "url": "Resources\/Shared\/Projects.pl-PL.resx"
+    },
+    {
+      "hash": "sha256-H\/\/rnuGw65Upr0U9K0piRIr4oca72j59IuUi1R4BDAw=",
+      "url": "Resources\/Shared\/Projects.resx"
+    },
+    {
+      "hash": "sha256-XAKAP\/Z5LN1xRU186YUWH0puz+ZS+2jh7R5bZN6O3SI=",
+      "url": "Resources\/Shared\/Skills.pl-PL.resx"
+    },
+    {
+      "hash": "sha256-TgixmxFy+4uVS21crW8mQ3gDBgSybK4dd4En2\/AeXiY=",
+      "url": "Resources\/Shared\/Skills.resx"
     }
   ],
-  "version": "wbKygl+a"
+  "version": "BNyLePTS"
 };
