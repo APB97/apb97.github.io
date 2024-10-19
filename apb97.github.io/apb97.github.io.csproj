@@ -9,150 +9,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Content Remove="wwwroot\Resources\Layout\MainLayout.pl-PL.resx" />
-    <Content Remove="wwwroot\Resources\Layout\MainLayout.resx" />
-    <Content Remove="wwwroot\Resources\Pages\CountAndSay.pl-PL.resx" />
-    <Content Remove="wwwroot\Resources\Pages\CountAndSay.resx" />
-    <Content Remove="wwwroot\Resources\Pages\IntegerToRoman.pl-PL.resx" />
-    <Content Remove="wwwroot\Resources\Pages\IntegerToRoman.resx" />
-    <Content Remove="wwwroot\Resources\Pages\LearningProgress.pl-PL.resx" />
-    <Content Remove="wwwroot\Resources\Pages\LearningProgress.resx" />
-    <Content Remove="wwwroot\Resources\Pages\MetadataRename.pl-PL.resx" />
-    <Content Remove="wwwroot\Resources\Pages\MetadataRename.resx" />
-    <Content Remove="wwwroot\Resources\Pages\PlotAndIntegrate.pl-PL.resx" />
-    <Content Remove="wwwroot\Resources\Pages\PlotAndIntegrate.resx" />
-    <Content Remove="wwwroot\Resources\Services\SayService.pl-PL.resx" />
-    <Content Remove="wwwroot\Resources\Services\SayService.resx" />
-    <Content Remove="wwwroot\Resources\Shared\AboutMe.pl-PL.resx" />
-    <Content Remove="wwwroot\Resources\Shared\AboutMe.resx" />
-    <Content Remove="wwwroot\Resources\Shared\Challenges.pl-PL.resx" />
-    <Content Remove="wwwroot\Resources\Shared\Challenges.resx" />
-    <Content Remove="wwwroot\Resources\Shared\LanguageSelect.pl-PL.resx" />
-    <Content Remove="wwwroot\Resources\Shared\LanguageSelect.resx" />
-    <Content Remove="wwwroot\Resources\Shared\LearningProgress2022.pl-PL.resx" />
-    <Content Remove="wwwroot\Resources\Shared\LearningProgress2022.resx" />
-    <Content Remove="wwwroot\Resources\Shared\LearningProgress2023.pl-PL.resx" />
-    <Content Remove="wwwroot\Resources\Shared\LearningProgress2023.resx" />
-    <Content Remove="wwwroot\Resources\Shared\LearningProgress2024.pl-PL.resx" />
-    <Content Remove="wwwroot\Resources\Shared\LearningProgress2024.resx" />
-    <Content Remove="wwwroot\Resources\Shared\NavMenu.pl-PL.resx" />
-    <Content Remove="wwwroot\Resources\Shared\NavMenu.resx" />
-    <Content Remove="wwwroot\Resources\Shared\Projects.pl-PL.resx" />
-    <Content Remove="wwwroot\Resources\Shared\Projects.resx" />
-    <Content Remove="wwwroot\Resources\Shared\Skills.pl-PL.resx" />
-    <Content Remove="wwwroot\Resources\Shared\Skills.resx" />
-  </ItemGroup>
-
-  <ItemGroup>
     <Content Include="Shared\HiddenForScreenWidth.razor.js" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <EmbeddedResource Include="wwwroot\Resources\Layout\MainLayout.pl-PL.resx">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </EmbeddedResource>
-    <EmbeddedResource Include="wwwroot\Resources\Layout\MainLayout.resx">
-      <SubType>Designer</SubType>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </EmbeddedResource>
-    <EmbeddedResource Include="wwwroot\Resources\Pages\CountAndSay.pl-PL.resx">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </EmbeddedResource>
-    <EmbeddedResource Include="wwwroot\Resources\Pages\CountAndSay.resx">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </EmbeddedResource>
-    <EmbeddedResource Include="wwwroot\Resources\Pages\IntegerToRoman.pl-PL.resx">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </EmbeddedResource>
-    <EmbeddedResource Include="wwwroot\Resources\Pages\IntegerToRoman.resx">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </EmbeddedResource>
-    <EmbeddedResource Include="wwwroot\Resources\Pages\LearningProgress.pl-PL.resx">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </EmbeddedResource>
-    <EmbeddedResource Include="wwwroot\Resources\Pages\LearningProgress.resx">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </EmbeddedResource>
-    <EmbeddedResource Include="wwwroot\Resources\Pages\MetadataRename.pl-PL.resx">
-      <SubType>Designer</SubType>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </EmbeddedResource>
-    <EmbeddedResource Include="wwwroot\Resources\Pages\MetadataRename.resx">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </EmbeddedResource>
-    <EmbeddedResource Include="wwwroot\Resources\Pages\PlotAndIntegrate.pl-PL.resx">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </EmbeddedResource>
-    <EmbeddedResource Include="wwwroot\Resources\Pages\PlotAndIntegrate.resx">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </EmbeddedResource>
-    <EmbeddedResource Include="wwwroot\Resources\Services\SayService.pl-PL.resx">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </EmbeddedResource>
-    <EmbeddedResource Include="wwwroot\Resources\Services\SayService.resx">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </EmbeddedResource>
-    <EmbeddedResource Include="wwwroot\Resources\Shared\AboutMe.pl-PL.resx">
-      <SubType>Designer</SubType>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </EmbeddedResource>
-    <EmbeddedResource Include="wwwroot\Resources\Shared\AboutMe.resx">
-      <SubType>Designer</SubType>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </EmbeddedResource>
-    <EmbeddedResource Include="wwwroot\Resources\Shared\Challenges.pl-PL.resx">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </EmbeddedResource>
-    <EmbeddedResource Include="wwwroot\Resources\Shared\Challenges.resx">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </EmbeddedResource>
-    <EmbeddedResource Include="wwwroot\Resources\Shared\LanguageSelect.pl-PL.resx">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </EmbeddedResource>
-    <EmbeddedResource Include="wwwroot\Resources\Shared\LanguageSelect.resx">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </EmbeddedResource>
-    <EmbeddedResource Include="wwwroot\Resources\Shared\LearningProgress2022.pl-PL.resx">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </EmbeddedResource>
-    <EmbeddedResource Include="wwwroot\Resources\Shared\LearningProgress2022.resx">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </EmbeddedResource>
-    <EmbeddedResource Include="wwwroot\Resources\Shared\LearningProgress2023.pl-PL.resx">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </EmbeddedResource>
-    <EmbeddedResource Include="wwwroot\Resources\Shared\LearningProgress2023.resx">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </EmbeddedResource>
-    <EmbeddedResource Include="wwwroot\Resources\Shared\LearningProgress2024.pl-PL.resx">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </EmbeddedResource>
-    <EmbeddedResource Include="wwwroot\Resources\Shared\LearningProgress2024.resx">
-      <SubType>Designer</SubType>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </EmbeddedResource>
-    <EmbeddedResource Include="wwwroot\Resources\Shared\NavMenu.pl-PL.resx">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </EmbeddedResource>
-    <EmbeddedResource Include="wwwroot\Resources\Shared\NavMenu.resx">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </EmbeddedResource>
-    <EmbeddedResource Include="wwwroot\Resources\Shared\Projects.pl-PL.resx">
-      <SubType>Designer</SubType>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </EmbeddedResource>
-    <EmbeddedResource Include="wwwroot\Resources\Shared\Projects.resx">
-      <SubType>Designer</SubType>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </EmbeddedResource>
-    <EmbeddedResource Include="wwwroot\Resources\Shared\Skills.pl-PL.resx">
-      <SubType>Designer</SubType>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </EmbeddedResource>
-    <EmbeddedResource Include="wwwroot\Resources\Shared\Skills.resx">
-      <SubType>Designer</SubType>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </EmbeddedResource>
   </ItemGroup>
 
   <ItemGroup>
@@ -162,6 +19,114 @@
 
   <ItemGroup>
     <ServiceWorker Include="wwwroot\service-worker.js" PublishedContent="wwwroot\service-worker.published.js" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Update="wwwroot\Resources\Layout\MainLayout.pl-PL.resx">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Content>
+    <Content Update="wwwroot\Resources\Layout\MainLayout.resx">
+      <SubType>Designer</SubType>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Content>
+    <Content Update="wwwroot\Resources\Pages\CountAndSay.pl-PL.resx">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Content>
+    <Content Update="wwwroot\Resources\Pages\CountAndSay.resx">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Content>
+    <Content Update="wwwroot\Resources\Pages\IntegerToRoman.pl-PL.resx">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Content>
+    <Content Update="wwwroot\Resources\Pages\IntegerToRoman.resx">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Content>
+    <Content Update="wwwroot\Resources\Pages\LearningProgress.pl-PL.resx">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Content>
+    <Content Update="wwwroot\Resources\Pages\LearningProgress.resx">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Content>
+    <Content Update="wwwroot\Resources\Pages\MetadataRename.pl-PL.resx">
+      <SubType>Designer</SubType>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Content>
+    <Content Update="wwwroot\Resources\Pages\MetadataRename.resx">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Content>
+    <Content Update="wwwroot\Resources\Pages\PlotAndIntegrate.pl-PL.resx">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Content>
+    <Content Update="wwwroot\Resources\Pages\PlotAndIntegrate.resx">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Content>
+    <Content Update="wwwroot\Resources\Services\SayService.pl-PL.resx">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Content>
+    <Content Update="wwwroot\Resources\Services\SayService.resx">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Content>
+    <Content Update="wwwroot\Resources\Shared\AboutMe.pl-PL.resx">
+      <SubType>Designer</SubType>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Content>
+    <Content Update="wwwroot\Resources\Shared\AboutMe.resx">
+      <SubType>Designer</SubType>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Content>
+    <Content Update="wwwroot\Resources\Shared\Challenges.pl-PL.resx">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Content>
+    <Content Update="wwwroot\Resources\Shared\Challenges.resx">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Content>
+    <Content Update="wwwroot\Resources\Shared\LanguageSelect.pl-PL.resx">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Content>
+    <Content Update="wwwroot\Resources\Shared\LanguageSelect.resx">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Content>
+    <Content Update="wwwroot\Resources\Shared\LearningProgress2022.pl-PL.resx">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Content>
+    <Content Update="wwwroot\Resources\Shared\LearningProgress2022.resx">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Content>
+    <Content Update="wwwroot\Resources\Shared\LearningProgress2023.pl-PL.resx">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Content>
+    <Content Update="wwwroot\Resources\Shared\LearningProgress2023.resx">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Content>
+    <Content Update="wwwroot\Resources\Shared\LearningProgress2024.pl-PL.resx">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Content>
+    <Content Update="wwwroot\Resources\Shared\LearningProgress2024.resx">
+      <SubType>Designer</SubType>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Content>
+    <Content Update="wwwroot\Resources\Shared\NavMenu.pl-PL.resx">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Content>
+    <Content Update="wwwroot\Resources\Shared\NavMenu.resx">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Content>
+    <Content Update="wwwroot\Resources\Shared\Projects.pl-PL.resx">
+      <SubType>Designer</SubType>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Content>
+    <Content Update="wwwroot\Resources\Shared\Projects.resx">
+      <SubType>Designer</SubType>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Content>
+    <Content Update="wwwroot\Resources\Shared\Skills.pl-PL.resx">
+      <SubType>Designer</SubType>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Content>
+    <Content Update="wwwroot\Resources\Shared\Skills.resx">
+      <SubType>Designer</SubType>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
 
 </Project>

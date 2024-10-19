@@ -13,25 +13,25 @@
             <AdjustedAnchorHeading Id="aboutme" Heading="@localization.Localize("About me")">
                 <div class="d-flex flex-row">
                     <div class="col-8 flex-column">
-                            <div class="d-flex flex-column">
-                                <p style="font-size: larger">@localization.Localize("iam_short")</p>
-                            </div>
+                        <div class="d-flex flex-column">
+                            <p style="font-size: larger">@localization.Localize("iam_short")</p>
+                        </div>
 
-                            <p>
-                                @localization.Localize("iam_long")
-                            </p>
+                        <p>
+                            @localization.Localize("iam_long")
+                        </p>
                 
-                            <p class="m-0">
-                                <b>@localization.Localize("degree_label")</b>
-                                @localization.Localize("degree")
-                            </p>
-                            <p class="m-0">
-                                <b>@localization.Localize("status_label")</b>
-                                @localization.Localize("status")
-                            </p>
-                            <HiddenForScreenWidth HideForWidthCondition="width => width < ScreenBreakpoints.Large">
-                                <Projects />
-                            </HiddenForScreenWidth>
+                        <p class="m-0">
+                            <b>@localization.Localize("degree_label")</b>
+                            @localization.Localize("degree")
+                        </p>
+                        <p class="m-0">
+                            <b>@localization.Localize("status_label")</b>
+                            @localization.Localize("status")
+                        </p>
+                        <HiddenForScreenWidth HideForWidthCondition="width => width < ScreenBreakpoints.Large">
+                            <Projects />
+                        </HiddenForScreenWidth>
                     </div>
                     <div class="col-4">
                         <img src="/images/AboutMe.jpg" alt="A picture of myself" style="width: 100%; max-width: 368px; max-height: 552px;" />

@@ -11,3 +11,33 @@ li > span:after {
     color: gray;
     content: ' />';
 }
+
+.flex-skills {
+    flex-direction: column !important;
+}
+
+@media (min-width: 640px) {
+    .flex-skills {
+        flex-direction: column !important;
+    }
+}
+
+@media (min-width: 992px) {
+    .flex-skills {
+        flex-direction: column !important;
+    }
+
+    .flex-skills > ul {
+        width: 50%;
+    }
+}
+
+@media (min-width: 1200px) {
+    .flex-skills {
+        flex-direction: row !important;
+    }
+
+    .flex-skills > ul {
+        width: 50%;
+    }
+}

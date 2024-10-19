@@ -6,7 +6,7 @@
 {
     <AdjustedAnchorHeading Id="projects" Heading="@localization.Localize("Projects")">
         <div class="d-flex" style="border: medium solid dodgerblue; margin: 2pt;">
-            <div class="col-8 d-flex flex-column">
+            <div class="d-flex flex-column flex-grow-1" style="flex-basis: 0;">
                 <div class="text-center flex-grow-1">
                     <a class="link-primary" onclick="history.replaceState(null, '', document.location.href);document.location.assign('/WebSudoku/');">
                         <span>Web Sudoku</span>
@@ -25,8 +25,8 @@
                     </div>
                 </div>
             </div>
-            <div class="col-4">
-                <div style="align-content: center">
+            <div class="skill-card" style="border: none !important;">
+                <div class="h-100" style="align-content: center; vertical-align: middle;">
                     <img alt="Web Sudoku Screenshot" src="images/Screenshot - Web Sudoku.png" style="width: 100%;" />
                 </div>
             </div>
