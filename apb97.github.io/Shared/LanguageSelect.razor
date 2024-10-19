@@ -1,19 +1,13 @@
-﻿@using System.Globalization
-@using Microsoft.Extensions.Logging.Abstractions
-@using Microsoft.Extensions.Options
-@using System.Reflection
-@using System.Resources
-@using apb97.github.io.Extensions
-@using apb97.github.io.Services
+﻿@using apb97.github.io.Services
 
 @inject IJSRuntime JSRuntime
 @inject NavigationManager Navigation
 @inject StringLocalizer<LanguageSelect> localization
 
-<label class="text-white">
+<label for="language" class="text-white">
     @(localization.Localize("Select your locale")):
 </label>
-<InputSelect style="background-color: transparent; border: none; color: white;" TValue="string" DisplayName="Locale" Value="@CurrentUICulture" ValueChanged="SetCultureAndReload" ValueExpression="() => CurrentUICulture">
+<InputSelect id="language" style="background-color: transparent; border: none; color: white;" TValue="string" DisplayName="Language" Value="@CurrentUICulture" ValueChanged="SetCultureAndReload" ValueExpression="() => CurrentUICulture">
     @foreach (var culture in supportedCultures)
     {
         <option value="@culture.Value" class="@(culture.Value == Culture ? "current" : null)">@culture.Key</option>
@@ -46,15 +40,6 @@
         Culture = language ?? "en-US";
         await localization.InitializeAsync(Culture);
         Layout.NotifyStateChanged();
-    }
-
-    protected override async Task OnAfterRenderAsync(bool firstRender)
-    {
-        if (firstRender)
-        {
-            await localization.InitializeAsync(Culture);
-            StateHasChanged();
-        }
     }
 
     private async Task SetCultureAndReload(string value)

@@ -11,7 +11,7 @@ public class SayService(StringLocalizer<SayService> localizer)
         await localizer.InitializeAsync(cultureInfo ?? CultureInfo.CurrentUICulture);
     }
 
-    public async Task InitializeAsync(string cultureName)
+    public async Task InitializeAsync(string? cultureName)
     {
         await localizer.InitializeAsync(cultureName);
     }

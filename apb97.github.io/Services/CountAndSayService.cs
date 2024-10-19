@@ -11,7 +11,7 @@ public class CountAndSayService(SayService? sayService)
         await sayService.InitializeAsync(cultureInfo);
     }
 
-    public async Task InitializeAsync(string cultureName)
+    public async Task InitializeAsync(string? cultureName)
     {
         if (sayService is null) return;
         await sayService.InitializeAsync(cultureName);

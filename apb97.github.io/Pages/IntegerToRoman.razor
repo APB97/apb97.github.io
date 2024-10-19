@@ -47,8 +47,8 @@
 
         <div class="row">
             <div class="card-group">
-                <label for="Number" style="margin: 4px">@localization.Localize("Number")</label>
-                <InputNumber TValue="int?" Value="Number" ValueChanged="OnNumberChanged" ValueExpression="() => Number" type="number" min="1" max="3999" style="margin: 4px" />
+                <label for="number" style="margin: 4px">@localization.Localize("Number")</label>
+                <InputNumber id="number" TValue="int?" Value="Number" ValueChanged="OnNumberChanged" ValueExpression="() => Number" type="number" min="1" max="3999" style="margin: 4px" />
             </div>
         </div>
 
@@ -56,7 +56,7 @@
         <AdjustedAnchorHeading Id="@OutputId" FontSize="smaller" Heading="@localization.Localize("Output")">
             <div class="row">
                 <div class="card-group">
-                    <label style="margin: 4px">@localization.Localize("Roman")</label>
+                    <span style="margin: 4px">@localization.Localize("Roman")</span>
 
                     <code role="status" style="margin: 3px; font-size:large">
                         @if (Number.HasValue)
