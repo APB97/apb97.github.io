@@ -27,7 +27,14 @@
             </div>
             <div class="skill-card" style="border: none !important;">
                 <div class="h-100" style="align-content: center; vertical-align: middle;">
-                    <img alt="Web Sudoku Screenshot" src="images/Screenshot - Web Sudoku.png" style="width: 100%;" />
+                    @if (Layout.LayoutMode == MainLayout.LightMode)
+                    {
+                        <img alt="Web Sudoku Screenshot in Light mode" src="images/Screenshot - Web Sudoku.png" style="width: 100%;" />
+                    }
+                    else
+                    {
+                        <img alt="Web Sudoku Screenshot in Dark mode" src="images/Screenshot - Web Sudoku Dark.png" style="width: 100%;" />
+                    }
                 </div>
             </div>
         </div>
@@ -51,6 +58,9 @@
 }
 
 @code{
+    [CascadingParameter]
+    public required MainLayout Layout { get; set; }
+
     protected override bool ShouldRender()
     {
         if (localization.Localization == null) return false;

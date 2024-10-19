@@ -4,7 +4,7 @@
 
 @inject IJSRuntime JS
 
-@if (LayoutMode == "Light")
+@if (LayoutMode == LightMode)
 {
     <style>
         * {
@@ -36,7 +36,10 @@
 @code {
     private NavMenu? navMenu;
 
-    public string LayoutMode { get; private set; } = "Dark";
+    public const string DarkMode = "Dark";
+    public const string LightMode = "Light";
+
+    public string LayoutMode { get; private set; } = DarkMode;
 
     public static event Func<Task> OnStateChanging = delegate { return Task.CompletedTask; };
 
@@ -49,7 +52,7 @@
 
     public void ToggleLayoutMode()
     {
-        LayoutMode = LayoutMode == "Dark" ? "Light" : "Dark";
+        LayoutMode = LayoutMode == DarkMode ? LightMode : DarkMode;
         StateHasChanged();
     }
 
