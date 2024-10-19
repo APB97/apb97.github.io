@@ -71,15 +71,6 @@
         await localization.InitializeAsync(LanguageSelect.Culture);
     }
 
-    protected override async Task OnAfterRenderAsync(bool firstRender)
-    {
-        if (firstRender)
-        {
-            await localization.InitializeAsync(LanguageSelect.Culture);
-            StateHasChanged();
-        }
-    }
-
     protected override void OnInitialized()
     {
         MainLayout.OnStateChanging += GetResources;

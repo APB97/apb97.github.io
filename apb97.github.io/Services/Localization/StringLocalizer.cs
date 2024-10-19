@@ -13,7 +13,7 @@ namespace apb97.github.io.Services.Localization
             localization = await factory.GetLocalizationAsync<T>(cultureInfo?.Name ?? CultureInfo.CurrentUICulture.Name);
         }
 
-        public async Task InitializeAsync(string cultureName)
+        public async Task InitializeAsync(string? cultureName)
         {
             localization = await factory.GetLocalizationAsync<T>(cultureName);
         }

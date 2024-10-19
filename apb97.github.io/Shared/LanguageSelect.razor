@@ -10,27 +10,24 @@
 @inject NavigationManager Navigation
 @inject StringLocalizer<LanguageSelect> localization
 
-@if (ShouldRender())
-{
-    <label class="text-white">
-        @(localization.Localize("Select your locale")):
-    </label>
-    <InputSelect style="background-color: transparent; border: none; color: white;" TValue="string" DisplayName="Locale" Value="@CurrentUICulture" ValueChanged="SetCultureAndReload" ValueExpression="() => CurrentUICulture">
-        @foreach (var culture in supportedCultures)
-        {
-            <option value="@culture.Value" class="@(culture.Value == Culture ? "current" : null)">@culture.Key</option>
-        }
-    </InputSelect>
-}
+<label class="text-white">
+    @(localization.Localize("Select your locale")):
+</label>
+<InputSelect style="background-color: transparent; border: none; color: white;" TValue="string" DisplayName="Locale" Value="@CurrentUICulture" ValueChanged="SetCultureAndReload" ValueExpression="() => CurrentUICulture">
+    @foreach (var culture in supportedCultures)
+    {
+        <option value="@culture.Value" class="@(culture.Value == Culture ? "current" : null)">@culture.Key</option>
+    }
+</InputSelect>
 
 @code
 {
     [CascadingParameter]
     public required MainLayout Layout { get; set; }
 
-    public string CurrentUICulture { get => Culture; private set => Culture = value; }
+    public string? CurrentUICulture { get => Culture; private set => Culture = value; }
 
-    public static string Culture { get; private set; } = "en-US";
+    public static string? Culture { get; private set; }
 
     private readonly static IReadOnlyDictionary<string, string> supportedCultures = new Dictionary<string, string>
     {
@@ -47,7 +44,8 @@
     {
         var language = await JSRuntime.InvokeAsync<string>("blazorCulture.get");
         Culture = language ?? "en-US";
-        await localization.InitializeAsync(LanguageSelect.Culture);
+        await localization.InitializeAsync(Culture);
+        Layout.NotifyStateChanged();
     }
 
     protected override async Task OnAfterRenderAsync(bool firstRender)

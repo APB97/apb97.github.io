@@ -6,15 +6,20 @@ namespace apb97.github.io.Services.Localization
 {
     public class StringLocalizerFactory(HttpClient http, IOptions<LocalizationOptions> localizationOptions)
     {
-        public async Task<Dictionary<string, string>> GetLocalizationAsync<T>(string cultureName)
+        public async Task<Dictionary<string, string>?> GetLocalizationAsync<T>(string? cultureName)
         {
             using var stream = await RequestLocalizationStreamAsync<T>(cultureName);
 
-            return stream is null ? [] : RetreiveLocalization(stream);
+            return stream is null ? null : RetreiveLocalization(stream);
         }
 
-        private async Task<Stream?> RequestLocalizationStreamAsync<T>(string cultureName)
+        private async Task<Stream?> RequestLocalizationStreamAsync<T>(string? cultureName)
         {
+            if (cultureName is null)
+            {
+                return null;
+            }
+
             try
             {
                 if (cultureName.StartsWith("en"))
