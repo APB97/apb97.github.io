@@ -3,7 +3,7 @@
 
 @implements IDisposable
 @inject IJSRuntime JS
-@inject APB97StringLocalizer<AboutMe> localization
+@inject StringLocalizer<AboutMe> localization
 @inject NavigationManager Navigation
 
 @if (ShouldRender())
@@ -52,8 +52,7 @@
 @code {
     protected override bool ShouldRender()
     {
-        if (localization.IsReady == null) return false;
-        return base.ShouldRender();
+        return localization.IsReady;
     }
 
     protected override async Task OnInitializedAsync()

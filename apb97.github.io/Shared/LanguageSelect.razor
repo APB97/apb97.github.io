@@ -8,17 +8,17 @@
 
 @inject IJSRuntime JSRuntime
 @inject NavigationManager Navigation
-@inject APB97StringLocalizer<LanguageSelect> localization
+@inject StringLocalizer<LanguageSelect> localization
 
 @if (ShouldRender())
 {
     <label class="text-white">
         @(localization.Localize("Select your locale")):
     </label>
-    <InputSelect style="background-color: transparent; border: none; color: white;" TValue="CultureInfo" DisplayName="Locale" Value="@CurrentUICulture" ValueChanged="SetCultureAndReload" ValueExpression="() => CurrentUICulture">
+    <InputSelect style="background-color: transparent; border: none; color: white;" TValue="string" DisplayName="Locale" Value="@CurrentUICulture" ValueChanged="SetCultureAndReload" ValueExpression="() => CurrentUICulture">
         @foreach (var culture in supportedCultures)
         {
-            <option value="@culture.Value" class="@(culture.Value.Name == Culture.Name ? "current" : null)">@culture.Key</option>
+            <option value="@culture.Value" class="@(culture.Value == Culture ? "current" : null)">@culture.Key</option>
         }
     </InputSelect>
 }
@@ -28,14 +28,14 @@
     [CascadingParameter]
     public required MainLayout Layout { get; set; }
 
-    public CultureInfo CurrentUICulture { get => Culture; private set => Culture = value; }
+    public string CurrentUICulture { get => Culture; private set => Culture = value; }
 
-    public static CultureInfo Culture { get; private set; } = CultureInfo.CurrentUICulture;
+    public static string Culture { get; private set; } = "en-US";
 
-    private readonly IReadOnlyDictionary<string, CultureInfo> supportedCultures = new Dictionary<string, CultureInfo>
+    private readonly static IReadOnlyDictionary<string, string> supportedCultures = new Dictionary<string, string>
     {
-        { "English", CultureInfo.CreateSpecificCulture("en") },
-        { "Polski", CultureInfo.CreateSpecificCulture("pl") }
+        { "English", "en-US" },
+        { "Polski", "pl-PL" }
     };
 
     protected override bool ShouldRender()
@@ -45,6 +45,8 @@
 
     protected override async Task OnInitializedAsync()
     {
+        var language = await JSRuntime.InvokeAsync<string>("blazorCulture.get");
+        Culture = language ?? "en-US";
         await localization.InitializeAsync(LanguageSelect.Culture);
     }
 
@@ -57,16 +59,15 @@
         }
     }
 
-    private async Task SetCultureAndReload(CultureInfo value)
+    private async Task SetCultureAndReload(string value)
     {
-        CultureInfo.CurrentCulture = CultureInfo.CurrentUICulture = LanguageSelect.Culture = value;
-
+        Culture = value;
         await localization.InitializeAsync(value);
 
         StateHasChanged();
 
         Layout.NotifyStateChanged();
 
-        await JSRuntime.InvokeVoidAsync("blazorCulture.set", value.Name);
+        await JSRuntime.InvokeVoidAsync("blazorCulture.set", value);
     }
 }

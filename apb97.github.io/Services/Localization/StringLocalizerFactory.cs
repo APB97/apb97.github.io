@@ -1,45 +1,26 @@
 ﻿using Microsoft.Extensions.Options;
-using System.Globalization;
 using System.Text;
 using System.Xml;
 
-namespace apb97.github.io.Services
+namespace apb97.github.io.Services.Localization
 {
-    public class APB97StringLocalizerFactory(HttpClient http, IOptions<APB97LocalizationOptions> localizationOptions)
+    public class StringLocalizerFactory(HttpClient http, IOptions<LocalizationOptions> localizationOptions)
     {
-        public async Task<Dictionary<string, string>> GetLocalization<T>(CultureInfo cultureInfo)
+        public async Task<Dictionary<string, string>> GetLocalizationAsync<T>(string cultureName)
         {
-            using var stream = await RequestLocalizationStreamAsync<T>(cultureInfo);
+            using var stream = await RequestLocalizationStreamAsync<T>(cultureName);
 
-            if (stream is null)
-                return [];
-
-            return RetreiveLocalization(stream);
+            return stream is null ? [] : RetreiveLocalization(stream);
         }
 
-        private static Dictionary<string, string> RetreiveLocalization(Stream stream)
-        {
-            using var xml = XmlReader.Create(stream);
-            var results = new Dictionary<string, string>();
-            while (xml.ReadToFollowing("data"))
-            {
-                var key = xml.GetAttribute("name");
-                xml.ReadToDescendant("value");
-                var value = xml.ReadElementContentAsString();
-                if (key == null || value == null) continue;
-                results[key] = value;
-            }
-            return results;
-        }
-
-        private async Task<Stream?> RequestLocalizationStreamAsync<T>(CultureInfo cultureInfo)
+        private async Task<Stream?> RequestLocalizationStreamAsync<T>(string cultureName)
         {
             try
             {
-                if (cultureInfo.Name.StartsWith("en"))
+                if (cultureName.StartsWith("en"))
                     return await http.GetStreamAsync(GetDefaultResourceFilePath<T>());
 
-                return await http.GetStreamAsync(GetResourceFilePath<T>(cultureInfo.Name));
+                return await http.GetStreamAsync(GetResourceFilePath<T>(cultureName));
             }
             catch
             {
@@ -76,6 +57,21 @@ namespace apb97.github.io.Services
             builder.Append(type.Name);
 
             return builder.ToString();
+        }
+
+        private static Dictionary<string, string> RetreiveLocalization(Stream stream)
+        {
+            using var xml = XmlReader.Create(stream);
+            var results = new Dictionary<string, string>();
+            while (xml.ReadToFollowing("data"))
+            {
+                var key = xml.GetAttribute("name");
+                xml.ReadToDescendant("value");
+                var value = xml.ReadElementContentAsString();
+                if (key == null || value == null) continue;
+                results[key] = value;
+            }
+            return results;
         }
     }
 }

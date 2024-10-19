@@ -1,8 +1,8 @@
 ﻿using System.Globalization;
 
-namespace apb97.github.io.Services
+namespace apb97.github.io.Services.Localization
 {
-    public class APB97StringLocalizer<T>(APB97StringLocalizerFactory factory)
+    public class StringLocalizer<T>(StringLocalizerFactory factory)
     {
         private Dictionary<string, string>? localization;
 
@@ -10,7 +10,12 @@ namespace apb97.github.io.Services
 
         public async Task InitializeAsync(CultureInfo? cultureInfo)
         {
-            localization = await factory.GetLocalization<T>(cultureInfo ?? CultureInfo.CurrentUICulture);
+            localization = await factory.GetLocalizationAsync<T>(cultureInfo?.Name ?? CultureInfo.CurrentUICulture.Name);
+        }
+
+        public async Task InitializeAsync(string cultureName)
+        {
+            localization = await factory.GetLocalizationAsync<T>(cultureName);
         }
 
         public string Localize(string key)

@@ -11,6 +11,12 @@ public class CountAndSayService(SayService? sayService)
         await sayService.InitializeAsync(cultureInfo);
     }
 
+    public async Task InitializeAsync(string cultureName)
+    {
+        if (sayService is null) return;
+        await sayService.InitializeAsync(cultureName);
+    }
+
     public string CountAndSay(int numberOfSayings, StringBuilder details)
     {
         if (numberOfSayings <= 0 || numberOfSayings > 30) throw new ArgumentOutOfRangeException(nameof(numberOfSayings));
