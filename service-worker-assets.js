@@ -21,15 +21,11 @@
       "url": "_framework\/dotnet.runtime.8.0.10.a2v1j2tzpw.js"
     },
     {
-      "hash": "sha256-tO5O5YzMTVSaKBboxAqezOQL9ewmupzV2JrB5Rkc8a4=",
-      "url": "_framework\/icudt.dat"
-    },
-    {
-      "hash": "sha256-YD1VlqjH+5iJI1BLNDL0By\/0FJhJV1hjcDt90uB\/K9o=",
+      "hash": "sha256-Lhc0QXhehF46cxPmr18zKqVU7W9ed6Vw4MEFZgysX1g=",
       "url": "_framework\/blazor.boot.json"
     },
     {
-      "hash": "sha256-Jh0QcU11lx49AkOf8IU7+pzYafN6KxhjRc+k271teQQ=",
+      "hash": "sha256-DKq3pLW+Pv7RjpXF78W\/rWW7TP+8oJOyuL7bxaeLp\/A=",
       "url": "_framework\/apb97.github.io.wasm"
     },
     {
@@ -153,7 +149,7 @@
       "url": "_framework\/System.ObjectModel.wasm"
     },
     {
-      "hash": "sha256-4l6DAjacc4Dsu2RYPuLGl7a0uOA5yG7NyHhJzqdgTJs=",
+      "hash": "sha256-U3kqikMK\/KoWnfOptwDqPNtu4YpWPl\/D4r00xQcPxz4=",
       "url": "_framework\/System.Private.CoreLib.wasm"
     },
     {
@@ -397,5 +393,5 @@
       "url": "Resources\/Shared\/Skills.resx"
     }
   ],
-  "version": "bzdrHB2Y"
+  "version": "8jPOcf3f"
 };
