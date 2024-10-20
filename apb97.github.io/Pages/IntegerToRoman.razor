@@ -3,60 +3,60 @@
 @using apb97.github.io.Shared
 
 @implements IDisposable
-@inject StringLocalizer<IntegerToRoman> localization
+@inject StringLocalizer<IntegerToRoman> Loc
 @inject NavigationManager Navigation
 
 @if (ShouldRender())
 {
-    <PageTitle>Adrian Bieliński - @localization.Localize("Integer to Roman")</PageTitle>
+    <PageTitle>Adrian Bieliński - @Loc["Integer to Roman"]</PageTitle>
 
-    <AdjustedAnchorHeading Id="" Heading="@localization.Localize("Integer to Roman")" />
+    <AdjustedAnchorHeading Id="" Heading="@Loc["Integer to Roman"]" />
     <hr/>
-    <AdjustedAnchorHeading Id="description" Heading="@localization.Localize("Challenge description")" FontSize="smaller" />
+    <AdjustedAnchorHeading Id="description" Heading="@Loc["Challenge description"]" FontSize="smaller" />
 
-    <p>@localization.Localize("Roman numerals are represented by")<code>I</code>, <code>V</code>, <code>X</code>, <code>L</code>, <code>C</code>, <code>D</code> @localization.Localize("and") <code>M</code>.</p>
-    <p>@localization.Localize("They represent the following")<code>1</code>, <code>5</code>, <code>10</code>, <code>50</code>, <code>100</code>, <code>500</code>, <code>1000</code>.</p>
+    <p>@Loc["Roman numerals are represented by"]<code>I</code>, <code>V</code>, <code>X</code>, <code>L</code>, <code>C</code>, <code>D</code> @Loc["and"] <code>M</code>.</p>
+    <p>@Loc["They represent the following"]<code>1</code>, <code>5</code>, <code>10</code>, <code>50</code>, <code>100</code>, <code>500</code>, <code>1000</code>.</p>
     <p>
-        @localization.Localize("For example,") <code>3</code> @localization.Localize("is written as") <code>III</code> @localization.Localize("in Roman numeral,")
-        <code>12</code> @localization.Localize("is written as") <code>XII</code> @localization.Localize("and") <code>28</code> @localization.Localize("is written as") <code>XXVIII</code>.
+        @Loc["For example,"] <code>3</code> @Loc["is written as"] <code>III</code> @Loc["in Roman numeral,"]
+        <code>12</code> @Loc["is written as"] <code>XII</code> @Loc["and"] <code>28</code> @Loc["is written as"] <code>XXVIII</code>.
     </p>
     <p>
-        @localization.Localize("Roman numerals are usually")
-        @localization.Localize("However the numeral for") <code>4</code> @localization.Localize("is not") <code>IIII</code> @localization.Localize(", but it is") <code>IV</code> (5 - 1). @localization.Localize("Similarly") <code>9</code> @localization.Localize("is written as") <code>IX</code> (10 - 1).
-        @localization.Localize("Subtraction is used")
+        @Loc["Roman numerals are usually"]
+        @Loc["However the numeral for"] <code>4</code> @Loc["is not"] <code>IIII</code> @Loc[", but it is"] <code>IV</code> (5 - 1). @Loc["Similarly"] <code>9</code> @Loc["is written as"] <code>IX</code> (10 - 1).
+        @Loc["Subtraction is used"]
         <ul>
             <li>
-                <code>I</code> @localization.Localize("can be placed before") <code>V</code> @localization.Localize("and") <code>X</code> @localization.Localize("to make") <code>4</code> @localization.Localize("and") <code>9</code>.
+                <code>I</code> @Loc["can be placed before"] <code>V</code> @Loc["and"] <code>X</code> @Loc["to make"] <code>4</code> @Loc["and"] <code>9</code>.
             </li>
             <li>
-                <code>X</code> @localization.Localize("can be placed before") <code>L</code> @localization.Localize("and") <code>C</code> @localization.Localize("to make") <code>40</code> @localization.Localize("and") <code>90</code>.
+                <code>X</code> @Loc["can be placed before"] <code>L</code> @Loc["and"] <code>C</code> @Loc["to make"] <code>40</code> @Loc["and"] <code>90</code>.
             </li>
             <li>
-                <code>C</code> @localization.Localize("can be placed before") <code>D</code> @localization.Localize("and") <code>M</code> @localization.Localize("to make") <code>400</code> @localization.Localize("and") <code>900</code>.
+                <code>C</code> @Loc["can be placed before"] <code>D</code> @Loc["and"] <code>M</code> @Loc["to make"] <code>400</code> @Loc["and"] <code>900</code>.
             </li>
         </ul>
     </p>
     <br/>
-    <p>@localization.Localize("Given an integer convert it")</p>
+    <p>@Loc["Given an integer convert it"]</p>
 
-    <AdjustedAnchorHeading Id="note" Heading="@localization.Localize("Note")" FontSize="smaller" />
-    <p>@localization.Localize("You can use the url")</p>
+    <AdjustedAnchorHeading Id="note" Heading="@Loc["Note"]" FontSize="smaller" />
+    <p>@Loc["You can use the url"]</p>
 
     <div>
-        <AdjustedAnchorHeading Id="input" Heading="@localization.Localize("Input")" FontSize="smaller" />
+        <AdjustedAnchorHeading Id="input" Heading="@Loc["Input"]" FontSize="smaller" />
 
         <div class="row">
             <div class="card-group">
-                <label for="number" style="margin: 4px">@localization.Localize("Number")</label>
+                <label for="number" style="margin: 4px">@Loc["Number"]</label>
                 <InputNumber id="number" TValue="int?" Value="Number" ValueChanged="OnNumberChanged" ValueExpression="() => Number" type="number" min="1" max="3999" style="margin: 4px" />
             </div>
         </div>
 
         <hr />
-        <AdjustedAnchorHeading Id="@OutputId" FontSize="smaller" Heading="@localization.Localize("Output")">
+        <AdjustedAnchorHeading Id="@OutputId" FontSize="smaller" Heading="@Loc["Output"]">
             <div class="row">
                 <div class="card-group">
-                    <span style="margin: 4px">@localization.Localize("Roman")</span>
+                    <span style="margin: 4px">@Loc["Roman"]</span>
 
                     <code role="status" style="margin: 3px; font-size:large">
                         @if (Number.HasValue)
@@ -71,6 +71,9 @@
 }
 @code {
     public const string OutputId = "output";
+    
+    [CascadingParameter]
+    public required MainLayout Layout { get; set; }
 
     [Parameter]
     public int? Number { get; set; }
@@ -87,17 +90,17 @@
 
     protected override bool ShouldRender()
     {
-        return localization.IsReady;
+        return Loc.IsReady;
     }
 
     protected override async Task OnInitializedAsync()
     {
-        await localization.InitializeAsync(LanguageSelect.Culture);
+        await Loc.InitializeAsync(Layout.Culture);
     }
 
     protected override void OnInitialized()
     {
-        MainLayout.OnStateChanging += GetResources;
+        Layout.OnStateChanging += GetResources;
     }
 
     protected override void OnAfterRender(bool firstRender)
@@ -120,18 +123,18 @@
         }
         catch (ArgumentOutOfRangeException)
         {
-            return localization.Localize("Out of range") ?? string.Empty;
+            return Loc["Out of range"] ?? string.Empty;
         }
     }
 
     void IDisposable.Dispose()
     {
-        MainLayout.OnStateChanging -= GetResources;
+        Layout.OnStateChanging -= GetResources;
     }
 
     private async Task GetResources()
     {
-        await localization.InitializeAsync(LanguageSelect.Culture);
+        await Loc.InitializeAsync(Layout.Culture);
         StateHasChanged();
     }
 }

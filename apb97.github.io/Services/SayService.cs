@@ -1,16 +1,10 @@
-﻿using System.Globalization;
-using System.Text;
+﻿using System.Text;
 using apb97.github.io.Services.Localization;
 
 namespace apb97.github.io.Services;
 
 public class SayService(StringLocalizer<SayService> localizer)
 {
-    public async Task InitializeAsync(CultureInfo? cultureInfo)
-    {
-        await localizer.InitializeAsync(cultureInfo ?? CultureInfo.CurrentUICulture);
-    }
-
     public async Task InitializeAsync(string? cultureName)
     {
         await localizer.InitializeAsync(cultureName);

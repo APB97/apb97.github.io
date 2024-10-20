@@ -1,18 +1,18 @@
 ﻿@implements IDisposable
 
-@inject StringLocalizer<Challenges> localization
+@inject StringLocalizer<Challenges> Loc
 @inject IJSRuntime JS
 
 @if (ShouldRender())
 {
-    <AdjustedAnchorHeading Id="challenges" Heading="@localization.Localize("Challenges")">
+    <AdjustedAnchorHeading Id="challenges" Heading="@Loc["Challenges"]">
         <div class="d-flex" style="font-size: larger">
             <ul style="list-style-type: none;">
                 <li>
-                    <a class="link-primary" href="/IntegerToRoman"><span>@localization.Localize("Integer to Roman")</span></a>
+                    <a class="link-primary" href="/IntegerToRoman"><span>@Loc["Integer to Roman"]</span></a>
                 </li>
                 <li>
-                    <a class="link-primary" href="/CountAndSay"><span>@localization.Localize("Count and say")</span></a>
+                    <a class="link-primary" href="/CountAndSay"><span>@Loc["Count and say"]</span></a>
                 </li>
             </ul>
         </div>
@@ -20,29 +20,32 @@
 }
 
 @code {
+    [CascadingParameter]
+    public required MainLayout Layout { get; set; }
+
     protected override bool ShouldRender()
     {
-        return localization.IsReady;
+        return Loc.IsReady;
     }
 
     protected override async Task OnInitializedAsync()
     {
-        await localization.InitializeAsync(LanguageSelect.Culture);
+        await Loc.InitializeAsync(Layout.Culture);
     }
 
     protected override void OnInitialized()
     {
-        MainLayout.OnStateChanging += GetResources;
+        Layout.OnStateChanging += GetResources;
     }
 
     void IDisposable.Dispose()
     {
-        MainLayout.OnStateChanging -= GetResources;
+        Layout.OnStateChanging -= GetResources;
     }
 
     private async Task GetResources()
     {
-        await localization.InitializeAsync(LanguageSelect.Culture);
+        await Loc.InitializeAsync(Layout.Culture);
         StateHasChanged();
     }
 }

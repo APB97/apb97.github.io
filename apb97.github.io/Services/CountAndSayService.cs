@@ -1,16 +1,9 @@
-﻿using System.Globalization;
-using System.Text;
+﻿using System.Text;
 
 namespace apb97.github.io.Services;
 
 public class CountAndSayService(SayService? sayService)
 {
-    public async Task InitializeAsync(CultureInfo? cultureInfo)
-    {
-        if (sayService is null) return;
-        await sayService.InitializeAsync(cultureInfo);
-    }
-
     public async Task InitializeAsync(string? cultureName)
     {
         if (sayService is null) return;

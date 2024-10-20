@@ -1,27 +1,27 @@
 ﻿@implements IDisposable
-@inject StringLocalizer<Projects> localization
+@inject StringLocalizer<Projects> Loc
 @inject IJSRuntime JS
 
 @if (ShouldRender())
 {
-    <AdjustedAnchorHeading Id="projects" Heading="@localization.Localize("Projects")">
+    <AdjustedAnchorHeading Id="projects" Heading="@Loc["Projects"]">
         <div class="d-flex" style="border: medium solid dodgerblue; margin: 2pt;">
             <div class="d-flex flex-column flex-grow-1" style="flex-basis: 0;">
                 <div class="text-center flex-grow-1">
                     <a class="link-primary" onclick="history.replaceState(null, '', document.location.href);document.location.assign('/WebSudoku/');">
                         <span>Web Sudoku</span>
                     </a>
-                    <p>@localization.Localize("Web Sudoku description")</p>
+                    <p>@Loc["Web Sudoku description"]</p>
                 </div>
                 <div class="text-center">
                     <div class="tags">
-                        <span>@localization.Localize(".NET")</span>
-                        <span>@localization.Localize("C#")</span>
-                        <span>@localization.Localize("Blazor")</span>
-                        <span>@localization.Localize("WebAssembly")</span>
-                        <span>@localization.Localize("HTML")</span>
-                        <span>@localization.Localize("CSS")</span>
-                        <span>@localization.Localize("JS")</span>
+                        <span>@Loc[".NET"]</span>
+                        <span>@Loc["C#"]</span>
+                        <span>@Loc["Blazor"]</span>
+                        <span>@Loc["WebAssembly"]</span>
+                        <span>@Loc["HTML"]</span>
+                        <span>@Loc["CSS"]</span>
+                        <span>@Loc["JS"]</span>
                     </div>
                 </div>
             </div>
@@ -43,14 +43,14 @@
             <div style="border: medium solid darkslategray; margin: 2pt;">
                 <div class="text-center">
                     <a class="link-primary" href="MetadataRename"><span>Metadata Rename</span></a>
-                    <p>@localization.Localize("Rename based on metadata built with WPF.") </p>
+                    <p>@Loc["Rename based on metadata built with WPF."] </p>
                 </div>
             </div>
 
             <div class="flex-grow-1" style="border: medium solid darkslategray; margin: 2pt;">
                 <div class="text-center">
                     <a class="link-primary" href="PlotAndIntegrate"><span>Plot and Integrate</span></a>
-                    <p>@localization.Localize("Plot and calculate definite integral of a function. Built with Windows Forms.") </p>
+                    <p>@Loc["Plot and calculate definite integral of a function. Built with Windows Forms."] </p>
                 </div>
             </div>
         </div>
@@ -63,27 +63,27 @@
 
     protected override bool ShouldRender()
     {
-        return localization.IsReady;
+        return Loc.IsReady;
     }
 
     protected override async Task OnInitializedAsync()
     {
-        await localization.InitializeAsync(LanguageSelect.Culture);
+        await Loc.InitializeAsync(Layout.Culture);
     }
 
     protected override void OnInitialized()
     {
-        MainLayout.OnStateChanging += GetResources;
+        Layout.OnStateChanging += GetResources;
     }
 
     void IDisposable.Dispose()
     {
-        MainLayout.OnStateChanging -= GetResources;
+        Layout.OnStateChanging -= GetResources;
     }
 
     private async Task GetResources()
     {
-        await localization.InitializeAsync(LanguageSelect.Culture);
+        await Loc.InitializeAsync(Layout.Culture);
         StateHasChanged();
     }
 }

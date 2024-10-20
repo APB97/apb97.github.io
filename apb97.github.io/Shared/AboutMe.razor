@@ -1,33 +1,33 @@
-﻿@using System.Resources
-@using apb97.github.io.Pages
+﻿@using apb97.github.io.Pages
+@using apb97.github.io.Services.Dimensions
 
 @implements IDisposable
 @inject IJSRuntime JS
-@inject StringLocalizer<AboutMe> localization
+@inject StringLocalizer<AboutMe> Loc
 @inject NavigationManager Navigation
 
 @if (ShouldRender())
 {
     <div class="row">
         <div class="d-flex flex-column">
-            <AdjustedAnchorHeading Id="aboutme" Heading="@localization.Localize("About me")">
+            <AdjustedAnchorHeading Id="aboutme" Heading="@Loc["About me"]">
                 <div class="d-flex flex-row">
                     <div class="col-8 flex-column">
                         <div class="d-flex flex-column">
-                            <p style="font-size: larger">@localization.Localize("iam_short")</p>
+                            <p style="font-size: larger">@Loc["iam_short"]</p>
                         </div>
 
                         <p>
-                            @localization.Localize("iam_long")
+                            @Loc["iam_long"]
                         </p>
                 
                         <p class="m-0">
-                            <b>@localization.Localize("degree_label")</b>
-                            @localization.Localize("degree")
+                            <b>@Loc["degree_label"]</b>
+                            @Loc["degree"]
                         </p>
                         <p class="m-0">
-                            <b>@localization.Localize("status_label")</b>
-                            @localization.Localize("status")
+                            <b>@Loc["status_label"]</b>
+                            @Loc["status"]
                         </p>
                         <HiddenForScreenWidth HideForWidthCondition="width => width < ScreenBreakpoints.Large">
                             <Projects />
@@ -50,29 +50,32 @@
 }
 
 @code {
+    [CascadingParameter]
+    public required MainLayout Layout { get; set; }
+
     protected override bool ShouldRender()
     {
-        return localization.IsReady;
+        return Loc.IsReady;
     }
 
     protected override async Task OnInitializedAsync()
     {
-        await localization.InitializeAsync(LanguageSelect.Culture);
+        await Loc.InitializeAsync(Layout.Culture);
     }
 
     protected override void OnInitialized()
     {
-        MainLayout.OnStateChanging += GetResources;
+        Layout.OnStateChanging += GetResources;
     }
 
     void IDisposable.Dispose()
     {
-        MainLayout.OnStateChanging -= GetResources;
+        Layout.OnStateChanging -= GetResources;
     }
 
     private async Task GetResources()
     {
-        await localization.InitializeAsync(LanguageSelect.Culture);
+        await Loc.InitializeAsync(Layout.Culture);
         StateHasChanged();
     }
 }

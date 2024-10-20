@@ -41,7 +41,9 @@
 
     public string LayoutMode { get; private set; } = DarkMode;
 
-    public static event Func<Task> OnStateChanging = delegate { return Task.CompletedTask; };
+    public event Func<Task> OnStateChanging = delegate { return Task.CompletedTask; };
+
+    public string? Culture => navMenu?.Culture;
 
     protected override async Task OnInitializedAsync()
     {

@@ -2,12 +2,12 @@
 @using apb97.github.io.Shared
 
 @implements IDisposable
-@inject StringLocalizer<LearningProgress> localization
+@inject StringLocalizer<LearningProgress> Loc
 
 @if(ShouldRender())
 {
-    <AdjustedAnchorHeading Id="learning" Heading="@localization.Localize("LearningProgress")">
-        <label for="year">@localization.Localize("Year")</label>
+    <AdjustedAnchorHeading Id="learning" Heading="@Loc["LearningProgress"]">
+        <label for="year">@Loc["Year"]</label>
         <InputNumber id="year" TValue="int" Value="Year" ValueChanged="OnYearChanged" ValueExpression="() => Year" min="@MinYear" max="@RecentYear" />
 
         <div>
@@ -28,6 +28,9 @@
 }
 
 @code {
+    [CascadingParameter]
+    public required MainLayout Layout { get; set; }
+
     [Parameter]
     public int Year { get; set; } = RecentYear;
 
@@ -48,27 +51,27 @@
 
     protected override bool ShouldRender()
     {
-        return localization.IsReady;
+        return Loc.IsReady;
     }
 
     protected override async Task OnInitializedAsync()
     {
-        await localization.InitializeAsync(LanguageSelect.Culture);
+        await Loc.InitializeAsync(Layout.Culture);
     }
 
     protected override void OnInitialized()
     {
-        MainLayout.OnStateChanging += GetResources;
+        Layout.OnStateChanging += GetResources;
     }
 
     void IDisposable.Dispose()
     {
-        MainLayout.OnStateChanging -= GetResources;
+        Layout.OnStateChanging -= GetResources;
     }
 
     private async Task GetResources()
     {
-        await localization.InitializeAsync(LanguageSelect.Culture);
+        await Loc.InitializeAsync(Layout.Culture);
         StateHasChanged();
     }
 }

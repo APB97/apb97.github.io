@@ -1,4 +1,6 @@
-﻿@inject NavigationManager Navigation
+﻿@implements IAsyncDisposable
+
+@inject NavigationManager Navigation
 @inject IJSRuntime JS
 
 @if (!Rendered)
@@ -21,5 +23,13 @@
     protected override async Task OnInitializedAsync()
     {
         module = await JS.InvokeAsync<IJSObjectReference>("import", "./Shared/NavigationByIdFix.razor.js");
+    }
+
+    async ValueTask IAsyncDisposable.DisposeAsync()
+    {
+        if (module is not null)
+        {
+            await module.DisposeAsync();
+        }
     }
 }

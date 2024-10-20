@@ -1,32 +1,26 @@
-﻿using System.Globalization;
+﻿namespace apb97.github.io.Services.Localization;
 
-namespace apb97.github.io.Services.Localization
+public class StringLocalizer<T>(StringLocalizerFactory factory)
 {
-    public class StringLocalizer<T>(StringLocalizerFactory factory)
+    private Dictionary<string, string>? localization;
+
+    public bool IsReady => localization != null;
+
+    public async Task InitializeAsync(string? cultureName)
     {
-        private Dictionary<string, string>? localization;
+        localization = await factory.GetLocalizationAsync<T>(cultureName);
+    }
 
-        public bool IsReady => localization != null;
+    public string this[string key] => Localize(key);
 
-        public async Task InitializeAsync(CultureInfo? cultureInfo)
-        {
-            localization = await factory.GetLocalizationAsync<T>(cultureInfo?.Name ?? CultureInfo.CurrentUICulture.Name);
-        }
+    public string Localize(string key)
+    {
+        if (localization == null)
+            return string.Empty;
 
-        public async Task InitializeAsync(string? cultureName)
-        {
-            localization = await factory.GetLocalizationAsync<T>(cultureName);
-        }
+        if (localization.TryGetValue(key, out var result) != true)
+            return key;
 
-        public string Localize(string key)
-        {
-            if (localization == null)
-                return string.Empty;
-
-            if (localization.TryGetValue(key, out var result) != true)
-                return key;
-
-            return result ?? key;
-        }
+        return result ?? key;
     }
 }

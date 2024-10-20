@@ -4,43 +4,43 @@
 @using apb97.github.io.Shared
 
 @implements IDisposable
-@inject StringLocalizer<CountAndSay> localization
+@inject StringLocalizer<CountAndSay> Loc
 @inject NavigationManager Navigation
 @inject CountAndSayService Service
 
 @if (ShouldRender())
 {
-    <PageTitle>Adrian Bieliński - @localization.Localize("Count and say")</PageTitle>
+    <PageTitle>Adrian Bieliński - @Loc["Count and say"]</PageTitle>
 
-    <AdjustedAnchorHeading Id="" Heading="@localization.Localize("Count and say")" />
+    <AdjustedAnchorHeading Id="" Heading="@Loc["Count and say"]" />
     <hr/>
-    <AdjustedAnchorHeading Id="description" Heading="@localization.Localize("Challenge description")" FontSize="smaller" />
+    <AdjustedAnchorHeading Id="description" Heading="@Loc["Challenge description"]" FontSize="smaller" />
     <p>
-        @localization.Localize("The count-and-say sequence is a sequence"):
+        @Loc["The count-and-say sequence is a sequence"]:
     </p>
     <ul>
         <li>
-            <code>@localization.Localize("functionName") (1) = "1"</code>
+            <code>@Loc["functionName"] (1) = "1"</code>
         </li>
         <li>
-            <code>@localization.Localize("functionName") (n)</code> @localization.Localize("is the way you would 'say' the digit string from")
-            <code>@localization.Localize("functionName") (n-1)</code>, @localization.Localize("which is then converted into a different digit string").
+            <code>@Loc["functionName"] (n)</code> @Loc["is the way you would 'say' the digit string from"]
+            <code>@Loc["functionName"] (n-1)</code>, @Loc["which is then converted into a different digit string"].
         </li>
     </ul>
 
-    <span>@localization.Localize("To determine how you")</span>
-    <span>@localization.Localize("Then for each group, say")</span>
-    <span>@localization.Localize("To convert the saying")</span>
+    <span>@Loc["To determine how you"]</span>
+    <span>@Loc["Then for each group, say"]</span>
+    <span>@Loc["To convert the saying"]</span>
 
-    <AdjustedAnchorHeading Id="note" Heading="@localization.Localize("Note")" FontSize="smaller" />
-    <p>@localization.Localize("You can use the url")</p>
+    <AdjustedAnchorHeading Id="note" Heading="@Loc["Note"]" FontSize="smaller" />
+    <p>@Loc["You can use the url"]</p>
 
     <div>
-        <AdjustedAnchorHeading Id="input" Heading="@localization.Localize("Input")" FontSize="smaller" />
+        <AdjustedAnchorHeading Id="input" Heading="@Loc["Input"]" FontSize="smaller" />
 
         <div class="row">
             <div class="card-group">
-                <label for="number" style="margin: 4px">@localization.Localize("NumberOfSayings")</label>
+                <label for="number" style="margin: 4px">@Loc["NumberOfSayings"]</label>
                 <InputNumber id="number" TValue="int?" Value="Number" ValueExpression="() => Number" ValueChanged="OnNumberChanged" type="number" min="1" max="30" style="margin: 4px" />
             </div>
         </div>
@@ -49,10 +49,10 @@
             var results = GetResults();
         }
         <hr />
-        <AdjustedAnchorHeading Id="@OutputId" FontSize="smaller" Heading="@localization.Localize("Output")" />
+        <AdjustedAnchorHeading Id="@OutputId" FontSize="smaller" Heading="@Loc["Output"]" />
         <div class="row">
             <div class="card-group">
-                <span style="margin: 4px">@localization.Localize("Result")</span>
+                <span style="margin: 4px">@Loc["Result"]</span>
 
                 <code role="status" style="margin: 3px; font-size:large; overflow-wrap: anywhere">
                     @results.result
@@ -60,7 +60,7 @@
             </div>
         </div>
 
-        <h4>@localization.Localize("Explanation")</h4>
+        <h4>@Loc["Explanation"]</h4>
         <div class="row">
             <p role="status">
                 @{
@@ -80,6 +80,9 @@
 
 @code 
 {
+    [CascadingParameter]
+    public required MainLayout Layout { get; set; }
+
     public const string OutputId = "output";
 
     [Parameter]
@@ -97,18 +100,18 @@
 
     protected override bool ShouldRender()
     {
-        return localization.IsReady;
+        return Loc.IsReady;
     }
 
     protected override async Task OnInitializedAsync()
     {
-        await localization.InitializeAsync(LanguageSelect.Culture);
-        await Service.InitializeAsync(LanguageSelect.Culture);
+        await Loc.InitializeAsync(Layout.Culture);
+        await Service.InitializeAsync(Layout.Culture);
     }
 
     protected override void OnInitialized()
     {
-        MainLayout.OnStateChanging += GetResources;
+        Layout.OnStateChanging += GetResources;
     }
 
     protected override void OnAfterRender(bool firstRender)
@@ -125,13 +128,13 @@
 
     void IDisposable.Dispose()
     {
-        MainLayout.OnStateChanging -= GetResources;
+        Layout.OnStateChanging -= GetResources;
     }
 
     private async Task GetResources()
     {
-        await localization.InitializeAsync(LanguageSelect.Culture);
-        await Service.InitializeAsync(LanguageSelect.Culture);
+        await Loc.InitializeAsync(Layout.Culture);
+        await Service.InitializeAsync(Layout.Culture);
         StateHasChanged();
     }
 
@@ -150,7 +153,7 @@
         }
         catch (ArgumentOutOfRangeException)
         {
-            return (localization.Localize("Out of range") ?? string.Empty, Array.Empty<string>());
+            return (Loc["Out of range"] ?? string.Empty, Array.Empty<string>());
         }
     }
 }

@@ -1,96 +1,99 @@
 ﻿@implements IDisposable
-@inject StringLocalizer<LearningProgress2023> localization
+@inject StringLocalizer<LearningProgress2023> Loc
 
-<h3>@localization.Localize("Year2023")</h3>
+<h3>@Loc["Year2023"]</h3>
 <ul>
     <li>
         <h4>JavaScript</h4>
         <ul>
             <li>
-                <b>@localization.Localize("JS types")</b>
+                <b>@Loc["JS types"]</b>
                 <br/>
-                <p>@localization.Localize("JS types description")</p>
-                <b>@localization.Localize("Example")</b>
+                <p>@Loc["JS types description"]</p>
+                <b>@Loc["Example"]</b>
                 <br />
-                <CodeView Code="@localization.Localize("JS types code")"/>
+                <CodeView Code="@Loc["JS types code"]"/>
             </li>
             <li>
-                <b>@localization.Localize("JS functions and arrays")</b>
+                <b>@Loc["JS functions and arrays"]</b>
                 <br />
-                <p>@localization.Localize("JS functions and arrays description")</p>
-                <b>@localization.Localize("Example")</b>
+                <p>@Loc["JS functions and arrays description"]</p>
+                <b>@Loc["Example"]</b>
                 <br />
-                <CodeView Code="@localization.Localize("JS functions and arrays code")"/>
+                <CodeView Code="@Loc["JS functions and arrays code"]"/>
             </li>
             <li>
-                <b>@localization.Localize("JS objects")</b>
+                <b>@Loc["JS objects"]</b>
                 <br />
-                <p>@localization.Localize("JS objects description")</p>
-                <b>@localization.Localize("Example")</b>
+                <p>@Loc["JS objects description"]</p>
+                <b>@Loc["Example"]</b>
                 <br />
-                <CodeView Code="@localization.Localize("JS objects code")"/>
+                <CodeView Code="@Loc["JS objects code"]"/>
             </li>
         </ul>
-        <h4>@localization.Localize("JavaScript libs")</h4>
+        <h4>@Loc["JavaScript libs"]</h4>
         <ul>
             <li>
                 <b>Paged.js</b>
                 <br />
-                <p>@localization.Localize("Paged.js description")</p>
+                <p>@Loc["Paged.js description"]</p>
             </li>
         </ul>
-        <h4>@localization.Localize("General knowledge")</h4>
+        <h4>@Loc["General knowledge"]</h4>
         <ul>
             <li>
-                <b>@localization.Localize("TPH, TPC, TPT")</b>
+                <b>@Loc["TPH, TPC, TPT"]</b>
                 <br />
-                <p>@localization.Localize("TPH, TPC, TPT description")</p>
+                <p>@Loc["TPH, TPC, TPT description"]</p>
             </li>
         </ul>
         <h4>.NET</h4>
         <ul>
             <li>
-                <b>@localization.Localize("System.Text.Json")</b>
+                <b>@Loc["System.Text.Json"]</b>
                 <br />
-                <p>@localization.Localize("System.Text.Json description")</p>
-                <a href="https://learn.microsoft.com/en-us/dotnet/standard/serialization/system-text-json/custom-contracts" rel="noopener">@localization.Localize("Source")</a>
+                <p>@Loc["System.Text.Json description"]</p>
+                <a href="https://learn.microsoft.com/en-us/dotnet/standard/serialization/system-text-json/custom-contracts" rel="noopener">@Loc["Source"]</a>
             </li>
         </ul>
-        <h4>@localization.Localize("NuGet packages")</h4>
+        <h4>@Loc["NuGet packages"]</h4>
         <ul>
             <li>
-                <b>@localization.Localize("HotChocolate")</b>
+                <b>@Loc["HotChocolate"]</b>
                 <br />
-                <p>@localization.Localize("HotChocolate description")</p>
+                <p>@Loc["HotChocolate description"]</p>
             </li>
         </ul>
     </li>
 </ul>
 
 @code {
+    [CascadingParameter]
+    public required MainLayout Layout { get; set; }
+
     protected override bool ShouldRender()
     {
-        return localization.IsReady;
+        return Loc.IsReady;
     }
 
     protected override async Task OnInitializedAsync()
     {
-        await localization.InitializeAsync(LanguageSelect.Culture);
+        await Loc.InitializeAsync(Layout.Culture);
     }
 
     protected override void OnInitialized()
     {
-        MainLayout.OnStateChanging += GetResources;
+        Layout.OnStateChanging += GetResources;
     }
 
     void IDisposable.Dispose()
     {
-        MainLayout.OnStateChanging -= GetResources;
+        Layout.OnStateChanging -= GetResources;
     }
 
     private async Task GetResources()
     {
-        await localization.InitializeAsync(LanguageSelect.Culture);
+        await Loc.InitializeAsync(Layout.Culture);
         StateHasChanged();
     }
 }

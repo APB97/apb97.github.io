@@ -1,27 +1,32 @@
-﻿@using apb97.github.io.Services
+﻿@using apb97.github.io.JSInterop
+@using apb97.github.io.Services
 
-@inject IJSRuntime JSRuntime
+@implements IAsyncDisposable
+
+@inject IJSRuntime JS
 @inject NavigationManager Navigation
-@inject StringLocalizer<LanguageSelect> localization
+@inject StringLocalizer<LanguageSelect> Loc
 
-<label for="language" class="text-white">
-    @(localization.Localize("Select your locale")):
-</label>
-<InputSelect id="language" style="background-color: transparent; border: none; color: white;" TValue="string" DisplayName="Language" Value="@CurrentUICulture" ValueChanged="SetCultureAndReload" ValueExpression="() => CurrentUICulture">
-    @foreach (var culture in supportedCultures)
-    {
-        <option value="@culture.Value" class="@(culture.Value == Culture ? "current" : null)">@culture.Key</option>
-    }
-</InputSelect>
-
-@code
+@if (ShouldRender())
 {
+    <label for="language" class="text-white">
+        @(Loc["Select your locale"]):
+    </label>
+    <InputSelect id="language" style="background-color: transparent; border: none; color: white;" TValue="string" DisplayName="Language" Value="@Culture" ValueChanged="SetCultureAndReload" ValueExpression="() => Culture">
+        @foreach (var culture in supportedCultures)
+        {
+            <option value="@culture.Value" class="@(culture.Value == Culture ? "current" : null)">@culture.Key</option>
+        }
+    </InputSelect>
+}
+
+@code {
     [CascadingParameter]
     public required MainLayout Layout { get; set; }
 
-    public string? CurrentUICulture { get => Culture; private set => Culture = value; }
+    public string? Culture { get; private set; }
 
-    public static string? Culture { get; private set; }
+    private IJSObjectReference? utilitiesModule;
 
     private readonly static IReadOnlyDictionary<string, string> supportedCultures = new Dictionary<string, string>
     {
@@ -31,26 +36,36 @@
 
     protected override bool ShouldRender()
     {
-        return localization.IsReady;
+        return Loc.IsReady;
     }
 
     protected override async Task OnInitializedAsync()
     {
-        var language = await JSRuntime.InvokeAsync<string>("blazorCulture.get");
-        Culture = language ?? "en-US";
-        await localization.InitializeAsync(Culture);
+        utilitiesModule = await JS.InvokeAsync<IJSObjectReference>("import", JSModules.UtilitiesModule);
+        if (utilitiesModule is not null)
+            Culture = await utilitiesModule.GetSettingAsync<string>("BlazorCulture") ?? "en-US";
+
+        await Loc.InitializeAsync(Culture);
         Layout.NotifyStateChanged();
     }
 
     private async Task SetCultureAndReload(string value)
     {
         Culture = value;
-        await localization.InitializeAsync(value);
+        await Loc.InitializeAsync(value);
 
         StateHasChanged();
-
         Layout.NotifyStateChanged();
 
-        await JSRuntime.InvokeVoidAsync("blazorCulture.set", value);
+        if (utilitiesModule is null) return;
+        await utilitiesModule.SetSettingAsync("BlazorCulture", value);
+    }
+
+    async ValueTask IAsyncDisposable.DisposeAsync()
+    {
+        if (utilitiesModule is not null)
+        {
+            await utilitiesModule.DisposeAsync();
+        }
     }
 }

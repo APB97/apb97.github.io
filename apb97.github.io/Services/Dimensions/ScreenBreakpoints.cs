@@ -1,4 +1,4 @@
-namespace apb97.github.io.Services;
+namespace apb97.github.io.Services.Dimensions;
 
 public static class ScreenBreakpoints
 {

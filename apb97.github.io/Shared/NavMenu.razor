@@ -1,6 +1,6 @@
-﻿@using System.Globalization
+﻿@using apb97.github.io.Services.Dimensions
 @implements IDisposable
-@inject StringLocalizer<NavMenu> localization
+@inject StringLocalizer<NavMenu> Loc
 @inject NavigationManager Navigation
 
 <div class="top-row ps-3 navbar navbar-dark">
@@ -22,7 +22,7 @@
         </button>
         <HiddenForScreenWidth HideForWidthCondition="w => w > ScreenBreakpoints.Medium">
             <div>
-                <LanguageSelect />
+                <LanguageSelect @ref="language" />
             </div>
         </HiddenForScreenWidth>
         <button title="Navigation menu" class="navbar-toggler" @onclick="ToggleNavMenu">
@@ -35,31 +35,31 @@
     <nav class="d-flex flex-column flex-grow-1">
         <div class="nav-item px-3" @onclick="CollapseNavMenu">
             <ABP97NavLink Href="#aboutme">
-                @localization.Localize("About me")
+                @Loc["About me"]
             </ABP97NavLink>
         </div>
 
         <div class="nav-item px-3" @onclick="CollapseNavMenu">
             <ABP97NavLink Href="#projects">
-                @localization.Localize("Projects")
+                @Loc["Projects"]
             </ABP97NavLink>
         </div>
 
         <div class="nav-item px-3" @onclick="CollapseNavMenu">
             <ABP97NavLink Href="#challenges" >
-                @localization.Localize("Challenges")
+                @Loc["Challenges"]
             </ABP97NavLink>
         </div>
 
         <div class="nav-item px-3" @onclick="CollapseNavMenu">
             <ABP97NavLink Href="#skills">
-                @localization.Localize("Skills")
+                @Loc["Skills"]
             </ABP97NavLink>
         </div>
 
         <div class="nav-item px-3" @onclick="CollapseNavMenu">
             <ABP97NavLink Href="#learning">
-                @localization.Localize("LearningProgress")
+                @Loc["LearningProgress"]
             </ABP97NavLink>
         </div>
             
@@ -67,12 +67,12 @@
 
         </div>
         <div class="nav-item px-3">
-            <a class="ms-auto nav-link link-info" href="https://github.com/APB97/apb97.github.io" target="_blank">@localization.Localize("Code")</a>
+            <a class="ms-auto nav-link link-info" href="https://github.com/APB97/apb97.github.io" target="_blank">@Loc["Code"]</a>
         </div>
         <div class="nav-item px-0">
             <div class="nav-link">
                 <HiddenForScreenWidth HideForWidthCondition="w => w <= ScreenBreakpoints.Medium">
-                    <LanguageSelect />
+                    <LanguageSelect @ref="language" />
                 </HiddenForScreenWidth>
             </div>
         </div>
@@ -87,6 +87,10 @@
 
     private string? NavMenuCssClass => collapseNavMenu ? "collapse" : null;
 
+    private LanguageSelect? language;
+
+    public string? Culture => language?.Culture;
+
     private void ToggleNavMenu()
     {
         collapseNavMenu = !collapseNavMenu;
@@ -100,27 +104,27 @@
 
     protected override bool ShouldRender()
     {
-        return localization.IsReady;
+        return Loc.IsReady;
     }
 
     protected override async Task OnInitializedAsync()
     {
-        await localization.InitializeAsync(LanguageSelect.Culture);
+        await Loc.InitializeAsync(language?.Culture);
     }
 
     protected override void OnInitialized()
     {
-        MainLayout.OnStateChanging += GetResources;
+        Layout.OnStateChanging += GetResources;
     }
 
     void IDisposable.Dispose()
     {
-        MainLayout.OnStateChanging -= GetResources;
+        Layout.OnStateChanging -= GetResources;
     }
 
     private async Task GetResources()
     {
-        await localization.InitializeAsync(LanguageSelect.Culture);
+        await Loc.InitializeAsync(language?.Culture);
         StateHasChanged();
     }
 }

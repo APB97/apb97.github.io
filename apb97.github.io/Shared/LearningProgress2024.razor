@@ -1,82 +1,85 @@
 ﻿@implements IDisposable
-@inject StringLocalizer<LearningProgress2024> localization
+@inject StringLocalizer<LearningProgress2024> Loc
 
-<h3>@localization.Localize("Year2024")</h3>
+<h3>@Loc["Year2024"]</h3>
 
 <ul>
     <li>
-        <h4>@localization.Localize("C# features")</h4>
+        <h4>@Loc["C# features"]</h4>
         <ul>
             <li>
-                <b>@localization.Localize("Records")</b>
+                <b>@Loc["Records"]</b>
                 <br />
-                <span>@localization.Localize("Records description")</span>
+                <span>@Loc["Records description"]</span>
                 <ul>
-                    <li>@localization.Localize("Concise syntax for reference types")</li>
-                    <li>@localization.Localize("Built-in value equality")</li>
-                    <li>@localization.Localize("Built-in concise syntax for nondesctructive mutation")</li>
-                    <li>@localization.Localize("Built-in formatting")</li>
+                    <li>@Loc["Concise syntax for reference types"]</li>
+                    <li>@Loc["Built-in value equality"]</li>
+                    <li>@Loc["Built-in concise syntax for nondesctructive mutation"]</li>
+                    <li>@Loc["Built-in formatting"]</li>
                 </ul>
             </li>
             <li>
-                <b>@localization.Localize("Constant interpolated strings")</b>
+                <b>@Loc["Constant interpolated strings"]</b>
                 <br />
-                <p>@localization.Localize("Constant interpolated strings description")</p>
+                <p>@Loc["Constant interpolated strings description"]</p>
             </li>
         </ul>
     </li>
     <li>
-        <h4>@localization.Localize("NuGet packages")</h4>
+        <h4>@Loc["NuGet packages"]</h4>
         <ul>
             <li>
                 <b>StrawberryShake</b>
                 <br />
-                <p>@localization.Localize("StrawberryShake description")</p>
+                <p>@Loc["StrawberryShake description"]</p>
             </li>
         </ul>
     </li>
     <li>
-        <h4>@localization.Localize("Linux commands")</h4>
+        <h4>@Loc["Linux commands"]</h4>
         <ul>
             <li>
-                <b>@localization.Localize("Basic")</b>
+                <b>@Loc["Basic"]</b>
                 <br />
-                @localization.Localize("Linux basic commands")
+                @Loc["Linux basic commands"]
             </li>
             <li>
-                <b>@localization.Localize("Advanced")</b>
+                <b>@Loc["Advanced"]</b>
                 <br />
-                @localization.Localize("Linux advanced commands")
+                @Loc["Linux advanced commands"]
             </li>
         </ul>
     </li>
 </ul>
 
 @code {
+    [CascadingParameter]
+    public required MainLayout Layout { get; set; }
+
     protected override bool ShouldRender()
     {
-        if (!localization.IsReady) return false;
+        if (!Loc.IsReady) return false;
         return base.ShouldRender();
     }
 
     protected override async Task OnInitializedAsync()
     {
-        await localization.InitializeAsync(LanguageSelect.Culture);
+        await Loc.InitializeAsync(Layout.Culture);
     }
 
     protected override void OnInitialized()
     {
-        MainLayout.OnStateChanging += GetResources;
+        Layout.OnStateChanging += GetResources;
     }
 
     void IDisposable.Dispose()
     {
-        MainLayout.OnStateChanging -= GetResources;
+        Layout.OnStateChanging -= GetResources;
     }
 
     private async Task GetResources()
     {
-        await localization.InitializeAsync(LanguageSelect.Culture);
+        await Loc.InitializeAsync(Layout.Culture);
         StateHasChanged();
     }
 }

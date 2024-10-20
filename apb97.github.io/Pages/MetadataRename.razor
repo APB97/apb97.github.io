@@ -2,7 +2,7 @@
 @using apb97.github.io.Shared
 
 @implements IDisposable
-@inject StringLocalizer<MetadataRename> localization
+@inject StringLocalizer<MetadataRename> Loc
 
 @if (ShouldRender())
 {
@@ -10,53 +10,56 @@
 
     <h1>Metadata Rename</h1>
 
-    <p>@localization.Localize("Rename music files using their metadata with this tool.")</p>
+    <p>@Loc["Rename music files using their metadata with this tool."]</p>
 
     <img class="screenshot-wide" alt="WPF UI" src="https://user-images.githubusercontent.com/16359542/156198027-c851deed-c757-4741-8eff-8d3adfed205d.png"/>
 
     <p/>
 
-    <h4>@localization.Localize("Description")</h4>
+    <h4>@Loc["Description"]</h4>
     <p>
-        @localization.Localize("It allows users to specify properties to use for renaming and directories with files they want to rename.")
-        @localization.Localize("Apart from that, all invalid path characters are removed to ensure renaming operation will be successful.")
-        @localization.Localize("There is default file named skip.txt for words users want to remove from final filenames.")
+        @Loc["It allows users to specify properties to use for renaming and directories with files they want to rename."]
+        @Loc["Apart from that, all invalid path characters are removed to ensure renaming operation will be successful."]
+        @Loc["There is default file named skip.txt for words users want to remove from final filenames."]
     </p>
 
     <p>
-        @localization.Localize("This WPF application allows selecting directories, properties used, determining order of properties in the final filename and choosing a SkipFile.")
-        @localization.Localize("It allows saving and loading of settings to and from")
-        <code>.json</code>@localization.Localize("file.")
-        @localization.Localize("Application displays messages about changes made to the settings and allows to Silence the output, so it is not updated until the setting is changed.")
+        @Loc["This WPF application allows selecting directories, properties used, determining order of properties in the final filename and choosing a SkipFile."]
+        @Loc["It allows saving and loading of settings to and from"]
+        <code>.json</code>@Loc["file."]
+        @Loc["Application displays messages about changes made to the settings and allows to Silence the output, so it is not updated until the setting is changed."]
     </p>
 
-    <a href="https://github.com/APB97/MusicRenameWithMetadata">@localization.Localize("GitHub repository")</a>
+    <a href="https://github.com/APB97/MusicRenameWithMetadata">@Loc["GitHub repository"]</a>
 }
 
 @code {
+    [CascadingParameter]
+    public required MainLayout Layout { get; set; }
+
     protected override bool ShouldRender()
     {
-        return localization.IsReady;
+        return Loc.IsReady;
     }
 
     protected override async Task OnInitializedAsync()
     {
-        await localization.InitializeAsync(LanguageSelect.Culture);
+        await Loc.InitializeAsync(Layout.Culture);
     }
 
     protected override void OnInitialized()
     {
-        MainLayout.OnStateChanging += GetResources;
+        Layout.OnStateChanging += GetResources;
     }
 
     void IDisposable.Dispose()
     {
-        MainLayout.OnStateChanging -= GetResources;
+        Layout.OnStateChanging -= GetResources;
     }
 
     private async Task GetResources()
     {
-        await localization.InitializeAsync(LanguageSelect.Culture);
+        await Loc.InitializeAsync(Layout.Culture);
         StateHasChanged();
     }
 }
