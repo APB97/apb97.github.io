@@ -8,6 +8,11 @@
     <InvariantGlobalization>true</InvariantGlobalization>
   </PropertyGroup>
 
+  <Import Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v17.0\TextTemplating\Microsoft.TextTemplating.targets" />
+  <PropertyGroup>
+    <TransformOnBuild>false</TransformOnBuild>
+  </PropertyGroup>
+
   <ItemGroup>
     <EmbeddedResource Remove="ResxResources\Layout\MainLayout.pl-PL.resx" />
     <EmbeddedResource Remove="ResxResources\Layout\MainLayout.resx" />
@@ -334,6 +339,22 @@
       <SubType>Designer</SubType>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="ResxToJson.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>ResxToJson.txt</LastGenOutput>
+    </None>
+    <None Update="ResxToJson.txt">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>ResxToJson.tt</DependentUpon>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Service Include="{508349b6-6b84-4df5-91f0-309beebad82d}" />
   </ItemGroup>
 
 </Project>
