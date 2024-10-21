@@ -15,7 +15,8 @@ builder.Services.AddScoped<CountAndSayService>();
 builder.Services.AddSingleton(_ => Options.Create(new LocalizationOptions
 {
     ResourcesPath = "Resources",
-    ProjectNamespace = "apb97.github.io"
+    ProjectNamespace = "apb97.github.io",
+    DataFormat = DataFormat.JSON,
 }));
 builder.Services.AddScoped<StringLocalizerFactory>();
 builder.Services.AddScoped(typeof(StringLocalizer<>));

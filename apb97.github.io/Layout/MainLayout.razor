@@ -1,4 +1,5 @@
 ﻿@using System.Globalization
+@using apb97.github.io.JSInterop
 @using apb97.github.io.Shared
 @inherits LayoutComponentBase
 
@@ -47,7 +48,8 @@
 
     protected override async Task OnInitializedAsync()
     {
-        var modeSetting = await JS.InvokeAsync<string>("localStorage.getItem", "LayoutMode");
+        await using var utilitiesModule = await JS.InvokeAsync<IJSObjectReference>("import", JSModules.UtilitiesModule);
+        var modeSetting = await utilitiesModule.GetSettingAsync<string>("LayoutMode");
         if (string.IsNullOrEmpty(modeSetting)) return;
         LayoutMode = modeSetting;
     }

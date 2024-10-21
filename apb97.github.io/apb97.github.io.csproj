@@ -9,6 +9,213 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <EmbeddedResource Remove="ResxResources\Layout\MainLayout.pl-PL.resx" />
+    <EmbeddedResource Remove="ResxResources\Layout\MainLayout.resx" />
+    <EmbeddedResource Remove="ResxResources\Pages\CountAndSay.pl-PL.resx" />
+    <EmbeddedResource Remove="ResxResources\Pages\CountAndSay.resx" />
+    <EmbeddedResource Remove="ResxResources\Pages\IntegerToRoman.pl-PL.resx" />
+    <EmbeddedResource Remove="ResxResources\Pages\IntegerToRoman.resx" />
+    <EmbeddedResource Remove="ResxResources\Pages\LearningProgress.pl-PL.resx" />
+    <EmbeddedResource Remove="ResxResources\Pages\LearningProgress.resx" />
+    <EmbeddedResource Remove="ResxResources\Pages\MetadataRename.pl-PL.resx" />
+    <EmbeddedResource Remove="ResxResources\Pages\MetadataRename.resx" />
+    <EmbeddedResource Remove="ResxResources\Pages\PlotAndIntegrate.pl-PL.resx" />
+    <EmbeddedResource Remove="ResxResources\Pages\PlotAndIntegrate.resx" />
+    <EmbeddedResource Remove="ResxResources\Services\SayService.pl-PL.resx" />
+    <EmbeddedResource Remove="ResxResources\Services\SayService.resx" />
+    <EmbeddedResource Remove="ResxResources\Shared\AboutMe.pl-PL.resx" />
+    <EmbeddedResource Remove="ResxResources\Shared\AboutMe.resx" />
+    <EmbeddedResource Remove="ResxResources\Shared\Challenges.pl-PL.resx" />
+    <EmbeddedResource Remove="ResxResources\Shared\Challenges.resx" />
+    <EmbeddedResource Remove="ResxResources\Shared\LanguageSelect.pl-PL.resx" />
+    <EmbeddedResource Remove="ResxResources\Shared\LanguageSelect.resx" />
+    <EmbeddedResource Remove="ResxResources\Shared\LearningProgress2022.pl-PL.resx" />
+    <EmbeddedResource Remove="ResxResources\Shared\LearningProgress2022.resx" />
+    <EmbeddedResource Remove="ResxResources\Shared\LearningProgress2023.pl-PL.resx" />
+    <EmbeddedResource Remove="ResxResources\Shared\LearningProgress2023.resx" />
+    <EmbeddedResource Remove="ResxResources\Shared\LearningProgress2024.pl-PL.resx" />
+    <EmbeddedResource Remove="ResxResources\Shared\LearningProgress2024.resx" />
+    <EmbeddedResource Remove="ResxResources\Shared\NavMenu.pl-PL.resx" />
+    <EmbeddedResource Remove="ResxResources\Shared\NavMenu.resx" />
+    <EmbeddedResource Remove="ResxResources\Shared\Projects.pl-PL.resx" />
+    <EmbeddedResource Remove="ResxResources\Shared\Projects.resx" />
+    <EmbeddedResource Remove="ResxResources\Shared\Skills.pl-PL.resx" />
+    <EmbeddedResource Remove="ResxResources\Shared\Skills.resx" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="ResxResources\Layout\MainLayout.pl-PL.resx">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="ResxResources\Layout\MainLayout.resx">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="ResxResources\Pages\CountAndSay.pl-PL.resx">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="ResxResources\Pages\CountAndSay.resx">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="ResxResources\Pages\IntegerToRoman.pl-PL.resx">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="ResxResources\Pages\IntegerToRoman.resx">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="ResxResources\Pages\LearningProgress.pl-PL.resx">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="ResxResources\Pages\LearningProgress.resx">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="ResxResources\Pages\MetadataRename.pl-PL.resx">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="ResxResources\Pages\MetadataRename.resx">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="ResxResources\Pages\PlotAndIntegrate.pl-PL.resx">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="ResxResources\Pages\PlotAndIntegrate.resx">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="ResxResources\Services\SayService.pl-PL.resx">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="ResxResources\Services\SayService.resx">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="ResxResources\Shared\AboutMe.pl-PL.resx">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="ResxResources\Shared\AboutMe.resx">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="ResxResources\Shared\Challenges.pl-PL.resx">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="ResxResources\Shared\Challenges.resx">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="ResxResources\Shared\LanguageSelect.pl-PL.resx">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="ResxResources\Shared\LanguageSelect.resx">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="ResxResources\Shared\LearningProgress2022.pl-PL.resx">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="ResxResources\Shared\LearningProgress2022.resx">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="ResxResources\Shared\LearningProgress2023.pl-PL.resx">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="ResxResources\Shared\LearningProgress2023.resx">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="ResxResources\Shared\LearningProgress2024.pl-PL.resx">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="ResxResources\Shared\LearningProgress2024.resx">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="ResxResources\Shared\NavMenu.pl-PL.resx">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="ResxResources\Shared\NavMenu.resx">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="ResxResources\Shared\Projects.pl-PL.resx">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="ResxResources\Shared\Projects.resx">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="ResxResources\Shared\Skills.pl-PL.resx">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="ResxResources\Shared\Skills.resx">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
     <Content Include="Shared\HiddenForScreenWidth.razor.js" />
   </ItemGroup>
 

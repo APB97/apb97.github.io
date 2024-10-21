@@ -1,5 +1,7 @@
-﻿using Microsoft.Extensions.Options;
+﻿using apb97.github.io.SimpleResxToJson.Shared;
+using Microsoft.Extensions.Options;
 using System.Text;
+using System.Text.Json;
 using System.Xml;
 
 namespace apb97.github.io.Services.Localization;
@@ -10,7 +12,7 @@ public class StringLocalizerFactory(HttpClient http, IOptions<LocalizationOption
     {
         using var stream = await RequestLocalizationStreamAsync<T>(cultureName);
 
-        return stream is null ? null : RetreiveLocalization(stream);
+        return stream is null ? null : RetrieveLocalization(stream);
     }
 
     private async Task<Stream?> RequestLocalizationStreamAsync<T>(string? cultureName)
@@ -22,10 +24,21 @@ public class StringLocalizerFactory(HttpClient http, IOptions<LocalizationOption
 
         try
         {
-            if (cultureName.StartsWith("en"))
-                return await http.GetStreamAsync(GetDefaultResourceFilePath<T>());
+            switch (localizationOptions.Value.DataFormat)
+            {
+                case DataFormat.JSON:
+                    if (cultureName.StartsWith("en"))
+                        return await http.GetStreamAsync(GetDefaultJsonFilePath<T>());
 
-            return await http.GetStreamAsync(GetResourceFilePath<T>(cultureName));
+                    return await http.GetStreamAsync(GetJsonFilePath<T>(cultureName));
+                case DataFormat.RESX:
+                    if (cultureName.StartsWith("en"))
+                        return await http.GetStreamAsync(GetDefaultResourceFilePath<T>());
+
+                    return await http.GetStreamAsync(GetResourceFilePath<T>(cultureName));
+                default:
+                    return null;
+            }
         }
         catch
         {
@@ -41,6 +54,16 @@ public class StringLocalizerFactory(HttpClient http, IOptions<LocalizationOption
     private string GetResourceFilePath<T>(string cultureName)
     {
         return $"{localizationOptions.Value.ResourcesPath}{GetResourcePathWithNoExtension<T>()}.{cultureName}.resx";
+    }
+
+    private string GetDefaultJsonFilePath<T>()
+    {
+        return $"{localizationOptions.Value.ResourcesPath}{GetResourcePathWithNoExtension<T>()}.json";
+    }
+
+    private string GetJsonFilePath<T>(string cultureName)
+    {
+        return $"{localizationOptions.Value.ResourcesPath}{GetResourcePathWithNoExtension<T>()}.{cultureName}.json";
     }
 
     private string GetResourcePathWithNoExtension<T>()
@@ -64,7 +87,25 @@ public class StringLocalizerFactory(HttpClient http, IOptions<LocalizationOption
         return builder.ToString();
     }
 
-    private static Dictionary<string, string> RetreiveLocalization(Stream stream)
+    private Dictionary<string, string> RetrieveLocalization(Stream stream)
+    {
+        switch (localizationOptions.Value.DataFormat)
+        {
+            case DataFormat.JSON:
+                return RetrieveJsonLocalization(stream);
+            case DataFormat.RESX:
+                return RetrieveResxLocalization(stream);
+            default:
+                return [];
+        }
+    }
+
+    private Dictionary<string, string> RetrieveJsonLocalization(Stream stream)
+    {
+        return JsonSerializer.Deserialize(stream, ResxDataContext.Default.ResxData)?.Strings ?? [];
+    }
+
+    private static Dictionary<string, string> RetrieveResxLocalization(Stream stream)
     {
         using var xml = XmlReader.Create(stream);
         var results = new Dictionary<string, string>();
