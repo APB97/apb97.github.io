@@ -132,4 +132,10 @@
   <data name="Rename based on metadata built with WPF." xml:space="preserve">
     <value>Rename based on metadata built with WPF.</value>
   </data>
+  <data name="Simple Resx to JSON description" xml:space="preserve">
+    <value>Application with command-line interface (CLI) that is simply meant to convert single *.resx file or mulitple files in directory into *.json equivalents. Used in project apb97.github.io to convert files with translation.</value>
+  </data>
+  <data name="CLI" xml:space="preserve">
+    <value>CLI</value>
+  </data>
 </root>

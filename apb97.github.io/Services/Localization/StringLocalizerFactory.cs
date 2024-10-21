@@ -89,18 +89,15 @@ public class StringLocalizerFactory(HttpClient http, IOptions<LocalizationOption
 
     private Dictionary<string, string> RetrieveLocalization(Stream stream)
     {
-        switch (localizationOptions.Value.DataFormat)
+        return localizationOptions.Value.DataFormat switch
         {
-            case DataFormat.JSON:
-                return RetrieveJsonLocalization(stream);
-            case DataFormat.RESX:
-                return RetrieveResxLocalization(stream);
-            default:
-                return [];
-        }
+            DataFormat.JSON => RetrieveJsonLocalization(stream),
+            DataFormat.RESX => RetrieveResxLocalization(stream),
+            _ => [],
+        };
     }
 
-    private Dictionary<string, string> RetrieveJsonLocalization(Stream stream)
+    private static Dictionary<string, string> RetrieveJsonLocalization(Stream stream)
     {
         return JsonSerializer.Deserialize(stream, ResxDataContext.Default.ResxData)?.Strings ?? [];
     }
