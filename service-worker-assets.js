@@ -21,11 +21,11 @@
       "url": "_framework\/dotnet.runtime.8.0.10.a2v1j2tzpw.js"
     },
     {
-      "hash": "sha256-D2X\/EyXtQZeHP\/iXstrzNbEqj+9Vob2eDpgrDRAmBMA=",
+      "hash": "sha256-5vGZrJoMyja5YSYd6NConaLuHemQIOTNLVfV+xvjJh8=",
       "url": "_framework\/blazor.boot.json"
     },
     {
-      "hash": "sha256-ClO6U9FNSlNNfSA3iZ4TfmyfRHWXmp2VPaGkK68BOc0=",
+      "hash": "sha256-Xwq2XFA25P7Us+\/ShV5k6oF8cdZVGCT0ZMG9uL2QA1Q=",
       "url": "_framework\/apb97.github.io.wasm"
     },
     {
@@ -195,6 +195,10 @@
     {
       "hash": "sha256-RCXDiWcbcRRToHg3SOWKoNwhLP8HAKxk8xkCEeo8C6I=",
       "url": "_framework\/System.Xml.ReaderWriter.wasm"
+    },
+    {
+      "hash": "sha256-4AATQG\/tXjJLK9Kp2TEMtEW2GHxxnzHZjFSaaXUigTQ=",
+      "url": "_framework\/pl-PL\/apb97.github.io.resources.wasm"
     },
     {
       "hash": "sha256-AnJIVNltzanO2Al1yzQZ864sVKlPaLYVgPyycQdIaRs=",
@@ -381,11 +385,11 @@
       "url": "Resources\/Shared\/NavMenu.pl-PL.json"
     },
     {
-      "hash": "sha256-oxO7yRvZEYdoVOLmgvdGw+flS+m5nYSPc6cqj3zjHYA=",
+      "hash": "sha256-L\/KK6FoZmzyOjUppMKIOTBP83HHSz5w4\/\/vFrIEIYOs=",
       "url": "Resources\/Shared\/Projects.json"
     },
     {
-      "hash": "sha256-ghTO0\/pZUN522Gas5kIpUpv9ALad2j1nheTYNjkUo2g=",
+      "hash": "sha256-0TZyeCMOH5sthhD9CbvSwwXJ3kUN9k7DgN\/ve1hKtRo=",
       "url": "Resources\/Shared\/Projects.pl-PL.json"
     },
     {
@@ -397,5 +401,5 @@
       "url": "Resources\/Shared\/Skills.pl-PL.json"
     }
   ],
-  "version": "8Ot46C0G"
+  "version": "r1BLiaCm"
 };
