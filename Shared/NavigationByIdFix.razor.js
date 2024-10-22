@@ -1,6 +1,13 @@
 ﻿export function activateCurrentLink(url, hash, tries = DEFAULT_TRIES) {
     if (tries <= 0) return;
 
+    if (url == null && hash == null) {
+        url = document.location.href;
+        hash = document.location.hash;
+    }
+
+    if (hash == '#' || hash == '') return;
+
     const elementWithId = document.querySelector(hash);
     elementWithId?.scrollIntoView();
     const href = url.replace(document.location.origin, '').replace(/\//, '');
