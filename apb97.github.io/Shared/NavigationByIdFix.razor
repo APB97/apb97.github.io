@@ -22,7 +22,7 @@
 
     protected override async Task OnInitializedAsync()
     {
-        module = await JS.InvokeAsync<IJSObjectReference>("import", "./Shared/NavigationByIdFix.razor.js");
+        module = await JS.ImportAsync("./Shared/NavigationByIdFix.razor.js");
     }
 
     async ValueTask IAsyncDisposable.DisposeAsync()

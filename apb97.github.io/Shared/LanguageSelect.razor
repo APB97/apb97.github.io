@@ -41,7 +41,7 @@
 
     protected override async Task OnInitializedAsync()
     {
-        utilitiesModule = await JS.InvokeAsync<IJSObjectReference>("import", JSModules.UtilitiesModule);
+        utilitiesModule = await JS.ImportAsync(JSModules.UtilitiesModule);
         if (utilitiesModule is not null)
             Culture = await utilitiesModule.GetSettingAsync<string>("BlazorCulture") ?? "en-US";
 

@@ -48,7 +48,7 @@
 
     protected override async Task OnInitializedAsync()
     {
-        await using var utilitiesModule = await JS.InvokeAsync<IJSObjectReference>("import", JSModules.UtilitiesModule);
+        await using var utilitiesModule = await JS.ImportAsync(JSModules.UtilitiesModule);
         var modeSetting = await utilitiesModule.GetSettingAsync<string>("LayoutMode");
         if (string.IsNullOrEmpty(modeSetting)) return;
         LayoutMode = modeSetting;
