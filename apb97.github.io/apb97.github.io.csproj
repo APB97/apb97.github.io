@@ -8,7 +8,11 @@
     <InvariantGlobalization>true</InvariantGlobalization>
     <ProduceReferenceAssembly>False</ProduceReferenceAssembly>
   </PropertyGroup>
-  
+
+  <PropertyGroup Condition="'$(GITHUB_ACTIONS)' == 'true'">
+    <ContinuousIntegrationBuild>true</ContinuousIntegrationBuild>
+  </PropertyGroup>
+
   <Target Condition="$(ContinuousIntegrationBuild)==''" Name="PreBuild" BeforeTargets="PreBuildEvent">
     <Exec Command="SimpleResxToJson.CLI.exe --input=$(ProjectDir)ResxResources --output=$(ProjectDir)wwwroot/Resources" />
   </Target>
