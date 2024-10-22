@@ -6,7 +6,7 @@
 
 @if(ShouldRender())
 {
-    <AdjustedAnchorHeading Id="learning" Heading="@Loc["LearningProgress"]">
+    <AdjustedAnchorHeading Id="learning" Heading="@Loc["LearningProgress"]" IncludeId="readyable?.IsReady ?? false">
         <label for="year">@Loc["Year"]</label>
         <InputNumber id="year" TValue="int" Value="Year" ValueChanged="OnYearChanged" ValueExpression="() => Year" min="@MinYear" max="@RecentYear" />
 
@@ -14,13 +14,13 @@
             @switch (Year)
             {
                 case 2024:
-                    <LearningProgress2024 />
+                    <LearningProgress2024 @ref="readyable" OnReady="StateHasChanged" />
                     break;
                 case 2023:
-                    <LearningProgress2023 />
+                    <LearningProgress2023 @ref="readyable" OnReady="StateHasChanged" />
                     break;
                 case 2022:
-                    <LearningProgress2022 />
+                    <LearningProgress2022 @ref="readyable" OnReady="StateHasChanged" />
                     break;
             }
         </div>
@@ -36,6 +36,8 @@
 
     private const int MinYear = 2022;
     private const int RecentYear = 2024;
+
+    private IReadyable? readyable;
 
     private Type GetDynamicComponentType(int year)
     {

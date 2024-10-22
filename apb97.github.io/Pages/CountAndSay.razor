@@ -3,6 +3,7 @@
 @using System.Text
 @using apb97.github.io.Shared
 
+@implements IReadyable
 @implements IDisposable
 @inject StringLocalizer<CountAndSay> Loc
 @inject NavigationManager Navigation
@@ -12,9 +13,9 @@
 {
     <PageTitle>Adrian Bieliński - @Loc["Count and say"]</PageTitle>
 
-    <AdjustedAnchorHeading Id="" Heading="@Loc["Count and say"]" />
+    <AdjustedAnchorHeading Id="" Heading="@Loc["Count and say"]" IncludeId="this.IsReady" />
     <hr/>
-    <AdjustedAnchorHeading Id="description" Heading="@Loc["Challenge description"]" FontSize="smaller" />
+    <AdjustedAnchorHeading Id="description" Heading="@Loc["Challenge description"]" FontSize="smaller" IncludeId="this.IsReady" />
     <p>
         @Loc["The count-and-say sequence is a sequence"]:
     </p>
@@ -32,11 +33,11 @@
     <span>@Loc["Then for each group, say"]</span>
     <span>@Loc["To convert the saying"]</span>
 
-    <AdjustedAnchorHeading Id="note" Heading="@Loc["Note"]" FontSize="smaller" />
+    <AdjustedAnchorHeading Id="note" Heading="@Loc["Note"]" FontSize="smaller" IncludeId="this.IsReady" />
     <p>@Loc["You can use the url"]</p>
 
     <div>
-        <AdjustedAnchorHeading Id="input" Heading="@Loc["Input"]" FontSize="smaller" />
+        <AdjustedAnchorHeading Id="input" Heading="@Loc["Input"]" FontSize="smaller" IncludeId="this.IsReady" />
 
         <div class="row">
             <div class="card-group">
@@ -49,7 +50,7 @@
             var results = GetResults();
         }
         <hr />
-        <AdjustedAnchorHeading Id="@OutputId" FontSize="smaller" Heading="@Loc["Output"]" />
+        <AdjustedAnchorHeading Id="@OutputId" FontSize="smaller" Heading="@Loc["Output"]" IncludeId="this.IsReady" />
         <div class="row">
             <div class="card-group">
                 <span style="margin: 4px">@Loc["Result"]</span>
@@ -76,6 +77,7 @@
             </p>
         </div>
     </div>
+    <NavigationByIdFix />
 }
 
 @code 
@@ -84,6 +86,10 @@
     public required MainLayout Layout { get; set; }
 
     public const string OutputId = "output";
+
+    public bool IsReady { get; private set; }
+
+    public Action OnReady { get; set; } = delegate { };
 
     [Parameter]
     public int? Number { get; set; }
@@ -111,11 +117,17 @@
 
     protected override void OnInitialized()
     {
+        OnReady = StateHasChanged;
         Layout.OnStateChanging += GetResources;
     }
 
     protected override void OnAfterRender(bool firstRender)
     {
+        if (!IsReady && Loc.IsReady)
+        {
+            IsReady = true;
+            OnReady();
+        }
         if (firstRender) return;
         if (!Number.HasValue) return;
         var target = $"/CountAndSay/{Number.Value}#{OutputId}";

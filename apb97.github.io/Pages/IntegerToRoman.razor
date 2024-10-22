@@ -2,6 +2,7 @@
 @page "/IntegerToRoman/{Number:int?}"
 @using apb97.github.io.Shared
 
+@implements IReadyable
 @implements IDisposable
 @inject StringLocalizer<IntegerToRoman> Loc
 @inject NavigationManager Navigation
@@ -10,9 +11,9 @@
 {
     <PageTitle>Adrian Bieliński - @Loc["Integer to Roman"]</PageTitle>
 
-    <AdjustedAnchorHeading Id="" Heading="@Loc["Integer to Roman"]" />
+    <AdjustedAnchorHeading Id="" Heading="@Loc["Integer to Roman"]" IncludeId="this.IsReady" />
     <hr/>
-    <AdjustedAnchorHeading Id="description" Heading="@Loc["Challenge description"]" FontSize="smaller" />
+    <AdjustedAnchorHeading Id="description" Heading="@Loc["Challenge description"]" FontSize="smaller" IncludeId="this.IsReady" />
 
     <p>@Loc["Roman numerals are represented by"]<code>I</code>, <code>V</code>, <code>X</code>, <code>L</code>, <code>C</code>, <code>D</code> @Loc["and"] <code>M</code>.</p>
     <p>@Loc["They represent the following"]<code>1</code>, <code>5</code>, <code>10</code>, <code>50</code>, <code>100</code>, <code>500</code>, <code>1000</code>.</p>
@@ -39,11 +40,11 @@
     <br/>
     <p>@Loc["Given an integer convert it"]</p>
 
-    <AdjustedAnchorHeading Id="note" Heading="@Loc["Note"]" FontSize="smaller" />
+    <AdjustedAnchorHeading Id="note" Heading="@Loc["Note"]" FontSize="smaller" IncludeId="this.IsReady" />
     <p>@Loc["You can use the url"]</p>
 
     <div>
-        <AdjustedAnchorHeading Id="input" Heading="@Loc["Input"]" FontSize="smaller" />
+        <AdjustedAnchorHeading Id="input" Heading="@Loc["Input"]" FontSize="smaller" IncludeId="this.IsReady" />
 
         <div class="row">
             <div class="card-group">
@@ -53,7 +54,7 @@
         </div>
 
         <hr />
-        <AdjustedAnchorHeading Id="@OutputId" FontSize="smaller" Heading="@Loc["Output"]">
+        <AdjustedAnchorHeading Id="@OutputId" FontSize="smaller" Heading="@Loc["Output"]" IncludeId="this.IsReady">
             <div class="row">
                 <div class="card-group">
                     <span style="margin: 4px">@Loc["Roman"]</span>
@@ -68,15 +69,20 @@
             </div>
         </AdjustedAnchorHeading>
     </div>
+    <NavigationByIdFix />
 }
 @code {
     public const string OutputId = "output";
-    
+
     [CascadingParameter]
     public required MainLayout Layout { get; set; }
 
     [Parameter]
     public int? Number { get; set; }
+
+    public bool IsReady { get; private set; }
+
+    public Action OnReady { get; set; } = delegate { };
 
     private int? prev;
 
@@ -100,11 +106,17 @@
 
     protected override void OnInitialized()
     {
+        OnReady = StateHasChanged;
         Layout.OnStateChanging += GetResources;
     }
 
     protected override void OnAfterRender(bool firstRender)
     {
+        if (!IsReady && Loc.IsReady)
+        {
+            IsReady = true;
+            OnReady();
+        }
         if (firstRender) return;
         if (!Number.HasValue) return;
         var target = $"/IntegerToRoman/{Number.Value}#{OutputId}";

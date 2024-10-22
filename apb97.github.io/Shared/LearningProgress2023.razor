@@ -1,4 +1,5 @@
-﻿@implements IDisposable
+﻿@implements IReadyable
+@implements IDisposable
 @inject StringLocalizer<LearningProgress2023> Loc
 
 <h3>@Loc["Year2023"]</h3>
@@ -67,9 +68,20 @@
     </li>
 </ul>
 
+@if (IsReady == false && Loc.IsReady)
+{
+    IsReady = true;
+    OnReady();
+}
+
 @code {
     [CascadingParameter]
     public required MainLayout Layout { get; set; }
+
+    [Parameter]
+    public required Action OnReady { get; set; }
+
+    public bool IsReady { get; private set; }
 
     protected override bool ShouldRender()
     {

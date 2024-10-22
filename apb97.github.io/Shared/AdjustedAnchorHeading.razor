@@ -2,7 +2,7 @@
 
 <!-- uses --nav-top-height variable to fix issue with anchor tags target position after navigation while in mobile view -->
 <!-- disables pointer-events on h2 tag and reenables on a tag to allow click to pass through -->
-<h2 id="@Id" style="pointer-events:none; position: relative; top: calc(-1 * var(--nav-top-height));">
+<h2 id="@(IncludeId ? Id : null)" style="pointer-events:none; position: relative; top: calc(-1 * var(--nav-top-height));">
     <a class="link-primary" style="pointer-events: auto; position: relative; top: var(--nav-top-height); font-size: @(FontSize ?? DefaultFontSize)"
         onclick="document.location.assign(document.location.pathname + '#@Id'); document.querySelectorAll('a.nav-link.active')?.forEach(n => n.classList.remove('active')); document.querySelector(`a.nav-link[href='${document.location.pathname.replace(/\//, '')}${document.location.hash}']`)?.classList?.add('active');">
         <span>
@@ -18,6 +18,9 @@
 
     [Parameter]
     public required string Id { get; set; }
+
+    [Parameter]
+    public bool IncludeId { get; set; }
 
     [Parameter]
     public required RenderFragment ChildContent { get; set; }

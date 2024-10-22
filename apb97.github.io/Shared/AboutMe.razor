@@ -2,6 +2,7 @@
 @using apb97.github.io.Services.Dimensions
 
 @implements IDisposable
+@implements IReadyable
 @inject IJSRuntime JS
 @inject StringLocalizer<AboutMe> Loc
 @inject NavigationManager Navigation
@@ -10,7 +11,7 @@
 {
     <div class="row">
         <div class="d-flex flex-column">
-            <AdjustedAnchorHeading Id="aboutme" Heading="@Loc["About me"]">
+            <AdjustedAnchorHeading Id="aboutme" Heading="@Loc["About me"]" IncludeId="this.IsReady">
                 <div class="d-flex flex-row">
                     <div class="col-8 flex-column">
                         <div class="d-flex flex-column">
@@ -53,6 +54,10 @@
     [CascadingParameter]
     public required MainLayout Layout { get; set; }
 
+    public bool IsReady { get; private set; }
+
+    public Action OnReady { get; set; } = delegate { };
+
     protected override bool ShouldRender()
     {
         return Loc.IsReady;
@@ -65,7 +70,17 @@
 
     protected override void OnInitialized()
     {
+        OnReady = StateHasChanged;
         Layout.OnStateChanging += GetResources;
+    }
+
+    protected override void OnAfterRender(bool firstRender)
+    {
+        if (!IsReady && Loc.IsReady)
+        {
+            IsReady = true;
+            OnReady();
+        }
     }
 
     void IDisposable.Dispose()

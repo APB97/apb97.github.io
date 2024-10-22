@@ -1,10 +1,11 @@
-﻿@implements IDisposable
+﻿@implements IReadyable
+@implements IDisposable
 @inject StringLocalizer<Projects> Loc
 @inject IJSRuntime JS
 
 @if (ShouldRender())
 {
-    <AdjustedAnchorHeading Id="projects" Heading="@Loc["Projects"]">
+    <AdjustedAnchorHeading Id="projects" Heading="@Loc["Projects"]" IncludeId="this.IsReady">
         <div class="d-flex" style="border: medium solid dodgerblue; margin: 2pt;">
             <div class="d-flex flex-column flex-grow-1" style="flex-basis: 0;">
                 <div class="text-center flex-grow-1">
@@ -81,6 +82,10 @@
     [CascadingParameter]
     public required MainLayout Layout { get; set; }
 
+    public bool IsReady { get; private set; }
+
+    public Action OnReady { get; set; } = delegate { };
+
     protected override bool ShouldRender()
     {
         return Loc.IsReady;
@@ -93,12 +98,22 @@
 
     protected override void OnInitialized()
     {
+        OnReady = StateHasChanged;
         Layout.OnStateChanging += GetResources;
     }
 
     void IDisposable.Dispose()
     {
         Layout.OnStateChanging -= GetResources;
+    }
+
+    protected override void OnAfterRender(bool firstRender)
+    {
+        if (!IsReady && Loc.IsReady)
+        {
+            IsReady = true;
+            OnReady();
+        }
     }
 
     private async Task GetResources()

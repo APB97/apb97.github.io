@@ -1,9 +1,10 @@
-﻿@implements IDisposable
+﻿@implements IReadyable
+@implements IDisposable
 @inject StringLocalizer<Skills> Loc
 
 @if (ShouldRender())
 {
-    <AdjustedAnchorHeading Id="skills" Heading="@Loc["Skills"]">
+    <AdjustedAnchorHeading Id="skills" Heading="@Loc["Skills"]" IncludeId="this.IsReady">
         <div class="row">
             <div class="skill-card">
                 <div class="d-flex">
@@ -157,6 +158,10 @@
     [CascadingParameter]
     public required MainLayout Layout { get; set; }
 
+    public bool IsReady { get; private set; }
+
+    public Action OnReady { get; set; } = delegate { };
+
     protected override bool ShouldRender()
     {
         if (!Loc.IsReady) return false;
@@ -170,7 +175,17 @@
 
     protected override void OnInitialized()
     {
+        OnReady = StateHasChanged;
         Layout.OnStateChanging += GetResources;
+    }
+
+    protected override void OnAfterRender(bool firstRender)
+    {
+        if (!IsReady && Loc.IsReady)
+        {
+            IsReady = true;
+            OnReady();
+        }
     }
 
     void IDisposable.Dispose()
