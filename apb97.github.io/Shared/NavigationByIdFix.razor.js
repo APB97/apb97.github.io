@@ -1,4 +1,4 @@
-﻿export function activateCurrentLink(url, hash, tries = 16) {
+﻿export function activateCurrentLink(url, hash, tries = DEFAULT_TRIES) {
     if (tries <= 0) return;
 
     const elementWithId = document.querySelector(hash);
@@ -10,6 +10,9 @@
     currentNavLink?.classList?.add('active');
     currentNavLink?.click();
     if (elementWithId == null) {
-        setTimeout(_ => activateCurrentLink(url, hash, tries - 1), 250);
+        setTimeout(_ => activateCurrentLink(url, hash, tries - 1), MS_DELAY);
     }
 }
+
+const DEFAULT_TRIES = 8;
+const MS_DELAY = 150;
