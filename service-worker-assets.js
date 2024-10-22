@@ -21,11 +21,11 @@
       "url": "_framework\/dotnet.runtime.8.0.10.a2v1j2tzpw.js"
     },
     {
-      "hash": "sha256-ilZ90iupqQqSne0TaBUhZ5lp+0cwnCERKzRDncRuqGI=",
+      "hash": "sha256-z4Wo4cdldzFOC2a6b\/cIvLpYbpva8JPa61S59KOK\/Z8=",
       "url": "_framework\/blazor.boot.json"
     },
     {
-      "hash": "sha256-GqjVXKExlOlr6LkFvWqQUFbV33MoPnGB42C4g\/59Ivg=",
+      "hash": "sha256-OzBXto6aSACAjcPgTr7qYtrL2dl\/aynWfDOrxgHLor0=",
       "url": "_framework\/apb97.github.io.wasm"
     },
     {
@@ -197,7 +197,7 @@
       "url": "_framework\/System.Xml.ReaderWriter.wasm"
     },
     {
-      "hash": "sha256-1wCgiV6Rz8jBYdaX4xmV6wBH4Uk9vumQMP8i0Qesk+E=",
+      "hash": "sha256-kGEb1FskZHxwKHgajW5Qbim8kbtaZc8bsIgRc7M4RPE=",
       "url": "_framework\/pl-PL\/apb97.github.io.resources.wasm"
     },
     {
@@ -209,7 +209,7 @@
       "url": "Shared\/HiddenForScreenWidth.razor.js"
     },
     {
-      "hash": "sha256-MkNHcDtQP1BPuBndJ3O117swEoQ34XBE2VNH4FafEFk=",
+      "hash": "sha256-2T+gFYjt7Ikk7goszQ9cmV2cWDtE6doOkGUrl+ZrNZI=",
       "url": "Shared\/NavigationByIdFix.razor.js"
     },
     {
@@ -401,5 +401,5 @@
       "url": "Resources\/Shared\/Skills.pl-PL.json"
     }
   ],
-  "version": "dch\/w3Y9"
+  "version": "\/SGK6ZP2"
 };
