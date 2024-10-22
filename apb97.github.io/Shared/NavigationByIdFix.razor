@@ -6,12 +6,16 @@
 @if (!Rendered)
 {
     Rendered = true;
-    Task.Delay(250).ContinueWith(async t =>
+    Task.CompletedTask.ContinueWith(async t =>
     {
-        Navigation.NavigateTo(Navigation.Uri, replace: true);
+        if (module is null)
+            module = await JS.ImportAsync("./Shared/NavigationByIdFix.razor.js");
         var urlSplit = Navigation.Uri.Split('#');
-        if (urlSplit.Length == 2 && module is not null)
+        if (module is null) return;
+        if (urlSplit.Length == 2)
             await module.InvokeVoidAsync("activateCurrentLink", Navigation.Uri, $"#{urlSplit[1]}");
+        else if (urlSplit.Length == 1)
+            await module.InvokeVoidAsync("activateCurrentLink", null, null);
     });
 }
 
@@ -22,7 +26,6 @@
 
     protected override async Task OnInitializedAsync()
     {
-        module = await JS.ImportAsync("./Shared/NavigationByIdFix.razor.js");
     }
 
     async ValueTask IAsyncDisposable.DisposeAsync()
