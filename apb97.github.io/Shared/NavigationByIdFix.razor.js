@@ -6,7 +6,7 @@
         hash = document.location.hash;
     }
 
-    if (hash == '#' || hash == '') return;
+    if (hash.length <= 1) return;
 
     const elementWithId = document.querySelector(hash);
     elementWithId?.scrollIntoView();
@@ -21,5 +21,5 @@
     }
 }
 
-const DEFAULT_TRIES = 8;
+const DEFAULT_TRIES = 4;
 const MS_DELAY = 150;

@@ -1,38 +1,13 @@
-﻿@implements IAsyncDisposable
-
-@inject NavigationManager Navigation
-@inject IJSRuntime JS
-
-@if (!Rendered)
-{
-    Rendered = true;
-    Task.CompletedTask.ContinueWith(async t =>
-    {
-        if (module is null)
-            module = await JS.ImportAsync("./Shared/NavigationByIdFix.razor.js");
-        var urlSplit = Navigation.Uri.Split('#');
-        if (module is null) return;
-        if (urlSplit.Length == 2)
-            await module.InvokeVoidAsync("activateCurrentLink", Navigation.Uri, $"#{urlSplit[1]}");
-        else if (urlSplit.Length == 1)
-            await module.InvokeVoidAsync("activateCurrentLink", null, null);
-    });
-}
+﻿@inject IJSRuntime JS
 
 @code{
-    private IJSObjectReference? module;
-
     public bool Rendered { get; private set; }
 
-    protected override async Task OnInitializedAsync()
+    protected override async Task OnAfterRenderAsync(bool firstRender)
     {
-    }
-
-    async ValueTask IAsyncDisposable.DisposeAsync()
-    {
-        if (module is not null)
-        {
-            await module.DisposeAsync();
-        }
+        if (!firstRender) return;
+        await using var module = await JS.ImportAsync("./Shared/NavigationByIdFix.razor.js");
+        if (module is null) return;
+        await module.InvokeVoidAsync("activateCurrentLink", null, null);
     }
 }
