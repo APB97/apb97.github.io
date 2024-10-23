@@ -13,18 +13,20 @@
     <ContinuousIntegrationBuild>true</ContinuousIntegrationBuild>
   </PropertyGroup>
 
-  <Target Condition="$(ContinuousIntegrationBuild)==''" Name="PreBuild" BeforeTargets="PreBuildEvent">
-    <Exec Command="SimpleResxToJson.CLI.exe --input=$(ProjectDir)ResxResources --output=$(ProjectDir)wwwroot/Resources" />
-  </Target>
-  
   <ItemGroup>
-    <None Include="ResxResources\**\*.resx">
+    <EmbeddedResource Remove="ResxResources\**\*.resx" />
+    <Content Include="ResxResources\**\*.resx">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <PublishState>Excluded</PublishState>
       <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
       <CopyToPublishDirectory>Never</CopyToPublishDirectory>
-    </None>
-    <Content Include="Shared\HiddenForScreenWidth.razor.js" />
+    </Content>
   </ItemGroup>
+  
+  <Target Condition="$(ContinuousIntegrationBuild)==''" Name="PreBuild" BeforeTargets="PreBuildEvent">
+    <Exec ContinueOnError="true" Condition="%(Extension)=='.resx' And ($([System.DateTime]::Parse('%(Content.ModifiedTime)').Ticks) &gt; $([System.IO.File]::GetLastWriteTime('$(ProjectDir)wwwroot/Resources/%(RecursiveDir)%(Filename).json').Ticks))"
+          Command="SimpleResxToJson.CLI.exe --input=$(ProjectDir)ResxResources/%(RecursiveDir)%(Filename)%(Extension) --output=$(ProjectDir)wwwroot/Resources/%(RecursiveDir)" />
+  </Target>
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="8.0.10" />

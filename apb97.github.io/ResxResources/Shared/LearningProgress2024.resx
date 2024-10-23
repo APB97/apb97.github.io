@@ -177,4 +177,13 @@
   <data name="Linux advanced commands" xml:space="preserve">
     <value>vim (Vi Improved - command-line text editor), sudo (execute commands as a root or a different user), grep (search for lines with expressions in text).</value>
   </data>
+  <data name="MSBuild Conditions description" xml:space="preserve">
+    <value>MSBuild Conditions allow applying specified conditions (defining when given node should be used), wherever "Condition" attribute is allowed.</value>
+  </data>
+  <data name="I used MSBuild Conditions to conditionally execute my SimpleResxToJson command-line tool" xml:space="preserve">
+    <value>I used MSBuild Conditions to conditionally execute my "SimpleResxToJson" command-line tool for resx files.</value>
+  </data>
+  <data name="MSBuild Conditions" xml:space="preserve">
+    <value>MSBuild Conditions</value>
+  </data>
 </root>

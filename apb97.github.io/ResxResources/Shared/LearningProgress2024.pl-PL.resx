@@ -177,4 +177,13 @@
   <data name="Linux advanced commands" xml:space="preserve">
     <value>vim (Vi Improved - konsolowy edytor tekstu), sudo (wykonaj komendy jako użytkownik root albo inny użytkownik), grep (szukaj linii z wyrażeniami w tekście).</value>
   </data>
+  <data name="MSBuild Conditions description" xml:space="preserve">
+    <value>Warunki w MSBuild pozwalają na zaaplikowanie określonych warunków (określenia kiedy dany węzeł ma być użyty), wszędzie, gdzie atrybut "Condition" jest dozwolny.</value>
+  </data>
+  <data name="I used MSBuild Conditions to conditionally execute my SimpleResxToJson command-line tool" xml:space="preserve">
+    <value>Użyłem warunków w MSBuild, aby w określonych okolicznościach wywołać moje konsolowe narzędzie "SimpleResxToJson" dla plików resx.</value>
+  </data>
+  <data name="MSBuild Conditions" xml:space="preserve">
+    <value>Warunki w MSBuild</value>
+  </data>
 </root>
