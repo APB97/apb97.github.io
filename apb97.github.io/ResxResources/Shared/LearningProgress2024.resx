@@ -186,4 +186,13 @@
   <data name="MSBuild Conditions" xml:space="preserve">
     <value>MSBuild Conditions</value>
   </data>
+  <data name="MSBuild Build Events for C#" xml:space="preserve">
+    <value>MSBuild Build Events for C#</value>
+  </data>
+  <data name="MSBuild Build Events for C# description" xml:space="preserve">
+    <value>MSBuild allows performing additonal actions during the build process. To execute commands before build, "BeforeTargets" has to be set to "PreBuildEvent" and/or to execute commands after build "AfterTargets" needs to be set to "PostBuildEvent".</value>
+  </data>
+  <data name="I used MSBuild Build Events to perform actions during the build process" xml:space="preserve">
+    <value>I used MSBuild Build Events to perform actions during the build process of my application.</value>
+  </data>
 </root>

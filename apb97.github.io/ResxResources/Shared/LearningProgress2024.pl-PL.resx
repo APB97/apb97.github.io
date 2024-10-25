@@ -186,4 +186,13 @@
   <data name="MSBuild Conditions" xml:space="preserve">
     <value>Warunki w MSBuild</value>
   </data>
+  <data name="MSBuild Build Events for C#" xml:space="preserve">
+    <value>Zdarzenia kompilacji w MSBuild dla języka C#</value>
+  </data>
+  <data name="MSBuild Build Events for C# description" xml:space="preserve">
+    <value>MSBuild pozwala na wykonywanie dodatkowych akcji podczas procesu kompilacji. Aby wykonać polecenia przed kompilacją, "BeforeTargets" należy ustawić na "PreBuildEvent" i/lub żeby wykonać polecenia po zbudowaniu projektu, "AfterTargets" trzeba ustawić na "PostBuildEvent".</value>
+  </data>
+  <data name="I used MSBuild Build Events to perform actions during the build process" xml:space="preserve">
+    <value>Użyłem zdarzeń kompilacji MSBuild aby wykonać polecenia podczas kompilacji mojej aplikacji.</value>
+  </data>
 </root>
