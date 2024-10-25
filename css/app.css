@@ -50,29 +50,21 @@ a, .btn-link {
     }
 }
 
-@keyframes card-grow {
-    from {
-        flex-grow: 1.00;
-        border-color: gray;
-    }
-
-    to {
-        flex-grow: 2.00;
-        border-color: dodgerblue;
-    }
-}
-
 .skill-card {
     border: thin solid lightgray;
     flex: 1 0 auto;
-    flex-grow: 1;
+    flex-grow: 1.00;
     width: 0%;
     animation-duration: 0.25s;
     animation-fill-mode: both;
+    transition: flex-grow 0.25s, border-color 0.25s;
 }
 
-.skill-card:hover {
-    animation-name: card-grow;
+@media (prefers-reduced-motion: no-preference) {
+    .skill-card:hover {
+        border-color: dodgerblue;
+        flex-grow: 2.00;
+    }
 }
 
 .col-custom-4 {
@@ -230,25 +222,4 @@ input {
     color: var(--input-fg-color);
     --input-bg-color: rgb(55, 55, 55);
     background-color: var(--input-bg-color);
-}
-
-@keyframes scale-on-hover {
-    from {
-    }
-
-    to {
-        /*position: fixed;
-        top: 20%;
-        right: 20%;
-        z-index: 200;*/
-    }
-}
-
-.scale-on-hover {
-    animation-duration: 0s;
-    animation-fill-mode: both;
-}
-
-.scale-on-hover:hover {
-    animation-name: scale-on-hover;
 }

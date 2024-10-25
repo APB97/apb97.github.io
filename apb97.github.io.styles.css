@@ -214,13 +214,28 @@ option.current[b-obldctxof6] {
     bottom: 1pt;
     left: 0;
     right: 0;
+    flex-wrap: wrap;
+    flex-basis: 0;
 }
 
 .tags > span[b-2m7ak20tsl] {
+    margin: 0 2pt;
+    flex-grow: 1.00;
     pointer-events: auto;
     display: inline-block;
     --tags-bg-color: linear-gradient(transparent 40%, #ab47bc);
     background: var(--tags-bg-color);
+    transition: flex-grow 0.25s;
+}
+
+.tags > span:hover[b-2m7ak20tsl] {
+    --tags-bg-color: linear-gradient(transparent 40%, dodgerblue);
+} 
+
+@media (prefers-reduced-motion: no-preference) {
+    .tags > span:hover[b-2m7ak20tsl] {
+        flex-grow: 4.00;
+    } 
 }
 
 a[b-2m7ak20tsl] {
