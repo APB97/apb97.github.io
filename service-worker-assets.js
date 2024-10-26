@@ -21,11 +21,11 @@
       "url": "_framework\/dotnet.runtime.8.0.10.a2v1j2tzpw.js"
     },
     {
-      "hash": "sha256-nUBO6veomyeHA80NxjXjDTOBA\/ZKy9sf\/8r7dB+8XCY=",
+      "hash": "sha256-TrWjbW+QsZxo4kuwcsWz07qLvJH+3xCy+Z8kAfpbT9g=",
       "url": "_framework\/blazor.boot.json"
     },
     {
-      "hash": "sha256-hh5YfOyXaRQs20vmJxNqXItWweIoshkeB3pP7JfsBsk=",
+      "hash": "sha256-yWARwNPL9nDVDPaV38T90GiQvZckcJ1EHk8oqCr4bbw=",
       "url": "_framework\/apb97.github.io.wasm"
     },
     {
@@ -197,7 +197,7 @@
       "url": "_framework\/System.Xml.ReaderWriter.wasm"
     },
     {
-      "hash": "sha256-SWELp11Ed05M4XmICbqs2IkciMwLpHNixOUXxNI+sAA=",
+      "hash": "sha256-wtM8QM83e4TYDnIjmA8aR3T4fXS0\/SS+CBpg9mOqSF0=",
       "url": "apb97.github.io.styles.css"
     },
     {
@@ -397,5 +397,5 @@
       "url": "Resources\/Shared\/Skills.pl-PL.json"
     }
   ],
-  "version": "yRHqoTE6"
+  "version": "uwMttF+x"
 };
