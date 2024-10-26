@@ -266,7 +266,7 @@ option.current[b-obldctxof6] {
 }
 
 .tags > span:hover[b-2m7ak20tsl] {
-    --tags-bg-color: linear-gradient(transparent 40%, dodgerblue);
+    --tags-bg-color: linear-gradient(transparent 40%, dodgerblue) !important;
 } 
 
 @media (prefers-reduced-motion: no-preference) {
