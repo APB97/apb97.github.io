@@ -21,11 +21,11 @@
       "url": "_framework\/dotnet.runtime.8.0.10.a2v1j2tzpw.js"
     },
     {
-      "hash": "sha256-+MI2D7vSN1KUer0sY\/eXtwRFoTHyxKBPnomZvFI1YdY=",
+      "hash": "sha256-Y9PZbdmnxWXHO56ZK1NyNHnaDkRpegu0q9y9s+Ur6Rg=",
       "url": "_framework\/blazor.boot.json"
     },
     {
-      "hash": "sha256-i2qys\/+0h+B0uvNrjyacuIOdpr9juToKr438neKyEVw=",
+      "hash": "sha256-p9D0r1ViPyfdBRf7A\/Qi6MxSLAtpjZr1iYGa6taFLxU=",
       "url": "_framework\/apb97.github.io.wasm"
     },
     {
@@ -397,5 +397,5 @@
       "url": "Resources\/Shared\/Skills.pl-PL.json"
     }
   ],
-  "version": "93h4Ipon"
+  "version": "36BhScuQ"
 };
