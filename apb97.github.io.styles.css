@@ -89,6 +89,12 @@ main[b-0clx55j7wy] {
     }
 }
 
+@media (min-width: 641px) {
+    *[b-46y0xc37f0] {
+        --nav-top-height: 0;
+    }
+}
+
 a[b-46y0xc37f0]{
     text-decoration: none !important;
 }
@@ -260,13 +266,13 @@ option.current[b-obldctxof6] {
     flex-grow: 1.00;
     pointer-events: auto;
     display: inline-block;
-    --tags-bg-color: linear-gradient(transparent 40%, #ab47bc);
+    --tags-bg-color: linear-gradient(transparent 60%, #ab47bc);
     background: var(--tags-bg-color);
     transition: flex-grow 0.25s;
 }
 
 .tags > span:hover[b-2m7ak20tsl] {
-    --tags-bg-color: linear-gradient(transparent 40%, dodgerblue) !important;
+    --tags-bg-color: linear-gradient(transparent 60%, dodgerblue) !important;
 } 
 
 @media (prefers-reduced-motion: no-preference) {
