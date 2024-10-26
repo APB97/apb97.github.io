@@ -11,6 +11,12 @@
     }
 }
 
+@media (min-width: 641px) {
+    * {
+        --nav-top-height: 0;
+    }
+}
+
 a{
     text-decoration: none !important;
 }

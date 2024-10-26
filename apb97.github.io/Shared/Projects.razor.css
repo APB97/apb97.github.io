@@ -17,13 +17,13 @@
     flex-grow: 1.00;
     pointer-events: auto;
     display: inline-block;
-    --tags-bg-color: linear-gradient(transparent 40%, #ab47bc);
+    --tags-bg-color: linear-gradient(transparent 60%, #ab47bc);
     background: var(--tags-bg-color);
     transition: flex-grow 0.25s;
 }
 
 .tags > span:hover {
-    --tags-bg-color: linear-gradient(transparent 40%, dodgerblue) !important;
+    --tags-bg-color: linear-gradient(transparent 60%, dodgerblue) !important;
 } 
 
 @media (prefers-reduced-motion: no-preference) {
