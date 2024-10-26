@@ -60,10 +60,9 @@
         StateHasChanged();
     }
 
-    public void NotifyStateChanged()
+    public async Task NotifyStateChanged()
     {
-        OnStateChanging.Invoke();
+        await OnStateChanging.Invoke();
         StateHasChanged();
-        navMenu?.SetParametersAsync(ParameterView.Empty);
     }
 }

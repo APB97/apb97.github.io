@@ -46,7 +46,7 @@
             Culture = await utilitiesModule.GetSettingAsync<string>("BlazorCulture") ?? "en-US";
 
         await Loc.InitializeAsync(Culture);
-        Layout.NotifyStateChanged();
+        await Layout.NotifyStateChanged();
     }
 
     private async Task SetCultureAndReload(string value)
@@ -55,7 +55,7 @@
         await Loc.InitializeAsync(value);
 
         StateHasChanged();
-        Layout.NotifyStateChanged();
+        await Layout.NotifyStateChanged();
 
         if (utilitiesModule is null) return;
         await utilitiesModule.SetSettingAsync("BlazorCulture", value);
