@@ -23,7 +23,7 @@
 }
 
 .tags > span:hover {
-    --tags-bg-color: linear-gradient(transparent 40%, dodgerblue);
+    --tags-bg-color: linear-gradient(transparent 40%, dodgerblue) !important;
 } 
 
 @media (prefers-reduced-motion: no-preference) {
