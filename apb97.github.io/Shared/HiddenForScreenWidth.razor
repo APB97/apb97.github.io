@@ -2,7 +2,7 @@
 @implements IAsyncDisposable
 @inject IJSRuntime JS
 
-<Hidden Hide="HideForWidthCondition(Width)">
+<Hidden Hide="hidden">
     @ChildContent
 </Hidden>
 
@@ -13,8 +13,9 @@
     [Parameter]
     public required RenderFragment ChildContent { get; set; }
 
-    [Parameter]
-    public int Width { get; set; }
+    private bool hidden;
+
+    public int Width { get; private set; }
 
     private IJSObjectReference? module;
 
@@ -32,6 +33,9 @@
     {
         if (Width == width) return;
         Width = width;
+        var hide = HideForWidthCondition(width);
+        if (hidden == hide) return;
+        hidden = hide;
         StateHasChanged();
     }
 

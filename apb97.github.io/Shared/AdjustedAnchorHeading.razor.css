@@ -1,7 +1,13 @@
 ﻿/* for mobile view */
 @media (max-width: 640px) {
     * {
-        --nav-top-height: 56px;
+        --nav-top-height: 6rem;
+    }
+}
+
+@media (min-width: 400px) {
+    * {
+        --nav-top-height: 3.5rem;
     }
 }
 
