@@ -133,7 +133,7 @@
     <value>Zmieniaj nazwy plików w oparciu o metadane przy użyciu aplikacji WPF</value>
   </data>
   <data name="Simple Resx to JSON description" xml:space="preserve">
-    <value>Aplikacja konsolowa, której zadaniem jest po prostu konwertować pojednyczy plik *.resx lub wiele takich plików w katalogu na odpowiedniki *.json. Użyte w projekcie apb97.github.io aby konwertować pliki z tłumaczeniem. Najnowsze wydanie można pobrać z sekcji "Releases".</value>
+    <value>Aplikacja konsolowa, której zadaniem jest po prostu konwertować pojedynczy plik *.resx lub wiele takich plików w katalogu na odpowiedniki *.json. Użyte w projekcie apb97.github.io aby konwertować pliki z tłumaczeniem. Najnowsze wydanie można pobrać z sekcji "Releases".</value>
   </data>
   <data name="CLI" xml:space="preserve">
     <value>Konsola</value>
