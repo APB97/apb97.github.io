@@ -21,11 +21,11 @@
       "url": "_framework\/dotnet.runtime.8.0.10.a2v1j2tzpw.js"
     },
     {
-      "hash": "sha256-4kbkN5ZJ2\/W5eR8vxHOrREbwsR1dKO9nmJl5D7XYi4s=",
+      "hash": "sha256-lbGxsEX\/pHM3T9nIJe7KLDbToqBCgsArALOcp72PirE=",
       "url": "_framework\/blazor.boot.json"
     },
     {
-      "hash": "sha256-8K9oTyWF8cY0hGugvu6PAicQVOQWKW+\/ccOplZbU3zM=",
+      "hash": "sha256-zePiKqWDhQNdZLnFcB1bA0ccnzt1mQWBB0yZbY3r34Y=",
       "url": "_framework\/apb97.github.io.wasm"
     },
     {
@@ -361,7 +361,7 @@
       "url": "Resources\/Shared\/LearningProgress2023.json"
     },
     {
-      "hash": "sha256-fLdcuWcqmGzpFEQG9v\/o7brNR8Zmb3A\/OKAlM+UdCIA=",
+      "hash": "sha256-iX3C6GbQMSDLzeaxCRRl+1RN6fF4hhn6iEKdhFq\/8NY=",
       "url": "Resources\/Shared\/LearningProgress2023.pl-PL.json"
     },
     {
@@ -369,7 +369,7 @@
       "url": "Resources\/Shared\/LearningProgress2024.json"
     },
     {
-      "hash": "sha256-sl9yuTjaKlngftlNjRjLaWlY5iLB7aKgDLAt88DQ9bU=",
+      "hash": "sha256-8RXaK5BkASWNZaPrjbl2ZKanHI\/Rni70Yeh67GQW95U=",
       "url": "Resources\/Shared\/LearningProgress2024.pl-PL.json"
     },
     {
@@ -397,5 +397,5 @@
       "url": "Resources\/Shared\/Skills.pl-PL.json"
     }
   ],
-  "version": "amXaDlIv"
+  "version": "EXwUsZRa"
 };
