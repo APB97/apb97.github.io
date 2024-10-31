@@ -154,8 +154,8 @@ function example()
 example();</value>
   </data>
   <data name="JS functions and arrays description" xml:space="preserve">
-    <value>Funkcje w języku JavaScript są definiowane z użyciem słowa kluczowego 'function' po którym następuje nazwa funkcji, nawias otwierający, lista argumentów rozdzielona przecinkami, nawias zamykający i potem ciało funkcji. Ciało funkcji może być zapisane wewnątrz nawiasów klamrowych lub po operatorze '=&gt;', zakładając, że jest to pojedyncze wyrażenie. Jeżeli operator '=&gt;' zostanie wykorzystany, to słowo kluczowe 'return' nie musi być użyte aby zwrócić wartość.
-Tablice są definiowane wewnątrz nawiasów kwadratowych, i mogą zawierać różne typy przechowane w postaci sekwnecji elementów. Mogą to być liczby, ciągi znaków, obiekty i tablice, które to są indeksowane za pomocą liczb całkowitych, począwszy od 0.</value>
+    <value>Funkcje w języku JavaScript są definiowane z użyciem słowa kluczowego 'function' po którym następuje nazwa funkcji, nawias otwierający, lista argumentów rozdzielona przecinkami, nawias zamykający i potem ciało funkcji. Ciało funkcji może być zapisane wewnątrz nawiasów klamrowych lub po operatorze '=&gt;', zakładając, że jest to pojedyncze wyrażenie. Jeżeli operator '=&gt;' zostanie wykorzystany, to słowo kluczowe 'return' nie musi być użyte, aby zwrócić wartość.
+Tablice są definiowane wewnątrz nawiasów kwadratowych, i mogą zawierać różne typy przechowane w postaci sekwencji elementów. Mogą to być liczby, ciągi znaków, obiekty i tablice, które to są indeksowane za pomocą liczb całkowitych, począwszy od 0.</value>
   </data>
   <data name="JS objects" xml:space="preserve">
     <value>Obiekty w języku JavaScript</value>

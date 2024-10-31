@@ -22,15 +22,22 @@
       <CopyToPublishDirectory>Never</CopyToPublishDirectory>
     </Content>
   </ItemGroup>
+
   
-  <Target Condition="$(ContinuousIntegrationBuild)==''" Name="PreBuild" BeforeTargets="PreBuildEvent">
-    <Exec ContinueOnError="true" Condition="%(Extension)=='.resx' And ($([System.DateTime]::Parse('%(Content.ModifiedTime)').Ticks) &gt; $([System.IO.File]::GetLastWriteTime('$(ProjectDir)wwwroot/Resources/%(RecursiveDir)%(Filename).json').Ticks))"
-          Command="SimpleResxToJson.CLI.exe --input=$(ProjectDir)ResxResources/%(RecursiveDir)%(Filename)%(Extension) --output=$(ProjectDir)wwwroot/Resources/%(RecursiveDir)" />
+  <UsingTask Condition="$(ContinuousIntegrationBuild)=='true'" TaskName="SimpleResxToJson.BuildTask.SingleResxToJsonTask" AssemblyName="APB97.SimpleResxToJson.BuildTask" />
+  
+  <Target Name="PreBuild" BeforeTargets="PreBuildEvent">
+    <!--Github Actions Task-->
+    <SimpleResxToJson.BuildTask.SingleResxToJsonTask Condition="$(ContinuousIntegrationBuild)=='true' And %(Extension)=='.resx' And ($([System.DateTime]::Parse('%(Content.ModifiedTime)').Ticks) &gt; $([System.IO.File]::GetLastWriteTime('$(ProjectDir)wwwroot/Resources/%(RecursiveDir)%(Filename).json').Ticks))" Input="$(ProjectDir)ResxResources/%(RecursiveDir)%(Filename)%(Extension)" Output="$(ProjectDir)wwwroot/Resources/%(RecursiveDir)" />
+
+    <!--Local Task-->
+    <Exec ContinueOnError="true" Condition="$(ContinuousIntegrationBuild)=='' And %(Extension)=='.resx' And ($([System.DateTime]::Parse('%(Content.ModifiedTime)').Ticks) &gt; $([System.IO.File]::GetLastWriteTime('$(ProjectDir)wwwroot/Resources/%(RecursiveDir)%(Filename).json').Ticks))" Command="SimpleResxToJson.CLI.exe --input=$(ProjectDir)ResxResources/%(RecursiveDir)%(Filename)%(Extension) --output=$(ProjectDir)wwwroot/Resources/%(RecursiveDir)" />
   </Target>
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="8.0.10" />
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="8.0.10" PrivateAssets="all" />
+    <PackageReference Include="APB97.SimpleResxToJson.BuildTask" Version="0.3.0" PrivateAssets="all" />
   </ItemGroup>
 
   <ItemGroup>
