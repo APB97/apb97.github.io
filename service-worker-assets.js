@@ -21,11 +21,11 @@
       "url": "_framework\/dotnet.runtime.8.0.10.a2v1j2tzpw.js"
     },
     {
-      "hash": "sha256-8JKYJOmjgcWT4pcCMLQUP8lM\/pGg3n+aNGgcqyzxxuU=",
+      "hash": "sha256-zGD3d0XCxW5IrH3R2tWLaJd4Y57zWFpIOrjUxjtTRFo=",
       "url": "_framework\/blazor.boot.json"
     },
     {
-      "hash": "sha256-YS9DXiJRBkzBAHdEkMfnF9noKhnmUIIQQZnGytIza88=",
+      "hash": "sha256-lAQlupejJk2AigYoUU0gLUlR7a7bNWGaRUCYTvWfBDc=",
       "url": "_framework\/apb97.github.io.wasm"
     },
     {
@@ -33,7 +33,7 @@
       "url": "_framework\/Microsoft.AspNetCore.Components.Forms.wasm"
     },
     {
-      "hash": "sha256-izHFIqlO24sjS7zEiWXKZxYcZJimamnkY4OybW2MhD8=",
+      "hash": "sha256-9zLJjYyvIguKSWLEmtfG6sSpCQIZJ4cis1sVYUAm68s=",
       "url": "_framework\/Microsoft.AspNetCore.Components.wasm"
     },
     {
@@ -197,7 +197,7 @@
       "url": "_framework\/System.Xml.ReaderWriter.wasm"
     },
     {
-      "hash": "sha256-LuMBviurrf5I92nlVpILdZErxGBKcfkymM3yWWvxu94=",
+      "hash": "sha256-vXjwAI7cZ8oUonrOTUJ6OeP7JnFT2CjfgzwDgUX8cSc=",
       "url": "apb97.github.io.styles.css"
     },
     {
@@ -373,11 +373,11 @@
       "url": "Resources\/Shared\/LearningProgress2024.pl-PL.json"
     },
     {
-      "hash": "sha256-aHz0Qi9jjmX5\/oX7XbShHkvw+H3GkFE3T1XndOM2Ihs=",
+      "hash": "sha256-cTvlg6OWVprrdVf6ii2EWLyfYttqXAY3v2j2cADJj6w=",
       "url": "Resources\/Shared\/NavMenu.json"
     },
     {
-      "hash": "sha256-I+spnqZH7hp8J+NMTgfsdHV95WAlCnqLMRzUrooceHg=",
+      "hash": "sha256-qqoRiZSshmqon2nRQz3fsHjpNHjzntkjxqhhuQkIYTQ=",
       "url": "Resources\/Shared\/NavMenu.pl-PL.json"
     },
     {
@@ -397,5 +397,5 @@
       "url": "Resources\/Shared\/Skills.pl-PL.json"
     }
   ],
-  "version": "NrIOIbvv"
+  "version": "8NIJP0FW"
 };
