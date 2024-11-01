@@ -95,7 +95,7 @@ main[b-0clx55j7wy] {
     }
 }
 
-a[b-46y0xc37f0]{
+a[b-46y0xc37f0] {
     text-decoration: none !important;
 }
 
@@ -105,13 +105,15 @@ a span[b-46y0xc37f0] {
 
 a[b-46y0xc37f0]:before {
     content: '<';
-    color: #a8a8a8;
+    --before-after-color: #a8a8a8;
+    color: var(--before-after-color);
     text-decoration: none !important;
 }
 
 a[b-46y0xc37f0]:after {
     content: ' />';
-    color: #a8a8a8;
+    --before-after-color: #a8a8a8;
+    color: var(--before-after-color);
     text-decoration: none !important;
 }
 /* /Shared/Challenges.razor.rz.scp.css */
