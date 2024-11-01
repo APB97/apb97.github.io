@@ -124,7 +124,7 @@
     <value>See it yourself here</value>
   </data>
   <data name="Web Sudoku description" xml:space="preserve">
-    <value>Sudoku with features like: save and load, printing single or multiple sudoku boards, automatic validation of input values with rules of sudoku, and navigation from cell to cell with arrow keys.</value>
+    <value>Sudoku with features like: save and load, printing single or multiple sudoku boards, automatic validation of input values with rules of sudoku, ability to manage generation settings, and navigation from cell to cell with arrow keys.</value>
   </data>
   <data name="Plot and calculate definite integral of a function. Built with Windows Forms." xml:space="preserve">
     <value>Plot and calculate definite integral of a function. Built with Windows Forms.</value>
@@ -133,7 +133,7 @@
     <value>Rename based on metadata built with WPF.</value>
   </data>
   <data name="Simple Resx to JSON description" xml:space="preserve">
-    <value>Application with command-line interface (CLI) that is simply meant to convert single *.resx file or mulitple files in directory into *.json equivalents. Used in project apb97.github.io to convert files with translation. Latest release can be downloaded from Releases section.</value>
+    <value>Application with command-line interface (CLI) that is simply meant to convert single *.resx file or mulitple files in directory into *.json equivalents. Used in project apb97.github.io as a MSBuild Task from my NuGet package "APB97.SimpleResxToJson.BuildTask" to convert files with translation. Latest release can be downloaded from Releases section.</value>
   </data>
   <data name="CLI" xml:space="preserve">
     <value>CLI</value>
