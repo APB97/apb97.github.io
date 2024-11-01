@@ -6,21 +6,15 @@
 <div class="top-row ps-3 navbar navbar-dark w-100">
     <div class="container-fluid align-items-stretch">
         <div class="d-flex w-100-50">
-            <a class="align-content-center" style="color: white; text-decoration: none !important;" Href="/">APB97</a>
+            <a class="align-content-center" style="color: white; text-decoration: none !important;" href="/">APB97</a>
             <div class="flex-grow-1"></div>
-            <button style="border: none; background-color: transparent; padding: 0;" @onclick="Layout.ToggleLayoutMode">
-                @if (Layout.LayoutMode == "Light")
-                {
-                    <div style="width: 56px;" onclick="localStorage.setItem('LayoutMode', 'Dark')">
-                        <img style="height: 2rem; filter: invert(0.95);" src="/images/dark.svg" />
-                    </div>
-                }
-                else
-                {
-                    <div style="width: 56px;" onclick="localStorage.setItem('LayoutMode', 'Light')">
-                        <img style="height: 2rem; filter: invert(0.95);" src="/images/light.svg" />
-                    </div>
-                }
+            <button style="border: none; background-color: transparent; padding: 0;" @onclick="Layout.ToggleLayoutMode"
+                aria-label="@Loc["Toggle"] @Loc[$"{Layout.LayoutMode} Mode"]" >
+                <div style="width: 56px;">
+                    <img style="height: 2rem; filter: invert(0.95);"
+                         src="@(Layout.LayoutMode == MainLayout.LightMode ? "/images/dark.svg" : "/images/light.svg")"
+                         alt="@Loc[$"Picture showing white {(Layout.LayoutMode == MainLayout.LightMode ? "moon" : "sun")}"]" />
+                </div>
             </button>
         </div>
         <div class="d-flex w-100-50">

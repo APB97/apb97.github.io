@@ -39,6 +39,7 @@
 
     public const string DarkMode = "Dark";
     public const string LightMode = "Light";
+    private const string LayoutModeKey = "LayoutMode";
 
     public string LayoutMode { get; private set; } = DarkMode;
 
@@ -49,14 +50,16 @@
     protected override async Task OnInitializedAsync()
     {
         await using var utilitiesModule = await JS.ImportAsync(JSModules.UtilitiesModule);
-        var modeSetting = await utilitiesModule.GetSettingAsync<string>("LayoutMode");
+        var modeSetting = await utilitiesModule.GetSettingAsync<string>(LayoutModeKey);
         if (string.IsNullOrEmpty(modeSetting)) return;
         LayoutMode = modeSetting;
     }
 
-    public void ToggleLayoutMode()
+    public async Task ToggleLayoutMode()
     {
+        await using var utilitiesModule = await JS.ImportAsync(JSModules.UtilitiesModule);
         LayoutMode = LayoutMode == DarkMode ? LightMode : DarkMode;
+        await utilitiesModule.SetSettingAsync(LayoutModeKey, LayoutMode);
         StateHasChanged();
     }
 

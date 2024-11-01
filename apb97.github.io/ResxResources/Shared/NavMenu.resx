@@ -144,4 +144,19 @@
   <data name="Skills" xml:space="preserve">
     <value>Skills</value>
   </data>
+  <data name="Toggle" xml:space="preserve">
+    <value>Toggle</value>
+  </data>
+  <data name="Dark Mode" xml:space="preserve">
+    <value>Dark Mode</value>
+  </data>
+  <data name="Light Mode" xml:space="preserve">
+    <value>Light Mode</value>
+  </data>
+  <data name="Picture showing white moon" xml:space="preserve">
+    <value>Picture showing white moon</value>
+  </data>
+  <data name="Picture showing white sun" xml:space="preserve">
+    <value>Picture showing white sun</value>
+  </data>
 </root>
