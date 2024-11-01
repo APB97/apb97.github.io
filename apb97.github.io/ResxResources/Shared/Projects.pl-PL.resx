@@ -124,7 +124,7 @@
     <value>Sprawdź tutaj</value>
   </data>
   <data name="Web Sudoku description" xml:space="preserve">
-    <value>Sudoku z funkcjonalnościami: zapis i odczyt, drukowanie pojedynczego lub wielu sudoku, automatyczna walidacja wprowadzanych wartości według zasad sudoku, oraz nawigacja między komórkami za pomocą strzałek.</value>
+    <value>Sudoku z funkcjonalnościami: zapis i odczyt, drukowanie pojedynczego lub wielu sudoku, automatyczna walidacja wprowadzanych wartości według zasad sudoku, możliwość zarządzania ustawieniami generowania oraz nawigacja między komórkami za pomocą strzałek.</value>
   </data>
   <data name="Plot and calculate definite integral of a function. Built with Windows Forms." xml:space="preserve">
     <value>Narysuj wykres i oblicz całkę oznaczoną funkcji. Zbudowane z użyciem Windows Forms.</value>
@@ -133,7 +133,7 @@
     <value>Zmieniaj nazwy plików w oparciu o metadane przy użyciu aplikacji WPF</value>
   </data>
   <data name="Simple Resx to JSON description" xml:space="preserve">
-    <value>Aplikacja konsolowa, której zadaniem jest po prostu konwertować pojedynczy plik *.resx lub wiele takich plików w katalogu na odpowiedniki *.json. Użyte w projekcie apb97.github.io aby konwertować pliki z tłumaczeniem. Najnowsze wydanie można pobrać z sekcji "Releases".</value>
+    <value>Aplikacja konsolowa, której zadaniem jest po prostu konwertować pojedynczy plik *.resx lub wiele takich plików w katalogu na odpowiedniki *.json. Użyte w projekcie apb97.github.io jako zadanie MSBuild z mojego pakietu NuGet "APB97.SimpleResxToJson.BuildTask", aby konwertować pliki z tłumaczeniem. Najnowsze wydanie można pobrać z sekcji "Releases".</value>
   </data>
   <data name="CLI" xml:space="preserve">
     <value>Konsola</value>
