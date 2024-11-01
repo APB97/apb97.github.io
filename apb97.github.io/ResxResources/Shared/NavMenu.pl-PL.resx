@@ -144,4 +144,19 @@
   <data name="Skills" xml:space="preserve">
     <value>Umiejętności</value>
   </data>
+  <data name="Toggle" xml:space="preserve">
+    <value>Włącz</value>
+  </data>
+  <data name="Dark Mode" xml:space="preserve">
+    <value>tryb ciemny</value>
+  </data>
+  <data name="Light Mode" xml:space="preserve">
+    <value>tryb jasny</value>
+  </data>
+  <data name="Picture showing white moon" xml:space="preserve">
+    <value>Obrazek ukazujący biały księżyc</value>
+  </data>
+  <data name="Picture showing white sun" xml:space="preserve">
+    <value>Obrazek ukazujący białe słońce</value>
+  </data>
 </root>
