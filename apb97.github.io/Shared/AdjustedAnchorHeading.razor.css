@@ -27,12 +27,12 @@ a span {
 
 a:before {
     content: '<';
-    color: gray;
+    color: #a8a8a8;
     text-decoration: none !important;
 }
 
 a:after {
     content: ' />';
-    color: gray;
+    color: #a8a8a8;
     text-decoration: none !important;
 }
