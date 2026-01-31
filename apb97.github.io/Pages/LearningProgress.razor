@@ -1,5 +1,4 @@
-﻿@using System.Reflection;
-@using apb97.github.io.Shared
+﻿@using apb97.github.io.Shared
 
 @inherits Shared.Base.LocalizedComponent<LearningProgress>
 
@@ -8,17 +7,16 @@
     <InputNumber id="year" TValue="int" Value="Year" ValueChanged="OnYearChanged" ValueExpression="() => Year" min="@MinYear" max="@RecentYear" />
 
     <div>
-        @switch (Year)
-        {
-            case 2024:
-                <LearningProgress2024 @ref="readyable" OnReady="StateHasChanged" />
-                break;
-            case 2023:
-                <LearningProgress2023 @ref="readyable" OnReady="StateHasChanged" />
-                break;
-            case 2022:
-                <LearningProgress2022 @ref="readyable" OnReady="StateHasChanged" />
-                break;
+        @{
+            RenderFragment? component = Year switch
+            {
+                2025 => @<LearningProgress2025 @ref="readyable" OnReady="StateHasChanged" />,
+                2024 => @<LearningProgress2024 @ref="readyable" OnReady="StateHasChanged" />,
+                2023 => @<LearningProgress2023 @ref="readyable" OnReady="StateHasChanged" />,
+                2022 => @<LearningProgress2022 @ref="readyable" OnReady="StateHasChanged" />,
+                _ => null,
+            };
+            @component
         }
     </div>
 </AdjustedAnchorHeading>
@@ -28,16 +26,9 @@
     public int Year { get; set; } = RecentYear;
 
     private const int MinYear = 2022;
-    private const int RecentYear = 2024;
+    private const int RecentYear = 2025;
 
     private IReadyable? readyable;
-
-    private Type GetDynamicComponentType(int year)
-    {
-        var assembly = Assembly.GetAssembly(typeof(LearningProgress2024));
-        var currentYearType = assembly?.GetType($"apb97.github.io.Shared.LearningProgress{year}");
-        return currentYearType ?? typeof(LearningProgress2024);
-    }
 
     private void OnYearChanged(int year)
     {

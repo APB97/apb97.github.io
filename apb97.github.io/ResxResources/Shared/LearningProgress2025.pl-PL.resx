@@ -1,0 +1,180 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="C# 14 Features" xml:space="preserve">
+    <value>Możliwości języka C# 14</value>
+  </data>
+  <data name="Example from documentation" xml:space="preserve">
+    <value>Przykład z dokumentacji (po angielsku)</value>
+  </data>
+  <data name="General knowledge" xml:space="preserve">
+    <value>Wiedza ogólna</value>
+  </data>
+  <data name="NuGet packages" xml:space="preserve">
+    <value>Pakiety NuGet</value>
+  </data>
+  <data name="Python Basics" xml:space="preserve">
+    <value>Podstawowy języka Python</value>
+  </data>
+  <data name="Year2025" xml:space="preserve">
+    <value>2025</value>
+  </data>
+  <data name="Python 3" xml:space="preserve">
+    <value>Język Python 3</value>
+  </data>
+  <data name="Poetry" xml:space="preserve">
+    <value>Poetry - menedżer pakietów dla języka Python</value>
+  </data>
+  <data name="Using Poetry" xml:space="preserve">
+    <value>Korzystanie z Poetry</value>
+  </data>
+  <data name="pyproject.toml for Poetry" xml:space="preserve">
+    <value>Definiowanie pyproject.toml na potrzeby Poetry</value>
+  </data>
+  <data name="Using Poetry description" xml:space="preserve">
+    <value>Aby dodać zależność "pytest" z linii komend, można skorzystać z polecenia "poetry add pytest". Aby uruchomić skrypt, można użyć "poetry run python script.py", lub "poetry run pytest" dla narzędzia konsolowego takiego jak "pytest". Aby zainstalować zależności, korzysta się z polecenia "poetry install", a by zaktualizować zależności do najnowszych kompatybilnych wersji, należy użyć polecenia "poetry update".</value>
+  </data>
+  <data name="pyproject.toml for Poetry description" xml:space="preserve">
+    <value>Jeśli chcesz użyć Poetry tylko do zarządzania zależnościami, możesz dodać wpis "tool.poetry.package-mode=false". Jeżeli twój projekt korzysta z niestandardowych repozytoriów, możesz określić je w sekcji [tool.poetry.source]. Sekcje [tool.poetry.scripts] lub [project.scripts] pozwalają określić narzędzia dostępne do uruchamiania po zainstalowaniu pakietu. Możesz określić zależności w grupach, na przykład dla grupy "test" możesz wylistować je w sekcji: [tool.poetry.group.test.dependencies]. Jest możliwość, aby określać opcjonalne/ekstra zależności w sekcji [project.optional-dependencies].</value>
+  </data>
+  <data name="Python Basics description" xml:space="preserve">
+    <value>Składnia Pythona różni się od języków C-podobnych. W języku Python, zakres kodu jest definiowany za pomocą wcięć, a "main" nie jest specjalną funkcją, natomiast używa się porównania __name__ do "__main__" aby określić, jaki kod ma zostać wykonany podczas uruchamiania skryptu. Gdy deklaruje się zmienne lub przypisuje się im wartości, nie ma słów kluczowych takich jak "var", "let", "const", a typ zmiennej może być zmieniony zwykły przypisaniem. Jednakże, często mechanizm sugerowania typów "type hints" jest używany do informowania dewelopera i narzędzi o przyjmowanych lub zwracanych typach.</value>
+  </data>
+  <data name="Python Advanced topics" xml:space="preserve">
+    <value>Zaawansowane tematy w języku Python</value>
+  </data>
+  <data name="Python Advanced topics description" xml:space="preserve">
+    <value>W języku Python, dostępne jest wiele zaawansowanych możliwości. Jedną z nich są dekoratory, umożliwiające opakowanie jednego wywołania funkcji inną funkcją, co można zrobić za pomocą dekoratora funtools.wraps. Inną są menedżery kontekstu, które są często używane podczas działania z zasobami takimi jak pliki, używając składni "with open("t.txt") as f:" co z kolei wywołuje funkcje __enter__ oraz __exit__, odpowiednio przed i po kodzie zdefiniowanym wewnątrz.</value>
+  </data>
+  <data name="nameof support for unbound generic types" xml:space="preserve">
+    <value>W tej wersji języka dodano wsparcie dla niepowiązanych typów generycznych w wyrażeniu nameof. Oznacza to, że aby otrzymać nazwę typu takiego jak List&lt;T&gt;, można użyć "nameof(List&lt;&gt;)" zamiast "nameof(List&lt;string&gt;)", lub dowolnych innych parametrów dla typu generycznego.</value>
+  </data>
+  <data name="New extension block for methods and properties" xml:space="preserve">
+    <value>Nowy blok "extension" dla metod i właściwości</value>
+  </data>
+  <data name="New extension block for methods and properties description" xml:space="preserve">
+    <value>Metody rozszerzeń, i nawet właściwiości rozszerzeń mogą być zdefiniowane w bloku extension.</value>
+  </data>
+  <data name="field contextual keyword" xml:space="preserve">
+    <value>kontekstowe słowo kluczowe "field"</value>
+  </data>
+  <data name="field contextual keyword description" xml:space="preserve">
+    <value>To kontekstowe słowo kluczowe pozwala na odwołanie się do generowanego przez kompilator pola przechowującego wartość w getterach lub setterach właściwości. Jest to jedna ze zmian, która może wywołać problemy, jeżeli nazwa "field" użyta została jako nazwa zmienne/pola.</value>
+  </data>
+</root>
