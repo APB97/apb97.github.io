@@ -1,36 +1,29 @@
 ﻿@using System.Reflection;
 @using apb97.github.io.Shared
 
-@implements IDisposable
-@inject StringLocalizer<LearningProgress> Loc
+@inherits Shared.Base.LocalizedComponent<LearningProgress>
 
-@if(ShouldRender())
-{
-    <AdjustedAnchorHeading Id="learning" Heading="@Loc["LearningProgress"]" IncludeId="readyable?.IsReady ?? false">
-        <label for="year">@Loc["Year"]</label>
-        <InputNumber id="year" TValue="int" Value="Year" ValueChanged="OnYearChanged" ValueExpression="() => Year" min="@MinYear" max="@RecentYear" />
+<AdjustedAnchorHeading Id="learning" Heading="@Loc["LearningProgress"]" IncludeId="readyable?.IsReady ?? false">
+    <label for="year">@Loc["Year"]</label>
+    <InputNumber id="year" TValue="int" Value="Year" ValueChanged="OnYearChanged" ValueExpression="() => Year" min="@MinYear" max="@RecentYear" />
 
-        <div>
-            @switch (Year)
-            {
-                case 2024:
-                    <LearningProgress2024 @ref="readyable" OnReady="StateHasChanged" />
-                    break;
-                case 2023:
-                    <LearningProgress2023 @ref="readyable" OnReady="StateHasChanged" />
-                    break;
-                case 2022:
-                    <LearningProgress2022 @ref="readyable" OnReady="StateHasChanged" />
-                    break;
-            }
-        </div>
-    </AdjustedAnchorHeading>
-}
+    <div>
+        @switch (Year)
+        {
+            case 2024:
+                <LearningProgress2024 @ref="readyable" OnReady="StateHasChanged" />
+                break;
+            case 2023:
+                <LearningProgress2023 @ref="readyable" OnReady="StateHasChanged" />
+                break;
+            case 2022:
+                <LearningProgress2022 @ref="readyable" OnReady="StateHasChanged" />
+                break;
+        }
+    </div>
+</AdjustedAnchorHeading>
 
 @code {
-    [CascadingParameter]
-    public required MainLayout Layout { get; set; }
-
     [Parameter]
     public int Year { get; set; } = RecentYear;
 
@@ -49,31 +42,5 @@
     private void OnYearChanged(int year)
     {
         Year = Math.Clamp(year, MinYear, RecentYear);
-    }
-
-    protected override bool ShouldRender()
-    {
-        return Loc.IsReady;
-    }
-
-    protected override async Task OnInitializedAsync()
-    {
-        await Loc.InitializeAsync(Layout.Culture);
-    }
-
-    protected override void OnInitialized()
-    {
-        Layout.OnStateChanging += GetResources;
-    }
-
-    void IDisposable.Dispose()
-    {
-        Layout.OnStateChanging -= GetResources;
-    }
-
-    private async Task GetResources()
-    {
-        await Loc.InitializeAsync(Layout.Culture);
-        StateHasChanged();
     }
 }

@@ -1,201 +1,153 @@
-﻿@implements IReadyable
-@implements IDisposable
-@inject StringLocalizer<Skills> Loc
+﻿@inherits Base.LocalizedComponent<Skills>
 
-@if (ShouldRender())
-{
-    <AdjustedAnchorHeading Id="skills" Heading="@Loc["Skills"]" IncludeId="this.IsReady">
-        <div class="row">
-            <div class="skill-card">
-                <div class="d-flex">
-                    <div class="flex-grow-1"></div>
-                    <h4 class="text-center text-wrap text-break" style="margin-left: 2pt;">@Loc["Application Development"]</h4>
-                    <div class="flex-grow-1"></div>
-                </div>
-                <div class="d-flex flex-row flex-skills">
-                    <ul class="p-0" style="list-style-type: none;">
-                        <li>
-                            <span>ASP.NET Core</span>
-                        </li>
-                        <li>
-                            <span>WPF</span>
-                        </li>
-                        <li>
-                            <span>Windows Forms</span>
-                        </li>
-                        <li>
-                            <span>.NET 8</span>
-                        </li>
-                    </ul>
-                    <ul class="p-0" style="list-style-type: none;">
-                        <li>
-                            <span>@Loc["Web"]</span>
-                        </li>
-                        <li>
-                            <span>@Loc["Desktop"]</span>
-                        </li>
-                        <li>
-                            <span>C# 12</span>
-                        </li>
-                        <li>
-                            <span>Git</span>
-                        </li>
-                    </ul>
-                </div>
+<AdjustedAnchorHeading Id="skills" Heading="@Loc["Skills"]" IncludeId="this.IsReady">
+    <div class="row">
+        <div class="skill-card">
+            <div class="d-flex">
+                <div class="flex-grow-1"></div>
+                <h4 class="text-center text-wrap text-break" style="margin-left: 2pt;">@Loc["Application Development"]</h4>
+                <div class="flex-grow-1"></div>
             </div>
-            <div class="skill-card">
-                <h4 class="text-center text-wrap text-break">@Loc["Patterns and Frameworks"]</h4>
+            <div class="d-flex flex-row flex-skills">
+                <ul class="p-0" style="list-style-type: none;">
+                    <li>
+                        <span>ASP.NET Core</span>
+                    </li>
+                    <li>
+                        <span>WPF</span>
+                    </li>
+                    <li>
+                        <span>Windows Forms</span>
+                    </li>
+                    <li>
+                        <span>.NET 10</span>
+                    </li>
+                </ul>
+                <ul class="p-0" style="list-style-type: none;">
+                    <li>
+                        <span>@Loc["Web"]</span>
+                    </li>
+                    <li>
+                        <span>@Loc["Desktop"]</span>
+                    </li>
+                    <li>
+                        <span>C# 14</span>
+                    </li>
+                    <li>
+                        <span>Git</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="skill-card">
+            <h4 class="text-center text-wrap text-break">@Loc["Patterns and Frameworks"]</h4>
 
-                <div class="d-flex flex-row flex-skills">
-                    <ul class="p-0" style="list-style-type: none;">
-                        <li>
-                            <span>ASP.NET Core</span>
-                        </li>
-                        <li>
-                            <span>Entity Framework Core</span>
-                        </li>
-                        <li>
-                            <span>@Loc["Code First"]</span>
-                        </li>
-                        <li>
-                            <span>MVVM</span>
-                        </li>
-                    </ul>
-                    <ul class="p-0" style="list-style-type: none;">
-                        <li>
-                            <span>MVC</span>
-                        </li>
-                        <li>
-                            <span>ORM</span>
-                        </li>
-                        <li>
-                            <span>@Loc["Dependency Injection"]</span>
-                        </li>
-                    </ul>
-                </div>
+            <div class="d-flex flex-row flex-skills">
+                <ul class="p-0" style="list-style-type: none;">
+                    <li>
+                        <span>ASP.NET Core</span>
+                    </li>
+                    <li>
+                        <span>Entity Framework Core</span>
+                    </li>
+                    <li>
+                        <span>@Loc["Code First"]</span>
+                    </li>
+                    <li>
+                        <span>MVVM</span>
+                    </li>
+                </ul>
+                <ul class="p-0" style="list-style-type: none;">
+                    <li>
+                        <span>MVC</span>
+                    </li>
+                    <li>
+                        <span>ORM</span>
+                    </li>
+                    <li>
+                        <span>@Loc["Dependency Injection"]</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="skill-card">
+            <h4 class="text-center text-wrap text-break">@Loc["Web Development"]</h4>
+            <div class="d-flex flex-row flex-skills">
+                <ul class="p-0" style="list-style-type: none;">
+                    <li>
+                        <span>ASP.NET Core</span>
+                    </li>
+                    <li>
+                        <span>Blazor</span>
+                    </li>
+                    <li>
+                        <span>.NET 10 & C# 14</span>
+                    </li>
+                </ul>
+                <ul class="p-0" style="list-style-type: none;">
+                    <li>
+                        <span>HTML</span>
+                    </li>
+                    <li>
+                        <span>CSS</span>
+                    </li>
+                    <li>
+                        <span>@Loc["Client-side JavaScript"]</span>
+                    </li>
+                </ul>
             </div>
         </div>
 
-        <div class="row">
-            <div class="skill-card">
-                <h4 class="text-center text-wrap text-break">@Loc["Web Development"]</h4>
-                <div class="d-flex flex-row flex-skills">
-                    <ul class="p-0" style="list-style-type: none;">
-                        <li>
-                            <span>ASP.NET Core</span>
-                        </li>
-                        <li>
-                            <span>Blazor</span>
-                        </li>
-                        <li>
-                            <span>.NET 8 & C# 12</span>
-                        </li>
-                    </ul>
-                    <ul class="p-0" style="list-style-type: none;">
-                        <li>
-                            <span>HTML</span>
-                        </li>
-                        <li>
-                            <span>CSS</span>
-                        </li>
-                        <li>
-                            <span>@Loc["Client-side JavaScript"]</span>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="skill-card">
-                <h4 class="text-center text-wrap text-break">@Loc["Useful Technologies"]</h4>
-                <div class="d-flex flex-row flex-skills">
-                    <ul class="p-0" style="list-style-type: none;">
-                        <li>
-                            <span>SQL</span>
-                        </li>
-                        <li>
-                            <span>GraphQL</span>
-                        </li>
-                        <li>
-                            <span>HTML</span>
-                        </li>
-                        <li>
-                            <span>CSS</span>
-                        </li>
-                        <li>
-                            <span>Linux</span>
-                        </li>
-                        <li>
-                            <span>Podman</span>
-                        </li>
-                    </ul>
-                    <ul class="p-0" style="list-style-type: none;">
-                        <li>
-                            <span>PostgreSQL</span>
-                        </li>
-                        <li>
-                            <span>JSON</span>
-                        </li>
-                        <li>
-                            <span>JavaScript</span>
-                        </li>
-                        <li>
-                            <span>YAML</span>
-                        </li>
-                        <li>
-                            <span>@Loc["Containers"]</span>
-                        </li>
-                        <li>
-                            <span>Docker</span>
-                        </li>
-                    </ul>
-                </div>
+        <div class="skill-card">
+            <h4 class="text-center text-wrap text-break">@Loc["Useful Technologies"]</h4>
+            <div class="d-flex flex-row flex-skills">
+                <ul class="p-0" style="list-style-type: none;">
+                    <li>
+                        <span>SQL</span>
+                    </li>
+                    <li>
+                        <span>GraphQL</span>
+                    </li>
+                    <li>
+                        <span>HTML</span>
+                    </li>
+                    <li>
+                        <span>CSS</span>
+                    </li>
+                    <li>
+                        <span>Linux</span>
+                    </li>
+                    <li>
+                        <span>Podman</span>
+                    </li>
+                </ul>
+                <ul class="p-0" style="list-style-type: none;">
+                    <li>
+                        <span>PostgreSQL</span>
+                    </li>
+                    <li>
+                        <span>JSON</span>
+                    </li>
+                    <li>
+                        <span>JavaScript</span>
+                    </li>
+                    <li>
+                        <span>YAML</span>
+                    </li>
+                    <li>
+                        <span>@Loc["Containers"]</span>
+                    </li>
+                    <li>
+                        <span>Docker</span>
+                    </li>
+                </ul>
             </div>
         </div>
-    </AdjustedAnchorHeading>
-}
+    </div>
+</AdjustedAnchorHeading>
 
 @code {
-    [CascadingParameter]
-    public required MainLayout Layout { get; set; }
-
-    public bool IsReady { get; private set; }
-
-    public Action OnReady { get; set; } = delegate { };
-
-    protected override bool ShouldRender()
-    {
-        if (!Loc.IsReady) return false;
-        return base.ShouldRender();
-    }
-
-    protected override async Task OnInitializedAsync()
-    {
-        await Loc.InitializeAsync(Layout.Culture);
-    }
-
-    protected override void OnInitialized()
-    {
-        OnReady = StateHasChanged;
-        Layout.OnStateChanging += GetResources;
-    }
-
-    protected override void OnAfterRender(bool firstRender)
-    {
-        if (!IsReady && Loc.IsReady)
-        {
-            IsReady = true;
-            OnReady();
-        }
-    }
-
-    void IDisposable.Dispose()
-    {
-        Layout.OnStateChanging -= GetResources;
-    }
-
-    private async Task GetResources()
-    {
-        await Loc.InitializeAsync(Layout.Culture);
-        StateHasChanged();
-    }
 }
