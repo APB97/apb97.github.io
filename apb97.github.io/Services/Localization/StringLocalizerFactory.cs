@@ -12,7 +12,7 @@ public class StringLocalizerFactory(HttpClient http, IOptions<LocalizationOption
     {
         using var stream = await RequestLocalizationStreamAsync<T>(cultureName);
 
-        return stream is null ? null : RetrieveLocalization(stream);
+        return stream is null ? null : await RetrieveLocalizationAsync(stream);
     }
 
     private async Task<Stream?> RequestLocalizationStreamAsync<T>(string? cultureName)
@@ -87,19 +87,20 @@ public class StringLocalizerFactory(HttpClient http, IOptions<LocalizationOption
         return builder.ToString();
     }
 
-    private Dictionary<string, string> RetrieveLocalization(Stream stream)
+    private async Task<Dictionary<string, string>> RetrieveLocalizationAsync(Stream stream)
     {
         return localizationOptions.Value.DataFormat switch
         {
-            DataFormat.JSON => RetrieveJsonLocalization(stream),
+            DataFormat.JSON => await RetrieveJsonLocalization(stream),
             DataFormat.RESX => RetrieveResxLocalization(stream),
             _ => [],
         };
     }
 
-    private static Dictionary<string, string> RetrieveJsonLocalization(Stream stream)
+    private static async Task<Dictionary<string, string>> RetrieveJsonLocalization(Stream stream)
     {
-        return JsonSerializer.Deserialize(stream, ResxDataContext.Default.ResxData)?.Strings ?? [];
+        var data = await JsonSerializer.DeserializeAsync(stream, ResxDataContext.Default.ResxData);
+        return data?.Strings ?? [];
     }
 
     private static Dictionary<string, string> RetrieveResxLocalization(Stream stream)
