@@ -10,23 +10,31 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v4
+    - uses: actions/checkout@6
+  
     - name: Setup .NET
-      uses: actions/setup-dotnet@v4
+      uses: actions/setup-dotnet@v5
       with:
-        dotnet-version: 8.0.x
+        dotnet-version: 10.x
+        dotnet-quality: ga
+
     - name: Restore dependencies
       run: dotnet restore
+
     - name: Build
       run: dotnet build -c Release --no-restore
+
     - name: Test
       run: dotnet test --no-build --verbosity normal
+
     - name: Publish
       run: dotnet publish -c Release --nologo --no-build
+
     - name: Move files
       run: |
         mkdir ./public
         mv apb97.github.io/bin/Release/net8.0/publish/wwwroot ./public
+
     - name: GitHub Pages action
       uses: peaceiris/actions-gh-pages@v4.0.0
       with:
