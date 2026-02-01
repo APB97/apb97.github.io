@@ -16,9 +16,9 @@
                 </div>
             </button>
         </div>
-        <div class="d-flex w-100-50">
+        <div class="d-flex w-100-50" style="flex-grow: 0.25">
             <HiddenForScreenWidth @ref="hiddenForWideScreen" HideForWidthCondition="w => w > ScreenBreakpoints.Medium">
-                <div class="align-content-center" style="flex-direction: row; display: flex; align-items: center;">
+                <div class="align-content-center d-flex flex-grow-1 flex-row align-items-center">
                     <LanguageSelect @ref="language" DisplayDownward="true" />
                 </div>
             </HiddenForScreenWidth>
