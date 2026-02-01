@@ -13,10 +13,13 @@
         @(Loc["Select your locale"]):
     </label>
 
-    <CustomSelect Id="language" Value="@Culture" Options="supportedCultures" OnSelected="SetCultureAndReload" />
+    <CustomSelect Id="language" Value="@Culture" Options="supportedCultures" OnSelected="SetCultureAndReload" DisplayDownward="DisplayDownward" />
 }
 
 @code {
+    [Parameter]
+    public bool DisplayDownward { get; set; }
+
     public string? Culture { get; private set; }
 
     private IJSObjectReference? utilitiesModule;

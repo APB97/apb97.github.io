@@ -8,7 +8,7 @@
     @(Options.FirstOrDefault(kv => kv.Value == Value).Key ?? Value)
 </div>
 
-<div hidden="@hideList" id="@string.Join('-', Id, "list")" style="position: absolute; right: 16px; left: @(left)px; top: @(top)px; z-index: 10;">
+<div hidden="@hideList" id="@string.Join('-', Id, "list")" style="position: absolute; width: @(width)px; left: @(left)px; top: @(top)px; z-index: 10;">
     @foreach (var option in Options)
     {
         <div class="btn  @(option.Value == Value ? "btn-primary" : "btn-secondary")" style="width: 100%;" @onclick="async a => { Value = option.Value; await OnSelected.InvokeAsync(option.Value); await ToggleList(a); }">
@@ -30,10 +30,14 @@
     [Parameter]
     public EventCallback<string> OnSelected { get; set; }
 
+    [Parameter]
+    public bool DisplayDownward { get; set; }
+
     private bool hideList = true;
 
     private double left;
     private double top;
+    private double width;
 
     private IJSObjectReference? module;
 
@@ -61,7 +65,8 @@
             if (mainButtonRect is not null && optionsRect is not null)
             {
                 left = mainButtonRect["x"];
-                top = mainButtonRect["y"] - optionsRect["height"];
+                width = mainButtonRect["width"];
+                top = DisplayDownward ? mainButtonRect["y"] : mainButtonRect["y"] - optionsRect["height"];
             }
         }
 
