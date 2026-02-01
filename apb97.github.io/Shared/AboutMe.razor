@@ -1,96 +1,48 @@
 ﻿@using apb97.github.io.Pages
 @using apb97.github.io.Services.Dimensions
 
-@implements IDisposable
-@implements IReadyable
-@inject IJSRuntime JS
-@inject StringLocalizer<AboutMe> Loc
+@inherits Base.LocalizedComponent<AboutMe>
 @inject NavigationManager Navigation
 
-@if (ShouldRender())
-{
-    <div class="row">
-        <div class="d-flex flex-column">
-            <AdjustedAnchorHeading Id="aboutme" Heading="@Loc["About me"]" IncludeId="this.IsReady">
-                <div class="d-flex flex-row">
-                    <div class="col-8 flex-column">
-                        <div class="d-flex flex-column">
-                            <p style="font-size: larger">@Loc["iam_short"]</p>
-                        </div>
+<div class="row">
+    <div class="d-flex flex-column">
+        <AdjustedAnchorHeading Id="aboutme" Heading="@Loc["About me"]" IncludeId="this.IsReady">
+            <div class="d-flex flex-row">
+                <div class="col-8 flex-column">
+                    <div class="d-flex flex-column">
+                        <p style="font-size: larger">@Loc["iam_short"]</p>
+                    </div>
 
-                        <p>
-                            @Loc["iam_long"]
-                        </p>
+                    <p>
+                        @Loc["iam_long"]
+                    </p>
                 
-                        <p class="m-0">
-                            <b>@Loc["degree_label"]</b>
-                            @Loc["degree"]
-                        </p>
-                        <p class="m-0">
-                            <b>@Loc["status_label"]</b>
-                            @Loc["status"]
-                        </p>
-                        <HiddenForScreenWidth HideForWidthCondition="width => width < ScreenBreakpoints.Large">
-                            <Projects />
-                        </HiddenForScreenWidth>
-                    </div>
-                    <div class="col-4">
-                        <img src="/images/AboutMe.jpg" alt="A picture of myself" style="width: 100%; max-width: 368px; max-height: 552px;" />
-                    </div>
+                    <p class="m-0">
+                        <b>@Loc["degree_label"]</b>
+                        @Loc["degree"]
+                    </p>
+                    <p class="m-0">
+                        <b>@Loc["status_label"]</b>
+                        @Loc["status"]
+                    </p>
+                    <HiddenForScreenWidth HideForWidthCondition="width => width < ScreenBreakpoints.Large">
+                        <Projects />
+                    </HiddenForScreenWidth>
                 </div>
-                <HiddenForScreenWidth HideForWidthCondition="width => width >= ScreenBreakpoints.Large">
-                    <Projects />
-                </HiddenForScreenWidth>
-                <Challenges />
-                <Skills />
-                <LearningProgress />
-                <NavigationByIdFix />
-            </AdjustedAnchorHeading>
-        </div>
+                <div class="col-4">
+                    <img src="/images/AboutMe.jpg" alt="A picture of myself" style="width: 100%; max-width: 368px; max-height: 552px;" />
+                </div>
+            </div>
+            <HiddenForScreenWidth HideForWidthCondition="width => width >= ScreenBreakpoints.Large">
+                <Projects />
+            </HiddenForScreenWidth>
+            <Challenges />
+            <Skills />
+            <LearningProgress />
+            <NavigationByIdFix />
+        </AdjustedAnchorHeading>
     </div>
-}
+</div>
 
 @code {
-    [CascadingParameter]
-    public required MainLayout Layout { get; set; }
-
-    public bool IsReady { get; private set; }
-
-    public Action OnReady { get; set; } = delegate { };
-
-    protected override bool ShouldRender()
-    {
-        return Loc.IsReady;
-    }
-
-    protected override async Task OnInitializedAsync()
-    {
-        await Loc.InitializeAsync(Layout.Culture);
-    }
-
-    protected override void OnInitialized()
-    {
-        OnReady = StateHasChanged;
-        Layout.OnStateChanging += GetResources;
-    }
-
-    protected override void OnAfterRender(bool firstRender)
-    {
-        if (!IsReady && Loc.IsReady)
-        {
-            IsReady = true;
-            OnReady();
-        }
-    }
-
-    void IDisposable.Dispose()
-    {
-        Layout.OnStateChanging -= GetResources;
-    }
-
-    private async Task GetResources()
-    {
-        await Loc.InitializeAsync(Layout.Culture);
-        StateHasChanged();
-    }
 }

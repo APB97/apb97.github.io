@@ -1,0 +1,63 @@
+﻿@implements IReadyable
+@implements IDisposable
+@typeparam T
+@inject StringLocalizer<T> Localizer
+
+@if (ShouldRender())
+{
+    @ChildContent
+}
+@code {
+    [Parameter]
+    public required RenderFragment ChildContent { get; set; }
+
+    [CascadingParameter]
+    public required MainLayout Layout { get; set; }
+
+    public bool IsReady { get; private set; }
+
+    [Parameter]
+    public Action OnReady { get; set; } = delegate { };
+
+    public StringLocalizer<T> Loc => Localizer;
+
+    protected override bool ShouldRender()
+    {
+        if (!Localizer.IsReady) return false;
+        return base.ShouldRender();
+    }
+
+    protected override void OnInitialized()
+    {
+        OnReady = StateHasChanged;
+        Layout.OnStateChanging += GetResources;
+    }
+
+    protected override async Task OnInitializedAsync()
+    {
+        await Localizer.InitializeAsync(Layout.Culture);
+    }
+
+    protected override void OnAfterRender(bool firstRender)
+    {
+        if (!IsReady && Localizer.IsReady)
+        {
+            IsReady = true;
+            OnReady();
+        }
+    }
+
+    public void Dispose()
+    {
+        Layout.OnStateChanging -= GetResources;
+    }
+
+    protected virtual Task GetAdditionalResources() => Task.CompletedTask;
+
+    private async Task GetResources()
+    {
+        await Localizer.InitializeAsync(Layout.Culture);
+        await GetAdditionalResources();
+        StateHasChanged();
+    }
+}

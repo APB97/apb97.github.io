@@ -1,77 +1,45 @@
 ﻿@page "/PlotAndIntegrate"
 @using apb97.github.io.Shared
 
-@implements IDisposable
-@inject StringLocalizer<PlotAndIntegrate> Loc
+@inherits Shared.Base.LocalizedComponent<PlotAndIntegrate>
 
-@if (ShouldRender())
-{
-    <PageTitle>Adrian Bieliński - Plot and Integrate</PageTitle>
+<PageTitle>Adrian Bieliński - Plot and Integrate</PageTitle>
 
-    <h1>Plot and Integrate</h1>
+<h1>Plot and Integrate</h1>
 
-    <p>@Loc["Windows Forms application that can be used for drawing simple plots and calculating integrals."]</p>
+<p>@Loc["Windows Forms application that can be used for drawing simple plots and calculating integrals."]</p>
 
-    <img class="screenshot-wide" alt="App UI" src="https://raw.githubusercontent.com/APB97/PlotAndIntegrate/main/images/plot-made-larger.png"/>
+<img class="screenshot-wide" alt="App UI" src="https://raw.githubusercontent.com/APB97/PlotAndIntegrate/main/images/plot-made-larger.png"/>
 
-    <p/>
-    <h4>@Loc["Functionalities"]</h4>
+<p/>
+<h4>@Loc["Functionalities"]</h4>
 
-    <ul>
-        <li>@Loc["Drawing plots of a polynomial function"]</li>
-        <li>@Loc["Drawing plots of a logarithmic function"]</li>
-        <li>@Loc["Zooming the plot by scrolling the mouse wheel"]</li>
-        <li>@Loc["Panning the plot by dragging mouse while mouse button is pressed"]</li>
-        <li>@Loc["Saving the image of the plot with use of 'Save as image...' button"]</li>
-        <li>@Loc["Calculating definite intergral for a given range"]</li>
-        <li>@Loc["Setting axes' labels font size, size of the plot and color of the plot"]</li>
-    </ul>
+<ul>
+    <li>@Loc["Drawing plots of a polynomial function"]</li>
+    <li>@Loc["Drawing plots of a logarithmic function"]</li>
+    <li>@Loc["Zooming the plot by scrolling the mouse wheel"]</li>
+    <li>@Loc["Panning the plot by dragging mouse while mouse button is pressed"]</li>
+    <li>@Loc["Saving the image of the plot with use of 'Save as image...' button"]</li>
+    <li>@Loc["Calculating definite intergral for a given range"]</li>
+    <li>@Loc["Setting axes' labels font size, size of the plot and color of the plot"]</li>
+</ul>
 
-    <h4>@Loc["Installation"]</h4>
+<h4>@Loc["Installation"]</h4>
 
-    <ul>
-        <li>
-            <b>@Loc["Option 1"]</b>
-            <br/>
-            @Loc["You can download it from 'Releases' section, and either run it or install it with 'setup.exe'."]
-        </li>    
-        <li>
-            <b>@Loc["Option 2"]</b>
-            <br/>
-            @Loc["Download the source and compile the solution with your IDE (for this project I used Visual Studio 2019)."]
-        </li>    
-    </ul>
+<ul>
+    <li>
+        <b>@Loc["Option 1"]</b>
+        <br/>
+        @Loc["You can download it from 'Releases' section, and either run it or install it with 'setup.exe'."]
+    </li>    
+    <li>
+        <b>@Loc["Option 2"]</b>
+        <br/>
+        @Loc["Download the source and compile the solution with your IDE (for this project I used Visual Studio 2019)."]
+    </li>    
+</ul>
 
-    <a href="https://github.com/APB97/PlotAndIntegrate">@Loc["GitHub repository"]</a>
-}
+<a class="link-primary" href="https://github.com/APB97/PlotAndIntegrate">@Loc["GitHub repository"]</a>
 
 @code {
-    [CascadingParameter]
-    public required MainLayout Layout { get; set; }
-
-    protected override bool ShouldRender()
-    {
-        return Loc.IsReady;
-    }
-
-    protected override async Task OnInitializedAsync()
-    {
-        await Loc.InitializeAsync(Layout.Culture);
-    }
-
-    protected override void OnInitialized()
-    {
-        Layout.OnStateChanging += GetResources;
-    }
-
-    void IDisposable.Dispose()
-    {
-        Layout.OnStateChanging -= GetResources;
-    }
-
-    private async Task GetResources()
-    {
-        await Loc.InitializeAsync(Layout.Culture);
-        StateHasChanged();
-    }
 }

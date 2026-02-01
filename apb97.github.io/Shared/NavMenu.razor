@@ -1,6 +1,5 @@
 ﻿@using apb97.github.io.Services.Dimensions
-@implements IDisposable
-@inject StringLocalizer<NavMenu> Loc
+@inherits Base.LocalizedComponent<NavMenu>
 @inject NavigationManager Navigation
 
 <div class="top-row ps-3 navbar navbar-dark w-100">
@@ -80,9 +79,6 @@
 </div>
 
 @code {
-    [CascadingParameter]
-    public required MainLayout Layout { get; set; }
-
     private bool collapseNavMenu = true;
 
     private string? NavMenuCssClass => collapseNavMenu ? "collapse" : null;
@@ -101,32 +97,6 @@
     public void CollapseNavMenu()
     {
         collapseNavMenu = true;
-        StateHasChanged();
-    }
-
-    protected override bool ShouldRender()
-    {
-        return Loc.IsReady;
-    }
-
-    protected override async Task OnInitializedAsync()
-    {
-        await Loc.InitializeAsync(language?.Culture);
-    }
-
-    protected override void OnInitialized()
-    {
-        Layout.OnStateChanging += GetResources;
-    }
-
-    void IDisposable.Dispose()
-    {
-        Layout.OnStateChanging -= GetResources;
-    }
-
-    private async Task GetResources()
-    {
-        await Loc.InitializeAsync(language?.Culture);
         StateHasChanged();
     }
 }

@@ -1,6 +1,4 @@
-﻿@implements IReadyable
-@implements IDisposable
-@inject StringLocalizer<LearningProgress2024> Loc
+﻿@inherits Base.LocalizedComponent<LearningProgress2024>
 
 <h3>@Loc["Year2024"]</h3>
 
@@ -69,45 +67,6 @@
         </ul>
     </li>
 </ul>
-@if (IsReady == false && Loc.IsReady)
-{
-    IsReady = true;
-    OnReady();
-}
 
 @code {
-    [CascadingParameter]
-    public required MainLayout Layout { get; set; }
-
-    [Parameter]
-    public required Action OnReady { get; set; }
-
-    public bool IsReady { get; private set; }
-
-    protected override bool ShouldRender()
-    {
-        if (!Loc.IsReady) return false;
-        return base.ShouldRender();
-    }
-
-    protected override async Task OnInitializedAsync()
-    {
-        await Loc.InitializeAsync(Layout.Culture);
-    }
-
-    protected override void OnInitialized()
-    {
-        Layout.OnStateChanging += GetResources;
-    }
-
-    void IDisposable.Dispose()
-    {
-        Layout.OnStateChanging -= GetResources;
-    }
-
-    private async Task GetResources()
-    {
-        await Loc.InitializeAsync(Layout.Culture);
-        StateHasChanged();
-    }
 }

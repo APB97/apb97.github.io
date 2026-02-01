@@ -1,67 +1,17 @@
-﻿@implements IReadyable
-@implements IDisposable
+﻿@inherits Base.LocalizedComponent<Challenges>
 
-@inject StringLocalizer<Challenges> Loc
-@inject IJSRuntime JS
-
-@if (ShouldRender())
-{
-    <AdjustedAnchorHeading Id="challenges" Heading="@Loc["Challenges"]" IncludeId="this.IsReady">
-        <div class="d-flex" style="font-size: larger">
-            <ul style="list-style-type: none;">
-                <li>
-                    <a class="link-primary" href="/IntegerToRoman"><span>@Loc["Integer to Roman"]</span></a>
-                </li>
-                <li>
-                    <a class="link-primary" href="/CountAndSay"><span>@Loc["Count and say"]</span></a>
-                </li>
-            </ul>
-        </div>
-    </AdjustedAnchorHeading>
-}
+<AdjustedAnchorHeading Id="challenges" Heading="@Loc["Challenges"]" IncludeId="this.IsReady">
+    <div class="d-flex" style="font-size: larger">
+        <ul style="list-style-type: none;">
+            <li>
+                <a class="link-primary" href="/IntegerToRoman"><span>@Loc["Integer to Roman"]</span></a>
+            </li>
+            <li>
+                <a class="link-primary" href="/CountAndSay"><span>@Loc["Count and say"]</span></a>
+            </li>
+        </ul>
+    </div>
+</AdjustedAnchorHeading>
 
 @code {
-    [CascadingParameter]
-    public required MainLayout Layout { get; set; }
-
-    public bool IsReady { get; private set; }
-
-    [Parameter]
-    public Action OnReady { get; set; } = delegate { };
-
-    protected override bool ShouldRender()
-    {
-        return Loc.IsReady;
-    }
-
-    protected override async Task OnInitializedAsync()
-    {
-        await Loc.InitializeAsync(Layout.Culture);
-    }
-
-    protected override void OnInitialized()
-    {
-        OnReady = StateHasChanged;
-        Layout.OnStateChanging += GetResources;
-    }
-
-    protected override void OnAfterRender(bool firstRender)
-    {
-        if (!IsReady && Loc.IsReady)
-        {
-            IsReady = true;
-            OnReady();
-        }
-    }
-
-    void IDisposable.Dispose()
-    {
-        Layout.OnStateChanging -= GetResources;
-    }
-
-    private async Task GetResources()
-    {
-        await Loc.InitializeAsync(Layout.Culture);
-        StateHasChanged();
-    }
 }
