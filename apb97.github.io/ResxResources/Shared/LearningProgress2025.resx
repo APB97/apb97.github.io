@@ -177,4 +177,13 @@
   <data name="field contextual keyword description" xml:space="preserve">
     <value>This contextual keyword allows to reference compiler-generated backing field in getters or setters of a property. It is one of a breaking changes if you used "field" as a variable/field name.</value>
   </data>
+  <data name="EF Core Features" xml:space="preserve">
+    <value>EF Core Features</value>
+  </data>
+  <data name="AsSplitQuery vs AsSingleQuery" xml:space="preserve">
+    <value>AsSplitQuery vs AsSingleQuery</value>
+  </data>
+  <data name="AsSplitQuery vs AsSingleQuery description" xml:space="preserve">
+    <value>Single queries may cause significant performance issues when multiple relations are JOINed in a query. One of the issues is cartesian explosion - when collection navigations are at the same level, this causes the database to return multiple rows per single entity as a result of cross product. Another issue is data duplication, even when using single collection navigation - each row returned contains all properties from both tables, however this can be improved by applying projection to reduce the amount of data. Using split queries, these issues can be resolved by using separate queries for each included collection navigation.</value>
+  </data>
 </root>

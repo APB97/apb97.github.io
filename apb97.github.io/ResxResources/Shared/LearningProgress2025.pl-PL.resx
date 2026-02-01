@@ -177,4 +177,13 @@
   <data name="field contextual keyword description" xml:space="preserve">
     <value>To kontekstowe słowo kluczowe pozwala na odwołanie się do generowanego przez kompilator pola przechowującego wartość w getterach lub setterach właściwości. Jest to jedna ze zmian, która może wywołać problemy, jeżeli nazwa "field" użyta została jako nazwa zmienne/pola.</value>
   </data>
+  <data name="EF Core Features" xml:space="preserve">
+    <value>Możliwości biblioteki EF Core</value>
+  </data>
+  <data name="AsSplitQuery vs AsSingleQuery" xml:space="preserve">
+    <value>AsSplitQuery kontra AsSingleQuery</value>
+  </data>
+  <data name="AsSplitQuery vs AsSingleQuery description" xml:space="preserve">
+    <value>Pojedyncze zapytania mogą powodować poważne problemy z wydajnością gdy wiele tabel jest łączonych za pomocą operacji JOIN w zapytaniu. Jednym z tych poroblemów jest eksplozja kartezjańska - gdy nawigacje kolekcji są na tym samym poziomie, powoduje to, że baza danych zwraca wiele wierszy dla pojedynczego obiektujako wynik operacji "cross product". Innym problemem jest duplikacja danych, nawet używając pojedynczej nawigacji - każdy zwrócony wiersz zawiera wszystkie właściwości z obu tabel, jednak może to być poprawione przez zaaplikowanie projekcji by zredukować ilość danych. Używając rozdzielonych zapytań, te problemy mogą być rozwiązane, poprzez wykorzystanie osobnych zapytań dla każdej dołączonej nawigacji.</value>
+  </data>
 </root>
