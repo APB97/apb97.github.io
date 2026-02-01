@@ -21,3 +21,7 @@ export function getSessionSetting(key) {
 export function removeSessionSetting(key) {
     sessionStorage.removeItem(key);
 }
+
+export function getRectByid(id) {
+    return JSON.stringify(document.querySelector(`#${id}`).getBoundingClientRect());
+}

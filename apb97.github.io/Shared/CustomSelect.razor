@@ -1,0 +1,70 @@
+﻿@using System.Threading.Tasks
+@using System.Text.Json
+@using apb97.github.io.JSInterop
+@inject IJSRuntime JS
+@implements IAsyncDisposable
+
+<div class="btn btn-primary" style="width: 100%;" id="@Id" @onclick="ToggleList">
+    @(Options.FirstOrDefault(kv => kv.Value == Value).Key ?? Value)
+</div>
+
+<div hidden="@hideList" id="@string.Join('-', Id, "list")" style="position: absolute; right: 16px; left: @(left)px; top: @(top)px; z-index: 10;">
+    @foreach (var option in Options)
+    {
+        <div class="btn  @(option.Value == Value ? "btn-primary" : "btn-secondary")" style="width: 100%;" @onclick="async a => { Value = option.Value; await OnSelected.InvokeAsync(option.Value); await ToggleList(a); }">
+            @option.Key
+        </div>
+    }
+</div>
+
+@code {
+    [Parameter]
+    public required string Value { get; set; }
+
+    [Parameter]
+    public string? Id { get; set; }
+
+    [Parameter]
+    public required IReadOnlyDictionary<string, string> Options { get; set; }
+
+    [Parameter]
+    public EventCallback<string> OnSelected { get; set; }
+
+    private bool hideList = true;
+
+    private double left;
+    private double top;
+
+    private IJSObjectReference? module;
+
+    protected override async Task OnInitializedAsync()
+    {
+        module = await JS.ImportAsync(JSModules.UtilitiesModule);
+    }
+
+    public async ValueTask DisposeAsync()
+    {
+        if (module is not null)
+        {
+            await module.DisposeAsync();
+        }
+    }
+
+    private async Task ToggleList(MouseEventArgs a)
+    {
+        if (module is not null)
+        {
+            var jsonRectForMainButton = await module.InvokeAsync<string>("getRectByid", Id);
+            var mainButtonRect = JsonSerializer.Deserialize<Dictionary<string, double>>(jsonRectForMainButton);
+            var jsonRectForOptions = await module.InvokeAsync<string>("getRectByid", Id);
+            var optionsRect = JsonSerializer.Deserialize<Dictionary<string, double>>(jsonRectForMainButton);
+            if (mainButtonRect is not null && optionsRect is not null)
+            {
+                left = mainButtonRect["x"];
+                top = mainButtonRect["y"] - optionsRect["height"];
+            }
+        }
+
+        hideList = !hideList;
+    }
+}

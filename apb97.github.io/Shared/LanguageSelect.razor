@@ -1,29 +1,22 @@
 ﻿@using apb97.github.io.JSInterop
 @using apb97.github.io.Services
 
+@inherits Base.LocalizedComponent<LanguageSelect>
 @implements IAsyncDisposable
 
 @inject IJSRuntime JS
 @inject NavigationManager Navigation
-@inject StringLocalizer<LanguageSelect> Loc
 
 @if (ShouldRender())
 {
     <label for="language" class="text-white">
         @(Loc["Select your locale"]):
     </label>
-    <InputSelect id="language" style="background-color: transparent; border: none; color: white;" TValue="string" DisplayName="Language" Value="@Culture" ValueChanged="SetCultureAndReload" ValueExpression="() => Culture">
-        @foreach (var culture in supportedCultures)
-        {
-            <option value="@culture.Value" class="@(culture.Value == Culture ? "current" : null)">@culture.Key</option>
-        }
-    </InputSelect>
+
+    <CustomSelect Id="language" Value="@Culture" Options="supportedCultures" OnSelected="SetCultureAndReload" />
 }
 
 @code {
-    [CascadingParameter]
-    public required MainLayout Layout { get; set; }
-
     public string? Culture { get; private set; }
 
     private IJSObjectReference? utilitiesModule;
@@ -34,18 +27,13 @@
         { "Polski", "pl-PL" }
     };
 
-    protected override bool ShouldRender()
-    {
-        return Loc.IsReady;
-    }
-
     protected override async Task OnInitializedAsync()
     {
         utilitiesModule = await JS.ImportAsync(JSModules.UtilitiesModule);
         if (utilitiesModule is not null)
             Culture = await utilitiesModule.GetSettingAsync<string>("BlazorCulture") ?? "en-US";
 
-        await Loc.InitializeAsync(Culture);
+        await base.OnInitializedAsync();
         await Layout.NotifyStateChanged();
     }
 
