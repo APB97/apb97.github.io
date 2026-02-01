@@ -162,7 +162,7 @@
   <data name="Python Advanced topics description" xml:space="preserve">
     <value>W języku Python, dostępne jest wiele zaawansowanych możliwości. Jedną z nich są dekoratory, umożliwiające opakowanie jednego wywołania funkcji inną funkcją, co można zrobić za pomocą dekoratora funtools.wraps. Inną są menedżery kontekstu, które są często używane podczas działania z zasobami takimi jak pliki, używając składni "with open("t.txt") as f:" co z kolei wywołuje funkcje __enter__ oraz __exit__, odpowiednio przed i po kodzie zdefiniowanym wewnątrz.</value>
   </data>
-  <data name="nameof support for unbound generic types" xml:space="preserve">
+  <data name="nameof support for unbound generic types description" xml:space="preserve">
     <value>W tej wersji języka dodano wsparcie dla niepowiązanych typów generycznych w wyrażeniu nameof. Oznacza to, że aby otrzymać nazwę typu takiego jak List&lt;T&gt;, można użyć "nameof(List&lt;&gt;)" zamiast "nameof(List&lt;string&gt;)", lub dowolnych innych parametrów dla typu generycznego.</value>
   </data>
   <data name="New extension block for methods and properties" xml:space="preserve">
@@ -185,5 +185,8 @@
   </data>
   <data name="AsSplitQuery vs AsSingleQuery description" xml:space="preserve">
     <value>Pojedyncze zapytania mogą powodować poważne problemy z wydajnością gdy wiele tabel jest łączonych za pomocą operacji JOIN w zapytaniu. Jednym z tych poroblemów jest eksplozja kartezjańska - gdy nawigacje kolekcji są na tym samym poziomie, powoduje to, że baza danych zwraca wiele wierszy dla pojedynczego obiektujako wynik operacji "cross product". Innym problemem jest duplikacja danych, nawet używając pojedynczej nawigacji - każdy zwrócony wiersz zawiera wszystkie właściwości z obu tabel, jednak może to być poprawione przez zaaplikowanie projekcji by zredukować ilość danych. Używając rozdzielonych zapytań, te problemy mogą być rozwiązane, poprzez wykorzystanie osobnych zapytań dla każdej dołączonej nawigacji.</value>
+  </data>
+  <data name="nameof support for unbound generic types" xml:space="preserve">
+    <value>Wsparcie dla niepowiązanych typów generycznych w wyrażeniu nameof</value>
   </data>
 </root>

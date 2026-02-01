@@ -162,7 +162,7 @@
   <data name="Python Advanced topics description" xml:space="preserve">
     <value>In Python, there are numerous advanced features. One of them are decorators, which allow to wrap one function call with another, which can be done with funtools.wraps decorator. Other one are context managers, which are quite often used when dealing with resources like files using syntax "with open("t.txt") as f:" which in turn calls functions __enter__ and __exit__ before and after code defined within, respectively.</value>
   </data>
-  <data name="nameof support for unbound generic types" xml:space="preserve">
+  <data name="nameof support for unbound generic types description" xml:space="preserve">
     <value>This version added support for unbound generic types in the nameof expression. This means to get name of the type like List&lt;T&gt;, you can use "nameof(List&lt;&gt;)" instead of "nameof(List&lt;string&gt;)", or any other type parameters for generic type.</value>
   </data>
   <data name="New extension block for methods and properties" xml:space="preserve">
@@ -185,5 +185,8 @@
   </data>
   <data name="AsSplitQuery vs AsSingleQuery description" xml:space="preserve">
     <value>Single queries may cause significant performance issues when multiple relations are JOINed in a query. One of the issues is cartesian explosion - when collection navigations are at the same level, this causes the database to return multiple rows per single entity as a result of cross product. Another issue is data duplication, even when using single collection navigation - each row returned contains all properties from both tables, however this can be improved by applying projection to reduce the amount of data. Using split queries, these issues can be resolved by using separate queries for each included collection navigation.</value>
+  </data>
+  <data name="nameof support for unbound generic types" xml:space="preserve">
+    <value>nameof support for unbound generic types</value>
   </data>
 </root>
