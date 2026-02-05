@@ -24,7 +24,7 @@
   </ItemGroup>
 
   
-  <UsingTask Condition="$(ContinuousIntegrationBuild)=='true'" TaskName="SimpleResxToJson.BuildTask.SingleResxToJsonTask" AssemblyFile="$(NuGetPackageRoot)\apb97.simpleresxtojson.buildtask\0.3.1\tasks\net10.0\SimpleResxToJson.BuildTask.dll" />
+  <UsingTask Condition="$(ContinuousIntegrationBuild)=='true'" TaskName="SimpleResxToJson.BuildTask.SingleResxToJsonTask" AssemblyFile="$(NuGetPackageRoot)\apb97.simpleresxtojson.buildtask\0.3.1\tasks\net10.0\APB97.SimpleResxToJson.BuildTask.dll" />
   
   <Target Name="PreBuild" BeforeTargets="PreBuildEvent">
     <!--Github Actions Task-->
