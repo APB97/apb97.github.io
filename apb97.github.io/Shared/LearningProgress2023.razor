@@ -1,71 +1,79 @@
-﻿@inherits Base.LocalizedComponent<LearningProgress2023>
+﻿@implements IReadyable
 
-<h3>@Loc["Year2023"]</h3>
-<ul>
-    <li>
-        <h4>JavaScript</h4>
-        <ul>
-            <li>
-                <b>@Loc["JS types"]</b>
-                <br/>
-                <p>@Loc["JS types description"]</p>
-                <b>@Loc["Example"]</b>
-                <br />
-                <CodeView Code="@Loc["JS types code"]"/>
-            </li>
-            <li>
-                <b>@Loc["JS functions and arrays"]</b>
-                <br />
-                <p>@Loc["JS functions and arrays description"]</p>
-                <b>@Loc["Example"]</b>
-                <br />
-                <CodeView Code="@Loc["JS functions and arrays code"]"/>
-            </li>
-            <li>
-                <b>@Loc["JS objects"]</b>
-                <br />
-                <p>@Loc["JS objects description"]</p>
-                <b>@Loc["Example"]</b>
-                <br />
-                <CodeView Code="@Loc["JS objects code"]"/>
-            </li>
-        </ul>
-        <h4>@Loc["JavaScript libs"]</h4>
-        <ul>
-            <li>
-                <b>Paged.js</b>
-                <br />
-                <p>@Loc["Paged.js description"]</p>
-            </li>
-        </ul>
-        <h4>@Loc["General knowledge"]</h4>
-        <ul>
-            <li>
-                <b>@Loc["TPH, TPC, TPT"]</b>
-                <br />
-                <p>@Loc["TPH, TPC, TPT description"]</p>
-            </li>
-        </ul>
-        <h4>.NET</h4>
-        <ul>
-            <li>
-                <b>@Loc["System.Text.Json"]</b>
-                <br />
-                <p>@Loc["System.Text.Json description"]</p>
-                <a class="link-primary" href="https://learn.microsoft.com/en-us/dotnet/standard/serialization/system-text-json/custom-contracts" rel="noopener" target="_blank">@Loc["Source"]</a>
-                <p />
-            </li>
-        </ul>
-        <h4>@Loc["NuGet packages"]</h4>
-        <ul>
-            <li>
-                <b>@Loc["HotChocolate"]</b>
-                <br />
-                <p>@Loc["HotChocolate description"]</p>
-            </li>
-        </ul>
-    </li>
-</ul>
+<LocalizedComponent T="LearningProgress2023" OnReady="OnReady" @ref="localizedComponent" Context="Loc">
+    <h3 hidden="@Loc.IsLoading">@Loc["Year2023"]</h3>
+    <ul hidden="@Loc.IsLoading">
+        <li>
+            <h4>JavaScript</h4>
+            <ul>
+                <li>
+                    <b>@Loc["JS types"]</b>
+                    <br/>
+                    <p>@Loc["JS types description"]</p>
+                    <b>@Loc["Example"]</b>
+                    <br />
+                    <CodeView Code="@Loc["JS types code"]"/>
+                </li>
+                <li>
+                    <b>@Loc["JS functions and arrays"]</b>
+                    <br />
+                    <p>@Loc["JS functions and arrays description"]</p>
+                    <b>@Loc["Example"]</b>
+                    <br />
+                    <CodeView Code="@Loc["JS functions and arrays code"]"/>
+                </li>
+                <li>
+                    <b>@Loc["JS objects"]</b>
+                    <br />
+                    <p>@Loc["JS objects description"]</p>
+                    <b>@Loc["Example"]</b>
+                    <br />
+                    <CodeView Code="@Loc["JS objects code"]"/>
+                </li>
+            </ul>
+            <h4>@Loc["JavaScript libs"]</h4>
+            <ul>
+                <li>
+                    <b>Paged.js</b>
+                    <br />
+                    <p>@Loc["Paged.js description"]</p>
+                </li>
+            </ul>
+            <h4>@Loc["General knowledge"]</h4>
+            <ul>
+                <li>
+                    <b>@Loc["TPH, TPC, TPT"]</b>
+                    <br />
+                    <p>@Loc["TPH, TPC, TPT description"]</p>
+                </li>
+            </ul>
+            <h4>.NET</h4>
+            <ul>
+                <li>
+                    <b>@Loc["System.Text.Json"]</b>
+                    <br />
+                    <p>@Loc["System.Text.Json description"]</p>
+                    <a class="link-primary" href="https://learn.microsoft.com/en-us/dotnet/standard/serialization/system-text-json/custom-contracts" rel="noopener" target="_blank">@Loc["Source"]</a>
+                    <p />
+                </li>
+            </ul>
+            <h4>@Loc["NuGet packages"]</h4>
+            <ul>
+                <li>
+                    <b>@Loc["HotChocolate"]</b>
+                    <br />
+                    <p>@Loc["HotChocolate description"]</p>
+                </li>
+            </ul>
+        </li>
+    </ul>
+</LocalizedComponent>
 
 @code {
+    [Parameter]
+    public required Action OnReady { get; set; }
+
+    public bool IsReady => localizedComponent?.IsReady ?? false;
+
+    private LocalizedComponent<LearningProgress2023>? localizedComponent;
 }

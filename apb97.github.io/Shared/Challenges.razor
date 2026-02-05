@@ -1,17 +1,17 @@
-﻿@inherits Base.LocalizedComponent<Challenges>
-
-<AdjustedAnchorHeading Id="challenges" Heading="@Loc["Challenges"]" IncludeId="this.IsReady">
-    <div class="d-flex" style="font-size: larger">
-        <ul style="list-style-type: none;">
-            <li>
-                <a class="link-primary" href="/IntegerToRoman"><span>@Loc["Integer to Roman"]</span></a>
-            </li>
-            <li>
-                <a class="link-primary" href="/CountAndSay"><span>@Loc["Count and say"]</span></a>
-            </li>
-        </ul>
-    </div>
-</AdjustedAnchorHeading>
+﻿<LocalizedComponent T="Challenges" Context="Loc">
+    <AdjustedAnchorHeading Id="challenges" Heading="@Loc["Challenges"]" IncludeId="Loc.IsReady" Hidden="@Loc.IsLoading">
+        <div class="d-flex" style="font-size: larger">
+            <ul style="list-style-type: none;">
+                <li>
+                    <a class="link-primary" href="/IntegerToRoman"><span>@Loc["Integer to Roman"]</span></a>
+                </li>
+                <li>
+                    <a class="link-primary" href="/CountAndSay"><span>@Loc["Count and say"]</span></a>
+                </li>
+            </ul>
+        </div>
+    </AdjustedAnchorHeading>
+</LocalizedComponent>
 
 @code {
 }

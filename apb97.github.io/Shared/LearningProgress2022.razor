@@ -1,37 +1,45 @@
-﻿@inherits Base.LocalizedComponent<LearningProgress2022>
+﻿@implements IReadyable
 
-<h3>@Loc["Year2022-last-weeks"]</h3>
-<ul>
-    <li>
-        <h4>C#</h4>
-        <ul>
-            <li>
-                <b>@Loc["Extended property pattern"]</b>
-                <br />
-                <p>@Loc["Extended property pattern description"]</p>
-                <b>@Loc["Example"]</b>
-                <br />
-                <CodeView Code="@Loc["Extended property pattern code"]"></CodeView>
-            </li>
-            <li>
-                <b>@Loc["Global using directive"]</b>
-                <br />
-                <p>@Loc["Global using directive description"]</p>
-                <b>@Loc["Example"]</b>
-                <br />
-                <CodeView Code="@Loc["Global using directive code"]" />
-            </li>
-            <li>
-                <b>@Loc["File-scoped namespace declaration"]</b>
-                <br />
-                <p>@Loc["File-scoped namespace declaration description"]</p>
-                <b>@Loc["Example"]</b>
-                <br />
-                <CodeView Code="@Loc["File-scoped namespace declaration code"]" />
-            </li>
-        </ul>
-    </li>
-</ul>
+<LocalizedComponent T="LearningProgress2022" OnReady="OnReady" @ref="localizedComponent" Context="Loc">
+    <h3 hidden="@Loc.IsLoading">@Loc["Year2022-last-weeks"]</h3>
+    <ul hidden="@Loc.IsLoading">
+        <li>
+            <h4>C#</h4>
+            <ul>
+                <li>
+                    <b>@Loc["Extended property pattern"]</b>
+                    <br />
+                    <p>@Loc["Extended property pattern description"]</p>
+                    <b>@Loc["Example"]</b>
+                    <br />
+                    <CodeView Code="@Loc["Extended property pattern code"]"></CodeView>
+                </li>
+                <li>
+                    <b>@Loc["Global using directive"]</b>
+                    <br />
+                    <p>@Loc["Global using directive description"]</p>
+                    <b>@Loc["Example"]</b>
+                    <br />
+                    <CodeView Code="@Loc["Global using directive code"]" />
+                </li>
+                <li>
+                    <b>@Loc["File-scoped namespace declaration"]</b>
+                    <br />
+                    <p>@Loc["File-scoped namespace declaration description"]</p>
+                    <b>@Loc["Example"]</b>
+                    <br />
+                    <CodeView Code="@Loc["File-scoped namespace declaration code"]" />
+                </li>
+            </ul>
+        </li>
+    </ul>
+</LocalizedComponent>
 
 @code {
+    [Parameter]
+    public required Action OnReady { get; set; }
+
+    public bool IsReady => localizedComponent?.IsReady ?? false;
+
+    private LocalizedComponent<LearningProgress2022>? localizedComponent;
 }

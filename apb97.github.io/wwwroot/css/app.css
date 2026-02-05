@@ -218,6 +218,11 @@ code {
     color: var(--link-color);
 }
 
+.link-primary:focus, .link-primary:hover {
+    --link-hover: #a6caff;
+    color: var(--link-hover) !important;
+}
+
 input {
     --input-fg-color: white;
     color: var(--input-fg-color);

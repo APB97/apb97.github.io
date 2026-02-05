@@ -3,77 +3,78 @@
 @using System.Text
 @using apb97.github.io.Shared
 
-@inherits Shared.Base.LocalizedComponent<CountAndSay>
 @inject NavigationManager Navigation
 @inject CountAndSayService Service
 
-<PageTitle>Adrian Bieliński - @Loc["Count and say"]</PageTitle>
+<LocalizedComponent T="CountAndSay" Context="Loc" GetAdditionalResources="GetAdditionalResources" @ref="localizer">
+    <PageTitle>Adrian Bieliński - @Loc["Count and say"]</PageTitle>
 
-<AdjustedAnchorHeading Id="" Heading="@Loc["Count and say"]" IncludeId="this.IsReady" />
-<hr/>
-<AdjustedAnchorHeading Id="description" Heading="@Loc["Challenge description"]" FontSize="smaller" IncludeId="this.IsReady" />
-<p>
-    @Loc["The count-and-say sequence is a sequence"]:
-</p>
-<ul>
-    <li>
-        <code>@Loc["functionName"] (1) = "1"</code>
-    </li>
-    <li>
-        <code>@Loc["functionName"] (n)</code> @Loc["is the way you would 'say' the digit string from"]
-        <code>@Loc["functionName"] (n-1)</code>, @Loc["which is then converted into a different digit string"].
-    </li>
-</ul>
+    <AdjustedAnchorHeading Id="" Heading="@Loc["Count and say"]" IncludeId="Loc.IsReady" />
+    <hr/>
+    <AdjustedAnchorHeading Id="description" Heading="@Loc["Challenge description"]" FontSize="smaller" IncludeId="Loc.IsReady" />
+    <p>
+        @Loc["The count-and-say sequence is a sequence"]:
+    </p>
+    <ul>
+        <li>
+            <code>@Loc["functionName"] (1) = "1"</code>
+        </li>
+        <li>
+            <code>@Loc["functionName"] (n)</code> @Loc["is the way you would 'say' the digit string from"]
+            <code>@Loc["functionName"] (n-1)</code>, @Loc["which is then converted into a different digit string"].
+        </li>
+    </ul>
 
-<span>@Loc["To determine how you"]</span>
-<span>@Loc["Then for each group, say"]</span>
-<span>@Loc["To convert the saying"]</span>
+    <span>@Loc["To determine how you"]</span>
+    <span>@Loc["Then for each group, say"]</span>
+    <span>@Loc["To convert the saying"]</span>
 
-<AdjustedAnchorHeading Id="note" Heading="@Loc["Note"]" FontSize="smaller" IncludeId="this.IsReady" />
-<p>@Loc["You can use the url"]</p>
+    <AdjustedAnchorHeading Id="note" Heading="@Loc["Note"]" FontSize="smaller" IncludeId="Loc.IsReady" />
+    <p>@Loc["You can use the url"]</p>
 
-<div>
-    <AdjustedAnchorHeading Id="input" Heading="@Loc["Input"]" FontSize="smaller" IncludeId="this.IsReady" />
+    <div>
+        <AdjustedAnchorHeading Id="input" Heading="@Loc["Input"]" FontSize="smaller" IncludeId="Loc.IsReady" />
 
-    <div class="row">
-        <div class="card-group">
-            <label for="number" style="margin: 4px">@Loc["NumberOfSayings"]</label>
-            <InputNumber id="number" TValue="int?" Value="Number" ValueExpression="() => Number" ValueChanged="OnNumberChanged" type="number" min="1" max="30" style="margin: 4px" />
+        <div class="row">
+            <div class="card-group">
+                <label for="number" style="margin: 4px">@Loc["NumberOfSayings"]</label>
+                <InputNumber id="number" TValue="int?" Value="Number" ValueExpression="() => Number" ValueChanged="OnNumberChanged" type="number" min="1" max="30" style="margin: 4px" />
+            </div>
         </div>
-    </div>
 
-    @{
-        var results = GetResults();
-    }
-    <hr />
-    <AdjustedAnchorHeading Id="@OutputId" FontSize="smaller" Heading="@Loc["Output"]" IncludeId="this.IsReady" />
-    <div class="row">
-        <div class="card-group">
-            <span style="margin: 4px">@Loc["Result"]</span>
+        @{
+            var results = GetResults();
+        }
+        <hr />
+        <AdjustedAnchorHeading Id="@OutputId" FontSize="smaller" Heading="@Loc["Output"]" IncludeId="Loc.IsReady" />
+        <div class="row">
+            <div class="card-group">
+                <span style="margin: 4px">@Loc["Result"]</span>
 
-            <code role="status" style="margin: 3px; font-size:large; overflow-wrap: anywhere">
-                @results.result
-            </code>
+                <code role="status" style="margin: 3px; font-size:large; overflow-wrap: anywhere">
+                    @results.result
+                </code>
+            </div>
         </div>
-    </div>
 
-    <h4>@Loc["Explanation"]</h4>
-    <div class="row">
-        <p role="status">
-            @{
-                int i = 1;
-                foreach (var explanation in results.explanation)
-                {
-                    <p>
-                        <b>@(++i): </b>
-                            @explanation
-                    </p>
+        <h4>@Loc["Explanation"]</h4>
+        <div class="row">
+            <p role="status">
+                @{
+                    int i = 1;
+                    foreach (var explanation in results.explanation)
+                    {
+                        <p>
+                            <b>@(++i): </b>
+                                @explanation
+                        </p>
+                    }
                 }
-            }
-        </p>
+            </p>
+        </div>
     </div>
-</div>
 <NavigationByIdFix />
+</LocalizedComponent>
 
 @code 
 {
@@ -84,18 +85,14 @@
 
     private int? prev;
 
+    private LocalizedComponent<CountAndSay>? localizer;
+
     private void OnNumberChanged(int? number)
     {
         if (number.HasValue && number != Number)
         {
             Navigation.NavigateTo($"/CountAndSay/{number.Value}#{OutputId}");
         }
-    }
-
-    protected override async Task OnInitializedAsync()
-    {
-        await base.OnInitializedAsync();
-        await GetAdditionalResources();
     }
 
     protected override void OnAfterRender(bool firstRender)
@@ -112,9 +109,9 @@
         }
     }
 
-    protected override async Task GetAdditionalResources()
+    private async Task GetAdditionalResources(string culture)
     {
-        await Service.InitializeAsync(Layout.Culture);
+        await Service.InitializeAsync(culture);
     }
 
     protected (string result, IEnumerable<string> explanation) GetResults()
@@ -132,7 +129,7 @@
         }
         catch (ArgumentOutOfRangeException)
         {
-            return (Loc["Out of range"] ?? string.Empty, Array.Empty<string>());
+            return (localizer?["Out of range"] ?? string.Empty, Array.Empty<string>());
         }
     }
 }

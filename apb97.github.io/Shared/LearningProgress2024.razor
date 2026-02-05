@@ -1,72 +1,80 @@
-﻿@inherits Base.LocalizedComponent<LearningProgress2024>
+﻿@implements IReadyable
 
-<h3>@Loc["Year2024"]</h3>
+<LocalizedComponent T="LearningProgress2024" @ref="localizedComponent" OnReady="OnReady" Context="Loc">
+    <h3 hidden="@Loc.IsLoading">@Loc["Year2024"]</h3>
 
-<ul>
-    <li>
-        <h4>@Loc["C# features"]</h4>
-        <ul>
-            <li>
-                <b>@Loc["Records"]</b>
-                <br />
-                <span>@Loc["Records description"]</span>
-                <ul>
-                    <li>@Loc["Concise syntax for reference types"]</li>
-                    <li>@Loc["Built-in value equality"]</li>
-                    <li>@Loc["Built-in concise syntax for nondesctructive mutation"]</li>
-                    <li>@Loc["Built-in formatting"]</li>
-                </ul>
-            </li>
-            <li>
-                <b>@Loc["Constant interpolated strings"]</b>
-                <br />
-                <p>@Loc["Constant interpolated strings description"]</p>
-            </li>
-        </ul>
-    </li>
-    <li>
-        <h4>@Loc["NuGet packages"]</h4>
-        <ul>
-            <li>
-                <b>StrawberryShake</b>
-                <br />
-                <p>@Loc["StrawberryShake description"]</p>
-            </li>
-        </ul>
-    </li>
-    <li>
-        <h4>@Loc["Linux commands"]</h4>
-        <ul>
-            <li>
-                <b>@Loc["Basic"]</b>
-                <br />
-                @Loc["Linux basic commands"]
-            </li>
-            <li>
-                <b>@Loc["Advanced"]</b>
-                <br />
-                @Loc["Linux advanced commands"]
-            </li>
-        </ul>
-    </li>
-    <li>
-        <h4>@Loc["MSBuild"]</h4>
-        <ul>
-            <li>
-                <b>@Loc["MSBuild Conditions"]</b>
-                <br />
-                @Loc["MSBuild Conditions description"]
-                @Loc["I used MSBuild Conditions to conditionally execute my SimpleResxToJson command-line tool"]
-            </li>
-            <li>
-                <b>@Loc["MSBuild Build Events for C#"]</b>
-                <br />
-                @Loc["MSBuild Build Events for C# description"]
-                @Loc["I used MSBuild Build Events to perform actions during the build process"]
-            </li>
-        </ul>
-    </li>
-</ul>
+    <ul hidden="@Loc.IsLoading">
+        <li>
+            <h4>@Loc["C# features"]</h4>
+            <ul>
+                <li>
+                    <b>@Loc["Records"]</b>
+                    <br />
+                    <span>@Loc["Records description"]</span>
+                    <ul>
+                        <li>@Loc["Concise syntax for reference types"]</li>
+                        <li>@Loc["Built-in value equality"]</li>
+                        <li>@Loc["Built-in concise syntax for nondesctructive mutation"]</li>
+                        <li>@Loc["Built-in formatting"]</li>
+                    </ul>
+                </li>
+                <li>
+                    <b>@Loc["Constant interpolated strings"]</b>
+                    <br />
+                    <p>@Loc["Constant interpolated strings description"]</p>
+                </li>
+            </ul>
+        </li>
+        <li>
+            <h4>@Loc["NuGet packages"]</h4>
+            <ul>
+                <li>
+                    <b>StrawberryShake</b>
+                    <br />
+                    <p>@Loc["StrawberryShake description"]</p>
+                </li>
+            </ul>
+        </li>
+        <li>
+            <h4>@Loc["Linux commands"]</h4>
+            <ul>
+                <li>
+                    <b>@Loc["Basic"]</b>
+                    <br />
+                    @Loc["Linux basic commands"]
+                </li>
+                <li>
+                    <b>@Loc["Advanced"]</b>
+                    <br />
+                    @Loc["Linux advanced commands"]
+                </li>
+            </ul>
+        </li>
+        <li>
+            <h4>@Loc["MSBuild"]</h4>
+            <ul>
+                <li>
+                    <b>@Loc["MSBuild Conditions"]</b>
+                    <br />
+                    @Loc["MSBuild Conditions description"]
+                    @Loc["I used MSBuild Conditions to conditionally execute my SimpleResxToJson command-line tool"]
+                </li>
+                <li>
+                    <b>@Loc["MSBuild Build Events for C#"]</b>
+                    <br />
+                    @Loc["MSBuild Build Events for C# description"]
+                    @Loc["I used MSBuild Build Events to perform actions during the build process"]
+                </li>
+            </ul>
+        </li>
+    </ul>
+</LocalizedComponent>
 
 @code {
+    [Parameter]
+    public required Action OnReady { get; set; }
+
+    public bool IsReady => localizedComponent?.IsReady ?? false;
+
+    private LocalizedComponent<LearningProgress2024>? localizedComponent;
 }

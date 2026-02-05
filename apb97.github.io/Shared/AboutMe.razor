@@ -1,48 +1,49 @@
 ﻿@using apb97.github.io.Pages
 @using apb97.github.io.Services.Dimensions
 
-@inherits Base.LocalizedComponent<AboutMe>
 @inject NavigationManager Navigation
 
-<div class="row">
-    <div class="d-flex flex-column">
-        <AdjustedAnchorHeading Id="aboutme" Heading="@Loc["About me"]" IncludeId="this.IsReady">
-            <div class="d-flex flex-row">
-                <div class="col-8 flex-column">
-                    <div class="d-flex flex-column">
-                        <p style="font-size: larger">@Loc["iam_short"]</p>
-                    </div>
+<LocalizedComponent T="AboutMe" Context="Loc">
+    <div class="row" hidden="@Loc.IsLoading">
+        <div class="d-flex flex-column">
+            <AdjustedAnchorHeading Id="aboutme" Heading="@Loc["About me"]" IncludeId="Loc.IsReady">
+                <div class="d-flex flex-row">
+                    <div class="col-8 flex-column">
+                        <div class="d-flex flex-column">
+                            <p style="font-size: larger">@Loc["iam_short"]</p>
+                        </div>
 
-                    <p>
-                        @Loc["iam_long"]
-                    </p>
+                        <p>
+                            @Loc["iam_long"]
+                        </p>
                 
-                    <p class="m-0">
-                        <b>@Loc["degree_label"]</b>
-                        @Loc["degree"]
-                    </p>
-                    <p class="m-0">
-                        <b>@Loc["status_label"]</b>
-                        @Loc["status"]
-                    </p>
-                    <HiddenForScreenWidth HideForWidthCondition="width => width < ScreenBreakpoints.Large">
-                        <Projects />
-                    </HiddenForScreenWidth>
+                        <p class="m-0">
+                            <b>@Loc["degree_label"]</b>
+                            @Loc["degree"]
+                        </p>
+                        <p class="m-0">
+                            <b>@Loc["status_label"]</b>
+                            @Loc["status"]
+                        </p>
+                        <HiddenForScreenWidth HideForWidthCondition="width => width < ScreenBreakpoints.Large">
+                            <Projects />
+                        </HiddenForScreenWidth>
+                    </div>
+                    <div class="col-4">
+                        <img src="/images/AboutMe.jpg" alt="A picture of myself" style="width: 100%; max-width: 368px; max-height: 552px;" />
+                    </div>
                 </div>
-                <div class="col-4">
-                    <img src="/images/AboutMe.jpg" alt="A picture of myself" style="width: 100%; max-width: 368px; max-height: 552px;" />
-                </div>
-            </div>
-            <HiddenForScreenWidth HideForWidthCondition="width => width >= ScreenBreakpoints.Large">
-                <Projects />
-            </HiddenForScreenWidth>
-            <Challenges />
-            <Skills />
-            <LearningProgress />
-            <NavigationByIdFix />
-        </AdjustedAnchorHeading>
+                <HiddenForScreenWidth HideForWidthCondition="width => width >= ScreenBreakpoints.Large">
+                    <Projects />
+                </HiddenForScreenWidth>
+                <Challenges />
+                <Skills />
+                <LearningProgress />
+                <NavigationByIdFix />
+            </AdjustedAnchorHeading>
+        </div>
     </div>
-</div>
+</LocalizedComponent>
 
 @code {
 }

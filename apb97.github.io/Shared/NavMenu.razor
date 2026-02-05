@@ -1,82 +1,83 @@
 ﻿@using apb97.github.io.Services.Dimensions
-@inherits Base.LocalizedComponent<NavMenu>
 @inject NavigationManager Navigation
 
-<div class="top-row ps-3 navbar navbar-dark w-100">
-    <div class="container-fluid align-items-stretch">
-        <div class="d-flex w-100-50">
-            <a class="align-content-center" style="color: white; text-decoration: none !important;" href="/">APB97</a>
-            <div class="flex-grow-1"></div>
-            <button style="border: none; background-color: transparent; padding: 0;" @onclick="Layout.ToggleLayoutMode"
-                aria-label="@Loc["Toggle"] @Loc[$"{Layout.LayoutMode} Mode"]" >
-                <div style="width: 56px;">
-                    <img style="height: 2rem; filter: invert(0.95);"
-                         src="@(Layout.LayoutMode == MainLayout.LightMode ? "/images/dark.svg" : "/images/light.svg")"
-                         alt="@Loc[$"Picture showing white {(Layout.LayoutMode == MainLayout.LightMode ? "moon" : "sun")}"]" />
-                </div>
-            </button>
-        </div>
-        <div class="d-flex w-100-50" style="flex-grow: 0.25">
-            <HiddenForScreenWidth @ref="hiddenForWideScreen" HideForWidthCondition="w => w > ScreenBreakpoints.Medium">
-                <div class="align-content-center d-flex flex-grow-1 flex-row align-items-center">
-                    <LanguageSelect @ref="language" DisplayDownward="true" />
-                </div>
-            </HiddenForScreenWidth>
-            <div class="flex-grow-1"></div>
-            <button title="Navigation menu" class="navbar-toggler" @onclick="ToggleNavMenu">
-                <span class="navbar-toggler-icon"></span>
-            </button>
+<LocalizedComponent T="NavMenu" Context="Loc">
+    <div class="top-row ps-3 navbar navbar-dark w-100" hidden="@Loc.IsLoading">
+        <div class="container-fluid align-items-stretch">
+            <div class="d-flex w-100-50">
+                <a class="align-content-center" style="color: white; text-decoration: none !important;" href="/">APB97</a>
+                <div class="flex-grow-1"></div>
+                <button style="border: none; background-color: transparent; padding: 0;" @onclick="Loc.Layout.ToggleLayoutMode"
+                        aria-label="@Loc["Toggle"] @Loc[$"{Loc.Layout.LayoutMode} Mode"]">
+                    <div style="width: 56px;">
+                        <img style="height: 2rem; filter: invert(0.95);"
+                             src="@(Loc.Layout.LayoutMode == MainLayout.LightMode ? "/images/dark.svg" : "/images/light.svg")"
+                             alt="@Loc[$"Picture showing white {(Loc.Layout.LayoutMode == MainLayout.LightMode ? "moon" : "sun")}"]" />
+                    </div>
+                </button>
+            </div>
+            <div class="d-flex w-100-50" style="flex-grow: 0.25">
+                <HiddenForScreenWidth @ref="hiddenForWideScreen" HideForWidthCondition="w => w > ScreenBreakpoints.Medium">
+                    <div class="align-content-center d-flex flex-grow-1 flex-row align-items-center">
+                        <LanguageSelect @ref="language" DisplayDownward="true" />
+                    </div>
+                </HiddenForScreenWidth>
+                <div class="flex-grow-1"></div>
+                <button title="Navigation menu" class="navbar-toggler" @onclick="ToggleNavMenu">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+            </div>
         </div>
     </div>
-</div>
 
-<div class="@NavMenuCssClass" style="overflow-y: auto; display: flex; flex-grow: 1; height: 50vh;">
-    <nav class="d-flex flex-column flex-grow-1">
-        <div class="nav-item px-3" @onclick="CollapseNavMenu">
-            <ABP97NavLink Href="#aboutme">
-                @Loc["About me"]
-            </ABP97NavLink>
-        </div>
-
-        <div class="nav-item px-3" @onclick="CollapseNavMenu">
-            <ABP97NavLink Href="#projects">
-                @Loc["Projects"]
-            </ABP97NavLink>
-        </div>
-
-        <div class="nav-item px-3" @onclick="CollapseNavMenu">
-            <ABP97NavLink Href="#challenges" >
-                @Loc["Challenges"]
-            </ABP97NavLink>
-        </div>
-
-        <div class="nav-item px-3" @onclick="CollapseNavMenu">
-            <ABP97NavLink Href="#skills">
-                @Loc["Skills"]
-            </ABP97NavLink>
-        </div>
-
-        <div class="nav-item px-3" @onclick="CollapseNavMenu">
-            <ABP97NavLink Href="#learning">
-                @Loc["LearningProgress"]
-            </ABP97NavLink>
-        </div>
-            
-        <div class="flex-grow-1">
-
-        </div>
-        <div class="nav-item px-3">
-            <a class="ms-auto nav-link link-info" href="https://github.com/APB97/apb97.github.io" target="_blank">@Loc["Code"]</a>
-        </div>
-        <HiddenForScreenWidth HideForWidthCondition="w => w <= ScreenBreakpoints.Medium">
-            <div class="nav-item px-0">
-                <div class="nav-link" style="display:flex; align-items: center">
-                    <LanguageSelect @ref="language" />
-                </div>
+    <div class="@NavMenuCssClass" style="overflow-y: auto; display: flex; flex-grow: 1; height: 50vh;" hidden="@Loc.IsLoading">
+        <nav class="d-flex flex-column flex-grow-1">
+            <div class="nav-item px-3" @onclick="CollapseNavMenu">
+                <ABP97NavLink Href="#aboutme">
+                    @Loc["About me"]
+                </ABP97NavLink>
             </div>
-        </HiddenForScreenWidth>
-    </nav>
-</div>
+
+            <div class="nav-item px-3" @onclick="CollapseNavMenu">
+                <ABP97NavLink Href="#projects">
+                    @Loc["Projects"]
+                </ABP97NavLink>
+            </div>
+
+            <div class="nav-item px-3" @onclick="CollapseNavMenu">
+                <ABP97NavLink Href="#challenges" >
+                    @Loc["Challenges"]
+                </ABP97NavLink>
+            </div>
+
+            <div class="nav-item px-3" @onclick="CollapseNavMenu">
+                <ABP97NavLink Href="#skills">
+                    @Loc["Skills"]
+                </ABP97NavLink>
+            </div>
+
+            <div class="nav-item px-3" @onclick="CollapseNavMenu">
+                <ABP97NavLink Href="#learning">
+                    @Loc["LearningProgress"]
+                </ABP97NavLink>
+            </div>
+            
+            <div class="flex-grow-1">
+
+            </div>
+            <div class="nav-item px-3">
+                <a class="ms-auto nav-link link-info" href="https://github.com/APB97/apb97.github.io" target="_blank">@Loc["Code"]</a>
+            </div>
+            <HiddenForScreenWidth HideForWidthCondition="w => w <= ScreenBreakpoints.Medium">
+                <div class="nav-item px-0">
+                    <div class="nav-link" style="display:flex; align-items: center">
+                        <LanguageSelect @ref="language" />
+                    </div>
+                </div>
+            </HiddenForScreenWidth>
+        </nav>
+    </div>
+</LocalizedComponent>
 
 @code {
     private bool collapseNavMenu = true;

@@ -1,98 +1,106 @@
-﻿@inherits Base.LocalizedComponent<LearningProgress2025>
+﻿@implements IReadyable
 
-<h3>@Loc["Year2025"]</h3>
+<LocalizedComponent T="LearningProgress2025" OnReady="OnReady" @ref="localizedComponent" Context="Loc">
+    <h3 hidden="@Loc.IsLoading">@Loc["Year2025"]</h3>
 
-<ul>
-    <li>
-        <h4>@Loc["C# 14 Features"]</h4>
+    <ul hidden="@Loc.IsLoading">
+        <li>
+            <h4>@Loc["C# 14 Features"]</h4>
 
-        <ul>
-            <li>
-                <b>@Loc["nameof support for unbound generic types"]</b>
-                <br />
-                <p>@Loc["nameof support for unbound generic types description"]</p>
-            </li>
+            <ul>
+                <li>
+                    <b>@Loc["nameof support for unbound generic types"]</b>
+                    <br />
+                    <p>@Loc["nameof support for unbound generic types description"]</p>
+                </li>
 
-            <li>
-                <b>@Loc["field contextual keyword"]</b>
-                <br />
-                <p>@Loc["field contextual keyword description"]</p>
+                <li>
+                    <b>@Loc["field contextual keyword"]</b>
+                    <br />
+                    <p>@Loc["field contextual keyword description"]</p>
 
-                <a class="link-primary" href="https://learn.microsoft.com/en-us/dotnet/csharp/whats-new/csharp-14#the-field-keyword" target="_blank" rel="noopener">
-                    @Loc["Example from documentation"]
-                </a>
+                    <a class="link-primary" href="https://learn.microsoft.com/en-us/dotnet/csharp/whats-new/csharp-14#the-field-keyword" target="_blank" rel="noopener">
+                        @Loc["Example from documentation"]
+                    </a>
                 
-                <p />
-            </li>
+                    <p />
+                </li>
 
-            <li>
-                <b>@Loc["New extension block for methods and properties"]</b>
-                <br />
-                <p>@Loc["New extension block for methods and properties description"]</p>
+                <li>
+                    <b>@Loc["New extension block for methods and properties"]</b>
+                    <br />
+                    <p>@Loc["New extension block for methods and properties description"]</p>
 
-                <a class="link-primary" href="https://learn.microsoft.com/en-us/dotnet/csharp/whats-new/csharp-14#extension-members" target="_blank" rel="noopener">
-                    @Loc["Example from documentation"]
-                </a>
+                    <a class="link-primary" href="https://learn.microsoft.com/en-us/dotnet/csharp/whats-new/csharp-14#extension-members" target="_blank" rel="noopener">
+                        @Loc["Example from documentation"]
+                    </a>
                 
-                <p />
-            </li>
-        </ul>
-    </li>
+                    <p />
+                </li>
+            </ul>
+        </li>
 
-    <li>
-        <h4>@Loc["EF Core Features"]</h4>
+        <li>
+            <h4>@Loc["EF Core Features"]</h4>
 
-        <ul>
-            <li>
-                <b>@Loc["AsSplitQuery vs AsSingleQuery"]</b>
-                <br />
-                <p>@Loc["AsSplitQuery vs AsSingleQuery description"]</p>
+            <ul>
+                <li>
+                    <b>@Loc["AsSplitQuery vs AsSingleQuery"]</b>
+                    <br />
+                    <p>@Loc["AsSplitQuery vs AsSingleQuery description"]</p>
 
-                <a class="link-primary" href="https://learn.microsoft.com/en-us/ef/core/querying/single-split-queries#split-queries" target="_blank" rel="noopener">
-                    @Loc["Example from documentation"]
-                </a>
+                    <a class="link-primary" href="https://learn.microsoft.com/en-us/ef/core/querying/single-split-queries#split-queries" target="_blank" rel="noopener">
+                        @Loc["Example from documentation"]
+                    </a>
 
-                <p />
-            </li>
-        </ul>
-    </li>
+                    <p />
+                </li>
+            </ul>
+        </li>
 
-    <li>
-        <h4>@Loc["Python 3"]</h4>
+        <li>
+            <h4>@Loc["Python 3"]</h4>
 
-        <ul>
-            <li>
-                <b>@Loc["Python Basics"]</b>
-                <br />
-                <p>@Loc["Python Basics description"]</p>
-            </li>
+            <ul>
+                <li>
+                    <b>@Loc["Python Basics"]</b>
+                    <br />
+                    <p>@Loc["Python Basics description"]</p>
+                </li>
 
-            <li>
-                <b>@Loc["Python Advanced topics"]</b>
-                <br />
-                <p>@Loc["Python Advanced topics description"]</p>
-            </li>
-        </ul>
-    </li>
+                <li>
+                    <b>@Loc["Python Advanced topics"]</b>
+                    <br />
+                    <p>@Loc["Python Advanced topics description"]</p>
+                </li>
+            </ul>
+        </li>
 
-    <li>
-        <h4>@Loc["Poetry"]</h4>
+        <li>
+            <h4>@Loc["Poetry"]</h4>
 
-        <ul>
-            <li>
-                <b>@Loc["Using Poetry"]</b>
-                <br />
-                <p>@Loc["Using Poetry description"]</p>
-            </li>
+            <ul>
+                <li>
+                    <b>@Loc["Using Poetry"]</b>
+                    <br />
+                    <p>@Loc["Using Poetry description"]</p>
+                </li>
 
-            <li>
-                <b>@Loc["pyproject.toml for Poetry"]</b>
-                <br />
-                <p>@Loc["pyproject.toml for Poetry description"]</p>
-            </li>
-        </ul>
-    </li>
-</ul>
+                <li>
+                    <b>@Loc["pyproject.toml for Poetry"]</b>
+                    <br />
+                    <p>@Loc["pyproject.toml for Poetry description"]</p>
+                </li>
+            </ul>
+        </li>
+    </ul>
+</LocalizedComponent>
 
 @code {
+    [Parameter]
+    public required Action OnReady { get; set; }
+
+    public bool IsReady => localizedComponent?.IsReady ?? false;
+
+    private LocalizedComponent<LearningProgress2025>? localizedComponent;
 }

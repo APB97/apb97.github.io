@@ -3,23 +3,33 @@
 @typeparam T
 @inject StringLocalizer<T> Localizer
 
-@if (ShouldRender())
+@ChildContent(this)
+
+@if (!ShouldRender())
 {
-    @ChildContent
+    <div class="progress progress-bar progress-bar-animated progress-bar-striped" />
 }
+
 @code {
     [Parameter]
-    public required RenderFragment ChildContent { get; set; }
+    public required RenderFragment<LocalizedComponent<T>> ChildContent { get; set; }
 
     [CascadingParameter]
     public required MainLayout Layout { get; set; }
 
     public bool IsReady { get; private set; }
 
+    public bool IsLoading => !IsReady;
+
     [Parameter]
     public Action OnReady { get; set; } = delegate { };
 
+    [Parameter]
+    public EventCallback<string> GetAdditionalResources { get; set; }
+
     public StringLocalizer<T> Loc => Localizer;
+
+    public string this[string key] => Localizer[key];
 
     protected override bool ShouldRender()
     {
@@ -35,7 +45,7 @@
 
     protected override async Task OnInitializedAsync()
     {
-        await Localizer.InitializeAsync(Layout.Culture);
+        await GetResources();
     }
 
     protected override void OnAfterRender(bool firstRender)
@@ -52,12 +62,10 @@
         Layout.OnStateChanging -= GetResources;
     }
 
-    protected virtual Task GetAdditionalResources() => Task.CompletedTask;
-
     private async Task GetResources()
     {
         await Localizer.InitializeAsync(Layout.Culture);
-        await GetAdditionalResources();
+        await GetAdditionalResources.InvokeAsync(Layout.Culture);
         StateHasChanged();
     }
 }

@@ -2,70 +2,71 @@
 @page "/IntegerToRoman/{Number:int?}"
 @using apb97.github.io.Shared
 
-@inherits Shared.Base.LocalizedComponent<IntegerToRoman>
 @inject NavigationManager Navigation
 
-<PageTitle>Adrian Bieliński - @Loc["Integer to Roman"]</PageTitle>
+<LocalizedComponent T="IntegerToRoman" Context="Loc" @ref="localizer">
+    <PageTitle>Adrian Bieliński - @Loc["Integer to Roman"]</PageTitle>
 
-<AdjustedAnchorHeading Id="" Heading="@Loc["Integer to Roman"]" IncludeId="this.IsReady" />
-<hr/>
-<AdjustedAnchorHeading Id="description" Heading="@Loc["Challenge description"]" FontSize="smaller" IncludeId="this.IsReady" />
+    <AdjustedAnchorHeading Id="" Heading="@Loc["Integer to Roman"]" IncludeId="Loc.IsReady" />
+    <hr/>
+    <AdjustedAnchorHeading Id="description" Heading="@Loc["Challenge description"]" FontSize="smaller" IncludeId="Loc.IsReady" />
 
-<p>@Loc["Roman numerals are represented by"]<code>I</code>, <code>V</code>, <code>X</code>, <code>L</code>, <code>C</code>, <code>D</code> @Loc["and"] <code>M</code>.</p>
-<p>@Loc["They represent the following"]<code>1</code>, <code>5</code>, <code>10</code>, <code>50</code>, <code>100</code>, <code>500</code>, <code>1000</code>.</p>
-<p>
-    @Loc["For example,"] <code>3</code> @Loc["is written as"] <code>III</code> @Loc["in Roman numeral,"]
-    <code>12</code> @Loc["is written as"] <code>XII</code> @Loc["and"] <code>28</code> @Loc["is written as"] <code>XXVIII</code>.
-</p>
-<p>
-    @Loc["Roman numerals are usually"]
-    @Loc["However the numeral for"] <code>4</code> @Loc["is not"] <code>IIII</code> @Loc[", but it is"] <code>IV</code> (5 - 1). @Loc["Similarly"] <code>9</code> @Loc["is written as"] <code>IX</code> (10 - 1).
-    @Loc["Subtraction is used"]
-    <ul>
-        <li>
-            <code>I</code> @Loc["can be placed before"] <code>V</code> @Loc["and"] <code>X</code> @Loc["to make"] <code>4</code> @Loc["and"] <code>9</code>.
-        </li>
-        <li>
-            <code>X</code> @Loc["can be placed before"] <code>L</code> @Loc["and"] <code>C</code> @Loc["to make"] <code>40</code> @Loc["and"] <code>90</code>.
-        </li>
-        <li>
-            <code>C</code> @Loc["can be placed before"] <code>D</code> @Loc["and"] <code>M</code> @Loc["to make"] <code>400</code> @Loc["and"] <code>900</code>.
-        </li>
-    </ul>
-</p>
-<br/>
-<p>@Loc["Given an integer convert it"]</p>
+    <p>@Loc["Roman numerals are represented by"]<code>I</code>, <code>V</code>, <code>X</code>, <code>L</code>, <code>C</code>, <code>D</code> @Loc["and"] <code>M</code>.</p>
+    <p>@Loc["They represent the following"]<code>1</code>, <code>5</code>, <code>10</code>, <code>50</code>, <code>100</code>, <code>500</code>, <code>1000</code>.</p>
+    <p>
+        @Loc["For example,"] <code>3</code> @Loc["is written as"] <code>III</code> @Loc["in Roman numeral,"]
+        <code>12</code> @Loc["is written as"] <code>XII</code> @Loc["and"] <code>28</code> @Loc["is written as"] <code>XXVIII</code>.
+    </p>
+    <p>
+        @Loc["Roman numerals are usually"]
+        @Loc["However the numeral for"] <code>4</code> @Loc["is not"] <code>IIII</code> @Loc[", but it is"] <code>IV</code> (5 - 1). @Loc["Similarly"] <code>9</code> @Loc["is written as"] <code>IX</code> (10 - 1).
+        @Loc["Subtraction is used"]
+        <ul>
+            <li>
+                <code>I</code> @Loc["can be placed before"] <code>V</code> @Loc["and"] <code>X</code> @Loc["to make"] <code>4</code> @Loc["and"] <code>9</code>.
+            </li>
+            <li>
+                <code>X</code> @Loc["can be placed before"] <code>L</code> @Loc["and"] <code>C</code> @Loc["to make"] <code>40</code> @Loc["and"] <code>90</code>.
+            </li>
+            <li>
+                <code>C</code> @Loc["can be placed before"] <code>D</code> @Loc["and"] <code>M</code> @Loc["to make"] <code>400</code> @Loc["and"] <code>900</code>.
+            </li>
+        </ul>
+    </p>
+    <br/>
+    <p>@Loc["Given an integer convert it"]</p>
 
-<AdjustedAnchorHeading Id="note" Heading="@Loc["Note"]" FontSize="smaller" IncludeId="this.IsReady" />
-<p>@Loc["You can use the url"]</p>
+    <AdjustedAnchorHeading Id="note" Heading="@Loc["Note"]" FontSize="smaller" IncludeId="Loc.IsReady" />
+    <p>@Loc["You can use the url"]</p>
 
-<div>
-    <AdjustedAnchorHeading Id="input" Heading="@Loc["Input"]" FontSize="smaller" IncludeId="this.IsReady" />
+    <div>
+        <AdjustedAnchorHeading Id="input" Heading="@Loc["Input"]" FontSize="smaller" IncludeId="Loc.IsReady" />
 
-    <div class="row">
-        <div class="card-group">
-            <label for="number" style="margin: 4px">@Loc["Number"]</label>
-            <InputNumber id="number" TValue="int?" Value="Number" ValueChanged="OnNumberChanged" ValueExpression="() => Number" type="number" min="1" max="3999" style="margin: 4px" />
-        </div>
-    </div>
-
-    <hr />
-    <AdjustedAnchorHeading Id="@OutputId" FontSize="smaller" Heading="@Loc["Output"]" IncludeId="this.IsReady">
         <div class="row">
             <div class="card-group">
-                <span style="margin: 4px">@Loc["Roman"]</span>
-
-                <code role="status" style="margin: 3px; font-size:large">
-                    @if (Number.HasValue)
-                    {
-                        <text>@ConvertToRoman(Number.Value)</text>
-                    }
-                </code>
+                <label for="number" style="margin: 4px">@Loc["Number"]</label>
+                <InputNumber id="number" TValue="int?" Value="Number" ValueChanged="OnNumberChanged" ValueExpression="() => Number" type="number" min="1" max="3999" style="margin: 4px" />
             </div>
         </div>
-    </AdjustedAnchorHeading>
-</div>
-<NavigationByIdFix />
+
+        <hr />
+        <AdjustedAnchorHeading Id="@OutputId" FontSize="smaller" Heading="@Loc["Output"]" IncludeId="Loc.IsReady">
+            <div class="row">
+                <div class="card-group">
+                    <span style="margin: 4px">@Loc["Roman"]</span>
+
+                    <code role="status" style="margin: 3px; font-size:large">
+                        @if (Number.HasValue)
+                        {
+                            <text>@ConvertToRoman(Number.Value)</text>
+                        }
+                    </code>
+                </div>
+            </div>
+        </AdjustedAnchorHeading>
+    </div>
+    <NavigationByIdFix />
+</LocalizedComponent>
 
 @code {
     public const string OutputId = "output";
@@ -74,6 +75,8 @@
     public int? Number { get; set; }
 
     private int? prev;
+
+    private LocalizedComponent<IntegerToRoman>? localizer;
 
     private void OnNumberChanged(int? number)
     {
@@ -104,7 +107,7 @@
         }
         catch (ArgumentOutOfRangeException)
         {
-            return Loc["Out of range"] ?? string.Empty;
+            return localizer?["Out of range"] ?? string.Empty;
         }
     }
 }
