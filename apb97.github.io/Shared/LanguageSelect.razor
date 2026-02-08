@@ -42,8 +42,7 @@
         Culture = value;
         if (localizer is not null)
         {
-            await localizer.Loc.InitializeAsync(value);
-            await localizer.Layout.NotifyStateChanged();
+            await localizer.ReloadResourcesAndRefreshLayoutAsync();
         }
 
         if (utilitiesModule is null) return;

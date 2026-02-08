@@ -40,12 +40,12 @@
     protected override void OnInitialized()
     {
         OnReady = StateHasChanged;
-        Layout.OnStateChanging += GetResources;
+        Layout.OnStateChanging += GetResourcesAndRefreshComponentAsync;
     }
 
     protected override async Task OnInitializedAsync()
     {
-        await GetResources();
+        await GetResourcesAndRefreshComponentAsync();
     }
 
     protected override void OnAfterRender(bool firstRender)
@@ -59,13 +59,24 @@
 
     public void Dispose()
     {
-        Layout.OnStateChanging -= GetResources;
+        Layout.OnStateChanging -= GetResourcesAndRefreshComponentAsync;
     }
 
-    private async Task GetResources()
+    public async Task ReloadResourcesAndRefreshLayoutAsync()
+    {
+        await ReloadResourcesAsync();
+        await Layout.NotifyStateChanged();
+    }
+
+    private async Task GetResourcesAndRefreshComponentAsync()
+    {
+        await ReloadResourcesAsync();   
+        StateHasChanged();
+    }
+
+    private async Task ReloadResourcesAsync()
     {
         await Localizer.InitializeAsync(Layout.Culture);
         await GetAdditionalResources.InvokeAsync(Layout.Culture);
-        StateHasChanged();
     }
 }
