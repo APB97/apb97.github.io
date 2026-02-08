@@ -1,17 +1,8 @@
-/* Manifest version: a88FD00X */
+/* Manifest version: 9Hsk7rp6 */
 // Caution! Be sure you understand the caveats before publishing an application with
 // offline support. See https://aka.ms/blazor-offline-considerations
 
 const CACHE_VERSION = "2.0.2";
-
-const MAX_TTL = {
-    '/': 3600,
-    html: 43200,
-    json: 43200,
-    js: 86400,
-    css: 86400,
-    resx: 3600
-};
 
 const CACHE_BLACKLIST = [
     (str) =>  !/https:\/\/apb97[.]github[.]io\/?/i.test(str)
@@ -68,13 +59,7 @@ async function onFetch(event) {
         const cache = await caches.open(cacheName);
         cachedResponse = await cache.match(request);
 
-        var matches = event.request.url.match(/\..*$/g);
-        var ttl = MAX_TTL[matches?.[matches.length - 1]];
-        if (ttl && parseInt((new Date().getTime() - new Date(cachedResponse.headers.get('date')).getTime()) / 1000) > ttl) {
-            cachedResponse = null;
-        }
-
-        if (/\/WebSudoku\/(sudoku|rules|printMultiple)/.test(event.request.url)) {
+        if (/\/WebSudoku\/(sudoku|rules|printMultiple|settings)/.test(event.request.url)) {
             return fetch('/WebSudoku/');
         }
         else if (/\/service-worker.js$/.test(event.request.url)) {
