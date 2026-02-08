@@ -1,20 +1,17 @@
 ﻿@using apb97.github.io.JSInterop
 @using apb97.github.io.Services
 
-@inherits Base.LocalizedComponent<LanguageSelect>
 @implements IAsyncDisposable
 
 @inject IJSRuntime JS
-@inject NavigationManager Navigation
 
-@if (ShouldRender())
-{
+<LocalizedComponent T="LanguageSelect" Context="Loc" @ref="localizer">
     <label for="language" class="text-white">
         @(Loc["Select your locale"]):
     </label>
 
     <CustomSelect Id="language" Value="@Culture" Options="supportedCultures" OnSelected="SetCultureAndReload" DisplayDownward="DisplayDownward" />
-}
+</LocalizedComponent>
 
 @code {
     [Parameter]
@@ -23,6 +20,7 @@
     public string? Culture { get; private set; }
 
     private IJSObjectReference? utilitiesModule;
+    private LocalizedComponent<LanguageSelect>? localizer;
 
     private readonly static IReadOnlyDictionary<string, string> supportedCultures = new Dictionary<string, string>
     {
@@ -35,18 +33,18 @@
         utilitiesModule = await JS.ImportAsync(JSModules.UtilitiesModule);
         if (utilitiesModule is not null)
             Culture = await utilitiesModule.GetSettingAsync<string>("BlazorCulture") ?? "en-US";
-
-        await base.OnInitializedAsync();
-        await Layout.NotifyStateChanged();
+        if (localizer is not null)
+            await localizer.Layout.NotifyStateChanged();
     }
 
     private async Task SetCultureAndReload(string value)
     {
         Culture = value;
-        await Loc.InitializeAsync(value);
-
-        StateHasChanged();
-        await Layout.NotifyStateChanged();
+        if (localizer is not null)
+        {
+            await localizer.Loc.InitializeAsync(value);
+            await localizer.Layout.NotifyStateChanged();
+        }
 
         if (utilitiesModule is null) return;
         await utilitiesModule.SetSettingAsync("BlazorCulture", value);
