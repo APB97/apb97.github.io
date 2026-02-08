@@ -2,6 +2,7 @@
 
 public class StringLocalizer<T>(StringLocalizerFactory factory)
 {
+    private readonly StringLocalizerFactory factory = factory;
     private Dictionary<string, string>? localization;
 
     public bool IsReady => localization != null;

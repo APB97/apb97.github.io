@@ -8,6 +8,9 @@ namespace apb97.github.io.Services.Localization;
 
 public class StringLocalizerFactory(HttpClient http, IOptions<LocalizationOptions> localizationOptions)
 {
+    private readonly HttpClient http = http;
+    private readonly IOptions<LocalizationOptions> localizationOptions = localizationOptions;
+
     public async Task<Dictionary<string, string>?> GetLocalizationAsync<T>(string? cultureName)
     {
         using var stream = await RequestLocalizationStreamAsync<T>(cultureName);
@@ -92,7 +95,7 @@ public class StringLocalizerFactory(HttpClient http, IOptions<LocalizationOption
         return localizationOptions.Value.DataFormat switch
         {
             DataFormat.JSON => await RetrieveJsonLocalization(stream),
-            DataFormat.RESX => RetrieveResxLocalization(stream),
+            DataFormat.RESX => await RetrieveResxLocalization(stream),
             _ => [],
         };
     }
@@ -103,9 +106,10 @@ public class StringLocalizerFactory(HttpClient http, IOptions<LocalizationOption
         return data?.Strings ?? [];
     }
 
-    private static Dictionary<string, string> RetrieveResxLocalization(Stream stream)
+    private static async Task<Dictionary<string, string>> RetrieveResxLocalization(Stream stream)
     {
-        using var xml = XmlReader.Create(stream);
+        using var memoryStream = await CreateInMemoryStreamCopyAsync(stream);
+        using var xml = XmlReader.Create(memoryStream);
         var results = new Dictionary<string, string>();
         while (xml.ReadToFollowing("data"))
         {
@@ -116,5 +120,13 @@ public class StringLocalizerFactory(HttpClient http, IOptions<LocalizationOption
             results[key] = value;
         }
         return results;
+    }
+
+    private static async Task<MemoryStream> CreateInMemoryStreamCopyAsync(Stream stream)
+    {
+        var memoryStream = new MemoryStream();
+        await stream.CopyToAsync(memoryStream);
+        memoryStream.Seek(0, SeekOrigin.Begin);
+        return memoryStream;
     }
 }
