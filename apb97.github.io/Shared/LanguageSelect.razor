@@ -10,7 +10,7 @@
         @(Loc["Select your locale"]):
     </label>
 
-    <CustomSelect Id="language" Value="@Culture" Options="supportedCultures" OnSelected="SetCultureAndReload" DisplayDownward="DisplayDownward" />
+    <CustomSelect Id="language" Value="@Culture" Options="supportedCultures" OnSelected="SetCultureAndReloadAsync" DisplayDownward="DisplayDownward" />
 </LocalizedComponent>
 
 @code {
@@ -34,11 +34,12 @@
         if (utilitiesModule is not null)
             Culture = await utilitiesModule.GetSettingAsync<string>("BlazorCulture") ?? "en-US";
         if (localizer is not null)
-            await localizer.Layout.NotifyStateChanged();
+            await localizer.ReloadResourcesAndRefreshLayoutAsync();
     }
 
-    private async Task SetCultureAndReload(string value)
+    private async Task SetCultureAndReloadAsync(string value)
     {
+        if (Culture == value) return;
         Culture = value;
         if (localizer is not null)
         {
