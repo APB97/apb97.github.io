@@ -1,6 +1,4 @@
-﻿@using System.Threading.Tasks
-@using System.Text.Json
-@using apb97.github.io.JSInterop
+﻿@using apb97.github.io.JSInterop
 @inject IJSRuntime JS
 @implements IAsyncDisposable
 
@@ -8,10 +6,10 @@
     @(Options.FirstOrDefault(kv => kv.Value == Value).Key ?? Value)
 </div>
 
-<div hidden="@hideList" id="@string.Join('-', Id, "list")" style="position: absolute; width: @(width)px; left: @(left)px; top: @(top)px; z-index: 10;">
+<div hidden="@hideList" id="@string.Join('-', Id, "list")" style="position: absolute; z-index: 10;">
     @foreach (var option in Options)
     {
-        <div class="btn  @(option.Value == Value ? "btn-primary" : "btn-secondary")" style="width: 100%;" @onclick="async a => { Value = option.Value; await OnSelected.InvokeAsync(option.Value); await ToggleList(a); }">
+        <div class="btn  @(option.Value == Value ? "btn-primary" : "btn-secondary")" style="width: 100%;" @onclick="async _ => await OptionSelected(option.Value)">
             @option.Key
         </div>
     }
@@ -22,7 +20,7 @@
     public required string Value { get; set; }
 
     [Parameter]
-    public string? Id { get; set; }
+    public required string Id { get; set; }
 
     [Parameter]
     public required IReadOnlyDictionary<string, string> Options { get; set; }
@@ -35,41 +33,43 @@
 
     private bool hideList = true;
 
-    private double left;
-    private double top;
-    private double width;
-
     private IJSObjectReference? module;
 
     protected override async Task OnInitializedAsync()
     {
-        module = await JS.ImportAsync(JSModules.UtilitiesModule);
+        module = await JS.ImportAsync("./Shared/CustomSelect.razor.js");
     }
 
     public async ValueTask DisposeAsync()
     {
         if (module is not null)
         {
+            await module.InvokeVoidAsync("unregisterOnResize", Id, DisplayDownward);
             await module.DisposeAsync();
         }
     }
 
-    private async Task ToggleList(MouseEventArgs a)
+    private async Task OptionSelected(string value)
     {
+        Value = value;
+        await OnSelected.InvokeAsync(Value);
+        await ToggleList();
+    }
+
+    private async Task ToggleList()
+    {
+        hideList = !hideList;
+
         if (module is not null)
         {
-            var jsonRectForMainButton = await module.InvokeAsync<string>("getRectByid", Id);
-            var mainButtonRect = JsonSerializer.Deserialize<Dictionary<string, double>>(jsonRectForMainButton);
-            var jsonRectForOptions = await module.InvokeAsync<string>("getRectByid", Id);
-            var optionsRect = JsonSerializer.Deserialize<Dictionary<string, double>>(jsonRectForMainButton);
-            if (mainButtonRect is not null && optionsRect is not null)
+            if (hideList)
             {
-                left = mainButtonRect["x"];
-                width = mainButtonRect["width"];
-                top = DisplayDownward ? mainButtonRect["y"] : mainButtonRect["y"] - optionsRect["height"];
+                await module.InvokeVoidAsync("unregisterOnResize", Id, DisplayDownward);
+            }
+            else
+            {
+                await module.InvokeVoidAsync("registerOnResize", Id, DisplayDownward);
             }
         }
-
-        hideList = !hideList;
     }
 }
