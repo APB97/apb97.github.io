@@ -25,7 +25,7 @@
                             <b>@Loc["status_label"]</b>
                             @Loc["status"]
                         </p>
-                        <HiddenForScreenWidth HideForWidthCondition="width => width < ScreenBreakpoints.Large">
+                        <HiddenForScreenWidth HiddenForComparison="ComparisonOperator.LT" Breakpoint="ScreenBreakpoints.Large">
                             <Projects />
                         </HiddenForScreenWidth>
                     </div>
@@ -33,7 +33,7 @@
                         <img src="/images/AboutMe.jpg" alt="A picture of myself" style="width: 100%; max-width: 368px; max-height: 552px;" />
                     </div>
                 </div>
-                <HiddenForScreenWidth HideForWidthCondition="width => width >= ScreenBreakpoints.Large">
+                <HiddenForScreenWidth HiddenForComparison="ComparisonOperator.GTE" Breakpoint="ScreenBreakpoints.Large">
                     <Projects />
                 </HiddenForScreenWidth>
                 <Challenges />

@@ -1,16 +1,38 @@
-﻿export function addListener(dotnetHelper, methodName) {
-    window.addEventListener('load', () => {
-        dotnetHelper.invokeMethodAsync(methodName, window.innerWidth);
-    });
+﻿async function checkForBreakpoint(dotnetHelper, methodName, operator, breakpoint, state) {
+    let shouldHide = null;
+    switch (operator) {
+        case "LT":
+            shouldHide = window.innerWidth < breakpoint;
+            break;
+        case "LTE":
+            shouldHide = window.innerWidth <= breakpoint;
+            break;
+        case "GT":
+            shouldHide = window.innerWidth > breakpoint;
+            break;
+        case "GTE":
+            shouldHide = window.innerWidth >= breakpoint;
+            break;
+    }
 
-    window.addEventListener('resize', () => {
-        dotnetHelper.invokeMethodAsync(methodName, window.innerWidth);
-    });
+    if (state.hidden != shouldHide) {
+        await dotnetHelper.invokeMethodAsync(methodName, shouldHide);
+        state.hidden = shouldHide;
+    }
 }
 
-export function getDimensions() {
-    return {
-        width: window.innerWidth,
-        height: window.innerHeight
-    };
-};
+export async function addListeners(dotnetHelper, methodName, operator, breakpoint, hidden) {
+    let state = { hidden: hidden }
+
+    window.addEventListener('load', async () => await checkForBreakpoint(dotnetHelper, methodName, operator, breakpoint, state));
+    window.addEventListener('resize', async () => await checkForBreakpoint(dotnetHelper, methodName, operator, breakpoint, state));
+
+    await checkForBreakpoint(dotnetHelper, methodName, operator, breakpoint, state);
+}
+
+export function removeListeners(dotnetHelper, methodName, operator, breakpoint, hidden) {
+    let state = { hidden: hidden }
+
+    window.removeEventListener('load', async () => await checkForBreakpoint(dotnetHelper, methodName, operator, breakpoint, state));
+    window.removeEventListener('resize', async () => await checkForBreakpoint(dotnetHelper, methodName, operator, breakpoint, state));
+}

@@ -1,5 +1,9 @@
-:root, div, .content.px-4 {
+:root {
     scrollbar-width: thin;
+}
+
+div, .content.px-4 {
+    scrollbar-width: none;
 }
 
 html, body {

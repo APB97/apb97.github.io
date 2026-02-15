@@ -17,7 +17,7 @@
                 </button>
             </div>
             <div class="d-flex w-100-50" style="flex-grow: 0.25">
-                <HiddenForScreenWidth @ref="hiddenForWideScreen" HideForWidthCondition="w => w > ScreenBreakpoints.Medium">
+                <HiddenForScreenWidth @ref="hiddenForWideScreen" HiddenForComparison="ComparisonOperator.GT" Breakpoint="ScreenBreakpoints.Medium">
                     <div class="align-content-center d-flex flex-grow-1 flex-row align-items-center">
                         <LanguageSelect @ref="language" DisplayDownward="true" />
                     </div>
@@ -68,7 +68,7 @@
             <div class="nav-item px-3">
                 <a class="ms-auto nav-link link-info" href="https://github.com/APB97/apb97.github.io" target="_blank">@Loc["Code"]</a>
             </div>
-            <HiddenForScreenWidth HideForWidthCondition="w => w <= ScreenBreakpoints.Medium">
+            <HiddenForScreenWidth HiddenForComparison="ComparisonOperator.LTE" Breakpoint="ScreenBreakpoints.Medium">
                 <div class="nav-item px-0">
                     <div class="nav-link" style="display:flex; align-items: center">
                         <LanguageSelect @ref="language" />

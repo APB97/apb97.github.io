@@ -1,21 +1,22 @@
-﻿@using apb97.github.io.Services.Dimensions
-@implements IAsyncDisposable
+﻿@implements IAsyncDisposable
 @inject IJSRuntime JS
 
-<Hidden Hide="hidden">
+<Hidden Hide="Hidden">
     @ChildContent
 </Hidden>
 
 @code {
     [Parameter]
-    public required Func<int, bool> HideForWidthCondition { get; set; }
+    public required int Breakpoint { get; set; }
+
+    [Parameter]
+    public required ComparisonOperator HiddenForComparison { get; set; } 
 
     [Parameter]
     public required RenderFragment ChildContent { get; set; }
 
-    private bool hidden = true;
-
-    public int Width { get; private set; }
+    [Parameter]
+    public bool Hidden { get; set; } = true;
 
     private IJSObjectReference? module;
 
@@ -23,19 +24,16 @@
     {
         module = await JS.ImportAsync("./Shared/HiddenForScreenWidth.razor.js");
         if (module is null) throw new Exception($"Cannot import module in {GetType().FullName}");
-        var dimensions =  await module.InvokeAsync<WindowDimensions>("getDimensions");
-        await module.InvokeVoidAsync("addListener", DotNetObjectReference.Create(this), nameof(UpdateWidth));
-        UpdateWidth(dimensions.Width);
+
+        await module.InvokeVoidAsync("addListeners", DotNetObjectReference.Create(this), nameof(SetHidden),
+            HiddenForComparison.ToString(), Breakpoint, Hidden);
     }
 
-    [JSInvokableAttribute(nameof(UpdateWidth))]
-    public void UpdateWidth(int width)
+    [JSInvokable(nameof(SetHidden))]
+    public void SetHidden(bool hide)
     {
-        if (Width == width) return;
-        Width = width;
-        var hide = HideForWidthCondition(width);
-        if (hidden == hide) return;
-        hidden = hide;
+        if (Hidden == hide) return;
+        Hidden = hide;
         StateHasChanged();
     }
 
@@ -43,6 +41,8 @@
     {
         if (module is not null)
         {
+            await module.InvokeVoidAsync("removeListeners", DotNetObjectReference.Create(this), nameof(SetHidden),
+                HiddenForComparison.ToString(), Breakpoint, Hidden);
             await module.DisposeAsync();
         }
     }
