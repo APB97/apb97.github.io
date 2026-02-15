@@ -17,7 +17,7 @@
     [Parameter]
     public bool DisplayDownward { get; set; }
 
-    public string? Culture { get; private set; }
+    public static string? Culture { get; private set; }
 
     private IJSObjectReference? utilitiesModule;
     private LocalizedComponent<LanguageSelect>? localizer;

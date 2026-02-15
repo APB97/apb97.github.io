@@ -11,6 +11,8 @@
 }
 
 @code {
+    private static Dictionary<Type, StringLocalizer<T>> localization = new Dictionary<Type, StringLocalizer<T>>();
+
     [Parameter]
     public required RenderFragment<LocalizedComponent<T>> ChildContent { get; set; }
 
@@ -26,8 +28,6 @@
 
     [Parameter]
     public EventCallback<string> GetAdditionalResources { get; set; }
-
-    public StringLocalizer<T> Loc => Localizer;
 
     public string this[string key] => Localizer[key];
 
@@ -76,7 +76,15 @@
 
     private async Task ReloadResourcesAsync()
     {
-        await Localizer.InitializeAsync(Layout.Culture);
-        await GetAdditionalResources.InvokeAsync(Layout.Culture);
+        if (localization.TryGetValue(typeof(T), out var localizer) && localizer.Culture == LanguageSelect.Culture)
+        {
+            Localizer = localizer;
+        }
+        else
+        {
+            await Localizer.InitializeAsync(Layout.Culture);
+            localization[typeof(T)] = Localizer;
+            await GetAdditionalResources.InvokeAsync(Layout.Culture);
+        }
     }
 }

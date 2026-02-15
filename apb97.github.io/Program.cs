@@ -9,8 +9,8 @@ var builder = WebAssemblyHostBuilder.CreateDefault(args);
 builder.RootComponents.Add<App>("#app");
 builder.RootComponents.Add<HeadOutlet>("head::after");
 
-builder.Services.AddScoped<SayService>();
-builder.Services.AddScoped<CountAndSayService>();
+builder.Services.AddSingleton<SayService>();
+builder.Services.AddSingleton<CountAndSayService>();
 
 builder.Services.AddSingleton(_ => Options.Create(new LocalizationOptions
 {
@@ -18,8 +18,8 @@ builder.Services.AddSingleton(_ => Options.Create(new LocalizationOptions
     ProjectNamespace = "apb97.github.io",
     DataFormat = DataFormat.JSON,
 }));
-builder.Services.AddScoped<StringLocalizerFactory>();
-builder.Services.AddScoped(typeof(StringLocalizer<>));
+builder.Services.AddSingleton<StringLocalizerFactory>();
+builder.Services.AddSingleton(typeof(StringLocalizer<>));
 
 builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) });
 

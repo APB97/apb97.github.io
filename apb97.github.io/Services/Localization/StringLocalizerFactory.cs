@@ -6,9 +6,8 @@ using System.Xml;
 
 namespace apb97.github.io.Services.Localization;
 
-public class StringLocalizerFactory(HttpClient http, IOptions<LocalizationOptions> localizationOptions)
+public class StringLocalizerFactory(IServiceScopeFactory scopeFactory, IOptions<LocalizationOptions> localizationOptions)
 {
-    private readonly HttpClient http = http;
     private readonly IOptions<LocalizationOptions> localizationOptions = localizationOptions;
 
     public async Task<Dictionary<string, string>?> GetLocalizationAsync<T>(string? cultureName)
@@ -27,6 +26,8 @@ public class StringLocalizerFactory(HttpClient http, IOptions<LocalizationOption
 
         try
         {
+            await using var scope = scopeFactory.CreateAsyncScope();
+            var http = scope.ServiceProvider.GetRequiredService<HttpClient>();
             switch (localizationOptions.Value.DataFormat)
             {
                 case DataFormat.JSON:
@@ -75,7 +76,7 @@ public class StringLocalizerFactory(HttpClient http, IOptions<LocalizationOption
         var builder = new StringBuilder();
         if (type.Namespace?.StartsWith(localizationOptions.Value.ProjectNamespace) == true)
         {
-            builder.Append(type.Namespace.Remove(0, localizationOptions.Value.ProjectNamespace.Length).Replace('.', '/'));
+            builder.Append(type.Namespace[localizationOptions.Value.ProjectNamespace.Length..].Replace('.', '/'));
         }
         else if (type.Namespace != null)
         {
