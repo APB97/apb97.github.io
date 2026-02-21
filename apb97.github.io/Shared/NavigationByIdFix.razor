@@ -1,13 +1,33 @@
-﻿@inject IJSRuntime JS
+﻿@implements IAsyncDisposable
+@inject IJSRuntime JS
 
 @code{
     public bool Rendered { get; private set; }
 
+    private IJSObjectReference? module;
+
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
         if (!firstRender) return;
-        await using var module = await JS.ImportAsync("./Shared/NavigationByIdFix.razor.js");
+        module = await JS.ImportAsync("./Shared/NavigationByIdFix.razor.js");
+        await ActivateCurrentLink();
+    }
+
+    public async Task ActivateCurrentLink()
+    {
         if (module is null) return;
         await module.InvokeVoidAsync("activateCurrentLink", null, null);
+    }
+
+    public async Task ScrollToElement(string url)
+    {
+        if (module is null) return;
+        await module.InvokeVoidAsync("scrollToElement", url);
+    }
+
+    async ValueTask IAsyncDisposable.DisposeAsync()
+    {
+        if (module is null) return;
+        await module.DisposeAsync();
     }
 }

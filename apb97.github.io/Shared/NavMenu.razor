@@ -11,15 +11,15 @@
                         aria-label="@Loc["Toggle"] @Loc[$"{Loc.Layout.LayoutMode} Mode"]">
                     <div style="width: 56px;">
                         <img style="height: 2rem; filter: invert(0.95);"
-                             src="@(Loc.Layout.LayoutMode == MainLayout.LightMode ? "/images/dark.svg" : "/images/light.svg")"
-                             alt="@Loc[$"Picture showing white {(Loc.Layout.LayoutMode == MainLayout.LightMode ? "moon" : "sun")}"]" />
+                             src="@(Loc.Layout.LayoutMode == LayoutMode.Light ? "/images/dark.svg" : "/images/light.svg")"
+                             alt="@Loc[$"Picture showing white {(Loc.Layout.LayoutMode == LayoutMode.Light ? "moon" : "sun")}"]" />
                     </div>
                 </button>
             </div>
             <div class="d-flex w-100-50" style="flex-grow: 0.25">
-                <HiddenForScreenWidth @ref="hiddenForWideScreen" HiddenForComparison="ComparisonOperator.GT" Breakpoint="ScreenBreakpoints.Medium">
+                <HiddenForScreenWidth HiddenForComparison="ComparisonOperator.GT" Breakpoint="ScreenBreakpoints.Medium">
                     <div class="align-content-center d-flex flex-grow-1 flex-row align-items-center">
-                        <LanguageSelect @ref="language" DisplayDownward="true" />
+                        <LanguageSelect DisplayDownward="true" />
                     </div>
                 </HiddenForScreenWidth>
                 <div class="flex-grow-1"></div>
@@ -30,7 +30,7 @@
         </div>
     </div>
 
-    <div class="@NavMenuCssClass" style="overflow-y: auto; display: flex; flex-grow: 1; height: 50vh;" hidden="@Loc.IsLoading">
+    <div class="@NavMenuCssClass" style="overflow-y: auto; display: flex; flex-grow: 1; height: 400px;" hidden="@Loc.IsLoading">
         <nav class="d-flex flex-column flex-grow-1">
             <div class="nav-item px-3" @onclick="CollapseNavMenu">
                 <ABP97NavLink Href="#aboutme">
@@ -71,7 +71,7 @@
             <HiddenForScreenWidth HiddenForComparison="ComparisonOperator.LTE" Breakpoint="ScreenBreakpoints.Medium">
                 <div class="nav-item px-0">
                     <div class="nav-link" style="display:flex; align-items: center">
-                        <LanguageSelect @ref="language" />
+                        <LanguageSelect />
                     </div>
                 </div>
             </HiddenForScreenWidth>
@@ -83,12 +83,6 @@
     private bool collapseNavMenu = true;
 
     private string? NavMenuCssClass => collapseNavMenu ? "collapse" : null;
-
-    private LanguageSelect? language;
-
-    public string? Culture => LanguageSelect.Culture;
-
-    private HiddenForScreenWidth? hiddenForWideScreen;
 
     private void ToggleNavMenu()
     {

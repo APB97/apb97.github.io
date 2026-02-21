@@ -73,8 +73,9 @@
             </p>
         </div>
     </div>
-<NavigationByIdFix />
 </LocalizedComponent>
+
+<NavigationByIdFix @ref="navFix" />
 
 @code 
 {
@@ -83,29 +84,33 @@
     [Parameter]
     public int? Number { get; set; }
 
-    private int? prev;
-
     private LocalizedComponent<CountAndSay>? localizer;
 
-    private void OnNumberChanged(int? number)
+    private NavigationByIdFix? navFix;
+
+    SemaphoreSlim semaphore = new SemaphoreSlim(1, 1);
+
+    private async Task OnNumberChanged(int? number)
     {
         if (number.HasValue && number != Number)
         {
-            Navigation.NavigateTo($"/CountAndSay/{number.Value}#{OutputId}");
-        }
-    }
-
-    protected override void OnAfterRender(bool firstRender)
-    {
-        base.OnAfterRender(firstRender);
-
-        if (firstRender) return;
-        if (!Number.HasValue) return;
-        var target = $"/CountAndSay/{Number.Value}#{OutputId}";
-        if (Number.HasValue && !prev.HasValue)
-        {
-            Navigation.NavigateTo(target, replace: true);
-            prev = Number;
+            if (navFix is null) return;
+            if (semaphore.CurrentCount == 0) return;
+            try
+            {
+                string target = $"/CountAndSay/{number.Value}#{OutputId}";
+                Navigation.NavigateTo(target);
+                await navFix.ScrollToElement(target);
+                while (!Navigation.Uri.EndsWith(target))
+                    await Task.Delay(25);
+                await Task.Delay(25);
+                await navFix.ScrollToElement(target);
+                await Task.Delay(75);
+            }
+            finally
+            {
+                semaphore.Release();
+            }
         }
     }
 

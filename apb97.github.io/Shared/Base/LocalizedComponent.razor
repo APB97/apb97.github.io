@@ -17,7 +17,7 @@
     public required RenderFragment<LocalizedComponent<T>> ChildContent { get; set; }
 
     [CascadingParameter]
-    public required MainLayout Layout { get; set; }
+    public required ILayoutStateChangeHandler Layout { get; set; }
 
     public bool IsReady { get; private set; }
 
@@ -39,7 +39,6 @@
 
     protected override void OnInitialized()
     {
-        OnReady = StateHasChanged;
         Layout.OnStateChanging += GetResourcesAndRefreshComponentAsync;
     }
 
@@ -53,6 +52,7 @@
         if (!IsReady && Localizer.IsReady)
         {
             IsReady = true;
+            StateHasChanged();
             OnReady();
         }
     }
@@ -82,9 +82,9 @@
         }
         else
         {
-            await Localizer.InitializeAsync(Layout.Culture);
+            await Localizer.InitializeAsync(LanguageSelect.Culture);
             localization[typeof(T)] = Localizer;
-            await GetAdditionalResources.InvokeAsync(Layout.Culture);
+            await GetAdditionalResources.InvokeAsync(LanguageSelect.Culture);
         }
     }
 }

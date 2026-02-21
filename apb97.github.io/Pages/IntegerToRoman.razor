@@ -65,8 +65,9 @@
             </div>
         </AdjustedAnchorHeading>
     </div>
-    <NavigationByIdFix />
 </LocalizedComponent>
+
+<NavigationByIdFix @ref="navFix" />
 
 @code {
     public const string OutputId = "output";
@@ -74,28 +75,34 @@
     [Parameter]
     public int? Number { get; set; }
 
-    private int? prev;
-
     private LocalizedComponent<IntegerToRoman>? localizer;
 
-    private void OnNumberChanged(int? number)
-    {
-        if (number.HasValue && number != Number)
-        {
-            Navigation.NavigateTo($"/IntegerToRoman/{number.Value}#{OutputId}");
-        }
-    }
+    private NavigationByIdFix? navFix;
 
-    protected override void OnAfterRender(bool firstRender)
+    SemaphoreSlim semaphore = new SemaphoreSlim(1, 1);
+
+    private async Task OnNumberChanged(int? number)
     {
-        base.OnAfterRender(firstRender);
-        if (firstRender) return;
-        if (!Number.HasValue) return;
-        var target = $"/IntegerToRoman/{Number.Value}#{OutputId}";
-        if (Number.HasValue && !prev.HasValue)
+        if (number.HasValue)
         {
-            Navigation.NavigateTo(target, replace: true);
-            prev = Number;
+            if (navFix is null) return;
+            if (semaphore.CurrentCount == 0) return;
+            try
+            {
+                await semaphore.WaitAsync();
+                string target = $"/IntegerToRoman/{number.Value}#{OutputId}";
+                Navigation.NavigateTo(target);
+                await navFix.ScrollToElement(target);
+                while (!Navigation.Uri.EndsWith(target))
+                    await Task.Delay(25);
+                await Task.Delay(25);
+                await navFix.ScrollToElement(target);
+                await Task.Delay(75);
+            }
+            finally
+            {
+                semaphore.Release();
+            }
         }
     }
 
