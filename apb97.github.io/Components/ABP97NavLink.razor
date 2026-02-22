@@ -1,5 +1,5 @@
 ﻿<a style="@Style" class="nav-link" href="@Href"
-   onclick="document.querySelectorAll('a.nav-link.active')?.forEach(n => n.classList.remove('active')); this.classList.add('active'); if ('scrollIntoViewIfNeeded' in (document.querySelector('@Href') ?? {})) setTimeout(() => document.querySelector('@Href').scrollIntoViewIfNeeded(), 25);">
+   onclick="setTimeout(() => { document.querySelectorAll('a.nav-link.active')?.forEach(n => n.classList.remove('active')); this.classList.add('active'); if ('@AdditionalPass' == 'True' && 'scrollIntoViewIfNeeded' in (document.querySelector('@Href') ?? {})) setTimeout(() => document.querySelector('@Href').scrollIntoViewIfNeeded(), 25); }, 0)">
     @ChildContent
 </a>
 
@@ -12,4 +12,7 @@
 
     [Parameter]
     public string? Style { get; set; }
+
+    [Parameter]
+    public bool AdditionalPass { get; set; }
 }
