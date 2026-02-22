@@ -1,9 +1,93 @@
 self.assetsManifest = {
-  "version": "3xklAB3g",
+  "version": "Kgl4ZC8w",
   "assets": [
     {
       "hash": "sha256-RiHtlne0dkCgYD6WDi3Jvjt7vdZ4bOMDkaysjVBr5Kc=",
       "url": "404.html"
+    },
+    {
+      "hash": "sha256-nqq98BVSlmejTKgM2lBkljOPcnAYh3KXyolPcwOfGyc=",
+      "url": "Components/NavigationByIdFix.razor.js"
+    },
+    {
+      "hash": "sha256-Ob/TYKgCNnZeGu15DPMtb4gRYYbROlvHofwgu32Aink=",
+      "url": "Resources/Components/AboutMe.json"
+    },
+    {
+      "hash": "sha256-0nNmiXDxVGTJ66QZc4JjSPLBxlxfXjp810Cl0+79u4s=",
+      "url": "Resources/Components/AboutMe.pl-PL.json"
+    },
+    {
+      "hash": "sha256-jT8h4v5RlT1rbLvbQzAJ936hNsjOwVsmJzGRenyu/28=",
+      "url": "Resources/Components/Challenges.json"
+    },
+    {
+      "hash": "sha256-YEbTtWKAhqc8R4W6gmFU4wbsq2IZRTok7QvoatB16Zc=",
+      "url": "Resources/Components/Challenges.pl-PL.json"
+    },
+    {
+      "hash": "sha256-XMvCaQ+lKzr0ohBGF2l13ojuy9V+vT/qLA2UWBhzEPw=",
+      "url": "Resources/Components/LearningProgress.json"
+    },
+    {
+      "hash": "sha256-HOTg4GlcIfE4E66lnDrIBiErIma7z5BUmt7fARmgUmE=",
+      "url": "Resources/Components/LearningProgress.pl-PL.json"
+    },
+    {
+      "hash": "sha256-vLIfHUTGUow6A6Td55HC0MgzTU/6xaKmpJa8tVGSMgA=",
+      "url": "Resources/Components/LearningProgress2022.json"
+    },
+    {
+      "hash": "sha256-VgSkc5AxwdOYCyj5WYIu4AmtIEECDIx0FJmfb3RDekw=",
+      "url": "Resources/Components/LearningProgress2022.pl-PL.json"
+    },
+    {
+      "hash": "sha256-1JFnnSvhHEn1ytoYpniH1+MMy3HcESwQopUXLzeXBlo=",
+      "url": "Resources/Components/LearningProgress2023.json"
+    },
+    {
+      "hash": "sha256-iX3C6GbQMSDLzeaxCRRl+1RN6fF4hhn6iEKdhFq/8NY=",
+      "url": "Resources/Components/LearningProgress2023.pl-PL.json"
+    },
+    {
+      "hash": "sha256-dBwA7kswrJZHDaPhvc+WnZls4d1HIVmZMDlLqf+dJRk=",
+      "url": "Resources/Components/LearningProgress2024.json"
+    },
+    {
+      "hash": "sha256-8RXaK5BkASWNZaPrjbl2ZKanHI/Rni70Yeh67GQW95U=",
+      "url": "Resources/Components/LearningProgress2024.pl-PL.json"
+    },
+    {
+      "hash": "sha256-J6p587TJ6q8GoqbhZ0NcQdyH+7eOiGpW4e/bLliViVk=",
+      "url": "Resources/Components/LearningProgress2025.json"
+    },
+    {
+      "hash": "sha256-wGHKpTMKDJ2FWRwzs73Qx5fECNliJMi6zBWbsPXA/Ek=",
+      "url": "Resources/Components/LearningProgress2025.pl-PL.json"
+    },
+    {
+      "hash": "sha256-cTvlg6OWVprrdVf6ii2EWLyfYttqXAY3v2j2cADJj6w=",
+      "url": "Resources/Components/NavMenu.json"
+    },
+    {
+      "hash": "sha256-qqoRiZSshmqon2nRQz3fsHjpNHjzntkjxqhhuQkIYTQ=",
+      "url": "Resources/Components/NavMenu.pl-PL.json"
+    },
+    {
+      "hash": "sha256-AP7bXLx7IKvnPS+NjJ/pSn8beLrsFXGfd5N3YKJkxUc=",
+      "url": "Resources/Components/Projects.json"
+    },
+    {
+      "hash": "sha256-X9inMPtx9qbCabT6iAKCqgTa/IoNg9B8U1SW/0LNFiM=",
+      "url": "Resources/Components/Projects.pl-PL.json"
+    },
+    {
+      "hash": "sha256-2Zbev1Lg/yZyYe1ir3stNIcxfNxJJZYVPooRLzDQV1Y=",
+      "url": "Resources/Components/Skills.json"
+    },
+    {
+      "hash": "sha256-riyDurK0oJWp/O7XerWkpSgaN09Xubdu5bhaJl177tI=",
+      "url": "Resources/Components/Skills.pl-PL.json"
     },
     {
       "hash": "sha256-lWfMdm7Tl5a7gysEvdYzyvn1FhAdS4nNvfNw/CZPYJs=",
@@ -52,90 +136,6 @@ self.assetsManifest = {
     {
       "hash": "sha256-yIQpeCBzVvLSbXKoEXUg1eODAhcsL45n6u1Jn2WMQvs=",
       "url": "Resources/Services/SayService.pl-PL.json"
-    },
-    {
-      "hash": "sha256-Ob/TYKgCNnZeGu15DPMtb4gRYYbROlvHofwgu32Aink=",
-      "url": "Resources/Shared/AboutMe.json"
-    },
-    {
-      "hash": "sha256-0nNmiXDxVGTJ66QZc4JjSPLBxlxfXjp810Cl0+79u4s=",
-      "url": "Resources/Shared/AboutMe.pl-PL.json"
-    },
-    {
-      "hash": "sha256-jT8h4v5RlT1rbLvbQzAJ936hNsjOwVsmJzGRenyu/28=",
-      "url": "Resources/Shared/Challenges.json"
-    },
-    {
-      "hash": "sha256-YEbTtWKAhqc8R4W6gmFU4wbsq2IZRTok7QvoatB16Zc=",
-      "url": "Resources/Shared/Challenges.pl-PL.json"
-    },
-    {
-      "hash": "sha256-XMvCaQ+lKzr0ohBGF2l13ojuy9V+vT/qLA2UWBhzEPw=",
-      "url": "Resources/Shared/LearningProgress.json"
-    },
-    {
-      "hash": "sha256-HOTg4GlcIfE4E66lnDrIBiErIma7z5BUmt7fARmgUmE=",
-      "url": "Resources/Shared/LearningProgress.pl-PL.json"
-    },
-    {
-      "hash": "sha256-vLIfHUTGUow6A6Td55HC0MgzTU/6xaKmpJa8tVGSMgA=",
-      "url": "Resources/Shared/LearningProgress2022.json"
-    },
-    {
-      "hash": "sha256-VgSkc5AxwdOYCyj5WYIu4AmtIEECDIx0FJmfb3RDekw=",
-      "url": "Resources/Shared/LearningProgress2022.pl-PL.json"
-    },
-    {
-      "hash": "sha256-1JFnnSvhHEn1ytoYpniH1+MMy3HcESwQopUXLzeXBlo=",
-      "url": "Resources/Shared/LearningProgress2023.json"
-    },
-    {
-      "hash": "sha256-iX3C6GbQMSDLzeaxCRRl+1RN6fF4hhn6iEKdhFq/8NY=",
-      "url": "Resources/Shared/LearningProgress2023.pl-PL.json"
-    },
-    {
-      "hash": "sha256-dBwA7kswrJZHDaPhvc+WnZls4d1HIVmZMDlLqf+dJRk=",
-      "url": "Resources/Shared/LearningProgress2024.json"
-    },
-    {
-      "hash": "sha256-8RXaK5BkASWNZaPrjbl2ZKanHI/Rni70Yeh67GQW95U=",
-      "url": "Resources/Shared/LearningProgress2024.pl-PL.json"
-    },
-    {
-      "hash": "sha256-J6p587TJ6q8GoqbhZ0NcQdyH+7eOiGpW4e/bLliViVk=",
-      "url": "Resources/Shared/LearningProgress2025.json"
-    },
-    {
-      "hash": "sha256-wGHKpTMKDJ2FWRwzs73Qx5fECNliJMi6zBWbsPXA/Ek=",
-      "url": "Resources/Shared/LearningProgress2025.pl-PL.json"
-    },
-    {
-      "hash": "sha256-cTvlg6OWVprrdVf6ii2EWLyfYttqXAY3v2j2cADJj6w=",
-      "url": "Resources/Shared/NavMenu.json"
-    },
-    {
-      "hash": "sha256-qqoRiZSshmqon2nRQz3fsHjpNHjzntkjxqhhuQkIYTQ=",
-      "url": "Resources/Shared/NavMenu.pl-PL.json"
-    },
-    {
-      "hash": "sha256-AP7bXLx7IKvnPS+NjJ/pSn8beLrsFXGfd5N3YKJkxUc=",
-      "url": "Resources/Shared/Projects.json"
-    },
-    {
-      "hash": "sha256-X9inMPtx9qbCabT6iAKCqgTa/IoNg9B8U1SW/0LNFiM=",
-      "url": "Resources/Shared/Projects.pl-PL.json"
-    },
-    {
-      "hash": "sha256-2Zbev1Lg/yZyYe1ir3stNIcxfNxJJZYVPooRLzDQV1Y=",
-      "url": "Resources/Shared/Skills.json"
-    },
-    {
-      "hash": "sha256-riyDurK0oJWp/O7XerWkpSgaN09Xubdu5bhaJl177tI=",
-      "url": "Resources/Shared/Skills.pl-PL.json"
-    },
-    {
-      "hash": "sha256-nqq98BVSlmejTKgM2lBkljOPcnAYh3KXyolPcwOfGyc=",
-      "url": "Shared/NavigationByIdFix.razor.js"
     },
     {
       "hash": "sha256-A8e6zZwhOqf7lDQqbbCYcAUv4wGE9aQxOo4WyYxR//0=",
@@ -354,19 +354,19 @@ self.assetsManifest = {
       "url": "_framework/System.deed694j9w.wasm"
     },
     {
-      "hash": "sha256-mhDkl5bJ/Rd8v7B8QQtTPmoRqEos23AEjxg9UouVcCw=",
-      "url": "_framework/apb97.github.io.Shared.awtlypqql5.wasm"
+      "hash": "sha256-jYME8RmMmD+BCvfZTF7ZWdVJaS9MWVSsm2Fgwku7/+A=",
+      "url": "_framework/apb97.github.io.Shared.j8g92wkfu3.wasm"
     },
     {
-      "hash": "sha256-bzzzheqgLyaHO90clH4tWqSVAe9yhxzcYRLFY8CgJtw=",
-      "url": "_framework/apb97.github.io.pegi8ypl5k.wasm"
+      "hash": "sha256-fBXYL1+MSvVVYVS0b4FT9zP7uKNowtR5u5whnhL+oBM=",
+      "url": "_framework/apb97.github.io.ohs1vg5fhg.wasm"
     },
     {
       "hash": "sha256-3lCWrko3zwspV40aQhs2S/IMkRSarnHRKIdkHhuXIBA=",
       "url": "_framework/blazor.webassembly.js"
     },
     {
-      "hash": "sha256-RoXMGlvbk5GY/9AildNOKOpLLgXfe5mHpF48YSPqhNE=",
+      "hash": "sha256-62GbwYjmX7Vr11FQJ57crWE6SqBZTbmrnFsWIU2UCCY=",
       "url": "_framework/dotnet.js"
     },
     {
@@ -382,7 +382,7 @@ self.assetsManifest = {
       "url": "_framework/dotnet.runtime.q5rqv3xrhm.js"
     },
     {
-      "hash": "sha256-Qit9EaMTxaW2iS9Ya8hKHIsIZs1uutnrMf3Jjjzg8ls=",
+      "hash": "sha256-4QtWeaPOPuDJ++GxxSBgwqXjaPROimZIBvhCLOIQ+x0=",
       "url": "apb97.github.io.styles.css"
     },
     {
