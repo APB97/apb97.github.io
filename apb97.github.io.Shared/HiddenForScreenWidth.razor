@@ -1,0 +1,49 @@
+﻿@implements IAsyncDisposable
+@inject IJSRuntime JS
+
+<Hidden Hide="Hidden">
+    @ChildContent
+</Hidden>
+
+@code {
+    [Parameter]
+    public required int Breakpoint { get; set; }
+
+    [Parameter]
+    public required ComparisonOperator HiddenForComparison { get; set; } 
+
+    [Parameter]
+    public required RenderFragment ChildContent { get; set; }
+
+    [Parameter]
+    public bool Hidden { get; set; } = true;
+
+    private IJSObjectReference? module;
+
+    protected override async Task OnInitializedAsync()
+    {
+        module = await JS.ImportAsync("./_content/apb97.github.io.Shared/HiddenForScreenWidth.razor.js");
+        if (module is null) throw new Exception($"Cannot import module in {GetType().FullName}");
+
+        await module.InvokeVoidAsync("addListeners", DotNetObjectReference.Create(this), nameof(SetHidden),
+            HiddenForComparison.ToString(), Breakpoint, Hidden);
+    }
+
+    [JSInvokable(nameof(SetHidden))]
+    public void SetHidden(bool hide)
+    {
+        if (Hidden == hide) return;
+        Hidden = hide;
+        StateHasChanged();
+    }
+
+    public async ValueTask DisposeAsync()
+    {
+        if (module is not null)
+        {
+            await module.InvokeVoidAsync("removeListeners", DotNetObjectReference.Create(this), nameof(SetHidden),
+                HiddenForComparison.ToString(), Breakpoint, Hidden);
+            await module.DisposeAsync();
+        }
+    }
+}

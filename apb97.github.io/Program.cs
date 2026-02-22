@@ -1,6 +1,7 @@
 using apb97.github.io;
 using apb97.github.io.Services;
-using apb97.github.io.Services.Localization;
+using apb97.github.io.Shared;
+using apb97.github.io.Shared.Services.Localization;
 using Microsoft.AspNetCore.Components.Web;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 using Microsoft.Extensions.Options;
@@ -20,6 +21,8 @@ builder.Services.AddSingleton(_ => Options.Create(new LocalizationOptions
 }));
 builder.Services.AddSingleton<StringLocalizerFactory>();
 builder.Services.AddSingleton(typeof(StringLocalizer<>));
+
+builder.Services.AddScoped<UtilityService>();
 
 builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) });
 

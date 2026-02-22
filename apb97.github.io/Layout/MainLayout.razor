@@ -1,11 +1,10 @@
 ﻿@using System.Globalization
-@using apb97.github.io.JSInterop
 @using apb97.github.io.Shared
+@using apb97.github.io.Shared.Extensions
 @inherits LayoutComponentBase
 @implements ILayoutStateChangeHandler
-@implements IAsyncDisposable
 
-@inject IJSRuntime JS
+@inject UtilityService utilities
 
 @if (LayoutMode == LayoutMode.Light)
 {
@@ -47,21 +46,17 @@
 
     public event Func<Task> OnStateChanging = delegate { return Task.CompletedTask; };
 
-    private IJSObjectReference? utilitiesModule;
-
     protected override async Task OnInitializedAsync()
     {
-        utilitiesModule = await JS.ImportAsync(JSModules.UtilitiesModule);
-        var modeSetting = await utilitiesModule.GetSettingAsync<string>(LayoutModeKey);
+        var modeSetting = await utilities.GetSettingAsync<string>(LayoutModeKey);
         if (string.IsNullOrEmpty(modeSetting) || !LayoutMode.TryParse<LayoutMode>(modeSetting, out var layoutMode)) return;
         LayoutMode = layoutMode;
     }
 
     public async Task ToggleLayoutMode()
     {
-        if (utilitiesModule is null) throw new Exception($"{JSModules.UtilitiesModule} not loaded.");
         LayoutMode = LayoutMode == LayoutMode.Dark ? LayoutMode.Light : LayoutMode.Dark;
-        await utilitiesModule.SetSettingAsync(LayoutModeKey, LayoutMode.ToString());
+        await utilities.SetSettingAsync(LayoutModeKey, LayoutMode.ToString());
         StateHasChanged();
     }
 
@@ -69,13 +64,5 @@
     {
         await OnStateChanging.Invoke();
         StateHasChanged();
-    }
-
-    async ValueTask IAsyncDisposable.DisposeAsync()
-    {
-        if (utilitiesModule is not null)
-        {
-            await utilitiesModule.DisposeAsync();
-        }
     }
 }

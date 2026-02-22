@@ -1,0 +1,70 @@
+﻿@using apb97.github.io.Shared.Services
+@using apb97.github.io.WebSudoku.Shared
+@inherits LayoutComponentBase
+@implements ILayoutStateChangeHandler
+
+@inject IJSRuntime JS
+
+@if (LayoutMode == LayoutMode.Light)
+{
+    <style>
+        * {
+            --page-bg-color: white !important;
+            --page-fg-color: black !important;
+            --tags-bg-color: linear-gradient(transparent 60%, purple) !important;
+            --code-color: #5e00ef !important;
+            --input-bg-color: white !important;
+            --input-fg-color: black !important;
+            --link-color: #0068ff !important;
+            --cell-editable-text-color: lightgray;
+            --cell-error-highlight: #ed0000 !important;
+        }
+
+        .input-editable.error-highlight {
+            --cell-editable-text-color: white !important;
+        }
+    </style>
+}
+
+<CascadingValue Value="this">
+    <div class="page">
+        <div class="sidebar d-print-none d-flex position-sticky top-0">
+            <NavMenu @ref="navMenu" />
+        </div>
+
+        <main>
+            <article class="content px-4" @onclick="() => navMenu?.CollapseNavMenu()">
+                @Body
+            </article>
+        </main>
+    </div>
+</CascadingValue>
+
+@code {
+    private NavMenu? navMenu;
+
+    public LayoutMode LayoutMode { get; private set; } = LayoutMode.Dark;
+
+    public event Func<Task> OnStateChanging = delegate { return Task.CompletedTask; };
+
+    protected override async Task OnInitializedAsync()
+    {
+        await using var utilitiesModule = await JS.ImportAsync(JSModules.UtilitiesModule);
+        var mode = await utilitiesModule.GetSettingAsync<string>("LayoutMode");
+        if (mode is null || !Enum.TryParse<LayoutMode>(mode, out var layoutMode)) return;
+        LayoutMode = layoutMode;
+    }
+
+    public Task ToggleLayoutMode()
+    {
+        LayoutMode = LayoutMode == LayoutMode.Dark ? LayoutMode.Light: LayoutMode.Dark;
+        StateHasChanged();
+        return Task.CompletedTask;
+    }
+
+    public async Task NotifyStateChanged()
+    {
+        await OnStateChanging.Invoke();
+        StateHasChanged();
+    }
+}

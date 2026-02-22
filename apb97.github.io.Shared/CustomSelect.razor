@@ -1,0 +1,74 @@
+﻿@inject IJSRuntime JS
+@implements IAsyncDisposable
+
+<div class="btn btn-primary" style="width: 100%;" id="@Id" @onclick="ToggleList">
+    @(Options.FirstOrDefault(kv => kv.Value == Value).Key ?? Value)
+</div>
+
+<div hidden="@hideList" id="@string.Join('-', Id, "list")" style="position: absolute; z-index: 10;">
+    @foreach (var option in Options)
+    {
+        <div class="btn  @(option.Value == Value ? "btn-primary" : "btn-secondary")" style="width: 100%;" @onclick="async _ => await OptionSelected(option.Value)">
+            @option.Key
+        </div>
+    }
+</div>
+
+@code {
+    [Parameter]
+    public required string Value { get; set; }
+
+    [Parameter]
+    public required string Id { get; set; }
+
+    [Parameter]
+    public required IReadOnlyDictionary<string, string> Options { get; set; }
+
+    [Parameter]
+    public EventCallback<string> OnSelected { get; set; }
+
+    [Parameter]
+    public bool DisplayDownward { get; set; }
+
+    private bool hideList = true;
+
+    private IJSObjectReference? module;
+
+    protected override async Task OnInitializedAsync()
+    {
+        module = await JS.ImportAsync("./_content/apb97.github.io.Shared/CustomSelect.razor.js");
+    }
+
+    public async ValueTask DisposeAsync()
+    {
+        if (module is not null)
+        {
+            await module.InvokeVoidAsync("unregisterOnResize", Id, DisplayDownward);
+            await module.DisposeAsync();
+        }
+    }
+
+    private async Task OptionSelected(string value)
+    {
+        Value = value;
+        await OnSelected.InvokeAsync(Value);
+        await ToggleList();
+    }
+
+    private async Task ToggleList()
+    {
+        hideList = !hideList;
+
+        if (module is not null)
+        {
+            if (hideList)
+            {
+                await module.InvokeVoidAsync("unregisterOnResize", Id, DisplayDownward);
+            }
+            else
+            {
+                await module.InvokeVoidAsync("registerOnResize", Id, DisplayDownward);
+            }
+        }
+    }
+}

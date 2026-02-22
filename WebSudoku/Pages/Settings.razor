@@ -1,0 +1,58 @@
+﻿@page "/settings"
+
+@using System.ComponentModel.DataAnnotations
+@using apb97.github.io.WebSudoku.Shared
+
+@inject SettingsService settingsService
+
+<LocalizedComponent T="Settings" Context="Loc">
+    <PageTitle>Web Sudoku - @Loc["Settings"]</PageTitle>
+
+    <div hidden="@Loc.IsLoading">
+        <table>
+            <tbody>
+                @foreach (var setting in settings)
+                {
+                    <tr>
+                        <td>
+                            <label for="@setting.Key">@Loc[setting.Key]</label>
+                        </td>
+                        <td>
+                            @switch (setting.Value.GetType().Name)
+                            {
+                                case nameof(Int32):
+                                    var integer = (int)setting.Value;
+                                    RangeAttribute? range = null;
+                                    if (settingValidations.TryGetValue(setting.Key, out var validations))
+                                    {
+                                        range = validations.OfType<RangeAttribute>().FirstOrDefault();
+                                    }
+                                    <InputNumber id="@setting.Key" min="@range?.Minimum" max="@range?.Maximum" style="width: 3rem;"
+                                        TValue="int" Value="integer" ValueExpression="() => integer" ValueChanged="i => UpdateSettingAsync(setting.Key, i)" />
+                                    break;
+                                default:
+                                    break;
+                            }
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</LocalizedComponent>
+
+@code {
+    private IReadOnlyDictionary<string, object> settings = new Dictionary<string, object>();
+    private IReadOnlyDictionary<string, ValidationAttribute[]> settingValidations = new Dictionary<string, ValidationAttribute[]>();
+
+    protected override async Task OnInitializedAsync()
+    {
+        settings = await settingsService.GetSettingsAsync();
+        settingValidations = await settingsService.GetValidationsAsync();
+    }
+
+    private Task UpdateSettingAsync(string key, object value)
+    {
+        return settingsService.UpdateSettingAsync(key, value);
+    }
+}

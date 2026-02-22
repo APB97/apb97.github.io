@@ -1,0 +1,35 @@
+﻿.sudoku-table > tbody > tr > td, .sudoku-table > tr > td {
+    border: 2px solid black;
+}
+
+.sudoku-table > tbody > tr:nth-child(3n) > td, .sudoku-table > tr:nth-child(3n) > td {
+    border-bottom: 4px solid black !important;
+}
+
+.sudoku-table > tbody > tr:last-child > td, .sudoku-table > tr:last-child > td {
+    border-bottom: 2px solid black !important;
+}
+
+.sudoku-table > tbody > tr > td:nth-child(3n), .sudoku-table > tr > td:nth-child(3n) {
+    border-right: 4px solid black !important;
+}
+
+.sudoku-table > tbody > tr > td:last-child, .sudoku-table > tr > td:last-child {
+    border-right: 2px solid black !important;
+}
+
+.sticky-top-portrait {
+    top: 6rem;
+}
+
+@media (min-width: 400px) {
+    .sticky-top-portrait {
+        top: 3.5rem;
+    }
+}
+
+@media (min-width: 641px) {
+    .sticky-top-portrait {
+        top: 0;
+    }
+}

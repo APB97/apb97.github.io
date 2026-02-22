@@ -1,0 +1,270 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="features and rules" xml:space="preserve">
+    <value>funkcjonalności i zasady</value>
+  </data>
+  <data name="Features" xml:space="preserve">
+    <value>Funkcjonalności</value>
+  </data>
+  <data name="Print multiple ones" xml:space="preserve">
+    <value>Drukuj wiele sudoku</value>
+  </data>
+  <data name="or" xml:space="preserve">
+    <value>lub</value>
+  </data>
+  <data name="To start playing use the navigation menu or press the button below." xml:space="preserve">
+    <value>Aby zacząć, skorzystaj z menu nawigacyjnego lub użyj przycisku poniżej.</value>
+  </data>
+  <data name="Saving and loading" xml:space="preserve">
+    <value>Zapisywanie i odczytywanie</value>
+  </data>
+  <data name="New" xml:space="preserve">
+    <value>Nowość</value>
+  </data>
+  <data name="Print multiple" xml:space="preserve">
+    <value>Drukuj wiele</value>
+  </data>
+  <data name="Clear all" xml:space="preserve">
+    <value>Wyczyść wszystko</value>
+  </data>
+  <data name="Start playing" xml:space="preserve">
+    <value>Rozpocznij</value>
+  </data>
+  <data name="Separate page which allows preparing mulitple sudoku boards and allows generating adjustable amount of additional sudoku boards at once." xml:space="preserve">
+    <value>Osobna strona która pozwala na przygotowanie wielu sudoku do druku i umożliwia wygenerowanie dostosowywalnej ilości dodatkowych sudoku naraz.</value>
+  </data>
+  <data name="Every board can be regenerated or removed." xml:space="preserve">
+    <value>Każde sudoku może być wygenerowane ponownie lub usunięte.</value>
+  </data>
+  <data name="Also includes" xml:space="preserve">
+    <value>Ponadto zawiera przycisk</value>
+  </data>
+  <data name="button for starting from scratch by clearing all boards on the page." xml:space="preserve">
+    <value>pozwalający na rozpoczęcie od nowa poprzez wyczyszczenie wszystkich sudoku na stronie.</value>
+  </data>
+  <data name="Sudoku rules" xml:space="preserve">
+    <value>Reguły sudoku</value>
+  </data>
+  <data name="Sudoku board is divided into 9 squares with 3x3 grid of cells." xml:space="preserve">
+    <value>Sudoku jest podzielone na 9 kwadratów z siatką komórek 3 na 3.</value>
+  </data>
+  <data name="Each cell on the board should be filled with digits 1 through 9." xml:space="preserve">
+    <value>Każda komórka powinna być uzupełniona cyfrą od 1 do 9.</value>
+  </data>
+  <data name="Inside of each 3x3 square, column and row, any given digit can appear only once." xml:space="preserve">
+    <value>Wewnątrz każdego kwadratu 3 na 3, kolumny i wiersza, dowolna cyfra może pojawić się tylko raz.</value>
+  </data>
+  <data name="You start a game with a board where some of the cells have been assigned a digit that cannot be changed." xml:space="preserve">
+    <value>Zaczynasz grę z sudoku, którego część komórek ma przydzieloną wartość, której nie można zmienić.</value>
+  </data>
+  <data name="You should fill the board according to the rules." xml:space="preserve">
+    <value>Należy uzupełnić sudoku zgodnie z regułami gry.</value>
+  </data>
+  <data name="Sudoku state can be saved and loaded." xml:space="preserve">
+    <value>Stan sudoku może być zapisany i wczytany.</value>
+  </data>
+  <data name="Currently saves to and loads from browser's LocalStorage." xml:space="preserve">
+    <value>Obecnie aplikacja zapisuje i wczytuje stan z lokalnej pamięci przeglądarki.</value>
+  </data>
+  <data name="Printing" xml:space="preserve">
+    <value>Drukowanie</value>
+  </data>
+  <data name="You can print the sudoku board with ability to adjust the following options" xml:space="preserve">
+    <value>Można wydrukować sudoku z następującymi opcjami</value>
+  </data>
+  <data name="Print filled values" xml:space="preserve">
+    <value>Drukuj uzupełnione wartości</value>
+  </data>
+  <data name="Print highlighted errors" xml:space="preserve">
+    <value>Drukuj podświetlone błędy</value>
+  </data>
+  <data name="if checked" xml:space="preserve">
+    <value>jeśli zaznaczona</value>
+  </data>
+  <data name="this option will include user-filled cell values in the printed version." xml:space="preserve">
+    <value>ta opcja dołączy wartości uzupełnione przez użytkownika w wydruku.</value>
+  </data>
+  <data name="This option must be checked for option" xml:space="preserve">
+    <value>Ta opcja musi być zaznaczona, aby opcja</value>
+  </data>
+  <data name="to be available." xml:space="preserve">
+    <value>była dostępna.</value>
+  </data>
+  <data name="Print backgrounds" xml:space="preserve">
+    <value>Drukuj tła</value>
+  </data>
+  <data name="and given that there is active highlighting of conflicting cell values" xml:space="preserve">
+    <value>i pod warunkiem, że jest aktywne podświetlenie niezgodnych wartości komórek</value>
+  </data>
+  <data name="this option will include highlighting of errors in the printed version." xml:space="preserve">
+    <value>ta opcja dołączy podświetlenie błędów w wydruku</value>
+  </data>
+  <data name="Please note that for this option to take effect, You need to enable option" xml:space="preserve">
+    <value>Należy zauważyć, że aby ta opcja zadziałała, trzeba włączyć opcję</value>
+  </data>
+  <data name="while preparing printed sudoku." xml:space="preserve">
+    <value>podczas przygotowywania sudoku do druku.</value>
+  </data>
+  <data name="Validation" xml:space="preserve">
+    <value>Walidacja</value>
+  </data>
+  <data name="Any editable cells' values conflicting with sudoku rules are highlighted automatically after changing cell's value." xml:space="preserve">
+    <value>Wartości każdej edytowalnej komórki, które są niezgodne z zasadami sudoku są automatycznie podświetlane po zmianie wartości komórki.</value>
+  </data>
+  <data name="Navigation" xml:space="preserve">
+    <value>Nawigacja</value>
+  </data>
+  <data name="You can navigate cells within the sudoku board using arrow keys." xml:space="preserve">
+    <value>Można nawigować między komórkami wewnątrz sudoku za pomocą strzałek.</value>
+  </data>
+  <data name="Supports moving between the first and the last cell in a row or column." xml:space="preserve">
+    <value>Wspiera przemieszczanie pomiędzy pierwszą i ostatnią komórką w wierszu lub kolumnie.</value>
+  </data>
+  <data name="Pressing 'Enter' allows to navigate to the next cell, or to the top-left one if pressed in the bottom-right cell." xml:space="preserve">
+    <value>Wciskając 'Enter' można nawigować do następnej komórki, lub do komórki w lewym górnym rogu, jeżeli wciśnięty został w komórce w prawym dolnym rogu.</value>
+  </data>
+  <data name="Target cell will have its value selected." xml:space="preserve">
+    <value>Wartość docelowej komórki zostanie zaznaczona.</value>
+  </data>
+  <data name="Manage settings" xml:space="preserve">
+    <value>Zarządzaj ustawieniami</value>
+  </data>
+  <data name="Adjustable settings" xml:space="preserve">
+    <value>Dostosowywalne ustawienia</value>
+  </data>
+  <data name="Desired blank cells" xml:space="preserve">
+    <value>Docelowa liczba pustych komórek</value>
+  </data>
+  <data name="Cell blanking attempts" xml:space="preserve">
+    <value>Ilość prób wyczyszczenia komórki</value>
+  </data>
+  <data name="Maximum amount of cells that can be blank" xml:space="preserve">
+    <value>Maksymalna liczba komórek które mogą być puste. Zwiększenie tego parametru wydłuża czas generowania sudoku.</value>
+  </data>
+  <data name="Maximum attempts to blank next cell" xml:space="preserve">
+    <value>Maksymalna liczba prób wyczyszczenia następnej komórki. Zwiększenie tego parametru nieznacznie wydłuża czas generowania sudoku i zwiększa częstotliwość generowania sudoku z oczekiwaną liczbą pustych komórek.</value>
+  </data>
+  <data name="The following sudoku generation settings can be adjusted" xml:space="preserve">
+    <value>Poniższe ustawienia generowania sudoku mogą być dostosowane</value>
+  </data>
+  <data name="When saving or loading a small popup message appears" xml:space="preserve">
+    <value>Podczas zapisywania lub ładowania na krótki moment pojawia się niewielki popup z odpowiednią informacją.</value>
+  </data>
+</root>

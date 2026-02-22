@@ -2,8 +2,6 @@
 @inject IJSRuntime JS
 
 @code{
-    public bool Rendered { get; private set; }
-
     private IJSObjectReference? module;
 
     protected override async Task OnAfterRenderAsync(bool firstRender)

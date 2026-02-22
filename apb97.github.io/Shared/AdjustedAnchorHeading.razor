@@ -1,6 +1,4 @@
-﻿@using System.Text.RegularExpressions
-
-<!-- uses --nav-top-height variable to fix issue with anchor tags target position after navigation while in mobile view -->
+﻿<!-- uses --nav-top-height variable to fix issue with anchor tags target position after navigation while in mobile view -->
 <!-- disables pointer-events on h2 tag and reenables on a tag to allow click to pass through -->
 <h2 style="pointer-events: none;">
     <a id="@(IncludeId? Id : null)" hidden="@Hidden" tabindex="0" class="link-primary" style="pointer-events: auto; scroll-margin-top: var(--nav-top-height); font-size: @(FontSize ?? DefaultFontSize)"

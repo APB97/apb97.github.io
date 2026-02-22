@@ -1,0 +1,30 @@
+﻿@implements IJSObjectReference
+
+@inject IJSRuntime JS
+
+@code {
+    protected Lazy<Task<IJSObjectReference>> utilitiesModule = new Lazy<Task<IJSObjectReference>>();
+
+    protected override async Task OnInitializedAsync()
+    {
+        utilitiesModule = new Lazy<Task<IJSObjectReference>>(async () => await JS.ImportAsync(JSModules.UtilitiesModule));
+        await AfterImportAsync();
+    }
+
+    protected virtual Task AfterImportAsync() { return Task.CompletedTask; }
+
+    public async ValueTask<TValue> InvokeAsync<TValue>(string identifier, params object?[]? args)
+    {
+        return await (await utilitiesModule.Value).InvokeAsync<TValue>(identifier, args);
+    }
+
+    public async ValueTask<TValue> InvokeAsync<TValue>(string identifier, CancellationToken cancellationToken, params object?[]? args)
+    {
+        return await (await utilitiesModule.Value).InvokeAsync<TValue>(identifier, cancellationToken, args);
+    }
+
+    async ValueTask IAsyncDisposable.DisposeAsync()
+    {
+        await (await utilitiesModule.Value).DisposeAsync();
+    }
+}

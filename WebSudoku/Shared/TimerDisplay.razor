@@ -1,0 +1,38 @@
+﻿<LocalizedComponent T="TimerDisplay" Context="Loc">
+    <span hidden="@Loc.IsLoading" class="d-print-none">@Loc["Your time"]: </span>
+    <span hidden="@Loc.IsLoading" class="d-print-none">@SpanToShow</span>
+</LocalizedComponent>
+
+@code {
+    [Parameter]
+    public EventCallback<TimeSpan> OnTimePassed { get; set; }
+
+    public TimeSpan SpanToShow { get; private set; }
+
+    protected PeriodicTimer? timer;
+
+    protected override async Task OnInitializedAsync()
+    {
+        using (timer = new PeriodicTimer(TimeSpan.FromSeconds(1)))
+        {
+            await TimerLoop();
+        }
+    }
+
+    protected async Task TimerLoop(CancellationToken cancellationToken = default)
+    {
+        while (timer != null)
+        {
+            await timer.WaitForNextTickAsync(cancellationToken);
+            SpanToShow += TimeSpan.FromSeconds(1);
+            StateHasChanged();
+            await OnTimePassed.InvokeAsync(SpanToShow);
+        }
+    }
+
+    public void SetTime(TimeSpan time)
+    {
+        SpanToShow = time;
+        StateHasChanged();
+    }
+}

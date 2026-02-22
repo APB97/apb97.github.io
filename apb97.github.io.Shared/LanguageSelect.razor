@@ -1,0 +1,43 @@
+﻿@inject IJSRuntime JS
+@inject UtilityService utilities
+
+<LocalizedComponent T="LanguageSelect" Context="Loc" @ref="localizer">
+    <label for="language" class="text-white">
+        @(Loc["Select your locale"]):
+    </label>
+
+    <CustomSelect Id="language" Value="@Culture" Options="supportedCultures" OnSelected="SetCultureAndReloadAsync" DisplayDownward="DisplayDownward" />
+</LocalizedComponent>
+
+@code {
+    [Parameter]
+    public bool DisplayDownward { get; set; }
+
+    public static string? Culture { get; private set; }
+
+    private LocalizedComponent<LanguageSelect>? localizer;
+
+    private readonly static IReadOnlyDictionary<string, string> supportedCultures = new Dictionary<string, string>
+    {
+        { "English", "en-US" },
+        { "Polski", "pl-PL" }
+    };
+
+    protected override async Task OnInitializedAsync()
+    {
+        Culture = await utilities.GetSettingAsync<string>("BlazorCulture") ?? "en-US";
+        if (localizer is not null)
+            await localizer.ReloadResourcesAndRefreshLayoutAsync();
+    }
+
+    private async Task SetCultureAndReloadAsync(string value)
+    {
+        if (Culture == value) return;
+        Culture = value;
+        if (localizer is not null)
+        {
+            await localizer.ReloadResourcesAndRefreshLayoutAsync();
+        }
+        await utilities.SetSettingAsync("BlazorCulture", value);
+    }
+}

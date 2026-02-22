@@ -1,0 +1,74 @@
+﻿@if (ReadOnly)
+{
+    <input class="text-center sudoku-input input-readonly" style="align-content: center" readonly="readonly" value="@Value" 
+        @onkeydown="OnKeyDown" />
+}
+else
+{
+    <InputText maxlength="1" min="0" max="9" Value="@Value" ValueChanged="OnChange" ValueExpression="() => Value" @onfocus="OnFocus"
+        class="@($"{HighlightClass ?? string.Empty} text-center sudoku-input input-editable")"
+        type="@type"
+        @onblur="OnBlur"
+        @onkeydown="OnKeyDown"
+        oninput="this.value = this.value.length > 1 ? this.value.substr(0, 1) : this.value"
+        />
+}
+
+@code {
+    public const string InputTypeText = "text";
+    public const string InputTypeNumber = "number";
+
+    [Parameter]
+    public string? HighlightClass { get; set; } = null;
+
+    [Parameter]
+    public bool ReadOnly { get; set; }
+
+    [Parameter]
+    public string Value { get; set; } = string.Empty;
+
+    private string type = InputTypeNumber;
+
+    [Parameter]
+    public EventCallback<KeyboardEventArgs> OnKeyDown { get; set; }
+
+    /// <summary>
+    /// If true, input type changes between 'text' and 'number' on gaining and losing focus. Can be set to show numeric keyboard on mobile (does NOT work in Firefox).
+    /// </summary>
+    [Parameter]
+    public bool SwitchTypeOnFocus { get; set; } = true;
+
+    [Parameter]
+    public string DefaultType { get; set; } = InputTypeText;
+
+    protected override void OnInitialized()
+    {
+        type = DefaultType;
+        StateHasChanged();
+    }
+
+    public void OnChange(string value)
+    {
+        if (int.TryParse(value, out var number) && number >= 1 && number <= 9)
+        {
+            Value = value;
+        }
+        else
+        {
+            Value = string.Empty;
+        }
+    }
+
+    private void OnBlur()
+    {
+        OnChange(Value);
+        if (!SwitchTypeOnFocus) return;
+        type = DefaultType;
+    }
+
+    private void OnFocus()
+    {
+        if (!SwitchTypeOnFocus) return;
+        type = InputTypeNumber;
+    }
+}

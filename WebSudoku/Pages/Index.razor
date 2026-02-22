@@ -1,0 +1,102 @@
+﻿@page "/"
+@page "/rules"
+@using apb97.github.io.WebSudoku.Shared
+
+@inject UtilityService utilities
+@inject NavigationManager Navigation
+
+<LocalizedComponent T="Index" Context="Loc">
+    <PageTitle>Web Sudoku - @Loc["features and rules"]</PageTitle>
+    <div hidden="@Loc.IsLoading">
+        <h1>Web Sudoku</h1>
+
+        <p>@Loc["To start playing use the navigation menu or press the button below."]</p>
+
+        <a class="btn btn-success" href="sudoku">@Loc["Start playing"]</a>
+
+        <span>&nbsp;@Loc["or"]&nbsp;</span>
+
+        <a class="btn btn-secondary" href="printMultiple">@Loc["Print multiple ones"]</a>
+
+        <span>&nbsp;@Loc["or"]&nbsp;</span>
+
+        <a class="btn btn-warning" href="settings">@Loc["Manage settings"]</a>
+    
+        <strong><span class="text-decoration-none text-uppercase text-primary">@Loc["New"]</span></strong>
+
+        <h3>@Loc["Features"]</h3>
+
+        <ul>
+            <li>
+                <strong class="text-decoration-underline">@Loc["Adjustable settings"]</strong> <strong><span class="text-decoration-none text-uppercase text-primary">@Loc["New"]</span></strong>:
+                @Loc["The following sudoku generation settings can be adjusted"]:
+                <ul>
+                    <li>
+                        @Loc["Desired blank cells"] - @Loc["Maximum amount of cells that can be blank"]
+                    </li>
+                    <li>
+                        @Loc["Cell blanking attempts"] - @Loc["Maximum attempts to blank next cell"]
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <strong class="text-decoration-underline">@Loc["Print multiple"]</strong> <strong><span class="text-decoration-none text-uppercase text-primary">@Loc["New"]</span></strong>:
+                @Loc["Separate page which allows preparing mulitple sudoku boards and allows generating adjustable amount of additional sudoku boards at once."]
+                @Loc["Every board can be regenerated or removed."] @Loc["Also includes"] <b>@Loc["Clear all"]</b> @Loc["button for starting from scratch by clearing all boards on the page."]
+            </li>
+            <li>
+                <strong class="text-decoration-underline">@Loc["Saving and loading"]</strong>: @Loc["Sudoku state can be saved and loaded."] @Loc["When saving or loading a small popup message appears"] @Loc["Currently saves to and loads from browser's LocalStorage."]
+            </li>
+            <li>
+                <strong class="text-decoration-underline">@Loc["Printing"]</strong>: @Loc["You can print the sudoku board with ability to adjust the following options"]:
+                <ul>
+                    <li>
+                        <b>@Loc["Print filled values"]</b> - @Loc["if checked"],
+                        @Loc["this option will include user-filled cell values in the printed version."]
+                        @Loc["This option must be checked for option"]: <b>@Loc["Print highlighted errors"]</b> @Loc["to be available."]
+                    </li>
+                    <li>
+                        <b>@Loc["Print highlighted errors"]</b> - @Loc["if checked"],
+                        @Loc["and given that there is active highlighting of conflicting cell values"],
+                        @Loc["this option will include highlighting of errors in the printed version."]
+                        <br/>
+                        <em>@Loc["Please note that for this option to take effect, You need to enable option"]: </em><b>@Loc["Print backgrounds"]</b> <em>@Loc["while preparing printed sudoku."]</em>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <strong class="text-decoration-underline">@Loc["Validation"]</strong>: @Loc["Any editable cells' values conflicting with sudoku rules are highlighted automatically after changing cell's value."]
+            </li>
+            <li>
+                <strong class="text-decoration-underline">@Loc["Navigation"]</strong>: @Loc["You can navigate cells within the sudoku board using arrow keys."]
+                @Loc["Supports moving between the first and the last cell in a row or column."]
+                @Loc["Pressing 'Enter' allows to navigate to the next cell, or to the top-left one if pressed in the bottom-right cell."]
+                @Loc["Target cell will have its value selected."]
+            </li>
+        </ul>
+
+        <h3>@Loc["Sudoku rules"]</h3>
+
+        <ul>
+            <li>
+                @Loc["Sudoku board is divided into 9 squares with 3x3 grid of cells."]
+            </li>
+            <li>
+                @Loc["Each cell on the board should be filled with digits 1 through 9."]
+            </li>
+            <li>
+                @Loc["Inside of each 3x3 square, column and row, any given digit can appear only once."]
+            </li>
+            <li>
+                @Loc["You start a game with a board where some of the cells have been assigned a digit that cannot be changed."] @Loc["You should fill the board according to the rules."]
+            </li>
+        </ul>
+    </div>
+</LocalizedComponent>
+
+@code {
+    protected override async Task OnInitializedAsync()
+    {
+        await Navigation.NavigateToStoredDestinationIfAnyAsync(utilities);
+    }
+}

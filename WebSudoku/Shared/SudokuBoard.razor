@@ -1,0 +1,118 @@
+﻿@using apb97.github.io.WebSudoku.Services.KeyDownHandling
+@using apb97.github.io.WebSudoku.Shared.General
+@using apb97.github.io.WebSudoku.Shared.Sudoku
+
+@inject Validator SudokuValidator
+@inject CountingSolver Solver
+@inject Blanker Blanker
+
+<table class="sudoku-table" style="border-spacing: 0px;">
+    @for (int r = 0; r < Board.BoardSize; r++)
+    {
+        <tr>
+            @for (int c = 0; c < Board.BoardSize; c++)
+            {
+                // these local variables are needed to cache position of Cell on the board
+                int row = r, column = c;
+                <td>
+                    <Cell @ref="cells[row, column]"
+                          ReadOnly="Board.IsPredefined((row, column))"
+                          HighlightClass="@HighlightClassFor((row, column))"
+                          Value="@Board.GetValueAsString((row, column))"
+                          OnKeyDown="k => HandleKeyDown(k, row + 1, column + 1)"
+                          SwitchTypeOnFocus="SwitchTypeOnFocus"
+                          DefaultType="@CellDefaultType" />
+                </td>
+            }
+        </tr>
+    }
+</table>
+
+@code {
+    [Parameter]
+    public bool SwitchTypeOnFocus { get; set; }
+
+    [Parameter]
+    public required string CellDefaultType { get; set; }
+
+    [Parameter]
+    public required Action OnWinCondition { get; set; }
+
+    [Parameter]
+    public IJSObjectReference? SudokuModule { get; set; }
+
+    public Lazy<SudokuCellKeyDownHandler>? keyHandler;
+
+    private Board board = new Board();
+
+    public Board Board
+    {
+        get => board;
+        set
+        {
+            board = value;
+            InvalidCells = board.GetInvalidCells(SudokuValidator);
+        }
+    }
+
+    private Cell[,] cells = new Cell[Board.BoardSize, Board.BoardSize];
+
+    private HashSet<CellPosition> InvalidCells = new HashSet<CellPosition>();
+
+    protected override void OnInitialized()
+    {
+        //
+        keyHandler = new Lazy<SudokuCellKeyDownHandler>(() => new SudokuCellKeyDownHandler(SudokuModule!, ProcessNonNavigatingInputAsync));
+    }
+
+    private string? HighlightClassFor(CellPosition cell)
+    {
+        return InvalidCells.Contains(cell) ? "error-highlight" : null;
+    }
+
+    private async Task HandleKeyDown(KeyboardEventArgs args, int row, int column)
+    {
+        if (keyHandler == null) return;
+        if (args.AltKey || args.ShiftKey || args.MetaKey || args.CtrlKey) return;
+        await keyHandler.Value.Handle(args, row, column);
+    }
+
+    private async Task ProcessNonNavigatingInputAsync(KeyboardEventArgs args, int row, int column)
+    {
+        row -= 1;
+        column -= 1;
+
+        if (Board.IsPredefined((row, column))) return;
+        string key = args.Key;
+        if (int.TryParse(key, out var number) && number >= 1 && number <= 9)
+        {
+            UpdateCellAsync(row, column, cells[row, column], number);
+            CheckWinCondition();
+        }
+        else
+        {
+            await cells[row, column].SetParametersAsync(ParameterView.FromDictionary(new Dictionary<string, object?> { { nameof(Cell.Value), string.Empty } }));
+            Board.ClearCell((row, column));
+            InvalidCells.Remove((row, column));
+            InvalidCells.RemoveWhere(cell => SudokuValidator.IsValid(Board, cell));
+        }
+    }
+
+    private void UpdateCellAsync(int row, int column, Cell currentCell, int number)
+    {
+        Board.FillCell((row, column), number);
+        currentCell.OnChange(number.ToString());
+        InvalidCells = Board.GetInvalidCells(SudokuValidator);
+    }
+
+    private void CheckWinCondition()
+    {
+        if (Board.EmptyCells.Count == 0 && SudokuValidator.IsValidBoard(Board)) OnWinCondition();
+    }
+
+    public void GenerateNew(int targetBlanks, int attemptsToRemove)
+    {
+        Board = new Board(Solver, new RandomOptionOrder<int>(), Blanker, targetBlanks, attemptsToRemove);
+        StateHasChanged();
+    }
+}

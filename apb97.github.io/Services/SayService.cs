@@ -1,5 +1,5 @@
 ﻿using System.Text;
-using apb97.github.io.Services.Localization;
+using apb97.github.io.Shared.Services.Localization;
 
 namespace apb97.github.io.Services;
 

@@ -1,0 +1,234 @@
+﻿@page "/printMultiple"
+
+@using System.Globalization
+@using apb97.github.io.WebSudoku.Shared
+@using apb97.github.io.WebSudoku.Shared.General
+@using apb97.github.io.WebSudoku.Shared.Sudoku
+
+@implements IAsyncDisposable
+
+@inject CountingSolver Solver
+@inject Blanker Blanker
+@inject Validator Validator
+@inject IJSRuntime JS
+@inject SettingsService settingsService
+
+<LocalizedComponent T="PrintMultiple" Context="Loc">
+    <PageTitle>Web Sudoku - @Loc["print multiple"]</PageTitle>
+
+    <div class="d-print-none" hidden="@Loc.IsLoading">
+        <div class="d-flex flex-wrap">
+            <div class="align-content-center">
+                <label for="width">@Loc["Board width"] [%]</label>
+                <InputSelect id="width" TValue="float" Value="boardWidthPercentage" ValueExpression="() => boardWidthPercentage" ValueChanged="UpdateBoardWidth">
+                    <option value="33.3333">33%</option>
+                    <option value="50">50%</option>
+                    <option value="100">100%</option>
+                </InputSelect>
+            </div>
+            <div class="align-content-center">
+                <label for="boards-amount">@Loc["Boards to generate"]</label>
+                <InputNumber style="width: 4rem" id="boards-amount" min="1" max="32" @bind-Value="BoardsToGenerate" />
+            </div>
+            <div class="align-content-center">
+                <label title="@Loc["Speeds up the process but"]" for="use-more-resources">@Loc["Use more resources"]</label>
+                <InputCheckbox id="use-more-resources" Value="useMoreResources" ValueExpression="() => useMoreResources" ValueChanged="UpdateUseMoreResources" />
+            </div>
+            <div class="align-content-center">
+                <button class="btn btn-danger" @onclick="boards.Clear">@Loc["Clear all"]</button>
+                <button disabled="@generating" class="btn btn-primary" @onclick="GenerateBoards">@Loc["Add"] @boardsToGenerate @Loc["sudoku(s)"]</button>
+                <button class="btn btn-secondary" onclick="print()">@Loc["Print"]</button>
+            </div>
+        </div>
+    </div>
+
+    @if (generating)
+    {
+        <div class="alert alert-info d-print-none position-sticky sticky-top sticky-top-portrait" hidden="@Loc.IsLoading">
+            @Loc["Generating additional sudokus..."]
+            <button class="btn btn-danger" @onclick="Cancel">@Loc["Cancel"]</button>
+        </div>
+    }
+
+    <div class="d-flex flex-wrap" hidden="@Loc.IsLoading">
+        @foreach (var board in boards)
+        {
+            <div class="p-2" style="break-inside: avoid-page; width: @boardWidthPercentage%;">
+                <table class="sudoku-table" style="border-spacing: 0px;">
+                    @for (int r = 0; r < Board.BoardSize; r++)
+                    {
+                        <tr>
+                            @for (int c = 0; c < Board.BoardSize; c++)
+                            {
+                                // this local variable is here to cache value of Cell on the board
+                                var value = board.GetValueAt((r, c));
+                                <td>
+                                    <Cell ReadOnly="true" HighlightClass="@null"
+                                        Value="@(value != 0 ? value.ToString() : string.Empty)"
+                                        SwitchTypeOnFocus="false"
+                                        />
+                                </td>
+                            }
+                        </tr>
+                    }
+                </table>
+                <div class="d-print-none">
+                    <button class="btn btn-danger" @onclick="() => boards.Remove(board)">@Loc["Remove board"]</button>
+                    <button class="btn btn-success" disabled="@(generating ? "disabled" : null)" @onclick="async () => await Regenerate(board)">@Loc["Regenerate board"]</button>
+                </div>
+            </div>
+        }
+    </div>
+</LocalizedComponent>
+
+@code {
+    [CascadingParameter]
+    public required MainLayout Layout { get; set; }
+
+    private int millisecondsDelay = 150;
+
+    private CancellationTokenSource cts = new();
+
+    private List<Board> boards = [];
+
+    private bool generating;
+
+    private bool useMoreResources;
+
+    private float boardWidthPercentage = 100;
+
+    private int boardsToGenerate = 4;
+
+    private int BoardsToGenerate
+    {
+        get => boardsToGenerate;
+        set => boardsToGenerate = Math.Clamp(value, 1, 32);
+    }
+
+    private IJSObjectReference? utilities;
+
+    private const string PageName = "printMultiple";
+    private const string FormatSetting = "{0}_{1}";
+
+    private int targetBlanks;
+    private int attemptsToRemove;
+
+    private string SettingKeyFor(string settingName)
+    {
+        return string.Format(FormatSetting, PageName, settingName);
+    }
+
+    protected override async Task OnInitializedAsync()
+    {
+        targetBlanks = await settingsService.GetIntAsync(SettingsProvider.DesiredBlankCells);
+        attemptsToRemove = await settingsService.GetIntAsync(SettingsProvider.CellBlankingAttempts);
+
+        utilities = await JS.ImportAsync(JSModules.UtilitiesModule);
+        if (utilities is null) return;
+
+        await LoadSettings(utilities);
+    }
+
+    private async ValueTask LoadSettings(IJSObjectReference utilities)
+    {
+        if (utilities is null) return;
+
+        var boardWidthSetting = await utilities.GetSettingAsync<string>(SettingKeyFor(nameof(boardWidthPercentage)));
+        if (float.TryParse(boardWidthSetting, out var result))
+            boardWidthPercentage = result;
+
+        var useMoreResourcesSetting = await utilities.GetSettingAsync<string>(SettingKeyFor(nameof(useMoreResources)));
+        if (bool.TryParse(useMoreResourcesSetting, out var useMoreResult))
+            useMoreResources = useMoreResult;
+
+        string boardAmountSetting = await utilities.GetSettingAsync<string>(SettingKeyFor(nameof(boardsToGenerate)));
+        if (int.TryParse(boardAmountSetting, out var boardAmountResult) && boardAmountResult > 0)
+            BoardsToGenerate = boardAmountResult;
+    }
+
+    private async Task UpdateBoardWidth(float width)
+    {
+        boardWidthPercentage = width;
+        if (utilities is null) return;
+        await utilities.SetSettingAsync(SettingKeyFor(nameof(boardWidthPercentage)), width);
+    }
+
+    private async Task UpdateUseMoreResources(bool use)
+    {
+        useMoreResources = use;
+        if (utilities is null) return;
+        await utilities.SetSettingAsync(SettingKeyFor(nameof(useMoreResources)), use);
+    }
+
+    private void Cancel()
+    {
+        cts.Cancel();
+        cts.Dispose();
+        cts = new();
+    }
+
+    private Task GenerateBoards() => GenerateBoards(cts.Token);
+
+    private async Task GenerateBoards(CancellationToken cancellationToken)
+    {
+        try
+        {
+            generating = true;
+            for (int i = 0; i < boardsToGenerate; i++)
+            {
+                cancellationToken.ThrowIfCancellationRequested();
+                boards.Add(new Board(Solver, new RandomOptionOrder<int>(), Blanker, targetBlanks, attemptsToRemove));
+                StateHasChanged();
+                // makes UI responsive
+                await Task.Delay(useMoreResources ? 1 : millisecondsDelay);
+            }
+        }
+        catch (OperationCanceledException)
+        {
+            // don't do anything when cancelling
+        }
+        catch (Exception ex)
+        {
+            if (utilities is not null)
+            {
+                await utilities.AlertAsync(ex.Message);
+            }
+        }
+        finally
+        {
+            generating = false;
+        }
+    }
+
+    private async ValueTask Regenerate(Board board)
+    {
+        if (generating) return;
+        var index = boards.FindIndex(b => b == board);
+        if (index < 0) return;
+
+        try
+        {
+            generating = true;
+            boards[index] = new Board(Solver, new RandomOptionOrder<int>(), Blanker, targetBlanks, attemptsToRemove);
+        }
+        catch (Exception ex)
+        {
+            if (utilities is not null)
+            {
+                await utilities.AlertAsync(ex.Message);
+            }
+        }
+        finally
+        {
+            generating = false;
+        }
+    }
+
+    async ValueTask IAsyncDisposable.DisposeAsync()
+    {
+        cts.Dispose();
+        if (utilities is null) return;
+        await utilities.SetSettingAsync(SettingKeyFor(nameof(boardsToGenerate)), boardsToGenerate);
+        await utilities.DisposeAsync();
+    }
+}

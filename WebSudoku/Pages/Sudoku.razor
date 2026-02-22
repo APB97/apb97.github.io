@@ -1,0 +1,127 @@
+﻿@page "/sudoku"
+@using System.Linq
+@using apb97.github.io.WebSudoku.Services.KeyDownHandling
+@using apb97.github.io.WebSudoku.Shared
+@using apb97.github.io.WebSudoku.Shared.General
+@using apb97.github.io.WebSudoku.Shared.Serialization
+@using apb97.github.io.WebSudoku.Shared.Sudoku
+
+@inject CountingSolver Solver
+@inject Blanker Blanker
+@inject Validator SudokuValidator
+@inject IJSRuntime JS
+@inject SettingsService settingsService
+
+@implements IAsyncDisposable
+
+<LocalizedComponent T="Sudoku" Context="Loc">
+    <PageTitle>Web Sudoku - sudoku</PageTitle>
+
+    @if (!success)
+    {
+        if (!generated)
+        {
+            Task.CompletedTask.ContinueWith(t => CreateNewBoard()).ContinueWith(t => generated = true);
+        }
+        <div class="d-flex flex-direction-var" hidden="@Loc.IsLoading">
+            <div class="div-main">
+                <TimerDisplay @ref="timer" />
+                <SudokuBoard @ref="sudokuBoard"
+                    CellDefaultType="@CellDefaultType"
+                    OnWinCondition="OnWinCondition"
+                    SwitchTypeOnFocus="isMobile"
+                    SudokuModule="module" />
+            </div>
+
+            <SudokuOptions SudokuBoard="sudokuBoard" Timer="timer" />
+        </div>
+    }
+    else
+    {
+        @SudokuFinishedFragment(Loc)
+    }
+</LocalizedComponent>
+
+@code {
+    [CascadingParameter]
+    public required MainLayout Layout { get; set; }
+
+    private SudokuBoard? sudokuBoard;
+
+    private TimerDisplay? timer;
+
+    private int targetBlanks = 35;
+    private int attemptsToRemove = 4;
+
+    private bool success = false;
+    private bool generated = false;
+
+    private TimeSpan? timePassed;
+
+    private IJSObjectReference? module;
+
+    private bool isMobile;
+    private bool isFirefox;
+    private string CellDefaultType = Cell.InputTypeText;
+
+    private RenderFragment<LocalizedComponent<Sudoku>> SudokuFinishedFragment => Loc => __builder =>
+    {
+        <div hidden="@Loc.IsLoading">
+            <h1>@Loc["Success"]</h1>
+            @if (timePassed.HasValue)
+            {
+                <p>@Loc["You finished with time"] @timePassed.</p>
+            }
+            <button class="btn btn-primary" @onclick="() => success = false">@Loc["Play again"]</button>
+        </div>
+    };
+
+    protected override async Task OnInitializedAsync()
+    {
+        module = await JS.ImportAsync("./Pages/Sudoku.razor.js");
+        if (module is not null)
+        {
+            try
+            {
+                isMobile = await module.InvokeAsync<bool>("isMobile");
+                isFirefox = await module.InvokeAsync<bool>("isFirefox");
+            }
+            catch
+            {
+                isMobile = false;
+                isFirefox = false;
+            }
+        }
+        CellDefaultType = isMobile && isFirefox ? Cell.InputTypeNumber : Cell.InputTypeText;
+        
+        targetBlanks = await settingsService.GetIntAsync(SettingsProvider.DesiredBlankCells);
+        attemptsToRemove = await settingsService.GetIntAsync(SettingsProvider.CellBlankingAttempts);
+    }
+
+    protected async Task CreateNewBoard()
+    {
+        while (sudokuBoard is null) await Task.Delay(25);
+        if (generated) return;
+        lock (this)
+        {
+            success = false;
+            generated = true;
+            sudokuBoard.GenerateNew(targetBlanks, attemptsToRemove);
+        }
+        StateHasChanged();
+    }
+
+    private void OnWinCondition()
+    {
+        success = true;
+        generated = false;
+        timePassed = timer?.SpanToShow;
+        StateHasChanged();
+    }
+
+    async ValueTask IAsyncDisposable.DisposeAsync()
+    {
+        if (module is null) return;
+        await module.DisposeAsync();
+    }
+}

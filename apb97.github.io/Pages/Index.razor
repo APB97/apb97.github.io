@@ -1,8 +1,8 @@
 ﻿@page "/"
-@using apb97.github.io.Extensions
 @using apb97.github.io.Shared
+@using apb97.github.io.Shared.Extensions
 
-@inject IJSRuntime JS
+@inject UtilityService utilities
 @inject NavigationManager Navigation
 
 <PageTitle>Adrian Bieliński - Index</PageTitle>
@@ -12,6 +12,6 @@
 @code {
     protected override async Task OnInitializedAsync()
     {
-        await Navigation.NavigateToStoredDestinationIfAnyAsync(JS);
+        await Navigation.NavigateToStoredDestinationIfAnyAsync(utilities);
     }
 }

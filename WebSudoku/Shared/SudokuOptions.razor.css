@@ -1,0 +1,47 @@
+﻿@media all {
+    .div-options {
+        flex: 0 0 auto;
+        width: 50%;
+        word-break: break-word;
+        word-wrap: break-word;
+        display: grid;
+        justify-items: stretch;
+        margin: auto;
+        margin-top: 12pt;
+        padding: 2pt;
+    }
+
+    .div-options > button {
+        margin: 2pt;
+    }
+}
+
+@media only screen and (orientation: landscape) {
+    .div-options {
+        width: 50%;
+    }
+}
+
+@media only screen and (orientation: landscape) and (max-width: 1024px) {
+    .div-options {
+        width: 50%;
+    }
+}
+
+@media only screen and (orientation: portrait) {
+    .div-options {
+        flex: 0 0 auto;
+        width: 100%;
+    }
+
+    .sticky-bottom-portrait {
+        bottom: 0;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+    .div-options {
+        flex: 0 0 auto;
+        width: 50%;
+    }
+}

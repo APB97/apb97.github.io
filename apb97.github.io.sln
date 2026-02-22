@@ -5,6 +5,16 @@ VisualStudioVersion = 18.2.11415.280
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "apb97.github.io", "apb97.github.io\apb97.github.io.csproj", "{1DADE2AD-952B-42C7-AED2-1D785E91BB1C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebSudoku.Shared", "WebSudoku.Shared\WebSudoku.Shared.csproj", "{7A7C5B60-3278-E02D-AC14-4C587C34948A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebSudoku.Shared.Tests", "WebSudoku.Shared.Tests\WebSudoku.Shared.Tests.csproj", "{C5E8C5A9-3898-FE4B-C5D7-EB11324832D6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebSudoku", "WebSudoku\WebSudoku.csproj", "{834A1176-A477-EBB7-1F46-8BFE4F4B7D6E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebSudoku.Tests", "WebSudoku.Tests\WebSudoku.Tests.csproj", "{ABF53E5C-B299-ED1E-93B8-0B2D66BDB6EE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "apb97.github.io.Shared", "apb97.github.io.Shared\apb97.github.io.Shared.csproj", "{4AD76298-3B37-4C76-ACE3-32DDF147FCBF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +25,26 @@ Global
 		{1DADE2AD-952B-42C7-AED2-1D785E91BB1C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1DADE2AD-952B-42C7-AED2-1D785E91BB1C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1DADE2AD-952B-42C7-AED2-1D785E91BB1C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7A7C5B60-3278-E02D-AC14-4C587C34948A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7A7C5B60-3278-E02D-AC14-4C587C34948A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7A7C5B60-3278-E02D-AC14-4C587C34948A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7A7C5B60-3278-E02D-AC14-4C587C34948A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C5E8C5A9-3898-FE4B-C5D7-EB11324832D6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C5E8C5A9-3898-FE4B-C5D7-EB11324832D6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C5E8C5A9-3898-FE4B-C5D7-EB11324832D6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C5E8C5A9-3898-FE4B-C5D7-EB11324832D6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{834A1176-A477-EBB7-1F46-8BFE4F4B7D6E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{834A1176-A477-EBB7-1F46-8BFE4F4B7D6E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{834A1176-A477-EBB7-1F46-8BFE4F4B7D6E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{834A1176-A477-EBB7-1F46-8BFE4F4B7D6E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ABF53E5C-B299-ED1E-93B8-0B2D66BDB6EE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ABF53E5C-B299-ED1E-93B8-0B2D66BDB6EE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ABF53E5C-B299-ED1E-93B8-0B2D66BDB6EE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ABF53E5C-B299-ED1E-93B8-0B2D66BDB6EE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4AD76298-3B37-4C76-ACE3-32DDF147FCBF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4AD76298-3B37-4C76-ACE3-32DDF147FCBF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4AD76298-3B37-4C76-ACE3-32DDF147FCBF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4AD76298-3B37-4C76-ACE3-32DDF147FCBF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

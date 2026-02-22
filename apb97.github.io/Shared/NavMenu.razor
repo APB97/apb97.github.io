@@ -1,4 +1,4 @@
-﻿@using apb97.github.io.Services.Dimensions
+﻿@using apb97.github.io.Shared.Services.Dimensions
 @inject NavigationManager Navigation
 
 <LocalizedComponent T="NavMenu" Context="Loc">
@@ -7,12 +7,12 @@
             <div class="d-flex w-100-50">
                 <a class="align-content-center" style="color: white; text-decoration: none !important;" href="/">APB97</a>
                 <div class="flex-grow-1"></div>
-                <button style="border: none; background-color: transparent; padding: 0;" @onclick="Loc.Layout.ToggleLayoutMode"
-                        aria-label="@Loc["Toggle"] @Loc[$"{Loc.Layout.LayoutMode} Mode"]">
+                <button style="border: none; background-color: transparent; padding: 0;" @onclick="Layout.ToggleLayoutMode"
+                        aria-label="@Loc["Toggle"] @Loc[$"{Layout.LayoutMode} Mode"]">
                     <div style="width: 56px;">
                         <img style="height: 2rem; filter: invert(0.95);"
-                             src="@(Loc.Layout.LayoutMode == LayoutMode.Light ? "/images/dark.svg" : "/images/light.svg")"
-                             alt="@Loc[$"Picture showing white {(Loc.Layout.LayoutMode == LayoutMode.Light ? "moon" : "sun")}"]" />
+                             src="@(Layout.LayoutMode == LayoutMode.Light ? "/images/dark.svg" : "/images/light.svg")"
+                             alt="@Loc[$"Picture showing white {(Layout.LayoutMode == LayoutMode.Light ? "moon" : "sun")}"]" />
                     </div>
                 </button>
             </div>
@@ -80,6 +80,9 @@
 </LocalizedComponent>
 
 @code {
+    [CascadingParameter]
+    public required ILayoutStateChangeHandler Layout { get; set; }
+
     private bool collapseNavMenu = true;
 
     private string? NavMenuCssClass => collapseNavMenu ? "collapse" : null;

@@ -1,0 +1,90 @@
+﻿@inject IJSRuntime JS
+
+<LocalizedComponent T="PrintSettings" Context="Loc">
+    <button class="btn btn-primary"
+        hidden="@Loc.IsLoading"
+        style="margin: 2pt;"
+        @onclick="() => showPrintSettings = !showPrintSettings">@(showPrintSettings ? @Loc["Hide"] : @Loc["Show"]) @Loc["Print settings"]</button>
+
+    @if (showPrintSettings)
+    {
+        <div hidden="@Loc.IsLoading">
+            <h6><b>@Loc["Print settings"]</b></h6>
+
+            <div class="d-flex">
+                <InputCheckbox Value="printFilledValues" ValueExpression="() => printFilledValues" ValueChanged="PrintFilledValuesChanged" />
+                <label @onclick="() => PrintFilledValuesChanged(!printFilledValues)" class="user-select-none">@Loc["Print filled values"]</label>
+            </div>
+            @if (printFilledValues)
+            {
+                <div class="d-flex">
+                    <InputCheckbox Value="printHighlightedErrors" ValueExpression="() => printHighlightedErrors" ValueChanged="PrintHighlightedErrorsChanged" />
+                    <label @onclick="() => PrintHighlightedErrorsChanged(!printHighlightedErrors)" class="user-select-none">@Loc["Print highlighted errors"]</label>
+                </div>
+            }
+        </div>
+    }
+
+    @if (printHighlightedErrors && printFilledValues)
+    {
+        <style>
+            @@media print{
+                .input-editable.error-highlight {
+                    --cell-error-highlight: rgb(255, 95, 95) !important;
+                }
+            }
+        </style>
+    }
+    @if (printFilledValues)
+    {
+        <style>
+            @@media print {
+                .input-editable {
+                    --cell-editable-text-color: gray !important;
+                }
+            }
+        </style>
+    }
+</LocalizedComponent>
+
+@code {
+    private bool showPrintSettings;
+
+    private bool printHighlightedErrors;
+
+    private bool printFilledValues;
+
+    private IJSObjectReference? module;
+
+    protected override async Task OnInitializedAsync()
+    {
+        await base.OnInitializedAsync();
+        module = await JS.ImportAsync(JSModules.UtilitiesModule);
+
+        await LoadSetting(v => printFilledValues = v, nameof(printFilledValues));
+        await LoadSetting(v => printHighlightedErrors = v, nameof(printHighlightedErrors));
+    }
+
+    private async Task LoadSetting(Action<bool> setting, string key)
+    {
+        if (module is null) return;
+        var value = await module.GetSettingAsync<string>(key);
+
+        if (value is null || !bool.TryParse(value, out var result)) return;
+        setting.Invoke(result);
+    }
+
+    private async Task PrintFilledValuesChanged(bool toggle)
+    {
+        printFilledValues = toggle;
+        if (module is null) return;
+        await module.SetSettingAsync(nameof(printFilledValues), toggle);
+    }
+
+    private async Task PrintHighlightedErrorsChanged(bool toggle)
+    {
+        printHighlightedErrors = toggle;
+        if (module is null) return;
+        await module.SetSettingAsync(nameof(printHighlightedErrors), toggle);
+    }
+}

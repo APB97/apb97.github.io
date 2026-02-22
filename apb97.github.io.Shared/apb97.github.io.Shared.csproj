@@ -1,0 +1,35 @@
+<Project Sdk="Microsoft.NET.Sdk.Razor">
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <InvariantGlobalization>true</InvariantGlobalization>
+    <ProduceReferenceAssembly>False</ProduceReferenceAssembly>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Remove="ResxResources\**\*.resx" />
+    <Content Include="ResxResources\**\*.resx">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <PublishState>Excluded</PublishState>
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>Never</CopyToPublishDirectory>
+    </Content>
+  </ItemGroup>
+
+  <UsingTask Architecture="x64" Runtime="NET" TaskName="SimpleResxToJson.BuildTask.SingleResxToJsonTask" AssemblyFile="$(NuGetPackageRoot)\apb97.simpleresxtojson.buildtask\0.3.1\tasks\net10.0\APB97.SimpleResxToJson.BuildTask.dll" />
+
+  <Target Name="PreBuild" BeforeTargets="PreBuildEvent">
+    <SimpleResxToJson.BuildTask.SingleResxToJsonTask Condition="%(Extension)=='.resx'" Input="$(ProjectDir)ResxResources/%(Content.RecursiveDir)%(Filename)%(Extension)" Output="$(ProjectDir)wwwroot/Resources/%(Content.RecursiveDir)" />
+  </Target>
+
+  <ItemGroup>
+    <SupportedPlatform Include="browser" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="10.0.3" />
+  </ItemGroup>
+
+</Project>
