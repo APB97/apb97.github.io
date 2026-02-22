@@ -4,10 +4,14 @@
 @code{
     private IJSObjectReference? module;
 
+    protected override async Task OnInitializedAsync()
+    {
+        module = await JS.ImportAsync("./Components/NavigationByIdFix.razor.js");
+    }
+
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
         if (!firstRender) return;
-        module = await JS.ImportAsync("./Components/NavigationByIdFix.razor.js");
         await ActivateCurrentLink();
     }
 
@@ -15,6 +19,15 @@
     {
         if (module is null) return;
         await module.InvokeVoidAsync("activateCurrentLink", null, null);
+    }
+
+    public async Task ScrollToElementFixAsync(NavigationManager navigation, string url, int msDelay = 25)
+    {
+        await ScrollToElement(url);
+        while (!navigation.Uri.EndsWith(url))
+            await Task.Delay(25);
+        await Task.Delay(msDelay);
+        await ScrollToElement(url);
     }
 
     public async Task ScrollToElement(string url)

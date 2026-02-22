@@ -2,6 +2,7 @@
 @page "/IntegerToRoman/{Number:int?}"
 @using apb97.github.io.Shared
 
+@inject UtilityService utilities
 @inject NavigationManager Navigation
 
 <LocalizedComponent T="IntegerToRoman" Context="Loc" @ref="localizer">
@@ -81,6 +82,15 @@
 
     SemaphoreSlim semaphore = new SemaphoreSlim(1, 1);
 
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (!firstRender || navFix is null || localizer is null) return;
+        while (!localizer.IsReady)
+            await Task.Delay(25);
+        var target = Navigation.Uri.Replace(Navigation.BaseUri, string.Empty);
+        await navFix.ScrollToElementFixAsync(Navigation, target);
+    }
+
     private async Task OnNumberChanged(int? number)
     {
         if (number.HasValue)
@@ -92,11 +102,7 @@
                 await semaphore.WaitAsync();
                 string target = $"/IntegerToRoman/{number.Value}#{OutputId}";
                 Navigation.NavigateTo(target);
-                await navFix.ScrollToElement(target);
-                while (!Navigation.Uri.EndsWith(target))
-                    await Task.Delay(25);
-                await Task.Delay(25);
-                await navFix.ScrollToElement(target);
+                await navFix.ScrollToElementFixAsync(Navigation, target);
                 await Task.Delay(75);
             }
             finally

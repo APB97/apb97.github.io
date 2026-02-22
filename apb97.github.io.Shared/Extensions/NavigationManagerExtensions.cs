@@ -6,11 +6,12 @@ public static class NavigationManagerExtensions
 {
     private const string DestinationKey = "destination";
 
-    public static async Task NavigateToStoredDestinationIfAnyAsync(this NavigationManager navigation, UtilityService utilities)
+    public static async Task<string> NavigateToStoredDestinationIfAnyAsync(this NavigationManager navigation, UtilityService utilities)
     {
         var destination = await utilities.GetSessionSettingAsync<string>(DestinationKey);
-        if (string.IsNullOrEmpty(destination)) return;
+        if (string.IsNullOrEmpty(destination)) return string.Empty;
         await utilities.RemoveSessionSettingAsync(DestinationKey);
         navigation.NavigateTo(destination[1..]);
+        return destination[1..];
     }
 }

@@ -13,6 +13,11 @@
 @code {
     private static Dictionary<Type, StringLocalizer<T>> localization = new Dictionary<Type, StringLocalizer<T>>();
 
+    public static bool Ready()
+    {
+        return localization.ContainsKey(typeof(T));
+    }
+
     [Parameter]
     public required RenderFragment<LocalizedComponent<T>> ChildContent { get; set; }
 

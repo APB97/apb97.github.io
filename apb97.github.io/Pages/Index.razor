@@ -9,9 +9,20 @@
 
 <AboutMe />
 
+<NavigationByIdFix @ref="navFix" />
+
 @code {
-    protected override async Task OnInitializedAsync()
+    private NavigationByIdFix? navFix;
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
     {
-        await Navigation.NavigateToStoredDestinationIfAnyAsync(utilities);
+        if (!firstRender) return;
+        var target = await Navigation.NavigateToStoredDestinationIfAnyAsync(utilities);
+        if (navFix is null) return;
+        if (string.IsNullOrEmpty(target))
+            target = Navigation.Uri.Replace(Navigation.BaseUri, string.Empty);
+        while (!LocalizedComponent<LearningProgress>.Ready())
+            await Task.Delay(25);
+        await navFix.ScrollToElementFixAsync(Navigation, target, 300);
     }
 }
