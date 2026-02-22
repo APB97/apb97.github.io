@@ -21,3 +21,17 @@ export function getSessionSetting(key) {
 export function removeSessionSetting(key) {
     sessionStorage.removeItem(key);
 }
+
+export function downloadFile(filename, contents, mimeType) {
+    const file = new File([contents], filename, { type: mimeType });
+    const exportUrl = URL.createObjectURL(file);
+
+    const a = document.createElement("a");
+    document.body.appendChild(a);
+    a.href = exportUrl;
+    a.download = filename;
+    a.target = "_self";
+    a.click();
+
+    URL.revokeObjectURL(exportUrl);
+}

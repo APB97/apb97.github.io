@@ -126,4 +126,19 @@
   <data name="WebSudoku-cellBlankingAttempts" xml:space="preserve">
     <value>Ilość prób wyczyszczenia komórki </value>
   </data>
+  <data name="WebSudoku-PrintMultiple-boardsToGenerate" xml:space="preserve">
+    <value>Ilość plansz do wygenerowania</value>
+  </data>
+  <data name="WebSudoku-PrintMultiple-boardWidthPercentage" xml:space="preserve">
+    <value>Szerokość planszy w procentach</value>
+  </data>
+  <data name="WebSudoku-PrintMultiple-useMoreResources" xml:space="preserve">
+    <value>Użyj więcej zasobów</value>
+  </data>
+  <data name="WebSudoku-printFilledValues" xml:space="preserve">
+    <value>Drukuj wypełnione wartości</value>
+  </data>
+  <data name="WebSudoku-printHighlightedErrors" xml:space="preserve">
+    <value>Drukuj podświetlone błędy</value>
+  </data>
 </root>

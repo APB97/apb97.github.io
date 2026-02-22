@@ -3,6 +3,8 @@
 @implements IAsyncDisposable
 
 @inject IJSRuntime JS
+@inject SettingsService settingsService
+@inject UtilityService utilities
 
 <LocalizedComponent T="SudokuOptions" Context="Loc" @ref="localizer">
     <div class="div-options d-print-none" hidden="@Loc.IsLoading">
@@ -37,39 +39,34 @@
 
     private CancellationTokenSource cts = new();
 
-    private IJSObjectReference? utilitiesModule;
     private LocalizedComponent<SudokuOptions>? localizer;
 
     protected override async Task OnInitializedAsync()
     {
         await base.OnInitializedAsync();
-        utilitiesModule = await JS.ImportAsync(JSModules.UtilitiesModule);
         await FetchSavedState();
     }
 
     private async ValueTask FetchSavedState()
     {
-        if (utilitiesModule is null) return;
-        lastSavedState = await utilitiesModule.GetSettingAsync<string>(SudokuStateKey);
+        lastSavedState = await settingsService.GetStringAsync(SettingsService.SudokuStateKey);
     }
 
     private async Task Save()
     {
-        if (utilitiesModule is null) return;
         if (SudokuBoard is null) return;
 
         string savedState = BoardSerializer.SerializeToJson(SudokuBoard.Board, Timer?.SpanToShow, GameStateVersion.Current);
-        await utilitiesModule.SetSettingAsync(SudokuStateKey, savedState);
+        await settingsService.UpdateSettingAsync(SettingsService.SudokuStateKey, savedState);
         lastSavedState = savedState;
         await SetStatusMessage("Saved");
     }
 
     private async Task SaveToFile()
     {
-        if (utilitiesModule is null) return;
         if (SudokuBoard is null) return;
         string savedState = BoardSerializer.SerializeToJson(SudokuBoard.Board, Timer?.SpanToShow, GameStateVersion.Current);
-        await utilitiesModule.DownloadFileAsync($"SudokuState-{DateTime.Now.ToString()}.json", savedState, "application/json");
+        await utilities.DownloadFileAsync($"SudokuState-{DateTime.Now.ToString()}.json", savedState, "application/json");
         await SetStatusMessage("Saved");
     }
 
@@ -99,9 +96,7 @@
 
     private async Task Load()
     {
-        if (utilitiesModule == null) return;
-
-        lastSavedState ??= await utilitiesModule.GetSettingAsync<string>(SudokuStateKey);
+        lastSavedState ??= await settingsService.GetStringAsync(SudokuStateKey);
         if (await LoadV2(lastSavedState)) return;
         await LoadV1(lastSavedState);
     }
@@ -131,10 +126,9 @@
     private async Task<bool> LoadV1(string lastSavedState)
     {
         if (lastSavedState is null) return false;
-        if (utilitiesModule is null) return false;
         if (SudokuBoard is null) return false;
         var v1board = BoardSerializer.DeserializeFromJson(lastSavedState);
-        var jsonTimer = await utilitiesModule.GetSettingAsync<string>(TimerStateKey);
+        var jsonTimer = await settingsService.GetStringAsync(TimerStateKey);
         if (v1board == null || Timer == null || jsonTimer == null || !TimeSpan.TryParse(jsonTimer, out var loadedTimerOnly))
             return false;
 
@@ -148,7 +142,5 @@
     async ValueTask IAsyncDisposable.DisposeAsync()
     {
         cts?.Dispose();
-        if (utilitiesModule is null) return;
-        await utilitiesModule.DisposeAsync();
     }
 }

@@ -10,8 +10,8 @@
 @inject CountingSolver Solver
 @inject Blanker Blanker
 @inject Validator Validator
-@inject IJSRuntime JS
 @inject SettingsService settingsService
+@inject UtilityService utilities
 
 <LocalizedComponent T="PrintMultiple" Context="Loc">
     <PageTitle>Web Sudoku - @Loc["print multiple"]</PageTitle>
@@ -28,7 +28,7 @@
             </div>
             <div class="align-content-center">
                 <label for="boards-amount">@Loc["Boards to generate"]</label>
-                <InputNumber style="width: 4rem" id="boards-amount" min="1" max="32" @bind-Value="BoardsToGenerate" />
+                <InputNumber style="width: 4rem" id="boards-amount" min="1" max="32" TValue="int" Value="BoardsToGenerate" ValueExpression="() => BoardsToGenerate" ValueChanged="UpdateBoardsToGenerate" />
             </div>
             <div class="align-content-center">
                 <label title="@Loc["Speeds up the process but"]" for="use-more-resources">@Loc["Use more resources"]</label>
@@ -105,8 +105,6 @@
         set => boardsToGenerate = Math.Clamp(value, 1, 32);
     }
 
-    private IJSObjectReference? utilities;
-
     private const string PageName = "printMultiple";
     private const string FormatSetting = "{0}_{1}";
 
@@ -120,44 +118,29 @@
 
     protected override async Task OnInitializedAsync()
     {
-        targetBlanks = await settingsService.GetIntAsync(SettingsProvider.DesiredBlankCells);
-        attemptsToRemove = await settingsService.GetIntAsync(SettingsProvider.CellBlankingAttempts);
-
-        utilities = await JS.ImportAsync(JSModules.UtilitiesModule);
-        if (utilities is null) return;
-
-        await LoadSettings(utilities);
-    }
-
-    private async ValueTask LoadSettings(IJSObjectReference utilities)
-    {
-        if (utilities is null) return;
-
-        var boardWidthSetting = await utilities.GetSettingAsync<string>(SettingKeyFor(nameof(boardWidthPercentage)));
-        if (float.TryParse(boardWidthSetting, out var result))
-            boardWidthPercentage = result;
-
-        var useMoreResourcesSetting = await utilities.GetSettingAsync<string>(SettingKeyFor(nameof(useMoreResources)));
-        if (bool.TryParse(useMoreResourcesSetting, out var useMoreResult))
-            useMoreResources = useMoreResult;
-
-        string boardAmountSetting = await utilities.GetSettingAsync<string>(SettingKeyFor(nameof(boardsToGenerate)));
-        if (int.TryParse(boardAmountSetting, out var boardAmountResult) && boardAmountResult > 0)
-            BoardsToGenerate = boardAmountResult;
+        targetBlanks = await settingsService.GetIntAsync(SettingsService.DesiredBlankCells);
+        attemptsToRemove = await settingsService.GetIntAsync(SettingsService.CellBlankingAttempts);
+        boardWidthPercentage = await settingsService.GetFloatAsync(SettingsService.BoardWidthPercentage);
+        useMoreResources = await settingsService.GetBoolAsync(SettingsService.UseMoreResources);
+        boardsToGenerate = await settingsService.GetIntAsync(SettingsService.BoardsToGenerate);
     }
 
     private async Task UpdateBoardWidth(float width)
     {
         boardWidthPercentage = width;
-        if (utilities is null) return;
-        await utilities.SetSettingAsync(SettingKeyFor(nameof(boardWidthPercentage)), width);
+        await settingsService.UpdateSettingAsync(SettingsService.BoardWidthPercentage, width);
     }
 
     private async Task UpdateUseMoreResources(bool use)
     {
         useMoreResources = use;
-        if (utilities is null) return;
-        await utilities.SetSettingAsync(SettingKeyFor(nameof(useMoreResources)), use);
+        await settingsService.UpdateSettingAsync(SettingsService.UseMoreResources, use);
+    }
+
+    private async Task UpdateBoardsToGenerate(int boards)
+    {
+        boardsToGenerate = boards;
+        await settingsService.UpdateSettingAsync(SettingsService.BoardsToGenerate, boardsToGenerate);
     }
 
     private void Cancel()
@@ -189,10 +172,7 @@
         }
         catch (Exception ex)
         {
-            if (utilities is not null)
-            {
-                await utilities.AlertAsync(ex.Message);
-            }
+            await utilities.AlertAsync(ex.Message);
         }
         finally
         {
@@ -213,10 +193,7 @@
         }
         catch (Exception ex)
         {
-            if (utilities is not null)
-            {
-                await utilities.AlertAsync(ex.Message);
-            }
+            await utilities.AlertAsync(ex.Message);
         }
         finally
         {
@@ -227,8 +204,5 @@
     async ValueTask IAsyncDisposable.DisposeAsync()
     {
         cts.Dispose();
-        if (utilities is null) return;
-        await utilities.SetSettingAsync(SettingKeyFor(nameof(boardsToGenerate)), boardsToGenerate);
-        await utilities.DisposeAsync();
     }
 }

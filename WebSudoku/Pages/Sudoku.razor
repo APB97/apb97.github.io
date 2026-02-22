@@ -94,8 +94,8 @@
         }
         CellDefaultType = isMobile && isFirefox ? Cell.InputTypeNumber : Cell.InputTypeText;
         
-        targetBlanks = await settingsService.GetIntAsync(SettingsProvider.DesiredBlankCells);
-        attemptsToRemove = await settingsService.GetIntAsync(SettingsProvider.CellBlankingAttempts);
+        targetBlanks = await settingsService.GetIntAsync(SettingsService.DesiredBlankCells);
+        attemptsToRemove = await settingsService.GetIntAsync(SettingsService.CellBlankingAttempts);
     }
 
     protected async Task CreateNewBoard()

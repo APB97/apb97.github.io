@@ -11,25 +11,54 @@
     <div hidden="@Loc.IsLoading">
         <table>
             <tbody>
-                @foreach (var setting in settings)
+                @foreach (var setting in settings.Where(s => !skipKeys.Contains(s.Key)))
                 {
                     <tr>
                         <td>
                             <label for="@setting.Key">@Loc[setting.Key]</label>
                         </td>
                         <td>
-                            @switch (setting.Value.GetType().Name)
+                            @switch (types.TryGetValue(setting.Key, out var type) ? type : setting.Value.GetType().Name)
                             {
                                 case nameof(Int32):
-                                    var integer = (int)setting.Value;
-                                    RangeAttribute? range = null;
-                                    if (settingValidations.TryGetValue(setting.Key, out var validations))
                                     {
-                                        range = validations.OfType<RangeAttribute>().FirstOrDefault();
+                                        var integer = (int)setting.Value;
+                                        RangeAttribute? range = null;
+                                        if (settingValidations.TryGetValue(setting.Key, out var validations))
+                                        {
+                                            range = validations.OfType<RangeAttribute>().FirstOrDefault();
+                                        }
+                                        <InputNumber id="@setting.Key" min="@range?.Minimum" max="@range?.Maximum" style="width: 7rem;"
+                                            TValue="int" Value="integer" ValueExpression="() => integer" ValueChanged="i => UpdateSettingAsync(setting.Key, i)" />
+                                        break;
                                     }
-                                    <InputNumber id="@setting.Key" min="@range?.Minimum" max="@range?.Maximum" style="width: 3rem;"
-                                        TValue="int" Value="integer" ValueExpression="() => integer" ValueChanged="i => UpdateSettingAsync(setting.Key, i)" />
-                                    break;
+                                case nameof(Single):
+                                    {
+                                        float single;
+                                        try
+                                        {
+                                            single = (float)setting.Value;
+                                        }
+                                        catch
+                                        {
+                                            single = (int)setting.Value;
+                                        }
+                                        RangeAttribute? range = null;
+                                        if (settingValidations.TryGetValue(setting.Key, out var validations))
+                                        {
+                                            range = validations.OfType<RangeAttribute>().FirstOrDefault();
+                                        }
+                                        <InputNumber id="@setting.Key" min="@range?.Minimum" max="@range?.Maximum" style="width: 7rem;"
+                                                     TValue="float" Value="single" ValueExpression="() => single" ValueChanged="i => UpdateSettingAsync(setting.Key, i)" />
+                                        break;
+                                    }
+                                case nameof(Boolean):
+                                    {
+                                        var boolean = (bool)setting.Value;
+                                        <InputCheckbox id="@setting.Key" style="width: 7rem;" 
+                                            Value="boolean" ValueExpression="() => boolean" ValueChanged="b => UpdateSettingAsync(setting.Key, b)"/>
+                                        break;
+                                    }
                                 default:
                                     break;
                             }
@@ -44,11 +73,15 @@
 @code {
     private IReadOnlyDictionary<string, object> settings = new Dictionary<string, object>();
     private IReadOnlyDictionary<string, ValidationAttribute[]> settingValidations = new Dictionary<string, ValidationAttribute[]>();
+    private IReadOnlyDictionary<string, string> types = new Dictionary<string, string>();
+
+    private readonly List<string> skipKeys = [SettingsService.SudokuStateKey, SettingsService.TimerStateKey];
 
     protected override async Task OnInitializedAsync()
     {
         settings = await settingsService.GetSettingsAsync();
         settingValidations = await settingsService.GetValidationsAsync();
+        types = await settingsService.GetTypesAsync();
     }
 
     private Task UpdateSettingAsync(string key, object value)

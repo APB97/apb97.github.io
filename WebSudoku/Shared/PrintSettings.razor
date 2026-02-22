@@ -1,4 +1,4 @@
-﻿@inject IJSRuntime JS
+﻿@inject SettingsService settingsService
 
 <LocalizedComponent T="PrintSettings" Context="Loc">
     <button class="btn btn-primary"
@@ -54,37 +54,29 @@
 
     private bool printFilledValues;
 
-    private IJSObjectReference? module;
-
     protected override async Task OnInitializedAsync()
     {
         await base.OnInitializedAsync();
-        module = await JS.ImportAsync(JSModules.UtilitiesModule);
 
-        await LoadSetting(v => printFilledValues = v, nameof(printFilledValues));
-        await LoadSetting(v => printHighlightedErrors = v, nameof(printHighlightedErrors));
+        await LoadSetting(v => printFilledValues = v, SettingsService.PrintFilledValues);
+        await LoadSetting(v => printHighlightedErrors = v, SettingsService.PrintHighlightedErrors);
     }
 
     private async Task LoadSetting(Action<bool> setting, string key)
     {
-        if (module is null) return;
-        var value = await module.GetSettingAsync<string>(key);
-
-        if (value is null || !bool.TryParse(value, out var result)) return;
-        setting.Invoke(result);
+        var value = await settingsService.GetBoolAsync(key);
+        setting.Invoke(value);
     }
 
     private async Task PrintFilledValuesChanged(bool toggle)
     {
         printFilledValues = toggle;
-        if (module is null) return;
-        await module.SetSettingAsync(nameof(printFilledValues), toggle);
+        await settingsService.UpdateSettingAsync(SettingsService.PrintFilledValues, toggle);
     }
 
     private async Task PrintHighlightedErrorsChanged(bool toggle)
     {
         printHighlightedErrors = toggle;
-        if (module is null) return;
-        await module.SetSettingAsync(nameof(printHighlightedErrors), toggle);
+        await settingsService.UpdateSettingAsync(SettingsService.PrintHighlightedErrors, toggle);
     }
 }

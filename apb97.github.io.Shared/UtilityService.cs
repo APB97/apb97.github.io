@@ -13,6 +13,7 @@ public sealed class UtilityService(IJSRuntime jsRuntime) : IAsyncDisposable
     private const string RemoveSessionSettingFunction = "removeSessionSetting";
     private const string AlertFunction = "alert";
     private const string RemoveSettingFunction = "removeSetting";
+    private const string DownloadFileFunction = "downloadFile";
 
     /// <summary>
     /// Set setting in localStorage
@@ -72,6 +73,12 @@ public sealed class UtilityService(IJSRuntime jsRuntime) : IAsyncDisposable
     {
         var module = await moduleTask.Value;
         await module.InvokeVoidAsync(RemoveSettingFunction, key);
+    }
+
+    public async Task DownloadFileAsync(string name, string contents, string mimeType)
+    {
+        var module = await moduleTask.Value;
+        await module.InvokeVoidAsync(DownloadFileFunction, name, contents, mimeType);
     }
 
     public async ValueTask DisposeAsync()

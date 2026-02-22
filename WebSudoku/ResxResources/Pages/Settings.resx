@@ -126,4 +126,19 @@
   <data name="WebSudoku-cellBlankingAttempts" xml:space="preserve">
     <value>Cell blanking attempts</value>
   </data>
+  <data name="WebSudoku-PrintMultiple-boardsToGenerate" xml:space="preserve">
+    <value>Boards to generate</value>
+  </data>
+  <data name="WebSudoku-PrintMultiple-boardWidthPercentage" xml:space="preserve">
+    <value>Board width percentage</value>
+  </data>
+  <data name="WebSudoku-PrintMultiple-useMoreResources" xml:space="preserve">
+    <value>Use more resources</value>
+  </data>
+  <data name="WebSudoku-printFilledValues" xml:space="preserve">
+    <value>Print filled values</value>
+  </data>
+  <data name="WebSudoku-printHighlightedErrors" xml:space="preserve">
+    <value>Print highlighted errors</value>
+  </data>
 </root>
