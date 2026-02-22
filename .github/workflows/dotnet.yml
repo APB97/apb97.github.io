@@ -32,6 +32,13 @@ jobs:
     - name: Publish
       run: dotnet publish -c Release --nologo --no-build
 
+    - name: Rewrite base href
+      if: github.event_name == 'push'
+      uses: SteveSandersonMS/ghaction-rewrite-base-href@v1.1.0
+      with:
+        html_path: WebSudoku/bin/Release/net10.0/publish/wwwroot/index.html
+        base_href: WebSudoku
+
     - name: Move files
       run: |
         mkdir ./public
