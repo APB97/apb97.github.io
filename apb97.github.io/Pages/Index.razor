@@ -2,6 +2,8 @@
 @using apb97.github.io.Shared
 @using apb97.github.io.Shared.Extensions
 
+@implements IAsyncDisposable
+
 @inject UtilityService utilities
 @inject NavigationManager Navigation
 
@@ -14,6 +16,8 @@
 @code {
     private NavigationByIdFix? navFix;
 
+    private CancellationTokenSource cts = new();
+
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
         if (!firstRender) return;
@@ -22,7 +26,12 @@
         if (string.IsNullOrEmpty(target))
             target = Navigation.Uri.Replace(Navigation.BaseUri, string.Empty);
         while (!LocalizedComponent<LearningProgress>.Ready())
-            await Task.Delay(25);
-        await navFix.ScrollToElementFixAsync(Navigation, target, 300);
+            await Task.Delay(25, cts.Token);
+        await navFix.ScrollToElementFixAsync(Navigation, target, 300, cts.Token);
+    }
+
+    async ValueTask IAsyncDisposable.DisposeAsync()
+    {
+        await cts.CancelAsync();
     }
 }

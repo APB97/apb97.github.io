@@ -21,12 +21,12 @@
         await module.InvokeVoidAsync("activateCurrentLink", null, null);
     }
 
-    public async Task ScrollToElementFixAsync(NavigationManager navigation, string url, int msDelay = 25)
+    public async Task ScrollToElementFixAsync(NavigationManager navigation, string url, int msDelay = 25, CancellationToken cancellationToken = default)
     {
         await ScrollToElement(url);
-        while (!navigation.Uri.EndsWith(url))
-            await Task.Delay(25);
-        await Task.Delay(msDelay);
+        while (navigation is not null && !navigation.Uri.EndsWith(url))
+            await Task.Delay(25, cancellationToken);
+        await Task.Delay(msDelay, cancellationToken);
         await ScrollToElement(url);
     }
 
