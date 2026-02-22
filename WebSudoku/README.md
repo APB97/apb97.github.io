@@ -14,8 +14,8 @@ Sudoku application made with Blazor WebAssembly that includes features like:
 - Application UI language can be changed between English and Polish (Polski) without requiring full page reload.
 
 <picture>
- <source media="(prefers-color-scheme: dark)" srcset="images/Screenshot%20-%20sudoku%20-%20dark%20mode.png">
- <source media="(prefers-color-scheme: light)" srcset="images/Screenshot%20-%20sudoku.png">
+ <source media="(prefers-color-scheme: dark)" srcset="/images/Screenshot%20-%20sudoku%20-%20dark%20mode.png">
+ <source media="(prefers-color-scheme: light)" srcset="/images/Screenshot%20-%20sudoku.png">
  <img alt="Screenshot - sudoku board">
 </picture>
 
@@ -36,7 +36,7 @@ The `master` branch is deployed to Github Pages after every succesful push at th
 
 Pull requests to the `master` branch trigger build and execution of tests.
 
-To achieve that, the project uses Github Actions through [dotnet.yml](.github/workflows/dotnet.yml) workflow file.
+To achieve that, the project uses Github Actions through [dotnet.yml](/.github/workflows/dotnet.yml) workflow file.
 
 ## Notes
 
@@ -44,5 +44,5 @@ Things that should be noted:
 - Deploying to Github Pages works because Blazor WebAssembly application is downloaded to and run on the client.
 - However it requires some specific changes to make routing work:
   - This includes adding some JavaScript code found in
-  [404.html](WebSudoku/wwwroot/404.html).
-  - And C# Code with JavaScript Interop found in [NavigationManagerExtensions.cs](apb97.github.io.Shared/Extensions/NavigationManagerExtensions.cs) referenced in [Index.razor](WebSudoku/Pages/Index.razor) routeable component.
+  [404.html](/WebSudoku/wwwroot/404.html).
+  - And C# Code with JavaScript Interop found in [NavigationManagerExtensions.cs](/apb97.github.io.Shared/Extensions/NavigationManagerExtensions.cs) referenced in [Index.razor](/WebSudoku/Pages/Index.razor) routeable component.
