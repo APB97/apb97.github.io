@@ -1,5 +1,5 @@
 self.assetsManifest = {
-  "version": "yOueRQmG",
+  "version": "4+PouDFt",
   "assets": [
     {
       "hash": "sha256-RiHtlne0dkCgYD6WDi3Jvjt7vdZ4bOMDkaysjVBr5Kc=",
@@ -162,7 +162,7 @@ self.assetsManifest = {
       "url": "_content/apb97.github.io.Shared/apb97.github.io.Shared.gukbavk21a.bundle.scp.css"
     },
     {
-      "hash": "sha256-3MuX501ZAxNZHSIV691BU2iqsXxQ2E8hae/4/Qc69Es=",
+      "hash": "sha256-RnXtBmmzAOFfJJGgGzQN93wPLL3aoFgQ5TiDgiTcrTo=",
       "url": "_content/apb97.github.io.Shared/js/utilities.js"
     },
     {
@@ -354,19 +354,19 @@ self.assetsManifest = {
       "url": "_framework/System.deed694j9w.wasm"
     },
     {
-      "hash": "sha256-mhEoAvJ+whSz8WeeBFrC/UfQys/P9hhQijAqW/q51NQ=",
-      "url": "_framework/apb97.github.io.Shared.qr06prmtzu.wasm"
+      "hash": "sha256-ixVuLWDmKdt6nmu7yCt3CJOrTOQAf+SwJ8Ge5Q6ABX4=",
+      "url": "_framework/apb97.github.io.Shared.fzxazy0mux.wasm"
     },
     {
-      "hash": "sha256-Fe4E827exfnkNhfxBXlD31LqpYs3XYkSmBS0qjc8MFg=",
-      "url": "_framework/apb97.github.io.vbovx5hix8.wasm"
+      "hash": "sha256-QzA+HTUvqteOdCo0tgANrgqYrQpRfu9kstFC2M61e3w=",
+      "url": "_framework/apb97.github.io.h3sqb99ydz.wasm"
     },
     {
       "hash": "sha256-3lCWrko3zwspV40aQhs2S/IMkRSarnHRKIdkHhuXIBA=",
       "url": "_framework/blazor.webassembly.js"
     },
     {
-      "hash": "sha256-DVtWjXHDhDwUVlhLELisluaXPX72nrVisfq4hbBVg6M=",
+      "hash": "sha256-NwF6C0Y8laFRhpJIjWdKbkyq5GiNoHqVGPixuWbODnA=",
       "url": "_framework/dotnet.js"
     },
     {
