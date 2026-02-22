@@ -7,7 +7,7 @@
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
         if (!firstRender) return;
-        module = await JS.ImportAsync("./Shared/NavigationByIdFix.razor.js");
+        module = await JS.ImportAsync("./Components/NavigationByIdFix.razor.js");
         await ActivateCurrentLink();
     }
 

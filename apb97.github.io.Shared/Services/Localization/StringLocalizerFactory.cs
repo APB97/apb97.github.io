@@ -75,13 +75,13 @@ public class StringLocalizerFactory(IServiceScopeFactory scopeFactory, IOptions<
     {
         var type = typeof(T);
         var builder = new StringBuilder();
-        if (type.Namespace?.StartsWith(localizationOptions.Value.ProjectNamespace) == true)
-        {
-            builder.Append(resourcesPath).Append(type.Namespace[localizationOptions.Value.ProjectNamespace.Length..].Replace('.', '/'));
-        }
-        else if (type.Namespace?.StartsWith("apb97.github.io.Shared") == true)
+        if (type.Namespace?.StartsWith("apb97.github.io.Shared") == true)
         {
             builder.Append("_content/apb97.github.io.Shared/").Append(resourcesPath).Append(type.Namespace.Replace("apb97.github.io", string.Empty).Replace('.', '/'));
+        }
+        else if (type.Namespace?.StartsWith(localizationOptions.Value.ProjectNamespace) == true)
+        {
+            builder.Append(resourcesPath).Append(type.Namespace[localizationOptions.Value.ProjectNamespace.Length..].Replace('.', '/'));
         }
         else if (type.Namespace != null)
         {
