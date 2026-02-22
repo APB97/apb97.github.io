@@ -3,7 +3,7 @@
 @inherits LayoutComponentBase
 @implements ILayoutStateChangeHandler
 
-@inject IJSRuntime JS
+@inject UtilityService utilities
 
 @if (LayoutMode == LayoutMode.Light)
 {
@@ -43,23 +43,24 @@
 @code {
     private NavMenu? navMenu;
 
+    private const string LayoutModeKey = "LayoutMode";
+    
     public LayoutMode LayoutMode { get; private set; } = LayoutMode.Dark;
 
     public event Func<Task> OnStateChanging = delegate { return Task.CompletedTask; };
 
     protected override async Task OnInitializedAsync()
     {
-        await using var utilitiesModule = await JS.ImportAsync(JSModules.UtilitiesModule);
-        var mode = await utilitiesModule.GetSettingAsync<string>("LayoutMode");
-        if (mode is null || !Enum.TryParse<LayoutMode>(mode, out var layoutMode)) return;
+        var modeSetting = await utilities.GetSettingAsync<string>(LayoutModeKey);
+        if (string.IsNullOrEmpty(modeSetting) || !LayoutMode.TryParse<LayoutMode>(modeSetting, out var layoutMode)) return;
         LayoutMode = layoutMode;
     }
 
-    public Task ToggleLayoutMode()
+    public async Task ToggleLayoutMode()
     {
         LayoutMode = LayoutMode == LayoutMode.Dark ? LayoutMode.Light: LayoutMode.Dark;
+        await utilities.SetSettingAsync(LayoutModeKey, LayoutMode.ToString());
         StateHasChanged();
-        return Task.CompletedTask;
     }
 
     public async Task NotifyStateChanged()
