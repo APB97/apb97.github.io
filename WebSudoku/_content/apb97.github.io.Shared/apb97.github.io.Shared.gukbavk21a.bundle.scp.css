@@ -1,0 +1,10 @@
+/* _content/apb97.github.io.Shared/LanguageSelect.razor.rz.scp.css */
+option[b-km1yrii8gz] {
+    background-color: unset;
+    color: black;
+}
+
+option.current[b-km1yrii8gz] {
+    color: gray;
+    background-color: unset;
+}

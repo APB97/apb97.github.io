@@ -1,3 +1,5 @@
+@import '_content/apb97.github.io.Shared/apb97.github.io.Shared.gukbavk21a.bundle.scp.css';
+
 /* /Layout/MainLayout.razor.rz.scp.css */
 .page[b-0clx55j7wy] {
     position: relative;
@@ -136,16 +138,6 @@ a[b-51ycega2eh]:after {
     content: ' />';
     color: gray;
     text-decoration: none !important;
-}
-/* /Shared/LanguageSelect.razor.rz.scp.css */
-option[b-obldctxof6] {
-    background-color: unset;
-    color: black;
-}
-
-option.current[b-obldctxof6] {
-    color: gray;
-    background-color: unset;
 }
 /* /Shared/NavMenu.razor.rz.scp.css */
 .navbar-toggler[b-tj5vwyctyx] {
